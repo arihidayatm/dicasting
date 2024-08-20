@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Stunting;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Exports\StuntingExport;
 use App\Imports\StuntingImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -13,25 +15,49 @@ class StuntingController extends Controller
     {
         // Search stunting by nama_balita, pagination 10
         $stuntings = Stunting::where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+        ->orderBy('id', 'desc')
+        ->paginate(10);
 
         // Contoh nilai median dan standar deviasi dari standar referensi
-        $median = 50; // Nilai median dari standar referensi
-        $std_dev = 10; // Standar deviasi dari standar referensi
+        $median_height = 50; // Nilai median tinggi badan dari standar referensi
+        $std_dev_height = 10; // Standar deviasi tinggi badan dari standar referensi
+        $median_weight = 15; // Nilai median berat badan dari standar referensi
+        $std_dev_weight = 5; // Standar deviasi berat badan dari standar referensi
 
         foreach ($stuntings as $stunting) {
-            $z_score = ($stunting->TINGGI_BADAN - $median) / $std_dev;
+            // Hitung umur dalam bulan
+            $stunting->UMUR = Carbon::now()->diffInMonths($stunting->TGL_LAHIR);
 
-            if ($z_score < -3) {
+            // Hitung Z-score untuk TB/U
+            $z_score_height = ($stunting->TINGGI_BADAN - $median_height) / $std_dev_height;
+            if ($z_score_height < -3) {
                 $stunting->STATUS_TBU = 'Sangat Pendek';
-            } elseif ($z_score >= -3 && $z_score < -2) {
+            } elseif ($z_score_height >= -3 && $z_score_height < -2) {
                 $stunting->STATUS_TBU = 'Pendek';
             } else {
                 $stunting->STATUS_TBU = 'Normal';
             }
-        }
 
+            // Hitung Z-score untuk BB/U
+            $z_score_weight = ($stunting->BERAT_BADAN - $median_weight) / $std_dev_weight;
+            if ($z_score_weight < -3) {
+                $stunting->STATUS_BBU = 'Sangat Kurang';
+            } elseif ($z_score_weight >= -3 && $z_score_weight < -2) {
+                $stunting->STATUS_BBU = 'Kurang';
+            } elseif ($z_score_weight >= -2 && $z_score_weight <= 2) {
+                $stunting->STATUS_BBU = 'Normal';
+            } else {
+                $stunting->STATUS_BBU = 'Lebih';
+            }
+
+            // Hitung Z-score untuk BB/TB
+            $z_score_bbtb = ($stunting->BERAT_BADAN - ($median_weight + ($std_dev_weight * ($stunting->TINGGI_BADAN / 100)))) / $std_dev_weight;
+            if ($z_score_bbtb < -2) {
+                $stunting->STATUS_BBTB = 'Gizi Kurang';
+            } else {
+                $stunting->STATUS_BBTB = 'Gizi Baik';
+            }
+        }
         return view('pages.stuntings.index', compact('stuntings'));
     }
 
@@ -95,5 +121,10 @@ class StuntingController extends Controller
 
         return redirect()->route('stuntings.index')
             ->with('success', 'Data berhasil di import.');
+    }
+
+    public function export()
+    {
+        return (new StuntingExport)->download('stuntings-'.Carbon::now()->timestamp.'.xlsx');
     }
 }

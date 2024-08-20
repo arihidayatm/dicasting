@@ -12,18 +12,22 @@ class Stunting extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'NIK',
-        'KELUARGA_ID',
+        'NO_KK', // Ganti KELUARGA_ID dengan NO_KK
         'NAMA_BALITA',
         'TGL_LAHIR',
         'JENIS_KELAMIN',
         'BERAT_BADAN',
         'TINGGI_BADAN',
+        'NAMA_ORANGTUA',
+        'ALAMAT',
         'sumber_data', // Tambahkan kolom sumber_data
         'tgl_pengukuran', // Tambahkan kolom tgl_pengukuran
     ];
 
-    public function keluarga()
-    {
-        return $this->belongsTo(Keluarga::class, 'KELUARGA_ID', 'id');
-    }
+    // Hapus relasi keluarga
+    // public function keluarga()
+    // {
+    //     return $this->belongsTo(Keluarga::class, 'KELUARGA_ID', 'id');
+    // }
+
 }

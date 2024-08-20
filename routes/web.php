@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\StuntingExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
@@ -39,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     //Intervensi Non BPAS
     // Route::get(('intervensis/intervensi-nonbpas',[IntervensiController::class,''])->name(''));
 
+    Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'import'])->name('stunting.import');
 
 });

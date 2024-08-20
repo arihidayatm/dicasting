@@ -33,7 +33,8 @@
                                 <h4>Data Stunting</h4>
                             </div>
                             <div class="card-body">
-
+                                <a class="btn btn-outline-secondary" href="{{route('stunting.export')}}" role="button">Export</a>
+                                <button type="button" class="btn btn-outline-info btn-sm">Copy</button>
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('stuntings.index') }}">
                                         <div class="input-group">
@@ -50,41 +51,41 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>Sumber Data</th>
-                                            <th>Tanggal Pengukuran</th>
+
                                             <th>NIK</th>
                                             <th>No.KK</th>
                                             <th>Nama Balita</th>
                                             <th>Tgl. Lahir</th>
                                             <th>Jenis Kelamin</th>
-                                            <th>Usia</th>
+                                            <th>Umur</th>
                                             <th>BB Lahir</th>
                                             <th>TB Lahir</th>
                                             <th>Nama Ibu</th>
                                             <th>Alamat</th>
                                             <th>Kecamatan</th>
                                             <th>Kelurahan</th>
+                                            <th>Status BB/U</th>
                                             <th>Status TB/U</th>
+                                            <th>Status BB/TB</th>
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-                                                <td>
-                                                    <a href="{{ route('stuntings.create') }}" class="btn btn-primary">Add</a>
-                                                </td>
-                                                <td>{{ $stunting->tgl_pengukuran }}</td>
+
                                                 <td>{{ $stunting->NIK }}</td>
                                                 <td>{{ $stunting->NO_KK }}</td>
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
-                                                <td>{{ $stunting->UMUR }}</td>
-                                                <td>{{ $stunting->BERAT_BADAN }}</td>
-                                                <td>{{ $stunting->TINGGI_BADAN }}</td>
-                                                <td>{{ $stunting->NAMA_IBU }}</td>
+                                                <td>{{ number_format(abs($stunting->UMUR)) }} Bulan</td>
+                                                <td>{{ $stunting->BERAT_BADAN }} gram</td>
+                                                <td>{{ $stunting->TINGGI_BADAN }} cm</td>
+                                                <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
                                                 <td>{{ $stunting->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $stunting->NAMA_KELURAHANDESA }}</td>
+                                                <td>{{ $stunting->STATUS_BBU }}</td>
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
+                                                <td>{{ $stunting->STATUS_BBTB }}</td>
                                             </tr>
                                         @endforeach
                                     </table>
@@ -102,9 +103,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Penambahan Data Stunting</h4>
-                                <div class="">
-                                    <a href="{{ route('stuntings.create') }}" class="btn btn-primary">Add New</a>
-                                </div>
                             </div>
                             <div class="card-body">
 
@@ -131,19 +129,23 @@
                                             <th>Nama Balita</th>
                                             <th>Tgl. Lahir</th>
                                             <th>Jenis Kelamin</th>
-                                            <th>Usia</th>
+                                            <th>Umur</th>
                                             <th>BB Lahir</th>
                                             <th>TB Lahir</th>
                                             <th>Nama Ibu</th>
                                             <th>Alamat</th>
                                             <th>Kecamatan</th>
                                             <th>Kelurahan</th>
+                                            <th>Status BB/U</th>
                                             <th>Status TB/U</th>
+                                            <th>Status BB/TB</th>
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('stuntings.create') }}" class="btn btn-primary">Add</a>
+                                                    <button type="button" class="btn btn-outline-warning float-right" data-toggle="modal" data-target="#updateModal">
+                                                        Update
+                                                    </button>
                                                 </td>
                                                 <td>{{ $stunting->tgl_pengukuran }}</td>
                                                 <td>{{ $stunting->NIK }}</td>
@@ -151,14 +153,16 @@
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
-                                                <td>{{ $stunting->UMUR }}</td>
-                                                <td>{{ $stunting->BERAT_BADAN }}</td>
-                                                <td>{{ $stunting->TINGGI_BADAN }}</td>
-                                                <td>{{ $stunting->NAMA_IBU }}</td>
+                                                <td>{{ number_format(abs($stunting->UMUR)) }} Bulan</td>
+                                                <td>{{ $stunting->BERAT_BADAN }} gram</td>
+                                                <td>{{ $stunting->TINGGI_BADAN }} cm</td>
+                                                <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
                                                 <td>{{ $stunting->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $stunting->NAMA_KELURAHANDESA }}</td>
+                                                <td>{{ $stunting->STATUS_BBU }}</td>
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
+                                                <td>{{ $stunting->STATUS_BBTB }}</td>
                                             </tr>
                                         @endforeach
                                     </table>
@@ -171,6 +175,7 @@
                     </div>
                 </div>
             </div>
+            Sumber Data: *Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak
         </section>
     </div>
 @endsection

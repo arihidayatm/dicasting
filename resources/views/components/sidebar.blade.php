@@ -24,11 +24,19 @@
             </li>
 
             <li class="menu-header">Masters</li>
-            <li class="nav-item ">
-                <a href="#" class="nav-link ">
+
+            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-users"></i>
                     <span>Users</span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('users') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="#">
+                            <i class="fas fa-file"></i>Management User</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
