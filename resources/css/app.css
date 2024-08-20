@@ -1,0 +1,29 @@
+.pagination .page-link {
+    font-size: 14px; /* Sesuaikan ukuran font sesuai kebutuhan */
+    padding: 8px 12px; /* Sesuaikan padding sesuai kebutuhan */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff; /* Warna latar belakang untuk halaman aktif */
+    border-color: #007bff; /* Warna border untuk halaman aktif */
+}
+
+.pagination .page-link:hover {
+    background-color: #0056b3; /* Warna latar belakang saat hover */
+    border-color: #0056b3; /* Warna border saat hover */
+}
+
+.stisla-pagination .page-link {
+    font-size: 14px; /* Sesuaikan ukuran font sesuai kebutuhan */
+    padding: 8px 12px; /* Sesuaikan padding sesuai kebutuhan */
+}
+
+.stisla-pagination .page-item.active .page-link {
+    background-color: #007bff; /* Warna latar belakang untuk halaman aktif */
+    border-color: #007bff; /* Warna border untuk halaman aktif */
+}
+
+.stisla-pagination .page-link:hover {
+    background-color: #0056b3; /* Warna latar belakang saat hover */
+    border-color: #0056b3; /* Warna border saat hover */
+}
