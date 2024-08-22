@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stunting;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use App\Models\Kelurahandesa;
 use Illuminate\Support\Carbon;
 use App\Exports\StuntingExport;
 use App\Imports\StuntingImport;
@@ -63,21 +65,32 @@ class StuntingController extends Controller
 
     public function create()
     {
-        return view('pages.stuntings.create');
+        $kecamatans = Kecamatan::all();
+        $kelurahandesas = Kelurahandesa::all();
+        return view('pages.stuntings.create', compact('kecamatans', 'kelurahandesas'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'NIK' => 'required',
+            'NO_KK' => 'required',
             'NAMA_BALITA' => 'required',
-            'sumber_data' => 'required', // Validasi untuk sumber_data
-            'tgl_pengukuran' => 'required|date', // Validasi untuk tgl_pengukuran
+            'TGL_LAHIR' => 'required',
+            'JENIS_KELAMIN' => 'required',
+            'BERAT_BADAN' => 'required',
+            'TINGGI_BADAN' => 'required',
+            'NAMA_ORANGTUA' => 'required',
+            'ALAMAT' => 'required',
+            'KECAMATAN_ID' => 'required',
+            'KELURAHANDESA_ID' => 'required',
+            'sumber_data' => 'required',
+            'tgl_pengukuran' => 'required|date',
         ]);
 
         Stunting::create($request->all());
 
-        return redirect()->route('stuntings.index')
-            ->with('success', 'Stunting created successfully.');
+        return redirect()->route('stuntings.index')->with('success', 'Data stunting berhasil ditambahkan.');
     }
 
     public function show(Stunting $stunting)

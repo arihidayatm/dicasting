@@ -20,6 +20,8 @@ class Stunting extends Model
         'TINGGI_BADAN',
         'NAMA_ORANGTUA',
         'ALAMAT',
+        'KECAMATAN_ID',
+        'KELURAHANDESA_ID',
         'sumber_data', // Tambahkan kolom sumber_data
         'tgl_pengukuran', // Tambahkan kolom tgl_pengukuran
     ];
@@ -29,5 +31,14 @@ class Stunting extends Model
     // {
     //     return $this->belongsTo(Keluarga::class, 'KELUARGA_ID', 'id');
     // }
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'KECAMATAN_ID');
+    }
+
+    public function kelurahandesa()
+    {
+        return $this->belongsTo(Kelurahandesa::class, 'KELURAHANDESA_ID');
+    }
 
 }

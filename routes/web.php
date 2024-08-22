@@ -17,7 +17,28 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.dashboard');
     })->name('home');
 
-    Route::resource('stuntings', StuntingController::class);
+    // Route::resource('stuntings', StuntingController::class);
+
+    // Route untuk menampilkan daftar Stunting
+    Route::get('/stuntings', [StuntingController::class, 'index'])->name('stuntings.index');
+
+    // Route untuk menampilkan form penambahan Stunting baru
+    Route::get('/stuntings/create', [StuntingController::class, 'create'])->name('stuntings.create');
+
+    // Route untuk menyimpan data Stunting baru
+    Route::post('/stuntings', [StuntingController::class, 'store'])->name('stuntings.store');
+
+    // Route untuk menampilkan form edit Stunting
+    Route::get('/stuntings/{id}/edit', [StuntingController::class, 'edit'])->name('stuntings.edit');
+
+    // Route untuk memperbarui data Stunting
+    Route::put('/stuntings/{id}', [StuntingController::class, 'update'])->name('stuntings.update');
+
+    // Route untuk menghapus data Stunting
+    Route::delete('/stuntings/{id}', [StuntingController::class, 'destroy'])->name('stuntings.destroy');
+
+
+
     Route::resource('bapakasuhs', BapakAsuhController::class);
     // Route::resource('intervensis', IntervensiController::class);
 

@@ -105,6 +105,7 @@
                                 <h4>Penambahan Data Stunting</h4>
                             </div>
                             <div class="card-body">
+                                <a class="btn btn-outline-primary" href="{{ route('stuntings.create')}}" role="button">Tambah Data</a>
 
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('stuntings.index') }}">

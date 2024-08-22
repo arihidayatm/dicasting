@@ -9,7 +9,7 @@ class Kelurahandesa extends Model
 {
     use HasFactory;
     protected $table = 'kelurahandesa';
-    protected $primaryKey = 'ID';
+    protected $primaryKey = 'id';
     protected $fillable =[
         // 'ID',
         'KECAMATAN_ID',
@@ -26,8 +26,8 @@ class Kelurahandesa extends Model
         return $this->hasMany(Keluarga::class, 'KECAMATAN_ID', 'ID');
     }
 
-    public function stunting()
+    public function stuntings()
     {
-        return $this->hasMany(Stunting::class, 'KECAMATAN_ID', 'ID');
+        return $this->hasMany(Stunting::class, 'KELURAHANDESA_ID');
     }
 }

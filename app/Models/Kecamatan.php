@@ -9,7 +9,7 @@ class Kecamatan extends Model
 {
     use HasFactory;
     protected $table = 'kecamatan';
-    protected $primarykey = 'ID';
+    protected $primarykey = 'id';
     protected $fillable = [
         // 'ID',
         'KABUPATENKOTA_ID',
@@ -25,5 +25,10 @@ class Kecamatan extends Model
     public function kelurahandesa()
     {
         return $this->hasMany(Kelurahandesa::class, 'KECAMATAN_ID', 'ID');
+    }
+
+    public function stuntings()
+    {
+        return $this->hasMany(Stunting::class, 'KECAMATAN_ID');
     }
 }

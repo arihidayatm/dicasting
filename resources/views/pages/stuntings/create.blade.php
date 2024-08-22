@@ -32,193 +32,69 @@
                             <h4>Penambahan Data Baru</h4>
                         </div>
                         <div class="card-body">
-                            <div class="form-group ">
-                                <label>NIK</label>
-                                <input type="number"
-                                    class="form-control @error('nik')
-                                is-invalid
-                            @enderror"
-                                    nik="nik">
-                                @error('nik')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="form-group">
+                                <label for="NIK">NIK</label>
+                                <input type="text" class="form-control" id="NIK" name="NIK" required>
                             </div>
                             <div class="form-group">
-                                <label>No. KK</label>
-                                <input type="number"
-                                    class="form-control @error('no_kk')
-                                is-invalid
-                            @enderror"
-                                    no_kk="no_kk">
-                                @error('no_kk')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <label for="NO_KK">No KK</label>
+                                <input type="text" class="form-control" id="NO_KK" name="NO_KK" required>
                             </div>
                             <div class="form-group">
-                                <label>Nama Balita</label>
-                                <input type="text"
-                                    class="form-control @error('nama_balita')
-                                is-invalid
-                            @enderror"
-                                    nama_balita="nama_balita">
-                                @error('nama_balita')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <label for="NAMA_BALITA">Nama Balita</label>
+                                <input type="text" class="form-control" id="NAMA_BALITA" name="NAMA_BALITA" required>
                             </div>
                             <div class="form-group">
-                                <label>Tanggal Lahir</label>
-                                <input type="date"
-                                    class="form-control @error('tgl_lahir')
-                                is-invalid
-                            @enderror"
-                                    tgl_lahir="tgl_lahir">
-                                @error('tgl_lahir')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <label for="TGL_LAHIR">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="TGL_LAHIR" name="TGL_LAHIR" required>
                             </div>
                             <div class="form-group">
-                                <label>Jenis Kelamin</label>
-                                <input type="text"
-                                    class="form-control @error('jk')
-                                is-invalid
-                            @enderror"
-                                    jk="jk">
-                                @error('jk')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Umur</label>
-                                <input type="number"
-                                    class="form-control @error('umur')
-                                is-invalid
-                            @enderror"
-                                    umur="umur">
-                                @error('umur')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>BB Lahir</label>
-                                <input type="number"
-                                    class="form-control @error('bb')
-                                is-invalid
-                            @enderror"
-                                    bb="bb">
-                                @error('bb')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>TB Lahir</label>
-                                <input type="number"
-                                    class="form-control @error('tb')
-                                is-invalid
-                            @enderror"
-                                    tb="tb">
-                                @error('tb')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Nama Ortu</label>
-                                <input type="text"
-                                    class="form-control @error('nama_ortu')
-                                is-invalid
-                            @enderror"
-                                    nama_ortu="nama_ortu">
-                                @error('nama_ortu')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <input type="text"
-                                    class="form-control @error('alamat')
-                                is-invalid
-                            @enderror"
-                                    alamat="alamat">
-                                @error('alamat')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Kecamatan</label>
-                                <input type="text"
-                                    class="form-control @error('kecamatan')
-                                is-invalid
-                            @enderror"
-                                    kecamatan="kecamatan">
-                                @error('kecamatan')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Kelurahan</label>
-                                <input type="text"
-                                    class="form-control @error('kelurahan')
-                                is-invalid
-                            @enderror"
-                                    kelurahan="kelurahan">
-                                @error('kelurahan')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Status TB/U</label>
-                                <input type="text"
-                                    class="form-control @error('status_tbu')
-                                is-invalid
-                            @enderror"
-                                    status_tbu="status_tbu">
-                                @error('status_tbu')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            {{-- Positions with Options --}}
-                            {{-- <div class="form-group">
-                                <label for="position-option">Posisi</label>
-                                <select class="form-control" id="position-option" name="position">
-                                @foreach ($positions as $position)
-                                    <option value="{{ $position->name }}">{{ $position->name }}</option>
-                                @endforeach
+                                <label for="JENIS_KELAMIN">Jenis Kelamin</label>
+                                <select class="form-control" id="JENIS_KELAMIN" name="JENIS_KELAMIN" required>
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
                                 </select>
-                                @error('position')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div> --}}
-
-
-
+                            </div>
+                            <div class="form-group">
+                                <label for="BERAT_BADAN">Berat Badan</label>
+                                <input type="number" class="form-control" id="BERAT_BADAN" name="BERAT_BADAN" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="TINGGI_BADAN">Tinggi Badan</label>
+                                <input type="number" class="form-control" id="TINGGI_BADAN" name="TINGGI_BADAN" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="NAMA_ORANGTUA">Nama Orang Tua</label>
+                                <input type="text" class="form-control" id="NAMA_ORANGTUA" name="NAMA_ORANGTUA" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALAMAT">Alamat</label>
+                                <input type="text" class="form-control" id="ALAMAT" name="ALAMAT" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="KECAMATAN_ID">Kecamatan</label>
+                                <select class="form-control" id="KECAMATAN_ID" name="KECAMATAN_ID" required>
+                                    @foreach($kecamatans as $kecamatan)
+                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->NAMA_KECAMATAN }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="KELURAHANDESA_ID">Kelurahan/Desa</label>
+                                <select class="form-control" id="KELURAHANDESA_ID" name="KELURAHANDESA_ID" required>
+                                    @foreach($kelurahandesas as $kelurahandesa)
+                                        <option value="{{ $kelurahandesa->id }}">{{ $kelurahandesa->NAMA_KELURAHANDESA }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sumber_data">Sumber Data</label>
+                                <input type="text" class="form-control" id="sumber_data" name="sumber_data" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_pengukuran">Tanggal Pengukuran</label>
+                                <input type="date" class="form-control" id="tgl_pengukuran" name="tgl_pengukuran" required>
+                            </div>
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
