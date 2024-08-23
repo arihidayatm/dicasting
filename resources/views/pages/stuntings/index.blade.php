@@ -49,9 +49,9 @@
                                 <div class="clearfix mb-3"></div>
 
                                 <div class="table-responsive">
+
                                     <table class="table-striped table">
                                         <tr>
-
                                             <th>NIK</th>
                                             <th>No.KK</th>
                                             <th>Nama Balita</th>
@@ -70,7 +70,6 @@
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-
                                                 <td>{{ $stunting->NIK }}</td>
                                                 <td>{{ $stunting->NO_KK }}</td>
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
@@ -81,14 +80,15 @@
                                                 <td>{{ $stunting->TINGGI_BADAN }} cm</td>
                                                 <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
-                                                <td>{{ $stunting->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $stunting->NAMA_KELURAHANDESA }}</td>
+                                                <td>{{ optional($stunting->kecamatan)->NAMA_KECAMATAN }}</td>
+                                                <td>{{ optional($stunting->kelurahandesa)->NAMA_KELURAHANDESA }}</td>
                                                 <td>{{ $stunting->STATUS_BBU }}</td>
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
                                                 <td>{{ $stunting->STATUS_BBTB }}</td>
                                             </tr>
                                         @endforeach
                                     </table>
+                                    <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption>
                                 </div>
                                 <div class="float-right">
                                     {{ $stuntings->withQueryString()->links() }}
@@ -120,9 +120,9 @@
 
                                 <div class="clearfix mb-3"></div>
 
-                                <div class="table-responsive">
+                                <div class="table-responsive" >
                                     <table class="table-striped table">
-                                        <tr>
+                                        <tr class="table-info">
                                             <th>Sumber Data</th>
                                             <th>Tanggal Pengukuran</th>
                                             <th>NIK</th>
@@ -159,14 +159,15 @@
                                                 <td>{{ $stunting->TINGGI_BADAN }} cm</td>
                                                 <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
-                                                <td>{{ $stunting->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $stunting->NAMA_KELURAHANDESA }}</td>
+                                                <td>{{ optional($stunting->kecamatan)->NAMA_KECAMATAN }}</td>
+                                                <td>{{ optional($stunting->kelurahandesa)->NAMA_KELURAHANDESA }}</td>
                                                 <td>{{ $stunting->STATUS_BBU }}</td>
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
                                                 <td>{{ $stunting->STATUS_BBTB }}</td>
                                             </tr>
                                         @endforeach
                                     </table>
+                                    <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption>
                                 </div>
                                 <div class="float-right">
                                     {{ $stuntings->withQueryString()->links() }}
@@ -176,8 +177,12 @@
                     </div>
                 </div>
             </div>
-            Sumber Data: *Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak
-        </section>
+            <div class="row mt-4">
+                <div class="col-12">
+                <caption>Sumber Rumusan: *Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak </caption>
+                </div>
+            </div>
+            </section>
     </div>
 @endsection
 

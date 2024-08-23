@@ -16,9 +16,10 @@ class StuntingController extends Controller
     public function index(Request $request)
     {
         // Search stunting by nama_balita, pagination 10
-        $stuntings = Stunting::where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
-        ->orderBy('id', 'desc')
-        ->paginate(10);
+        $stuntings = Stunting::with(['kecamatan', 'kelurahandesa'])
+            ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
         // Contoh nilai median dan standar deviasi dari standar referensi
         $median_height = 50; // Nilai median tinggi badan dari standar referensi
