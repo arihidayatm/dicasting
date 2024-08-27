@@ -122,7 +122,7 @@
 
                                 <div class="table-responsive" >
                                     <table class="table-striped table">
-                                        <tr class="table-info">
+                                        <tr class="table">
                                             <th>Sumber Data</th>
                                             <th>Tanggal Pengukuran</th>
                                             <th>NIK</th>

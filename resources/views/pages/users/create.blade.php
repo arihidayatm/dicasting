@@ -27,8 +27,6 @@
             <div class="section-body">
                 <h2 class="section-title">Users</h2>
 
-
-
                 <div class="card">
                     <form action="{{ route('users.store') }}" method="POST">
                         @csrf
@@ -82,12 +80,12 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Phone</label>
                                 <input type="number" class="form-control" name="phone">
-                            </div>
+                            </div> --}}
                             {{-- Positions with Options --}}
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="position-option">Posisi</label>
                                 <select class="form-control" id="position-option" name="position">
                                 @foreach ($positions as $position)
@@ -99,9 +97,9 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Department</label>
                                 <input type="text"
                                     class="form-control @error('department')
@@ -113,8 +111,8 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-                            <div class="form-group">
+                            </div> --}}
+                            {{-- <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
@@ -136,7 +134,7 @@
                                     </label>
 
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

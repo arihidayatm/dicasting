@@ -33,7 +33,7 @@
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('users') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="#">
+                            href="{{ route('users.index') }}">
                             <i class="fas fa-file"></i>Management User</a>
                     </li>
                 </ul>

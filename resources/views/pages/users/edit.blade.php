@@ -83,12 +83,12 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Phone</label>
                                 <input type="number" class="form-control" name="phone" value="{{ $user->phone }}">
-                            </div>
+                            </div> --}}
                             {{-- Positions with Options --}}
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="position-option">Posisi</label>
                                 <select class="form-control" id="position-option" name="position">
                                 @foreach ($positions as $position)
@@ -101,19 +101,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Position</label>
-                                <input type="text"
-                                    class="form-control @error('position')
-                                is-invalid
-                            @enderror"
-                                    name="position" value="{{ $user->position }}">
-                                @error('position')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div> --}}
+
                             <div class="form-group">
                                 <label>Department</label>
                                 <input type="text"
@@ -126,8 +114,8 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-                            <div class="form-group">
+                            </div> --}}
+                            {{-- <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
@@ -145,10 +133,9 @@
                                             @if ($user->role == 'staff') checked @endif>
                                         <span class="selectgroup-button">Pegawai</span>
                                     </label>
-                                    {{-- Hidden input --}}
                                     <input type="hidden" name="id" value="{{ $user->id}}">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

@@ -1,12 +1,13 @@
 <?php
 
+use App\Models\Intervensi;
 use App\Exports\StuntingExport;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
 use App\Http\Controllers\IntervensiController;
-use App\Http\Controllers\AnakAsuhController;
-use App\Models\Intervensi;
 
 Route::get('/', function () {
     return view('pages.auth.auth-login');
@@ -17,7 +18,8 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.dashboard');
     })->name('home');
 
-    // Route::resource('stuntings', StuntingController::class);
+    // Route::get('/users',[UserController::class, 'index'])->name('users.index');
+    Route::resource('users', UserController::class);
 
     // Route untuk menampilkan daftar Stunting
     Route::get('/stuntings', [StuntingController::class, 'index'])->name('stuntings.index');

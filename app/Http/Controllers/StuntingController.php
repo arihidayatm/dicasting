@@ -22,14 +22,14 @@ class StuntingController extends Controller
             ->paginate(10);
 
         // Contoh nilai median dan standar deviasi dari standar referensi
-        $median_height = 50; // Nilai median tinggi badan dari standar referensi
+        $median_height = 40; // Nilai median tinggi badan dari standar referensi
         $std_dev_height = 10; // Standar deviasi tinggi badan dari standar referensi
-        $median_weight = 15; // Nilai median berat badan dari standar referensi
+        $median_weight = 6; // Nilai median berat badan dari standar referensi
         $std_dev_weight = 5; // Standar deviasi berat badan dari standar referensi
 
         foreach ($stuntings as $stunting) {
             // Hitung umur dalam bulan
-            $stunting->UMUR = Carbon::now()->diffInMonths($stunting->TGL_LAHIR);
+            // $stunting->UMUR = Carbon::now()->diffInMonths($stunting->TGL_LAHIR);
 
             // Hitung Z-score untuk TB/U
             $z_score_height = ($stunting->TINGGI_BADAN - $median_height) / $std_dev_height;
