@@ -11,12 +11,13 @@ class Kabupatenkota extends Model
     protected $table = 'kabupatenkota';
     protected $primarykey = 'ID';
     protected $fillable = [
-        // 'ID',
+        'ID',
         'NAMA_KABKOTA',
     ];
 
-    public function Kecamatan()
+    public function Balita()
     {
-        return $this->hasMany(Kecamatan::class, 'KABUPATENKOTA_ID','ID');
+        return $this->hasMany(Balita::class,'ID','KABUPATENKOTA_ID');
     }
+
 }

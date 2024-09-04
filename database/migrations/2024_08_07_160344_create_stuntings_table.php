@@ -15,8 +15,8 @@ return new class extends Migration
             $table->ID();
             //nik
             $table->string('NIK')->required();
-            //no_kk relation from table keluarga (NO_KK)
-            $table->foreignId('KELUARGA_ID')->references('NO_KK')->on('keluarga');
+            //kecamatan relation from table kecamatan (NAMA_KECAMATAN)
+            $table->foreignId('KECAMATAN_ID')->references('NAMA_KECAMATAN')->on('kecamatan');
             //Nama Balita
             $table->string('NAMA_BALITA', 100)->required();
             //tgl lahir 2024-08-07

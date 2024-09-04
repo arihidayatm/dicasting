@@ -10,13 +10,15 @@ use Illuminate\Support\Carbon;
 use App\Exports\StuntingExport;
 use App\Imports\StuntingImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateStuntingRequest;
 
 class StuntingController extends Controller
 {
     public function index(Request $request)
     {
         // Search stunting by nama_balita, pagination 10
-        $stuntings = Stunting::with(['kecamatan', 'kelurahandesa'])
+        $stuntings = Stunting::with('kecamatan', 'kelurahandesa')
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
@@ -24,12 +26,14 @@ class StuntingController extends Controller
         // Contoh nilai median dan standar deviasi dari standar referensi
         $median_height = 40; // Nilai median tinggi badan dari standar referensi
         $std_dev_height = 10; // Standar deviasi tinggi badan dari standar referensi
-        $median_weight = 6; // Nilai median berat badan dari standar referensi
+        $median_weight = 3; // Nilai median berat badan dari standar referensi
         $std_dev_weight = 5; // Standar deviasi berat badan dari standar referensi
 
         foreach ($stuntings as $stunting) {
-            // Hitung umur dalam bulan
+            // Hitung umur dalam bulan sesuai dengan updated_at
+            // $stunting->UMUR = Carbon::parse($stunting->updated_at)->diffInMonths();
             // $stunting->UMUR = Carbon::now()->diffInMonths($stunting->TGL_LAHIR);
+            $stunting->UMUR;
 
             // Hitung Z-score untuk TB/U
             $z_score_height = ($stunting->TINGGI_BADAN - $median_height) / $std_dev_height;
@@ -71,27 +75,33 @@ class StuntingController extends Controller
         return view('pages.stuntings.create', compact('kecamatans', 'kelurahandesas'));
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $request->validate([
-            'NIK' => 'required',
-            'NO_KK' => 'required',
-            'NAMA_BALITA' => 'required',
-            'TGL_LAHIR' => 'required',
-            'JENIS_KELAMIN' => 'required',
-            'BERAT_BADAN' => 'required',
-            'TINGGI_BADAN' => 'required',
-            'NAMA_ORANGTUA' => 'required',
-            'ALAMAT' => 'required',
-            'KECAMATAN_ID' => 'required',
-            'KELURAHANDESA_ID' => 'required',
-            'sumber_data' => 'required',
-            'tgl_pengukuran' => 'required|date',
-        ]);
+        $dataStunting = $request->validate();
+        \App\Models\Stunting::create($dataStunting);
 
-        Stunting::create($request->all());
+        return redirect()->route('stuntings.index')
+            ->with('success', 'Data stunting berhasil ditambahkan.');
+    }
 
-        return redirect()->route('stuntings.index')->with('success', 'Data stunting berhasil ditambahkan.');
+    public function edit($id)
+    {
+        $kecamatans = Kecamatan::all();
+        $kelurahandesas = Kelurahandesa::all();
+        $stunting = Stunting::with('kecamatan', 'kelurahandesa')->findorfail($id);
+
+        // $stunting= \App\Models\Stunting::findorfail($id);
+        return view('pages.stuntings.edit', compact('stunting', 'kecamatans', 'kelurahandesas'));
+    }
+
+    public function update(UpdateStuntingRequest $request, Stunting $stunting)
+    {
+        $kecamatans = Kecamatan::all();
+        $kelurahandesas = Kelurahandesa::all();
+        $dataStunting = $request->validate();
+        $stunting->update($dataStunting);
+        return redirect()->route('stuntings.index')
+            ->with('success', 'Stunting updated successfully');
     }
 
     public function show(Stunting $stunting)
@@ -99,27 +109,9 @@ class StuntingController extends Controller
         return view('pages.stuntings.show', compact('stunting'));
     }
 
-    public function edit(Stunting $stunting)
+    public function destroy($id)
     {
-        return view('pages.stuntings.edit', compact('stunting'));
-    }
-
-    public function update(Request $request, Stunting $stunting)
-    {
-        $request->validate([
-            'NAMA_BALITA' => 'required',
-            'sumber_data' => 'required', // Validasi untuk sumber_data
-            'tgl_pengukuran' => 'required|date', // Validasi untuk tgl_pengukuran
-        ]);
-
-        $stunting->update($request->all());
-
-        return redirect()->route('stuntings.index')
-            ->with('success', 'Stunting updated successfully');
-    }
-
-    public function destroy(Stunting $stunting)
-    {
+        $stunting = \App\Models\Stunting::findorfail($id);
         $stunting->delete();
         return redirect()->route('stuntings.index')
             ->with('success', 'Stunting deleted successfully');

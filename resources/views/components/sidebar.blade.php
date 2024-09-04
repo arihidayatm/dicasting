@@ -38,6 +38,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-users"></i>
+                    <span>Balita</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('balitas.index') }}">
+                            <i class="fas fa-file"></i>Management Balita</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-header">Data</li>
 
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">

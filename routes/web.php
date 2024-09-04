@@ -4,6 +4,7 @@ use App\Models\Intervensi;
 use App\Exports\StuntingExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
@@ -17,6 +18,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('home', function () {
         return view('pages.dashboard');
     })->name('home');
+
+    Route::resource('balitas', BalitaController::class);
 
     // Route::get('/users',[UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class);

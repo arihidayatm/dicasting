@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('kecamatan', function (Blueprint $table) {
             $table->bigInteger('ID')->primary();
             $table->foreignId('KABUPATENKOTA_ID')->references('ID')->on('kabupatenkota');
-            $table->string('ID_KECAMATAN_BPS', 100)->required();
-            $table->string('NAMA_KECAMATAN', 100)->required();
+            $table->string('ID_KECAMATAN_BPS', 100);
+            $table->string('NAMA_KECAMATAN', 100);
             $table->timestamps();
         });
     }
