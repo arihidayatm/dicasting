@@ -11,7 +11,7 @@ class Kelurahandesa extends Model
     protected $table = 'kelurahandesa';
     protected $primaryKey = 'ID';
     protected $fillable =[
-        // 'ID',
+        'ID',
         'KECAMATAN_ID',
         'NAMA_KELURAHANDESA',
     ];

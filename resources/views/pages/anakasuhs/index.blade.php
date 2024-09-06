@@ -12,6 +12,9 @@
     <section class="section">
         <div class="section-header">
             <h1>Data Anak Asuh</h1>
+            <div class="section-header-button">
+                <a href="{{ route('anakasuhs.create') }}" class="btn btn-primary">Add New</a>
+            </div>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('anakasuhs.index') }}">Anak Asuh</a></div>
@@ -23,55 +26,59 @@
             <div class="card">
                 <div class="card-header">
                     <h4>List Data Anak Asuh</h4>
-                    <div class="card-header-action">
-                        <a href="{{ route('anakasuhs.create') }}" class="btn btn-primary">Tambah Data Anak Asuh</a>
-                    </div>
                 </div>
 
                 <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Nama Bapak Asuh</th>
-                                    <th>Keterangan</th>
-                                    <th>Nama Anak Asuh</th>
-                                    <th>Alamat</th>
-                                    <th>Kecamatan</th>
-                                    <th>Kelurahan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($anakAsuhs as $anakasuh)
-                                    <tr>
-                                        <td>{{ $anakasuh->bapakAsuh->NAMA_ORANGTUAASUH }}</td>
-                                        <td>{{ $anakasuh->keterangan }}</td>
-                                        <td>{{ $anakasuh->nama_anak_asuh }}</td>
-                                        <td>{{ $anakasuh->alamat }}</td>
-                                        <td>{{ $anakasuh->kecamatan->NAMA_KECAMATAN }}</td>
-                                        <td>{{ $anakasuh->kelurahan->NAMA_KELURAHANDESA }}</td>
-                                        <td>
-                                            <a href="{{ route('anakasuhs.edit', $anakasuh->id) }}" class="btn btn-warning">Edit</a>
-                                            <form action="{{ route('anakasuhs.destroy', $anakasuh->id) }}" method="POST" style="display:inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="float-right">
-                            {{ $anakAsuhs->withQueryString()->links() }}
-                        </div>
+                    <div class="float-right">
+                        <form method="GET" action="{{ route('anakasuhs.index') }}">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Anak Asuh" name="NAMA_BALITA">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
+
+                    <div class="clearfix mb-3"></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Bapak Asuh</th>
+                                        <th>Keterangan</th>
+                                        <th>Nama Anak Asuh</th>
+                                        <th>Alamat</th>
+                                        <th>Kecamatan</th>
+                                        <th>Kelurahan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($anakAsuhs as $anakasuh)
+                                        <tr>
+                                            <td>{{ $anakasuh->bapakAsuh->NAMA_ORANGTUAASUH }}</td>
+                                            <td>{{ $anakasuh->bapakAsuh->NOHP }}</td>
+                                            <td>{{ $anakasuh->stunting->NAMA_BALITA }}</td>
+                                            <td>{{ $anakasuh->stunting->ALAMAT }}</td>
+                                            <td>{{ $anakasuh->stunting->kecamatan->NAMA_KECAMATAN }}</td>
+                                            <td>{{ $anakasuh->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                            <td>
+                                                <a href="{{ route('anakasuhs.edit', $anakasuh->id) }}" class="btn btn-warning">Edit</a>
+                                                <form action="{{ route('anakasuhs.destroy', $anakasuh->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div class="float-right">
+                                {{ $anakAsuhs->withQueryString()->links() }}
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

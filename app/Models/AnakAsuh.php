@@ -9,27 +9,22 @@ class AnakAsuh extends Model
 {
     use HasFactory;
 
+    protected $table = 'anakasuhs';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'bapak_asuh_id',
-        'nama_anak_asuh',
-        'alamat',
-        'kecamatan_id',
-        'kelurahan_id',
-        'keterangan',
+        'BAPAKASUH_ID',
+        'STUNTING_ID',
     ];
 
-    public function bapakAsuh()
+    public function bapakasuh()
     {
-        return $this->belongsTo(BapakAsuh::class);
+        return $this->hasOne(BapakAsuh::class, 'id', 'BAPAKASUH_ID');
     }
 
-    public function kecamatan()
+    public function stunting()
     {
-        return $this->belongsTo(Kecamatan::class);
+        return $this->hasOne(Stunting::class, 'id', 'STUNTING_ID');
     }
 
-    public function kelurahan()
-    {
-        return $this->belongsTo(KelurahanDesa::class);
-    }
+
 }

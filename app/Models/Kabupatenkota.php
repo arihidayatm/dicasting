@@ -20,4 +20,9 @@ class Kabupatenkota extends Model
         return $this->hasMany(Balita::class,'ID','KABUPATENKOTA_ID');
     }
 
+    public function Bapakasuh()
+    {
+        return $this->hasMany(BapakAsuh::class,'ID','KABUPATEN_ID');
+    }
+
 }

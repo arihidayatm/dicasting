@@ -40,7 +40,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-baby"></i>
                     <span>Balita</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -51,13 +51,39 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-building"></i>
+                    <span>Puskesmas</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('puskesmas.index') }}">
+                            <i class="fas fa-file"></i>Management Puskesmas</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-building"></i>
+                    <span>Posyandu</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('posyandus') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('posyandus.index') }}">
+                            <i class="fas fa-file"></i>Management Posyandu</a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="menu-header">Data</li>
 
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-file-invoice"></i>
-                    <span>Data Stunting</span>
+                    <span>Stunting</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('stuntings') ? 'active' : '' }}'>

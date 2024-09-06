@@ -36,8 +36,11 @@ class StuntingExport implements FromQuery, WithMapping, WithHeadings
             $stunting->TINGGI_BADAN . ' cm',
             $stunting->NAMA_ORANGTUA,
             $stunting->ALAMAT,
+            $stunting->RT,
+            $stunting->RW,
             $stunting->kecamatan->NAMA_KECAMATAN,
             $stunting->kelurahandesa->NAMA_KELURAHANDESA,
+            $stunting->posyandu->NAMA_POSYANDU,
             $stunting->STATUS_BBU,
             $stunting->STATUS_TBU,
             $stunting->STATUS_BBTB
@@ -57,8 +60,11 @@ class StuntingExport implements FromQuery, WithMapping, WithHeadings
             'TINGGI_BADAN',
             'NAMA_ORANGTUA',
             'ALAMAT',
+            'RT',
+            'RW',
             'KECAMATAN',
             'KELURAHANDESA',
+            'POSYANDU',
             'STATUS_BBU',
             'STATUS_TBU',
             'STATUS_BBTB'

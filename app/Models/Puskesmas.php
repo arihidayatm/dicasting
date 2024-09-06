@@ -29,12 +29,12 @@ class Puskesmas extends Model
 
     public function Kecamatan()
     {
-        return $this->hasOne(Kecamatan::class, 'id', 'PUSKESMAS_ID');
+        return $this->hasOne(Kecamatan::class, 'ID', 'KECAMATAN_ID');
     }
 
     public function Balita()
     {
-        return $this->hasMany(Balita::class, 'id', 'PUSKESMAS_ID');
+        return $this->hasMany(Balita::class, 'id', 'BALITA_ID');
     }
 
 }

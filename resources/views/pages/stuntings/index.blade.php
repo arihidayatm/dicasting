@@ -62,8 +62,11 @@
                                             <th>TB Lahir</th>
                                             <th>Nama Ibu</th>
                                             <th>Alamat</th>
+                                            <th>RT</th>
+                                            <th>RW</th>
                                             <th>Kecamatan</th>
                                             <th>Desa</th>
+                                            {{-- <th>Posyandu</th> --}}
                                             {{-- <th>Status BB/U</th> --}}
                                             <th>Status TB/U</th>
                                             {{-- <th>Status BB/TB</th> --}}
@@ -80,8 +83,11 @@
                                                 <td>{{ $stunting->TINGGI_BADAN }} cm</td>
                                                 <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
+                                                <td>{{ $stunting->RT }}</td>
+                                                <td>{{ $stunting->RW }}</td>
                                                 <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                {{-- <td>{{ $stunting->posyandu->NAMA_POSYANDU }}</td> --}}
                                                 {{-- <td>{{ $stunting->STATUS_BBU }}</td> --}}
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
                                                 {{-- <td>{{ $stunting->STATUS_BBTB }}</td> --}}
@@ -135,11 +141,14 @@
                                             <th>TB Lahir</th>
                                             <th>Nama Ibu</th>
                                             <th>Alamat</th>
+                                            <th>RT</th>
+                                            <th>RW</th>
                                             <th>Kecamatan</th>
                                             <th>Desa</th>
-                                            <th>Status BB/U</th>
+                                            {{-- <th>Posyandu</th> --}}
+                                            {{-- <th>Status BB/U</th> --}}
                                             <th>Status TB/U</th>
-                                            <th>Status BB/TB</th>
+                                            {{-- <th>Status BB/TB</th> --}}
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
@@ -247,11 +256,14 @@
                                                 <td>{{ $stunting->TINGGI_BADAN }} cm</td>
                                                 <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
+                                                <td>{{ $stunting->RT }}</td>
+                                                <td>{{ $stunting->RW }}</td>
                                                 <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
-                                                <td>{{ $stunting->STATUS_BBU }}</td>
+                                                {{-- <td>{{ $stunting->posyandu->NAMA_POSYANDU }}</td> --}}
+                                                {{-- <td>{{ $stunting->STATUS_BBU }}</td> --}}
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
-                                                <td>{{ $stunting->STATUS_BBTB }}</td>
+                                                {{-- <td>{{ $stunting->STATUS_BBTB }}</td> --}}
                                             </tr>
                                         @endforeach
                                     </table>

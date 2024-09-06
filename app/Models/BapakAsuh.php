@@ -13,7 +13,7 @@ class BapakAsuh extends Model
         'NIK_ORANGTUAASUH',
         'NAMA_ORANGTUAASUH',
         'ALAMAT',
-        'KABUPATEN_ID',
+        'KABUPATENKOTA_ID',
         'KECAMATAN_ID',
         'KELURAHANDESA_ID',
         'NOHP',
@@ -21,16 +21,16 @@ class BapakAsuh extends Model
 
     public function kabupatenkota()
     {
-        return $this->belongsTo(Kabupatenkota::class, 'KABUPATEN_ID');
+        return $this->hasOne(Kabupatenkota::class,'ID','KABUPATENKOTA_ID');
     }
 
     public function kecamatan()
     {
-        return $this->belongsTo(Kecamatan::class, 'KECAMATAN_ID');
+        return $this->hasOne(Kecamatan::class,'ID','KECAMATAN_ID');
     }
 
     public function kelurahandesa()
     {
-        return $this->belongsTo(Kelurahandesa::class, 'KELURAHANDESA_ID');
+        return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');
     }
 }

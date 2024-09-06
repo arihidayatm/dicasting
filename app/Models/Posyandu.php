@@ -26,16 +26,22 @@ class Posyandu extends Model
     }
     public function kabupatenkota()
     {
-        return $this->hasOne(Kabupatenkota::class,'id','KABUPATENKOTA_ID');
+        return $this->hasOne(Kabupatenkota::class,'ID','KABUPATENKOTA_ID');
     }
 
     public function kecamatan()
     {
-        return $this->hasOne(Kecamatan::class,'id','KECAMATAN_ID');
+        return $this->hasOne(Kecamatan::class,'ID','KECAMATAN_ID');
     }
-    public function kelurahanDesa()
+    public function kelurahandesa()
     {
-        return $this->hasOne(KelurahanDesa::class,'id','KELURAHANDESA_ID');
+        return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');
     }
+
+    public function stunting()
+    {
+        return $this->hasOne(Stunting::class,'id','POSYANDU_ID');
+    }
+
 
 }

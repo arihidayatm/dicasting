@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\AnakAsuhController;
+use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
+use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
 
 Route::get('/', function () {
@@ -19,10 +21,13 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.dashboard');
     })->name('home');
 
-    Route::resource('balitas', BalitaController::class);
-
+    //MASTERS
     // Route::get('/users',[UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class);
+    Route::resource('balitas', BalitaController::class);
+    Route::resource('puskesmas', PuskesmasController::class);
+    Route::resource('posyandus', PosyanduController::class);
+
 
     // Route untuk menampilkan daftar Stunting
     Route::get('/stuntings', [StuntingController::class, 'index'])->name('stuntings.index');

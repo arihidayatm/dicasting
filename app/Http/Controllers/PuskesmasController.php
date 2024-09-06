@@ -10,9 +10,13 @@ class PuskesmasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $puskesmas = Puskesmas::with('kabupatenkota','kecamatan')
+            ->where('NAMA_PUSKESMAS', 'like', '%' . request('nama_puskesmas') . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('pages.masters.dataPuskesmas', compact('puskesmas'));
     }
 
     /**

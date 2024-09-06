@@ -10,9 +10,13 @@ class PosyanduController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $posyandus = Posyandu::with('kabupatenkota','kecamatan'.'kelurahandesa','puskesmas')
+            ->where('NAMA_POSYANDU', 'like', '%' . request('nama_posyandu') . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('pages.masters.dataPosyandu', compact('posyandus'));
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create Bapak Asuh')
+@section('title', 'Add Bapak Asuh')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,31 +11,35 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Create Bapak Asuh</h1>
+                <h1>Add Bapak Asuh</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="{{ route('bapakasuhs.index') }}">Bapak Asuh</a></div>
-                    <div class="breadcrumb-item">Create Bapak Asuh</div>
+                    <div class="breadcrumb-item">Add</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Create Bapak Asuh</h2>
+                <h2 class="section-title">Add Bapak Asuh</h2>
                 <div class="card">
                     <form action="{{ route('bapakasuhs.store') }}" method="POST">
                         @csrf
                         <div class="card-header">
-                            <h4>Form Create Bapak Asuh</h4>
+                            <h4>Form Add Bapak Asuh</h4>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <label>NIK</label>
-                                <input type="text" class="form-control @error('NIK_ORANGTUAASUH') is-invalid @enderror" name="NIK_ORANGTUAASUH" value="{{ old('NIK_ORANGTUAASUH') }}">
-                                @error('NIK_ORANGTUAASUH')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>NIK</label>
+                                        <input type="text" class="form-control @error('NIK_ORANGTUAASUH') is-invalid @enderror" name="NIK_ORANGTUAASUH" value="{{ old('NIK_ORANGTUAASUH') }}">
+                                        @error('NIK_ORANGTUAASUH')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
+                                </div>
                             </div>
 
                             <div class="form-group">

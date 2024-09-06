@@ -39,7 +39,7 @@
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('bapakasuhs.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search Bapak Asuh" name="nama_bapakasuh">
+                                            <input type="text" class="form-control" placeholder="Search Bapak Asuh" name="NAMA_ORANGTUAASUH">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -52,12 +52,12 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>NIK Bapak Asuh</th>
+                                            <th>NIK</th>
                                             <th>Nama Bapak Asuh</th>
                                             <th>Alamat</th>
-                                            {{-- <th>Kab/Kota</th>
+                                            <th>Kab/Kota</th>
                                             <th>Kecamatan</th>
-                                            <th>Kelurahan</th> --}}
+                                            <th>Desa</th>
                                             <th>No. HP</th>
                                             <th>Action</th>
                                         </tr>
@@ -66,9 +66,9 @@
                                                 <td>{{ $bapakasuh->NIK_ORANGTUAASUH }}</td>
                                                 <td>{{ $bapakasuh->NAMA_ORANGTUAASUH }}</td>
                                                 <td>{{ $bapakasuh->ALAMAT }}</td>
-                                                {{-- <td>{{ $bapakasuh->NAMA_KABKOTA }}</td>
-                                                <td>{{ $bapakasuh->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $bapakasuh->NAMA_KELURAHANDESA }}</td> --}}
+                                                <td>{{ $bapakasuh->kabupatenkota->NAMA_KABKOTA }}</td>
+                                                <td>{{ $bapakasuh->kecamatan->NAMA_KECAMATAN }}</td>
+                                                <td>{{ $bapakasuh->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                 <td>{{ $bapakasuh->NOHP }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">

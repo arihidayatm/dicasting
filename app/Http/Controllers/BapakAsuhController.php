@@ -10,9 +10,12 @@ use App\Models\Kelurahandesa;
 
 class BapakAsuhController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $bapakasuhs = BapakAsuh::with(['kabupatenkota', 'kecamatan', 'kelurahandesa'])->paginate(10);
+        $bapakasuhs = BapakAsuh::with(['kabupatenkota','kecamatan','kelurahandesa'])
+            ->where('NAMA_ORANGTUAASUH', 'like', '%' . request('nama_orangtuaasuh') . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         return view('pages.bapakasuhs.index', compact('bapakasuhs'));
     }
 
@@ -27,21 +30,19 @@ class BapakAsuhController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'NIK_ORANGTUAASUH' => 'required|string|max:255',
+            'NIK_ORANGTUAASUH' => 'string|max:255',
             'NAMA_ORANGTUAASUH' => 'required|string|max:255',
-            'ALAMAT' => 'required|string|max:255',
+            'ALAMAT' => 'string|max:255',
             'KABUPATEN_ID' => 'required|exists:kabupatenkotas,id',
             'KECAMATAN_ID' => 'required|exists:kecamatans,id',
             'KELURAHANDESA_ID' => 'required|exists:kelurahandesas,id',
-            'NOHP' => 'required|string|max:15',
+            'NOHP' => 'string|max:15',
         ]);
 
         BapakAsuh::create($request->all());
 
         return redirect()->route('bapakasuhs.index')->with('success', 'Data Bapak Asuh berhasil disimpan.');
     }
-
-
 
     public function edit($id)
     {

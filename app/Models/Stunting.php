@@ -21,18 +21,13 @@ class Stunting extends Model
         'TINGGI_BADAN',
         'NAMA_ORANGTUA',
         'ALAMAT',
+        'RT',
+        'RW',
         'KECAMATAN_ID',
         'KELURAHANDESA_ID',
-        'sumber_data', // Tambahkan kolom sumber_data
-        // 'tgl_pengukuran', // Tambahkan kolom tgl_pengukuran
-        'updated_at',
+        'POSYANDU_ID',
     ];
 
-    // Hapus relasi keluarga
-    // public function keluarga()
-    // {
-    //     return $this->belongsTo(Keluarga::class, 'KELUARGA_ID', 'id');
-    // }
     public function kecamatan()
     {
         return $this->hasOne(Kecamatan::class,'ID','KECAMATAN_ID');
@@ -41,6 +36,11 @@ class Stunting extends Model
     public function kelurahandesa()
     {
         return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');
+    }
+
+    public function posyandu()
+    {
+        return $this->hasOne(Posyandu::class, 'id', 'POSYANDU_ID');
     }
 
 }

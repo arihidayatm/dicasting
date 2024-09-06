@@ -20,7 +20,6 @@
         </div>
 
 
-
                 <div class="section-body">
                     <div class="card">
                         <div class="card-header">
@@ -38,34 +37,15 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nama_anak_asuh">Nama Anak Asuh</label>
-                                    <input type="text" name="nama_anak_asuh" id="nama_anak_asuh" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <textarea name="alamat" id="alamat" class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="kecamatan_id">Kecamatan</label>
-                                    <select name="kecamatan_id" id="kecamatan_id" class="form-control">
-                                        @foreach ($kecamatans as $kecamatan)
-                                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->NAMA_KECAMATAN }}</option>
+                                    <label for="stunting_id">Nama Anak Asuh</label>
+                                    <select name="stunting_id" id="stunting_id" class="form-control">
+                                        @foreach ($stuntings as $stunting)
+                                            <option value="{{ $stunting->id }}">{{ $stunting->NAMA_BALITA }}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="kelurahan_id">Kelurahan</label>
-                                    <select name="kelurahan_id" id="kelurahan_id" class="form-control">
-                                        @foreach ($kelurahans as $kelurahan)
-                                            <option value="{{ $kelurahan->id }}">{{ $kelurahan->NAMA_KELURAHANDESA }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="keterangan">Keterangan</label>
-                                    <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="{{ route('anakasuhs.index') }}" class="btn btn-secondary">Kembali</a>
                             </form>
                         </div>
                     </div>

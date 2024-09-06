@@ -24,47 +24,47 @@ class StuntingController extends Controller
             ->paginate(10);
 
         // Contoh nilai median dan standar deviasi dari standar referensi
-        $median_height = 40; // Nilai median tinggi badan dari standar referensi
-        $std_dev_height = 10; // Standar deviasi tinggi badan dari standar referensi
-        $median_weight = 3; // Nilai median berat badan dari standar referensi
-        $std_dev_weight = 5; // Standar deviasi berat badan dari standar referensi
+        // $median_height = 40; // Nilai median tinggi badan dari standar referensi
+        // $std_dev_height = 40; // Standar deviasi tinggi badan dari standar referensi
+        // $median_weight = 40; // Nilai median berat badan dari standar referensi
+        // $std_dev_weight = 40; // Standar deviasi berat badan dari standar referensi
 
-        foreach ($stuntings as $stunting) {
-            // Hitung umur dalam bulan sesuai dengan updated_at
-            // $stunting->UMUR = Carbon::parse($stunting->updated_at)->diffInMonths();
-            // $stunting->UMUR = Carbon::now()->diffInMonths($stunting->TGL_LAHIR);
-            $stunting->UMUR;
+        // foreach ($stuntings as $stunting) {
+        //     // Hitung umur dalam bulan sesuai dengan updated_at
+        //     // $stunting->UMUR = Carbon::parse($stunting->updated_at)->diffInMonths();
+        //     // $stunting->UMUR = Carbon::now()->diffInMonths($stunting->TGL_LAHIR);
+        //     $stunting->UMUR;
 
-            // Hitung Z-score untuk TB/U
-            $z_score_height = ($stunting->TINGGI_BADAN - $median_height) / $std_dev_height;
-            if ($z_score_height < -3) {
-                $stunting->STATUS_TBU = 'Sangat Pendek';
-            } elseif ($z_score_height >= -3 && $z_score_height < -2) {
-                $stunting->STATUS_TBU = 'Pendek';
-            } else {
-                $stunting->STATUS_TBU = 'Normal';
-            }
+        //     // Hitung Z-score untuk TB/U
+        //     $z_score_height = ($stunting->TINGGI_BADAN - $median_height) / $std_dev_height;
+        //     if ($z_score_height < -3) {
+        //         $stunting->STATUS_TBU = 'Sangat Pendek';
+        //     } elseif ($z_score_height >= -3 && $z_score_height < -2) {
+        //         $stunting->STATUS_TBU = 'Pendek';
+        //     } else {
+        //         $stunting->STATUS_TBU = 'Normal';
+        //     }
 
-            // Hitung Z-score untuk BB/U
-            $z_score_weight = ($stunting->BERAT_BADAN - $median_weight) / $std_dev_weight;
-            if ($z_score_weight < -3) {
-                $stunting->STATUS_BBU = 'Sangat Kurang';
-            } elseif ($z_score_weight >= -3 && $z_score_weight < -2) {
-                $stunting->STATUS_BBU = 'Kurang';
-            } elseif ($z_score_weight >= -2 && $z_score_weight <= 2) {
-                $stunting->STATUS_BBU = 'Normal';
-            } else {
-                $stunting->STATUS_BBU = 'Lebih';
-            }
+        //     // Hitung Z-score untuk BB/U
+        //     $z_score_weight = ($stunting->BERAT_BADAN - $median_weight) / $std_dev_weight;
+        //     if ($z_score_weight < -3) {
+        //         $stunting->STATUS_BBU = 'Sangat Kurang';
+        //     } elseif ($z_score_weight >= -3 && $z_score_weight < -2) {
+        //         $stunting->STATUS_BBU = 'Kurang';
+        //     } elseif ($z_score_weight >= -2 && $z_score_weight <= 2) {
+        //         $stunting->STATUS_BBU = 'Normal';
+        //     } else {
+        //         $stunting->STATUS_BBU = 'Lebih';
+        //     }
 
-            // Hitung Z-score untuk BB/TB
-            $z_score_bbtb = ($stunting->BERAT_BADAN - ($median_weight + ($std_dev_weight * ($stunting->TINGGI_BADAN / 100)))) / $std_dev_weight;
-            if ($z_score_bbtb < -2) {
-                $stunting->STATUS_BBTB = 'Gizi Kurang';
-            } else {
-                $stunting->STATUS_BBTB = 'Gizi Baik';
-            }
-        }
+        //     // Hitung Z-score untuk BB/TB
+        //     $z_score_bbtb = ($stunting->BERAT_BADAN - ($median_weight + ($std_dev_weight * ($stunting->TINGGI_BADAN / 100)))) / $std_dev_weight;
+        //     if ($z_score_bbtb < -2) {
+        //         $stunting->STATUS_BBTB = 'Gizi Kurang';
+        //     } else {
+        //         $stunting->STATUS_BBTB = 'Gizi Baik';
+        //     }
+        // }
         return view('pages.stuntings.index', compact('stuntings'));
     }
 

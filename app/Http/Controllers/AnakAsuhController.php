@@ -6,22 +6,25 @@ use App\Models\AnakAsuh;
 use App\Models\BapakAsuh;
 use App\Models\Kecamatan;
 use App\Models\KelurahanDesa;
+use App\Models\Stunting;
 use Illuminate\Http\Request;
 
 class AnakAsuhController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $anakAsuhs = AnakAsuh::with('bapakAsuh', 'kecamatan', 'kelurahan')->paginate(10);
+        $anakAsuhs = AnakAsuh::with(['bapakasuh','stunting'])
+            // ->where('STUNTING_ID', 'like', '%' . request('stunting_id') . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         return view('pages.anakasuhs.index', compact('anakAsuhs'));
     }
 
     public function create()
     {
         $bapakAsuhs = BapakAsuh::all();
-        $kecamatans = Kecamatan::all();
-        $kelurahans = KelurahanDesa::all();
-        return view('pages.anakasuhs.create', compact('bapakAsuhs', 'kecamatans', 'kelurahans'));
+        $stuntings = Stunting::all();
+        return view('pages.anakasuhs.create', compact('bapakAsuhs', 'stuntings'));
     }
 
     public function store(Request $request)

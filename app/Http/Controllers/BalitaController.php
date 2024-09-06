@@ -17,7 +17,7 @@ class BalitaController extends Controller
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
-        return view('pages.balitas.dataBalita', compact('balitas'));
+        return view('pages.masters.dataBalita', compact('balitas'));
     }
 
     /**
