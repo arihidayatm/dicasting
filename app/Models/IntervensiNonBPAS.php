@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class IntervensiNonBPAS extends Model
 {
     use HasFactory;
-    protected $table = 'intervensi_nonbpas';
+    protected $table = 'intervensi_non_bpas';
     protected $primaryKey = 'id';
     protected $fillable = [
         'USER_ID',

@@ -13,7 +13,7 @@ class IntervensiBPASController extends Controller
     public function index(Request $request)
     {
         $intervensiBPAS = IntervensiBPAS::with(['bapakasuh','bentukintervensi','stunting'])
-            ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
+            ->where('STUNTING_ID', 'like', '%' . request('stunting_id') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
         return view('pages.intervensis.bpas.index', compact('intervensiBPAS'));

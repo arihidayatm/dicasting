@@ -11,7 +11,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Intervensi Bapak Asuh</h1>
+                <h1>Intervensi Non Bapak Asuh</h1>
                 <div class="section-header-button">
                     <a href="#" class="btn btn-primary">Add New</a>
                 </div>
@@ -56,9 +56,9 @@
                                             <th>Bentuk Intervensi</th>
                                             <th>Nama Balita</th>
                                             <th>Alamat</th>
-                                            <th>Kab/Kota</th>
+                                            {{-- <th>Kab/Kota</th>
                                             <th>Kecamatan</th>
-                                            <th>Desa</th>
+                                            <th>Desa</th> --}}
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($intervensiNonBPAS as $intervensi_non_bpas)
@@ -67,9 +67,9 @@
                                                 <td>{{ $intervensi_non_bpas->bentukintervensi->BENTUK_INTERVENSI }}</td>
                                                 <td>{{ $intervensi_non_bpas->stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $intervensi_non_bpas->stunting->ALAMAT }}</td>
-                                                <td>{{ $intervensi_non_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td>
+                                                {{-- <td>{{ $intervensi_non_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td>
                                                 <td>{{ $intervensi_non_bpas->stunting->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $intervensi_non_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                <td>{{ $intervensi_non_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('intervensi-nonbpas.edit', $intervensi_non_bpas->id) }}'

@@ -10,10 +10,11 @@ class IntervensiNonBPASController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         $intervensiNonBPAS = IntervensiNonBPAS::with(['user','bentukintervensi','stunting'])
-            ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
+            // ->where('USER_ID', 'like', '%' . request('user_id') . '%')
+            // ->where('BENTUK_INTERVENSI_ID', 'like', '%' . request('bentuk_intervensi_id') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
         return view('pages.intervensis.nonbpas.index', compact('intervensiNonBPAS'));
@@ -62,8 +63,10 @@ class IntervensiNonBPASController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(IntervensiNonBPAS $intervensiNonBPAS)
+    public function destroy($id)
     {
-        //
+        $intervensiNonBPAS = IntervensiNonBPAS::findOrFail($id);
+        $intervensiNonBPAS->delete();
+        return redirect()->route('intervensis.nonbpas.index')->with('success', 'Data berhasil dihapus');
     }
 }

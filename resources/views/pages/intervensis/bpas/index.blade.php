@@ -56,9 +56,9 @@
                                             <th>Bentuk Intervensi</th>
                                             <th>Nama Balita</th>
                                             <th>Alamat</th>
-                                            <th>Kab/Kota</th>
+                                            {{-- <th>Kab/Kota</th>
                                             <th>Kecamatan</th>
-                                            <th>Desa</th>
+                                            <th>Desa</th> --}}
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($intervensiBPAS as $intervensi_bpas)
@@ -67,9 +67,9 @@
                                                 <td>{{ $intervensi_bpas->bentukintervensi->BENTUK_INTERVENSI }}</td>
                                                 <td>{{ $intervensi_bpas->stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $intervensi_bpas->stunting->ALAMAT }}</td>
-                                                <td>{{ $intervensi_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td>
+                                                {{-- <td>{{ $intervensi_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td>
                                                 <td>{{ $intervensi_bpas->stunting->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $intervensi_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                <td>{{ $intervensi_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('intervensi-bpas.edit', $intervensi_bpas->id) }}'

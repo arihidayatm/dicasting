@@ -132,7 +132,7 @@
                     </li>
                     <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('intervensi.intervensi-bpas.index') }}">
+                            href="{{ route('intervensi-bpas.index') }}">
                             <i class="fas fa-file-import"></i>BPAS</a>
                     </li>
                     <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
