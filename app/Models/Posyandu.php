@@ -40,7 +40,7 @@ class Posyandu extends Model
 
     public function stunting()
     {
-        return $this->hasOne(Stunting::class,'id','POSYANDU_ID');
+        return $this->hasOne(Stunting::class,'id','STUNTING_ID');
     }
 
 

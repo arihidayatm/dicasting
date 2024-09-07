@@ -130,34 +130,20 @@
                             href="{{ route('intervensi.index') }}">
                             <i class="fas fa-marker"></i>Data Intervensi</a>
                     </li>
-                    <li class='{{ Request::is('intervensis') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="#">
+                            href="{{ route('intervensi.intervensi-bpas.index') }}">
                             <i class="fas fa-file-import"></i>BPAS</a>
                     </li>
-                    <li class='{{ Request::is('intervensis') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="#">
+                            href={{ route('intervensi-nonbpas.index') }}>
                             <i class="fas fa-file-import"></i>Non BPAS</a>
                     </li>
                 </ul>
             </li>
-{{--
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-marker"></i>
-                    <span>Intervensi</span>
-                </a>
-            </li>
--- }}
-{{--
-            <li class="nav-item">
-                <a href="{{ route('permissions.index') }}" class="nav-link">
-                    <i class="fas fa-file-signature"></i>
-                    <span>Permission</span>
-                </a>
-            </li>
---}}
+
+            {{-- Laporan --}}
             <li class="menu-header">Laporan</li>
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">

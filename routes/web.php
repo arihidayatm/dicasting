@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Intervensi;
 use App\Exports\StuntingExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -11,6 +10,8 @@ use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
 use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
+use App\Http\Controllers\IntervensiBPASController;
+use App\Http\Controllers\IntervensiNonBPASController;
 
 Route::get('/', function () {
     return view('pages.auth.auth-login');
@@ -66,10 +67,21 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('anakasuhs', AnakAsuhController::class);
 
     //Intervensi BPAS
-    // Route::get(('intervensis/intervensi-bpas',[IntervensiController::class,''])->name(''));
+    // Route::resource('/intervensi/intervensi-bpas', IntervensiBPASController::class);
+    Route::get('/intervensi/intervensi-bpas', [IntervensiBPASController::class,'index'])->name('intervensi.intervensi-bpas.index');
+    Route::get('/intervensi/intervensi-bpas/create', [IntervensiBPASController::class,'create'])->name('intervensi-bpas.create');
+    Route::get('/intervensi/intervensi-bpas/{id}/destroy', [IntervensiBPASController::class,'destroy'])->name('intervensi-bpas.destroy');
+    Route::get('/intervensi/intervensi-bpas/{id}/edit', [IntervensiBPASController::class,'edit'])->name('intervensi-bpas.edit');
+    Route::put('/intervensi/intervensi-bpas/{id}', [IntervensiBPASController::class,'update'])->name('intervensi-bpas.update');
+    Route::post('/intervensi/intervensi-bpas', [IntervensiBPASController::class,'store'])->name('intervensi-bpas.store');
 
     //Intervensi Non BPAS
-    // Route::get(('intervensis/intervensi-nonbpas',[IntervensiController::class,''])->name(''));
+    // Route::resource('/intervensi/intervensi-nonbpas', IntervensiNonBPASController::class);
+    Route::get('/intervensi/intervensi-nonbpas', [IntervensiNonBPASController::class,'index'])->name('intervensi-nonbpas.index');
+    Route::get('/intervensi/intervensi-nonbpas/create', [IntervensiNonBPASController::class,'create'])->name('intervensi-nonbpas.create');
+    Route::get('/intervensi/intervensi-nonbpas/{id}/destroy', [IntervensiNonBPASController::class,'destroy'])->name('intervensi-nonbpas.destroy');
+    Route::get('/intervensi/intervensi-nonbpas/{id}/edit', [IntervensiNonBPASController::class,'edit'])->name('intervensi-nonbpas.edit');
+    Route::post('/intervensi/intervensi-nonbpas', [IntervensiNonBPASController::class,'store'])->name('intervensi-nonbpas.store');
 
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'import'])->name('stunting.import');

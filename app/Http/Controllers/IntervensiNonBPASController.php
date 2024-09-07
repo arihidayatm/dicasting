@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posyandu;
+use App\Models\IntervensiNonBPAS;
 use Illuminate\Http\Request;
 
-class PosyanduController extends Controller
+class IntervensiNonBPASController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $posyandus = Posyandu::with('kabupatenkota','kecamatan','kelurahandesa','puskesmas')
-            ->where('NAMA_POSYANDU', 'like', '%' . request('nama_posyandu') . '%')
+        $intervensiNonBPAS = IntervensiNonBPAS::with(['user','bentukintervensi','stunting'])
+            ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
-        return view('pages.masters.dataPosyandu', compact('posyandus'));
+        return view('pages.intervensis.nonbpas.index', compact('intervensiNonBPAS'));
     }
 
     /**
@@ -38,7 +38,7 @@ class PosyanduController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Posyandu $posyandu)
+    public function show(IntervensiNonBPAS $intervensiNonBPAS)
     {
         //
     }
@@ -46,7 +46,7 @@ class PosyanduController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Posyandu $posyandu)
+    public function edit(IntervensiNonBPAS $intervensiNonBPAS)
     {
         //
     }
@@ -54,7 +54,7 @@ class PosyanduController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Posyandu $posyandu)
+    public function update(Request $request, IntervensiNonBPAS $intervensiNonBPAS)
     {
         //
     }
@@ -62,7 +62,7 @@ class PosyanduController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Posyandu $posyandu)
+    public function destroy(IntervensiNonBPAS $intervensiNonBPAS)
     {
         //
     }

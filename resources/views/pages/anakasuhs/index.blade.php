@@ -46,7 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Bapak Asuh</th>
-                                        <th>Keterangan</th>
+                                        <th>No. HP</th>
                                         <th>Nama Anak Asuh</th>
                                         <th>Alamat</th>
                                         <th>Kecamatan</th>
