@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ePPGBM;
+use App\Models\BulanLap;
 use App\Models\Stunting;
+use App\Models\TahunLap;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use App\Models\Kelurahandesa;
@@ -132,5 +135,26 @@ class StuntingController extends Controller
     public function export()
     {
         return (new StuntingExport)->download('stuntings-'.Carbon::now()->timestamp.'.xlsx');
+    }
+
+    public function dataEppgbm(Request $request)
+    {
+        $lapTahun = TahunLap::all();
+        $lapBulan = BulanLap::when($request->tahun_id, function ($query) use ($request) {
+            return $query->where('TAHUN_ID', $request->tahun_id);
+        })->get();
+        $dataeppgbm = ePPGBM::when($request->tahun_id, function ($query) use ($request) {
+            return $query->where('TAHUN_ID', $request->tahun_id);
+        })->when($request->bulan_id, function ($query) use ($request) {
+            return $query->where('BULAN_ID', $request->bulan_id);
+        })->get();
+        if ($request->tahun_id && $request->bulan_id) {
+            $dataeppgbm = ePPGBM::where('TAHUN_ID', $request->tahun_id)->where('BULAN_ID', $request->bulan_id)->get();
+        }
+
+        return view('pages.stuntings.eppgbm')
+            ->with('dataeppgbm', $dataeppgbm)
+            ->with('lapTahun', $lapTahun)
+            ->with('lapBulan', $lapBulan);
     }
 }

@@ -28,6 +28,11 @@ class Stunting extends Model
         'POSYANDU_ID',
     ];
 
+    public function kabupatenkota()
+    {
+        return $this->hasOne(Kabupatenkota::class,'ID','KABUPATENKOTA_ID');
+    }
+
     public function kecamatan()
     {
         return $this->hasOne(Kecamatan::class,'ID','KECAMATAN_ID');

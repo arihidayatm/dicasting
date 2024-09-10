@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Balita;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Exports\BalitaExport;
+// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BalitaController extends Controller
 {
@@ -13,7 +16,7 @@ class BalitaController extends Controller
      */
     public function index(Request $request)
     {
-        $balitas = Balita::with('kecamatan', 'kelurahandesa', 'puskesmas')
+        $balitas = Balita::with('kabupatenkota','kecamatan', 'kelurahandesa', 'puskesmas')
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
@@ -67,4 +70,18 @@ class BalitaController extends Controller
     {
         //
     }
+
+    public function export()
+    {
+        return Excel::download(new BalitaExport,'balita-'.Carbon::now()->timestamp.'.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        dd($request->file('file'));
+        // $file = $request->file('file');
+        // Excel::import(new BalitaImport, $file);
+        // return redirect()->back();
+    }
+
 }

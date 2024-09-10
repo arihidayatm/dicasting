@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\BalitaExport;
 use App\Exports\StuntingExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/users',[UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class);
     Route::resource('balitas', BalitaController::class);
+    Route::get('/balitas-export', [BalitaController::class, 'export'])->name('balitas.export');
+    Route::post('/balitas-import', [BalitaController::class, 'import'])->name('balitas.import');
     Route::resource('puskesmas', PuskesmasController::class);
     Route::resource('posyandus', PosyanduController::class);
 
@@ -48,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     // Route untuk menghapus data Stunting
     Route::delete('/stuntings/{id}', [StuntingController::class, 'destroy'])->name('stuntings.destroy');
 
+    //Route stuntings/data-eppgbm
+    Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'dataEppgbm'])->name('stuntings.dataEppgbm');
 
 
     Route::resource('bapakasuhs', BapakAsuhController::class);
@@ -70,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::resource('/intervensi/intervensi-bpas', IntervensiBPASController::class);
     Route::get('intervensi-bpas', [IntervensiBPASController::class,'index'])->name('intervensi-bpas.index');
     Route::get('intervensi-bpas/create', [IntervensiBPASController::class,'create'])->name('intervensi-bpas.create');
-    Route::get('intervensi-bpas/{id}/destroy', [IntervensiBPASController::class,'destroy'])->name('intervensi-bpas.destroy');
+    Route::delete('intervensi-bpas/{id}/destroy', [IntervensiBPASController::class,'destroy'])->name('intervensi-bpas.destroy');
     Route::get('intervensi-bpas/{id}/edit', [IntervensiBPASController::class,'edit'])->name('intervensi-bpas.edit');
     Route::put('intervensi-bpas/{id}', [IntervensiBPASController::class,'update'])->name('intervensi-bpas.update');
     Route::post('intervensi-bpas', [IntervensiBPASController::class,'store'])->name('intervensi-bpas.store');
@@ -79,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::resource('/intervensi/intervensi-nonbpas', IntervensiNonBPASController::class);
     Route::get('intervensi-nonbpas', [IntervensiNonBPASController::class,'index'])->name('intervensi-nonbpas.index');
     Route::get('intervensi-nonbpas/create', [IntervensiNonBPASController::class,'create'])->name('intervensi-nonbpas.create');
-    Route::get('intervensi-nonbpas/{id}/destroy', [IntervensiNonBPASController::class,'destroy'])->name('intervensi-nonbpas.destroy');
+    Route::delete('intervensi-nonbpas/{id}/destroy', [IntervensiNonBPASController::class,'destroy'])->name('intervensi-nonbpas.destroy');
     Route::get('intervensi-nonbpas/{id}/edit', [IntervensiNonBPASController::class,'edit'])->name('intervensi-nonbpas.edit');
     Route::put('intervensi-nonbpas/{id}', [IntervensiNonBPASController::class,'update'])->name('intervensi-nonbpas.update');
     Route::post('intervensi-nonbpas', [IntervensiNonBPASController::class,'store'])->name('intervensi-nonbpas.store');

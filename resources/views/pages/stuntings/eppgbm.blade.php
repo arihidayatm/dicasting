@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Intervensi')
+@section('title', 'Data ePPGBM')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -14,8 +14,8 @@
                 <h1>Data E-PPGBM</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Data E-PPGBM</a></div>
-                    <div class="breadcrumb-item">Import Data</div>
+                    <div class="breadcrumb-item"><a href="{{ route('stuntings.eppgbm') }}">Data E-PPGBM</a></div>
+                    <div class="breadcrumb-item">Data E-PPGBM</div>
                 </div>
             </div>
 
@@ -37,13 +37,13 @@
                             </div>
                             <div class="card-body">
                                 <div class="float-left col-6">
-                                    <form method="GET" action="{{ route('stuntings.index') }}">
+                                    <form method="GET" action="{{ route('stuntings.eppgbm') }}">
                                         <div class="form-group">
-                                            <select class="form-control" id="jenis_intervensi" name="jenis_intervensi" onchange="this.form.submit()">
-                                                <option value="">-- Pilih Jenis Intervensi --</option>
-                                                @foreach($jenisIntervensis as $jenisIntervensi)
-                                                    <option value="{{ $jenisIntervensi->id }}" {{ request('jenis_intervensi') == $jenisIntervensi->id ? 'selected' : '' }}>
-                                                        {{ $jenisIntervensi->JENIS_INTERVENSI }}
+                                            <select class="form-control" id="tahun_lab" name="tahun_lab" onchange="this.form.submit()">
+                                                <option value="">-- Pilih Tahun --</option>
+                                                @foreach($lapTahun as $tahun_lap)
+                                                    <option value="{{ $lapTahun->id }}" {{ request('tahun_lap') == $tahun_lap->id ? 'selected' : '' }}>
+                                                        {{ $tahun_lap->TAHUN }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -51,7 +51,7 @@
                                     </form>
                                 </div>
                                 <div class="float-right col-6">
-                                    <a href="{{ route('stuntings.create') }}" class="btn btn-primary float-left">Create</a>
+                                    <a href="{{ route('stuntings.eppgbm') }}" class="btn btn-primary float-left">Create</a>
                                 </div>
                             </div>
                         </div>

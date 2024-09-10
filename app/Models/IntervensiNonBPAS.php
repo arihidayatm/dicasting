@@ -30,4 +30,19 @@ class IntervensiNonBPAS extends Model
     {
         return $this->hasOne(Stunting::class, 'id','STUNTING_ID');
     }
+
+    public function kabupatenkota()
+    {
+        return $this->hasOne(Kabupatenkota::class,'ID','KABUPATENKOTA_ID');
+    }
+
+    public function kecamatan()
+    {
+        return $this->hasOne(Kecamatan::class,'ID','KECAMATAN_ID');
+    }
+
+    public function kelurahandesa()
+    {
+        return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');
+    }
 }

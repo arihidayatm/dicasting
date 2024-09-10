@@ -42,19 +42,17 @@
 
                     <div class="clearfix mb-3"></div>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Nama Bapak Asuh</th>
-                                        <th>No. HP</th>
-                                        <th>Nama Anak Asuh</th>
-                                        <th>Alamat</th>
-                                        <th>Kecamatan</th>
-                                        <th>Kelurahan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <table class="table-striped table">
+                                <tr>
+                                    <th>Nama Bapak Asuh</th>
+                                    <th>No. HP</th>
+                                    <th>Nama Anak Asuh</th>
+                                    <th>Alamat</th>
+                                    <th>Kecamatan</th>
+                                    <th>Kelurahan</th>
+                                    <th>Aksi</th>
+                                </tr>
+
                                     @foreach ($anakAsuhs as $anakasuh)
                                         <tr>
                                             <td>{{ $anakasuh->bapakAsuh->NAMA_ORANGTUAASUH }}</td>
@@ -64,16 +62,26 @@
                                             <td>{{ $anakasuh->stunting->kecamatan->NAMA_KECAMATAN }}</td>
                                             <td>{{ $anakasuh->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                             <td>
-                                                <a href="{{ route('anakasuhs.edit', $anakasuh->id) }}" class="btn btn-warning">Edit</a>
-                                                <form action="{{ route('anakasuhs.destroy', $anakasuh->id) }}" method="POST" style="display:inline-block;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
-                                                </form>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href='{{ route('anakasuhs.edit', $anakasuh->id) }}'
+                                                        class="btn btn-sm btn-info btn-icon">
+                                                        <i class="fas fa-edit"></i>
+                                                        Edit
+                                                    </a>
+
+                                                    <form action="{{ route('anakasuhs.destroy', $anakasuh->id) }}"
+                                                        method="POST" style="display:inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger btn-icon"
+                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                        <i class="fas fa-times"></i>
+                                                        Delete</button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
-                                </tbody>
                             </table>
                             <div class="float-right">
                                 {{ $anakAsuhs->withQueryString()->links() }}

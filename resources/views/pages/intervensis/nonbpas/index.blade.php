@@ -56,9 +56,9 @@
                                             <th>Bentuk Intervensi</th>
                                             <th>Nama Balita</th>
                                             <th>Alamat</th>
-                                            {{-- <th>Kab/Kota</th>
+                                            {{-- <th>Kab/Kota</th> --}}
                                             <th>Kecamatan</th>
-                                            <th>Desa</th> --}}
+                                            <th>Desa</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($intervensiNonBPAS as $intervensi_non_bpas)
@@ -67,9 +67,9 @@
                                                 <td>{{ $intervensi_non_bpas->bentukintervensi->BENTUK_INTERVENSI }}</td>
                                                 <td>{{ $intervensi_non_bpas->stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $intervensi_non_bpas->stunting->ALAMAT }}</td>
-                                                {{-- <td>{{ $intervensi_non_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td>
+                                                {{-- <td>{{ $intervensi_non_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td> --}}
                                                 <td>{{ $intervensi_non_bpas->stunting->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $intervensi_non_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
+                                                <td>{{ $intervensi_non_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('intervensi-nonbpas.edit', $intervensi_non_bpas->id) }}'
@@ -80,10 +80,9 @@
 
                                                         <form action="{{ route('intervensi-nonbpas.destroy', $intervensi_non_bpas->id) }}"
                                                             method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger btn-icon confirm-delete">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
                                                         </form>

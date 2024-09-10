@@ -12,10 +12,10 @@ class IntervensiBPASController extends Controller
      */
     public function index(Request $request)
     {
-        $intervensiBPAS = IntervensiBPAS::with(['bapakasuh','bentukintervensi','stunting'])
+        $intervensiBPAS = IntervensiBPAS::with(['bapakasuh','bentukintervensi','stunting','kabupatenkota','kecamatan', 'kelurahandesa'])
             ->where('STUNTING_ID', 'like', '%' . request('stunting_id') . '%')
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(7);
         return view('pages.intervensis.bpas.index', compact('intervensiBPAS'));
     }
 
@@ -40,7 +40,7 @@ class IntervensiBPASController extends Controller
      */
     public function show(IntervensiBPAS $intervensiBPAS)
     {
-        //
+        return view('pages.intervensis.bpas.show', compact('intervensiBPAS'));
     }
 
     /**
@@ -64,6 +64,7 @@ class IntervensiBPASController extends Controller
      */
     public function destroy(IntervensiBPAS $intervensiBPAS)
     {
-        //
+        $intervensiBPAS->delete();
+        return redirect()->route('intervensi-bpas.index')->with('success', 'Intervensi Data berhasil dihapus');
     }
 }

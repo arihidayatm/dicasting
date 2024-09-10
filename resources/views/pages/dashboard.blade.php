@@ -129,19 +129,19 @@
                                 <div class="statistic-details-item">
                                     <span class="text-muted"><span class="text-primary"><i
                                                 class="fas fa-caret-up"></i></span> 17%</span>
-                                    <div class="detail-value">1,243</div>
+                                    <div class="detail-value">1,201</div>
                                     <div class="detail-name">Januari</div>
                                 </div>
                                 <div class="statistic-details-item">
                                     <span class="text-muted"><span class="text-danger"><i
                                                 class="fas fa-caret-down"></i></span> 10%</span>
-                                    <div class="detail-value">2,902</div>
+                                    <div class="detail-value">1,210</div>
                                     <div class="detail-name">Februari</div>
                                 </div>
                                 <div class="statistic-details-item">
                                     <span class="text-muted"><span class="text-danger"><i
                                                 class="fas fa-caret-down"></i></span>9%</span>
-                                    <div class="detail-value">12,821</div>
+                                    <div class="detail-value">1,202</div>
                                     <div class="detail-name">Maret</div>
                                 </div>
                                 <div class="statistic-details-item">

@@ -88,7 +88,7 @@
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('stuntings') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="#">
+                            href="{{ route('stuntings.dataEppgbm') }}">
                             <i class="fas fa-file-import"></i>Data EPPGBM</a>
                     </li>
                     <li class='{{ Request::is('stuntings') ? 'active' : '' }}'>

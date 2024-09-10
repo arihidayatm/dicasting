@@ -33,10 +33,16 @@
                                 <h4>Data Balita</h4>
                             </div>
                             <div class="card-body">
-                                <a class="btn btn-outline-secondary" href="#" role="button">Export</a>
+                                <a class="btn btn-outline-secondary" href="{{ route('balitas.export') }}" role="button">Export</a>
                                 <button type="button" class="btn btn-outline-info btn-sm">Copy</button>
+                                <form action="/balitas/import" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="file" class="form-control">
+                                    <button type="submit" class="btn btn-outline-success btn-sm">Import</button>
+                                </form>
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('balitas.index') }}">
+                                        @csrf
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search by Name" name="NAMA_BALITA">
                                             <div class="input-group-append">

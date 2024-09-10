@@ -22,7 +22,22 @@ class Kabupatenkota extends Model
 
     public function Bapakasuh()
     {
-        return $this->hasMany(BapakAsuh::class,'ID','KABUPATEN_ID');
+        return $this->hasMany(BapakAsuh::class,'ID','KABUPATENKOTA_ID');
+    }
+
+    public function Stunting()
+    {
+        return $this->hasMany(Stunting::class,'ID','KABUPATENKOTA_ID');
+    }
+
+    public function IntervensiBPAS()
+    {
+        return $this->hasMany(IntervensiBPAS::class,'ID','KABUPATENKOTA_ID');
+    }
+
+    public function IntervensiNonBPAS()
+    {
+        return $this->hasMany(IntervensiNonBPAS::class,'ID','KABUPATENKOTA_ID');
     }
 
 }
