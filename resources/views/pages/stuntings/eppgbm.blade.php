@@ -39,6 +39,29 @@
                                 <div class="float-left col-6">
                                     <form method="GET" action="{{ route('stuntings.eppgbm') }}">
                                         <div class="form-group">
+                                            <select class="form-control" id="jenis_intervensi" name="jenis_intervensi" onchange="this.form.submit()">
+                                                <option value="">-- Pilih Tahun --</option>
+                                                @foreach($jenisIntervensis as $jenisIntervensi)
+                                                    <option value="{{ $jenisIntervensi->id }}" {{ request('jenis_intervensi') == $jenisIntervensi->id ? 'selected' : '' }}>
+                                                        {{ $jenisIntervensi->JENIS_INTERVENSI }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="float-right col-6">
+                                    <a href="{{ route('intervensis.createJenisIntervensi') }}" class="btn btn-primary float-left">Create</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                            {{-- <div class="card-body">
+                                <div class="float-left col-6">
+                                    <form method="GET" action="{{ route('stuntings.eppgbm') }}">
+                                        <div class="form-group">
                                             <select class="form-control" id="tahun_lab" name="tahun_lab" onchange="this.form.submit()">
                                                 <option value="">-- Pilih Tahun --</option>
                                                 @foreach($lapTahun as $tahun_lap)
@@ -53,7 +76,7 @@
                                 <div class="float-right col-6">
                                     <a href="{{ route('stuntings.eppgbm') }}" class="btn btn-primary float-left">Create</a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

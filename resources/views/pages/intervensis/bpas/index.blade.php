@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Intervensi Bapak Asuh')
+@section('title', 'Intervensi Bapak Ibu Asuh')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Intervensi Bapak Asuh</h1>
+                <h1>Intervensi Bapak Ibu Asuh</h1>
                 <div class="section-header-button">
                     <a href="intervensi-bpas.create" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="{{ route('intervensi-bpas.index') }}">Intervensi</a></div>
-                    <div class="breadcrumb-item">Bapak Asuh</div>
+                    <div class="breadcrumb-item">Bapak Ibu Asuh</div>
                 </div>
             </div>
             <div class="section-body">
@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Data Balita Yang di Intervensi Bapak Asuh</h4>
+                                <h4>Data Balita Yang di Intervensi Bapak Ibu Asuh</h4>
                             </div>
                             <div class="card-body">
 
@@ -52,7 +52,7 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>Nama Bapak Asuh</th>
+                                            <th>Nama Bapak Ibu Asuh</th>
                                             <th>Bentuk Intervensi</th>
                                             <th>Nama Balita</th>
                                             <th>Alamat</th>

@@ -39,9 +39,12 @@ class BapakAsuhController extends Controller
             'NOHP' => 'string|max:15',
         ]);
 
-        BapakAsuh::create($request->all());
-
-        return redirect()->route('bapakasuhs.index')->with('success', 'Data Bapak Asuh berhasil disimpan.');
+        try {
+            BapakAsuh::create($request->validated());
+            return redirect()->route('bapakasuhs.index')->with('success', 'Data Bapak Asuh berhasil disimpan.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menyimpan data Bapak Asuh');
+        }
     }
 
     public function edit($id)
@@ -68,7 +71,7 @@ class BapakAsuhController extends Controller
         ]);
 
         $bapakasuh = BapakAsuh::findOrFail($id);
-        $bapakasuh->update($request->all());
+        $bapakasuh->update($request->except('_token'));
 
         return redirect()->route('bapakasuhs.index')->with('success', 'Data berhasil diperbarui');
     }
@@ -77,5 +80,23 @@ class BapakAsuhController extends Controller
         $bapakasuh = BapakAsuh::findOrFail($id);
         $bapakasuh->delete();
         return redirect()->route('bapakasuhs.index')->with('success', 'Data berhasil dihapus');
+    }
+
+    // public function getKecamatan($kabupatenkota_id)
+    // {
+    //     $kecamatans = Kecamatan::where('kabupatenkota_id', $kabupatenkota_id)->get();
+    //     return response()->json($kecamatans);
+    // }
+
+    // public function getKelurahan($kecamatan_id)
+    // {
+    //     $kelurahans = Kelurahandesa::where('kecamatan_id', $kecamatan_id)->get();
+    //     return response()->json($kelurahans);
+    // }
+    // Controller
+    public function dashboard()
+    {
+        $bapakasuhs = BapakAsuh::all(); // contoh query untuk mendapatkan data bapak asuh
+        return view('dashboard', compact('bapakasuhs'));
     }
 }

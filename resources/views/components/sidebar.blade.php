@@ -46,7 +46,7 @@
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('balitas.index') }}">
+                            href="{{ route('balita.index') }}">
                             <i class="fas fa-file"></i>Management Balita</a>
                     </li>
                 </ul>
@@ -77,6 +77,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-building"></i>
+                    <span>PAUD</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('posyandus') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="#">
+                            <i class="fas fa-file"></i>Management PAUD</a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="menu-header">Data</li>
 
@@ -102,13 +115,13 @@
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-user-circle"></i>
-                    <span>Bapak Asuh</span>
+                    <span>Bapak Ibu Asuh</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('bapakasuhs') ? 'active' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('bapakasuhs.index') }}">
-                            <i class="fas fa-user-circle"></i>Data Bapak Asuh</a>
+                            <i class="fas fa-user-circle"></i>Data BASUH</a>
                     </li>
                     <li class='{{ Request::is('bapakasuhs') ? 'active' : '' }}'>
                         <a class="nav-link"
@@ -133,12 +146,12 @@
                     <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi-bpas.index') }}">
-                            <i class="fas fa-file-import"></i>BPAS</a>
+                            <i class="fas fa-file-import"></i>BASUH</a>
                     </li>
                     <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
                         <a class="nav-link"
                             href={{ route('intervensi-nonbpas.index') }}>
-                            <i class="fas fa-file-import"></i>Non BPAS</a>
+                            <i class="fas fa-file-import"></i>Non BASUH</a>
                     </li>
                 </ul>
             </li>

@@ -73,7 +73,7 @@
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-                                                <td>{{ $stunting->NIK }}</td>
+                                                <td><a href="{{ route('stuntings.detail', $stunting->id) }}">{{ $stunting->NIK }}</a></td>
                                                 <td>{{ $stunting->NO_KK }}</td>
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
@@ -148,6 +148,7 @@
                                             {{-- <th>Posyandu</th> --}}
                                             {{-- <th>Status BB/U</th> --}}
                                             <th>Status TB/U</th>
+                                            <th>ZS TB/U</th>
                                             {{-- <th>Status BB/TB</th> --}}
                                         </tr>
                                         @foreach ($stuntings as $stunting)
@@ -263,6 +264,7 @@
                                                 {{-- <td>{{ $stunting->posyandu->NAMA_POSYANDU }}</td> --}}
                                                 {{-- <td>{{ $stunting->STATUS_BBU }}</td> --}}
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
+                                                <td>{{ $stunting->ZS_TBU }}</td>
                                                 {{-- <td>{{ $stunting->STATUS_BBTB }}</td> --}}
                                             </tr>
                                         @endforeach

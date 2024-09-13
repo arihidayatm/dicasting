@@ -6,28 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('balita', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK')->nullable();
-            $table->string('NO_KK')->nullable();
-            $table->string('ANAK_KE');
-            $table->string('NAMA_BALITA');
+            $table->string('NIK')->default('');
+            $table->string('NO_KK')->default('');
+            $table->string('ANAK_KE')->default('');
+            $table->string('NAMA_BALITA')->default('');
             $table->date('TGL_LAHIR');
             $table->enum('JENIS_KELAMIN', ['L', 'P']);
-            $table->string('NAMA_ORANGTUA');
-            $table->string('ALAMAT')->nullable();
-            $table->integer('RT')->nullable();
-            $table->integer('RW')->nullable();
+            $table->string('NAMA_ORANGTUA')->default('');
+            $table->string('ALAMAT')->nullable()->default(null);
+            $table->integer('RT')->default('000');
+            $table->integer('RW')->default('000');
             $table->foreignId('KABUPATENKOTA_ID')->references('id')->on('kabupatenkota');
             $table->foreignId('KECAMATAN_ID')->references('id')->on('kecamatan');
             $table->foreignId('PUSKESMAS_ID')->references('id')->on('puskesmas');
             $table->foreignId('KELURAHANDESA_ID')->references('id')->on('kelurahandesa');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

@@ -110,7 +110,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistics Kasus Stunting</h4>
@@ -123,86 +123,40 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Grafik Perkembangan Stunting --}}
                         <div class="card-body">
                             <canvas id="myChart" height="182"></canvas>
-                            <div class="statistic-details mt-sm-4">
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 17%</span>
-                                    <div class="detail-value">1,201</div>
-                                    <div class="detail-name">Januari</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-danger"><i
-                                                class="fas fa-caret-down"></i></span> 10%</span>
-                                    <div class="detail-value">1,210</div>
-                                    <div class="detail-name">Februari</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-danger"><i
-                                                class="fas fa-caret-down"></i></span>9%</span>
-                                    <div class="detail-value">1,202</div>
-                                    <div class="detail-name">Maret</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 2%</span>
-                                    <div class="detail-value">2,342</div>
-                                    <div class="detail-name">April</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 1%</span>
-                                    <div class="detail-value">1,042</div>
-                                    <div class="detail-name">Mei</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-danger"><i
-                                                class="fas fa-caret-down"></i></span> 19%</span>
-                                    <div class="detail-value">24,212</div>
-                                    <div class="detail-name">Juni</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 1%</span>
-                                    <div class="detail-value">1,142</div>
-                                    <div class="detail-name">Juli</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 2%</span>
-                                    <div class="detail-value">2,142</div>
-                                    <div class="detail-name">Agustus</div>
-                                </div>
-                                {{-- <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 19%</span>
-                                    <div class="detail-value">$92,142</div>
-                                    <div class="detail-name">This Year's Sales</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 19%</span>
-                                    <div class="detail-value">$92,142</div>
-                                    <div class="detail-name">This Year's Sales</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 19%</span>
-                                    <div class="detail-value">$92,142</div>
-                                    <div class="detail-name">This Year's Sales</div>
-                                </div>
-                                <div class="statistic-details-item">
-                                    <span class="text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 19%</span>
-                                    <div class="detail-value">$92,142</div>
-                                    <div class="detail-name">This Year's Sales</div>
-                                </div> --}}
-                            </div>
+                            <script>
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus'],
+                                        datasets: [{
+                                            label: 'Perkembangan Stunting',
+                                            data: [10, 9, 8, 7, 6, 5, 4, 3],
+                                            borderColor: 'rgba(75, 192, 192, 0.2)',
+                                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                                            pointBorderColor: '#fff',
+                                            pointHoverBackgroundColor: '#fff',
+                                            pointHoverBorderColor: 'rgba(220,220,220,1)'
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
+
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+                {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Bapak Asuh</h4>
@@ -266,7 +220,31 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Bapak Ibu Asuh</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled list-unstyled-border">
+                            @foreach($bapakasuhs as $bapakasuh)
+                                <li class="media">
+                                <img class="rounded-circle mr-3" width="50" src="{{ asset('img/avatar/'.$bapakasuh->avatar) }}" alt="avatar">
+                                <div class="media-body">
+                                    <div class="float-right">{{ $bapakasuh->updated_at->diffForHumans() }}</div>
+                                    <div class="media-title">{{ $bapakasuh->NAMA_ORANGTUAASUH }}</div>
+                                    {{-- <span class="text-small text-muted">{{ $bapakasuh->description }}</span>
+                                </div>
+                                </li>
+                            @endforeach
+                            </ul>
+                            <div class="pt-1 pb-1 text-center">
+                            <a href="{{ route('bapakasuhs.index') }}" class="btn btn-primary btn-lg btn-round">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
             </div>
         </section>
     </div>

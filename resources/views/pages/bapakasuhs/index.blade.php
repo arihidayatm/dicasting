@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bapak Asuh')
+@section('title', 'Bapak Ibu Asuh')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Bapak Asuh</h1>
+                <h1>Bapak Ibu Asuh</h1>
                 <div class="section-header-button">
                     <a href="{{ route('bapakasuhs.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('bapakasuhs.index') }}">Bapak Asuh</a></div>
-                    <div class="breadcrumb-item">List Bapak Asuh</div>
+                    <div class="breadcrumb-item"><a href="{{ route('bapakasuhs.index') }}">Bapak Ibu Asuh</a></div>
+                    <div class="breadcrumb-item">List Bapak Ibu Asuh</div>
                 </div>
             </div>
             <div class="section-body">
@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>List Bapak Asuh</h4>
+                                <h4>List Bapak Ibu Asuh</h4>
                             </div>
                             <div class="card-body">
 
@@ -53,7 +53,8 @@
                                     <table class="table-striped table">
                                         <tr>
                                             <th>NIK</th>
-                                            <th>Nama Bapak Asuh</th>
+                                            <th>Nama Bapak Ibu Asuh</th>
+                                            {{-- <th>OPD/Instansi</th> --}}
                                             <th>Alamat</th>
                                             <th>Kab/Kota</th>
                                             <th>Kecamatan</th>
@@ -65,6 +66,7 @@
                                             <tr>
                                                 <td>{{ $bapakasuh->NIK_ORANGTUAASUH }}</td>
                                                 <td>{{ $bapakasuh->NAMA_ORANGTUAASUH }}</td>
+                                                {{-- <td>{{ $bapakasuh->INSTANSI }}</td> --}}
                                                 <td>{{ $bapakasuh->ALAMAT }}</td>
                                                 <td>{{ $bapakasuh->kabupatenkota->NAMA_KABKOTA }}</td>
                                                 <td>{{ $bapakasuh->kecamatan->NAMA_KECAMATAN }}</td>
@@ -80,9 +82,8 @@
 
                                                         <form action="{{ route('bapakasuhs.destroy', $bapakasuh->id) }}"
                                                             method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
+                                                            @csrf
+                                                            @method('DELETE')
                                                             <button class="btn btn-sm btn-danger btn-icon confirm-delete">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
@@ -106,9 +107,8 @@
 @endsection
 
 @push('scripts')
-    <!-- JS Libraies -->
+    <script src="{{ asset('library/selectric/public/jquery.js') }}"></script>
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
-
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
 @endpush

@@ -2,6 +2,7 @@
 
 use App\Exports\BalitaExport;
 use App\Exports\StuntingExport;
+use App\Livewire\StuntingDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BalitaController;
@@ -19,16 +20,27 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    // Route::get('home', BapakAsuhController::class);
     Route::get('home', function () {
         return view('pages.dashboard');
     })->name('home');
 
+
     //MASTERS
     // Route::get('/users',[UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class);
-    Route::resource('balitas', BalitaController::class);
+
+    // Route::resource('balitas', BalitaController::class);
+    Route::get('/balitas', [BalitaController::class, 'index'])->name('balita.index');
+    Route::get('/balitas/create', [BalitaController::class, 'create'])->name('balita.create');
+    Route::post('/balitas', [BalitaController::class, 'store'])->name('balita.store');
+    Route::get('/balitas/{balita}', [BalitaController::class, 'show'])->name('balita.show');
+    Route::get('/balitas/{balita}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
+    Route::patch('/balitas/{balita}', [BalitaController::class, 'update'])->name('balita.update');
+    Route::delete('/balitas/{balita}', [BalitaController::class, 'destroy'])->name('balita.destroy');
     Route::get('/balitas-export', [BalitaController::class, 'export'])->name('balitas.export');
     Route::post('/balitas-import', [BalitaController::class, 'import'])->name('balitas.import');
+
     Route::resource('puskesmas', PuskesmasController::class);
     Route::resource('posyandus', PosyanduController::class);
 
@@ -55,7 +67,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'dataEppgbm'])->name('stuntings.dataEppgbm');
 
 
-    Route::resource('bapakasuhs', BapakAsuhController::class);
+    // Route::resource('bapakasuhs', BapakAsuhController::class);
+    Route::get('/bapakasuhs', [BapakAsuhController::class, 'index'])->name('bapakasuhs.index');
+    Route::get('/bapakasuhs/create', [BapakAsuhController::class, 'create'])->name('bapakasuhs.create');
+    Route::post('/bapakasuhs', [BapakAsuhController::class, 'store'])->name('bapakasuhs.store');
+    Route::get('/bapakasuhs/{bapakasuh}', [BapakAsuhController::class, 'show'])->name('bapakasuhs.show');
+    Route::get('/bapakasuhs/{bapakasuh}/edit', [BapakAsuhController::class, 'edit'])->name('bapakasuhs.edit');
+    Route::put('/bapakasuhs/{bapakasuh}', [BapakAsuhController::class, 'update'])->name('bapakasuhs.update');
+    Route::delete('/bapakasuhs/{bapakasuh}', [BapakAsuhController::class, 'destroy'])->name('bapakasuhs.destroy');
+    // Route::get('/get-kabupatenkota', 'BapakAsuhController@getKabupaten');
+    // Route::get('/get-kecamatan/{kabupatenkota_id}', 'BapakAsuhController@getKecamatan');
+    // Route::get('/get-kelurahandesa/{kecamatan_id}', 'BapakAsuhController@getKelurahan');
     // Route::resource('intervensis', IntervensiController::class);
 
     Route::get('/intervensi', [IntervensiController::class, 'index'])->name('intervensi.index');
@@ -92,4 +114,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'import'])->name('stunting.import');
 
+
+    Route::get('/stuntings/{id}', StuntingDetail::class)->name('stuntings.detail');
 });

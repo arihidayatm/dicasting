@@ -16,8 +16,6 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
     @stack('style')
 
     <!-- Template CSS -->
@@ -39,25 +37,20 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- END GA -->
-</head>
+    <!-- /END GA -->
 </head>
 
 <body>
     <div id="app">
-        <div class="main-wrapper">
-            <!-- Header -->
-            @include('components.header')
+        <section class="section">
+            <div class="container mt-5">
+                <!-- Content -->
+                @yield('main')
 
-            <!-- Sidebar -->
-            @include('components.sidebar')
-
-            <!-- Content -->
-            @yield('main')
-
-            <!-- Footer -->
-            @include('components.footer')
-        </div>
+                <!-- Footer -->
+                @include('components.error-footer')
+            </div>
+        </section>
     </div>
 
     <!-- General JS Scripts -->
@@ -68,17 +61,11 @@
     <script src="{{ asset('library/jquery.nicescroll/dist/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('library/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('js/stisla.js') }}"></script>
-    <script src="{{ asset('library/selectric/public/jquery.js') }}"></script>
-    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/features-posts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @stack('scripts')
 
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
-</body>
 
 </html>

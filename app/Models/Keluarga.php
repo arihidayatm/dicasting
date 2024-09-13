@@ -23,6 +23,12 @@ class Keluarga extends Model
         'KODE_POS',
         'STATUS_PERKAWINAN',
     ];
+
+    public function balitas()
+    {
+        return $this->hasMany(Balita::class,'ID','KELUARGA_ID');
+    }
+
     public function stuntings()
     {
         return $this->hasMany(Stunting::class,'KELUARGA_ID','ID');
