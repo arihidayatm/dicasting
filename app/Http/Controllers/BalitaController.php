@@ -53,7 +53,7 @@ class BalitaController extends Controller
 
     public function show(Balita $balita)
     {
-        return view('pages.masters.showBalita', compact('balita'));
+        return view('pages.masters.show', compact('balita'));
     }
 
     public function edit(Balita $balita)
@@ -88,7 +88,7 @@ class BalitaController extends Controller
         return redirect()->route('balita.index')->with('success', 'Data balita berhasil diperbarui');
     }
 
-    public function destroy(Balita $balita)
+    public function delete(Balita $balita)
     {
         $balita->delete();
 

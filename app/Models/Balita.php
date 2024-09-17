@@ -16,7 +16,7 @@ class Balita extends Model
     protected $fillable = [
         'id',
         'NIK',
-        'NO_KK',
+        'KELUARGA_ID',
         'NAMA_BALITA',
         'TGL_LAHIR',
         'JENIS_KELAMIN',
@@ -32,6 +32,11 @@ class Balita extends Model
     ];
 
     public $timestamps = false;
+
+    public function keluarga()
+    {
+        return $this->hasOne(Keluarga::class,'ID','KELUARGA_ID');
+    }
 
     public function kabupatenkota()
     {

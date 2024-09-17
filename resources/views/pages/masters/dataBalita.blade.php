@@ -61,43 +61,34 @@
                                     <table class="table-striped table">
                                         <tr>
                                             <th>NIK</th>
-                                            <th>No. KK</th>
+                                            {{-- <th>No. KK</th> --}}
                                             <th>Nama Balita</th>
                                             <th>Tgl. Lahir</th>
                                             <th>Jenis Kelamin</th>
+                                            <th>Nama Ayah</th>
                                             <th>Nama Ibu</th>
                                             <th>Alamat</th>
-                                            <th>RT</th>
-                                            <th>RW</th>
-                                            <th>Kab/Kota</th>
+                                            <th>RT RW</th>
+                                            {{-- <th>Kab/Kota</th> --}}
                                             <th>Kecamatan</th>
                                             <th>Desa</th>
-                                            <th>Puskesmas</th>
-                                            <th>Action</th>
+                                            {{-- <th>Puskesmas</th> --}}
                                         </tr>
                                         @foreach ($balitas as $balita)
                                             <tr>
-                                                <td>{{ $balita->NIK }}</td>
-                                                <td>{{ $balita->NO_KK }}</td>
+                                                <td><a href="{{ route('balitas.detail', $balita->id) }}">{{ $balita->NIK }}</a></td>
+                                                {{-- <td>{{ $balita->keluarga->NO_KK }}</td> --}}
                                                 <td>{{ $balita->NAMA_BALITA }}</td>
                                                 <td>{{ $balita->TGL_LAHIR }}</td>
                                                 <td>{{ $balita->JENIS_KELAMIN }}</td>
-                                                <td>{{ $balita->NAMA_ORANGTUA }}</td>
+                                                <td>{{ $balita->NAMA_AYAH }}</td>
+                                                <td>{{ $balita->NAMA_IBU }}</td>
                                                 <td>{{ $balita->ALAMAT }}</td>
-                                                <td>{{ $balita->RT }}</td>
-                                                <td>{{ $balita->RW }}</td>
-                                                <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td>
+                                                <td>{{ $balita->RT }} / {{ $balita->RW }}</td>
+                                                {{-- <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td> --}}
                                                 <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
-                                                <td>{{ $balita->puskesmas->NAMA_PUSKESMAS }}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editBalitaModal{{ $balita->id }}">
-                                                        Edit
-                                                    </button>
-                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteBalitaModal{{ $balita->id }}">
-                                                        Delete
-                                                    </button>
-                                                </td>
+                                                {{-- <td>{{ $balita->puskesmas->NAMA_PUSKESMAS }}</td> --}}
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -279,7 +270,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="{{ route('balita.destroy', $balita->id) }}" method="POST">
+                            <form action="{{ route('balitas.delete', $balita->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div class="modal-body">

@@ -26,31 +26,7 @@
                     </div>
                 </div>
 
-                {{-- <div class="row mt-4">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Data Balita</h4>
-                            </div>
-                                <div class="card-body">
-                                    <p>NIK: {{ $stunting->NIK }}</p>
-                                    <p>Nama Anak: {{ $stunting->NAMA_BALITA }}</p>
-                                    <p>Tanggal Lahir: {{ $stunting->TGL_LAHIR }}</p>
-                                    <p>Jenis Kelamin: {{ $stunting->JENIS_KELAMIN }}</p>
-                                    <p>Umur: {{ $stunting->UMUR }}</p>
-                                    <p>Nama Orang Tua: {{ $stunting->NAMA_ORANGTUA }}</p>
-                                    <p>Alamat: {{ $stunting->ALAMAT }}</p>
-                                    <p>Kecamatan: {{ $stunting->kecamatan->NAMA_KECAMATAN }}</p>
-                                    <p>Desa: {{ $stunting->kelurahandesa->NAMA_KELURAHANDESA }}</p>
-                                </div>
-                                <div class="card-footer text-right">
-                                    <a href="{{ route('stuntings.index') }}" class="btn btn-secondary">Back</a>
-                                </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-                <div class="clearfix mb-3"></div>
+                <div class="clearfix mb-0"></div>
                 {{-- Tab Content --}}
                 <div class="tab-content">
                     <div class="tab-pane active">
@@ -58,47 +34,130 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Detail Data Balita</h4>
+                                        <h4>Data Balita</h4>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table-striped table">
-                                                <tr>
-                                                    <th>NIK</th>
-                                                    <td>{{ $stunting->NIK }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Nama Balita</th>
-                                                    <td>{{ $stunting->NAMA_BALITA }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Tanggal Lahir</th>
-                                                    <td>{{ $stunting->TGL_LAHIR }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Jenis Kelamin</th>
-                                                    <td>{{ $stunting->JENIS_KELAMIN }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Umur</th>
-                                                    <td>{{ $stunting->UMUR }}</td>                                              </tr>
-                                                <tr>
-                                                    <th>Nama Orang Tua</th>
-                                                    <td>{{ $stunting->NAMA_ORANGTUA }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Alamat</th>
-                                                    <td>{{ $stunting->ALAMAT }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Kecamatan</th>
-                                                    <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Desa</th>
-                                                    <td>{{ $stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
-                                                </tr>
+                                    <div class="widget-main">
+                                        <div class="col-4">
+                                            <table class="table table-sm">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>No. KTP</td>
+                                                        <td>:</td>
+                                                        <td>{{ $stunting->NIK }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nama Balita</td>
+                                                        <td>:</td>
+                                                        <td>{{ $stunting->NAMA_BALITA }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jenis Kelamin</td>
+                                                        <td>:</td>
+                                                        <td>{{ $stunting->JENIS_KELAMIN }}</td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
+                                        </div>
+                                        <div class="clearfix mb-3"></div>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <div class="col-12">
+                                            <div class="col-md-12">
+                                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link active" id="balita-tab" data-bs-toggle="tab" data-bs-target="#dataBalita" type="button" role="tab" aria-controls="dataBalita" aria-selected="true">Biodata Lengkap</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link" id="dataBeratBadan-tab" data-bs-toggle="tab" data-bs-target="#dataBeratBadan" type="button" role="tab" aria-controls="dataBeratBadan" aria-selected="false">Data Berat Badan</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="true">Contact</button>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content" id="myTabContent">
+                                                    <div class="tab-pane fade show active" id="dataBalita" role="tabpanel" aria-labelledby="balita-tab">
+                                                        <div class="row justify-content-around">
+                                                            <div class="col-4">
+                                                                <div class="card-header">
+                                                                    <h4>Data Balita</h4>
+                                                                </div>
+                                                                <table class="table-striped table">
+                                                                    <tbody class="table table-sm">
+                                                                        <tr>
+                                                                            <td>NIK</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $stunting->NIK }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Nama Balita</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $stunting->NAMA_BALITA }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Tanggal Lahir</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $stunting->TGL_LAHIR }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Jenis Kelamin</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $stunting->JENIS_KELAMIN }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Nama Ayah</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $stunting->NAMA_ORANGTUA }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Nama Ibu</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $stunting->NAMA_ORANGTUA}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="card-header">
+                                                                    <h4></h4>
+                                                                </div>
+                                                                <table class="table-striped table">
+                                                                    <tbody class="table row-md-6">
+                                                                        <tr>
+                                                                            <th>NIK</th>
+                                                                            <td>{{ $stunting->NIK }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Nama Balita</th>
+                                                                            <td>{{ $stunting->NAMA_BALITA }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Tanggal Lahir</th>
+                                                                            <td>{{ $stunting->TGL_LAHIR }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Jenis Kelamin</th>
+                                                                            <td>{{ $stunting->JENIS_KELAMIN }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Nama Ayah</th>
+                                                                            <td>{{ $stunting->NAMA_ORANGTUA }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Nama Ibu</th>
+                                                                            <td>{{ $stunting->NAMA_ORANGTUA}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane fade" id="dataBeratBadan" role="tabpanel" aria-labelledby="dataBeratBadan-tab">...</div>
+
+                                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                         <div class="card-footer text-right">
                                             <a href="{{ route('stuntings.index') }}" class="btn btn-secondary">Back</a>

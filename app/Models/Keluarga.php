@@ -9,8 +9,9 @@ class Keluarga extends Model
 {
     use HasFactory;
     protected $table = 'keluarga';
-    protected $primarykey = 'NO_KK';
+    protected $primarykey = 'ID';
     protected $fillable = [
+        'NO_KK',
         'NIK_AYAH',
         'NAMA_AYAH',
         'NIK_IBU',
@@ -24,7 +25,7 @@ class Keluarga extends Model
         'STATUS_PERKAWINAN',
     ];
 
-    public function balitas()
+    public function balita()
     {
         return $this->hasMany(Balita::class,'ID','KELUARGA_ID');
     }

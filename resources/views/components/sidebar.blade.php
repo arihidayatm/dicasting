@@ -25,65 +25,78 @@
 
             <li class="menu-header">Masters</li>
 
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-users"></i>
                     <span>Users</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('users') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('users') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('users.index') }}">
                             <i class="fas fa-file"></i>Management User</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-family"></i>
+                    <span>Keluarga</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('keluargas') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('keluargas.index') }}">
+                            <i class="fas fa-file"></i>Management Keluarga</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-baby"></i>
                     <span>Balita</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('balita.index') }}">
                             <i class="fas fa-file"></i>Management Balita</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-building"></i>
                     <span>Puskesmas</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('puskesmas.index') }}">
                             <i class="fas fa-file"></i>Management Puskesmas</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-building"></i>
                     <span>Posyandu</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('posyandus') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('posyandus.index') }}">
                             <i class="fas fa-file"></i>Management Posyandu</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-building"></i>
                     <span>PAUD</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('posyandus') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">
                             <i class="fas fa-file"></i>Management PAUD</a>
@@ -99,12 +112,12 @@
                     <span>Stunting</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('stuntings') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('stuntings') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('stuntings.dataEppgbm') }}">
                             <i class="fas fa-file-import"></i>Data EPPGBM</a>
                     </li>
-                    <li class='{{ Request::is('stuntings') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('stuntings') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('stuntings.index') }}">
                             <i class="fas fa-file"></i>Management Data</a>
@@ -112,18 +125,18 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-user-circle"></i>
                     <span>Bapak Ibu Asuh</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('bapakasuhs') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('bapakasuhs.index') }}">
                             <i class="fas fa-user-circle"></i>Data BASUH</a>
                     </li>
-                    <li class='{{ Request::is('bapakasuhs') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('anakasuhs.index') }}">
                             <i class="fas fa-file"></i>Data Anak Asuh</a>
@@ -132,23 +145,23 @@
             </li>
 
             {{-- Intervensi --}}
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-handshake"></i>
                     <span>Intervensi</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi.index') }}">
                             <i class="fas fa-marker"></i>Data Intervensi</a>
                     </li>
-                    <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi-bpas.index') }}">
                             <i class="fas fa-file-import"></i>BASUH</a>
                     </li>
-                    <li class='{{ Request::is('intervensi') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href={{ route('intervensi-nonbpas.index') }}>
                             <i class="fas fa-file-import"></i>Non BASUH</a>
@@ -158,33 +171,33 @@
 
             {{-- Laporan --}}
             <li class="menu-header">Laporan</li>
-            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-file-invoice"></i>
                     <span>Laporan</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('home') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Buku Stunting</a>
                     </li>
-                    <li class="{{ Request::is('home') ? 'active' : '' }}">
+                    <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
                             href="#">Kasus Aktif</a>
                     </li>
-                    <li class='{{ Request::is('home') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Kasus Belum Intervensi</a>
                     </li>
-                    <li class="{{ Request::is('home') ? 'active' : '' }}">
+                    <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
                             href="#">Balita Resiko Tinggi</a>
                     </li>
-                    <li class='{{ Request::is('home') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Wisuda Stunting</a>
                     </li>
-                    <li class="{{ Request::is('home') ? 'active' : '' }}">
+                    <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
                             href="#">Peta Stunting</a>
                     </li>

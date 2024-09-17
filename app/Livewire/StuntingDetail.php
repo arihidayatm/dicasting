@@ -18,4 +18,10 @@ class StuntingDetail extends Component
     {
         $this->stunting = Stunting::find($id);
     }
+
+    public function edit($id)
+    {
+        $this->stunting = Stunting::find($id);
+        return redirect()->route('stuntings.edit', $this->stunting->id);
+    }
 }

@@ -281,6 +281,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12">
+                <caption>Sumber Data: *e-PPGBM</caption><br>
                 <caption>Sumber Rumusan: *Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak </caption>
                 </div>
             </div>

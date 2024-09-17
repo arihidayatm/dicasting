@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\BalitaExport;
+use App\Livewire\BalitaDetail;
 use App\Exports\StuntingExport;
 use App\Livewire\StuntingDetail;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,9 @@ use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
 use App\Http\Controllers\IntervensiBPASController;
 use App\Http\Controllers\IntervensiNonBPASController;
+use App\Livewire\BalitaEdit;
+use App\Livewire\Keluarga;
+use App\Models\Balita;
 
 Route::get('/', function () {
     return view('pages.auth.auth-login');
@@ -32,12 +36,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Route::resource('balitas', BalitaController::class);
     Route::get('/balitas', [BalitaController::class, 'index'])->name('balita.index');
-    Route::get('/balitas/create', [BalitaController::class, 'create'])->name('balita.create');
-    Route::post('/balitas', [BalitaController::class, 'store'])->name('balita.store');
-    Route::get('/balitas/{balita}', [BalitaController::class, 'show'])->name('balita.show');
-    Route::get('/balitas/{balita}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
-    Route::patch('/balitas/{balita}', [BalitaController::class, 'update'])->name('balita.update');
-    Route::delete('/balitas/{balita}', [BalitaController::class, 'destroy'])->name('balita.destroy');
+    // Route::get('/balitas/create', [BalitaController::class, 'create'])->name('balita.create');
+    // Route::post('/balitas', [BalitaController::class, 'store'])->name('balita.store');
+    // Route::get('/balitas/{id}', [BalitaController::class, 'show'])->name('balita.show');
+    // Route::get('/balitas/{id}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
+    // Route::patch('/balitas/{id}', [BalitaController::class, 'update'])->name('balita.update');
+    // Route::delete('/balitas/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');
     Route::get('/balitas-export', [BalitaController::class, 'export'])->name('balitas.export');
     Route::post('/balitas-import', [BalitaController::class, 'import'])->name('balitas.import');
 
@@ -114,6 +118,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'import'])->name('stunting.import');
 
-
+    //Livewire
     Route::get('/stuntings/{id}', StuntingDetail::class)->name('stuntings.detail');
+    Route::get('/stuntings/{id}/edit', [StuntingController::class, 'edit'])->name('stuntings.edit');
+    Route::get('/balitas/{id}', BalitaDetail::class)->name('balitas.detail');
+    Route::get('/balitas/{id}/edit', BalitaDetail::class)->name('balitas.edit');
+    Route::put('/balitas/{id}', BalitaDetail::class)->name('balitas.update');
+    Route::delete('/balitas/{id}', BalitaDetail::class)->name('balitas.delete');
+
+    //livewire Keluarga
+    Route::get('/keluargas', Keluarga::class)->name('keluargas.index');
+    Route::get('/keluargas/create', Keluarga::class)->name('keluargas.create');
+    Route::get('/keluargas/{id}/edit', Keluarga::class)->name('keluargas.edit');
 });
