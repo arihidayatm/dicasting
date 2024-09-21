@@ -17,12 +17,13 @@ class Keluarga extends Model
         'NIK_IBU',
         'NAMA_IBU',
         'ALAMAT',
-        'RTRW',
+        'RT',
+        'RW',
         'KABUPATENKOTA_ID',
         'KECAMATAN_ID',
-        'KELURAHAN_ID',
+        'KELURAHANDESA_ID',
         'KODE_POS',
-        'STATUS_PERKAWINAN',
+        'NOHP',
     ];
 
     public function balita()
@@ -30,24 +31,23 @@ class Keluarga extends Model
         return $this->hasMany(Balita::class,'ID','KELUARGA_ID');
     }
 
-    public function stuntings()
+    public function kabupatenkota()
     {
-        return $this->hasMany(Stunting::class,'KELUARGA_ID','ID');
+        return $this->hasMany(Kabupatenkota::class, 'ID', 'KABUPATENKOTA_ID');
     }
 
     public function kecamatan()
     {
-        return $this->belongsTo(Kecamatan::class, 'KECAMATAN_ID');
-    }
-
-    public function kabupatenkota()
-    {
-        return $this->belongsTo(Kabupatenkota::class, 'KABUPATENKOTA_ID');
+        return $this->hasMany(Kecamatan::class, 'ID', 'KECAMATAN_ID');
     }
 
     public function kelurahandesa()
     {
-        return $this->belongsTo(Kelurahandesa::class, 'KELURAHAN_ID');
+        return $this->hasMany(Kelurahandesa::class, 'ID', 'KELURAHANDESA_ID');
     }
 
+    public function stuntings()
+    {
+        return $this->hasMany(Stunting::class,'KELUARGA_ID','ID');
+    }
 }

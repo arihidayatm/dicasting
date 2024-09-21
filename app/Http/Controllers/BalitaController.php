@@ -17,6 +17,8 @@ class BalitaController extends Controller
      */
     public function index(Request $request)
     {
+        $kecamatans = Balita::select('KECAMATAN_ID')->distinct()->get();
+        $kelurahandesas = Balita::select('KELURAHANDESA_ID')->distinct()->get();
         $balitas = Balita::with('kabupatenkota','kecamatan', 'kelurahandesa', 'puskesmas')
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')

@@ -32,91 +32,168 @@
                     </div>
                 </div>
 
-                <div class="row mt-4">
+                {{-- filter select Kecamatan, Kelurahandesa --}}
+                {{-- <div class="row">
+                    <div class="col-12"></div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="KECAMATAN_ID">Kecamatan</label>
+                                    <select name="KECAMATAN_ID" id="KECAMATAN_ID" class="form-control selectric">
+                                        <option value="">Pilih Kecamatan</option>
+                                        @foreach ($kecamatans as $kecamatan)
+                                            <option value="{{ $kecamatan->KECAMATAN_ID }}">{{ $kecamatan->NAMA_KECAMATAN }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="KELURAHANDESA_ID">Kelurahan/Desa</label>
+                                    <select name="KELURAHANDESA_ID" id="KELURAHANDESA_ID" class="form-control selectric">
+                                        <option value="">Pilih Kelurahan/Desa</option>
+                                        @foreach ($kelurahans as $kelurahan)
+                                            <option value="{{ $kelurahan->KELURAHANDESA_ID }}">{{ $kelurahan->NAMA_KELURAHANDESA }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Data Balita</h4>
+                                <h4>Data Posyandu</h4>
+                                <div class="card-header-action">
+                                    <a data-collapse="#mycard-collapse"
+                                        class="btn btn-icon btn-info"
+                                        href="#"><i class="fas fa-minus"></i></a>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <a class="btn btn-outline-secondary" href="{{ route('balitas.export') }}" role="button">Export</a>
-                                <button type="button" class="btn btn-outline-info btn-sm">Copy</button>
+                            <div class="collapse show"
+                                id="mycard-collapse">
+                                {{-- You can show or hide this card Data Balita --}}
+                                <div class="card-body">
+                                    <a class="btn btn-outline-secondary" href="{{ route('balitas.export') }}" role="button">Export</a>
+                                    <button type="button" class="btn btn-outline-info btn-sm">Copy</button>
 
-                                <div class="float-right">
-                                    <form method="GET" action="{{ route('balita.index') }}">
-                                        @csrf
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search by Name" name="NAMA_BALITA">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                    <div class="float-right">
+                                        <form method="GET" action="{{ route('balita.index') }}">
+                                            @csrf
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search by Name" name="NAMA_BALITA">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                        </form>
+                                    </div>
 
-                                <div class="clearfix mb-3"></div>
+                                    <div class="clearfix mb-3"></div>
 
-                                <div class="table-responsive">
+                                    <div class="table-responsive">
 
-                                    <table class="table-striped table">
-                                        <tr>
-                                            <th>NIK</th>
-                                            {{-- <th>No. KK</th> --}}
-                                            <th>Nama Balita</th>
-                                            <th>Tgl. Lahir</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Nama Ayah</th>
-                                            <th>Nama Ibu</th>
-                                            <th>Alamat</th>
-                                            <th>RT RW</th>
-                                            {{-- <th>Kab/Kota</th> --}}
-                                            <th>Kecamatan</th>
-                                            <th>Desa</th>
-                                            {{-- <th>Puskesmas</th> --}}
-                                        </tr>
-                                        @foreach ($balitas as $balita)
+                                        <table class="table-striped-sm table">
                                             <tr>
-                                                <td><a href="{{ route('balitas.detail', $balita->id) }}">{{ $balita->NIK }}</a></td>
-                                                {{-- <td>{{ $balita->keluarga->NO_KK }}</td> --}}
-                                                <td>{{ $balita->NAMA_BALITA }}</td>
-                                                <td>{{ $balita->TGL_LAHIR }}</td>
-                                                <td>{{ $balita->JENIS_KELAMIN }}</td>
-                                                <td>{{ $balita->NAMA_AYAH }}</td>
-                                                <td>{{ $balita->NAMA_IBU }}</td>
-                                                <td>{{ $balita->ALAMAT }}</td>
-                                                <td>{{ $balita->RT }} / {{ $balita->RW }}</td>
-                                                {{-- <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td> --}}
-                                                <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
-                                                {{-- <td>{{ $balita->puskesmas->NAMA_PUSKESMAS }}</td> --}}
+                                                <th>NIK</th>
+                                                {{-- <th>No. KK</th> --}}
+                                                <th>Nama Balita</th>
+                                                <th>Tgl. Lahir</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>Nama Ayah</th>
+                                                <th>Nama Ibu</th>
+                                                <th>Alamat</th>
+                                                <th>RT RW</th>
+                                                {{-- <th>Kab/Kota</th> --}}
+                                                <th>Kecamatan</th>
+                                                <th>Desa</th>
+                                                {{-- <th>Puskesmas</th> --}}
                                             </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <caption>Showing data from {{ $balitas->firstItem() }} to {{ $balitas->lastItem() }} of {{ $balitas->total() }} data.</caption>
-                                </div>
-                                <div class="float-right">
-                                    {{ $balitas->withQueryString()->links() }}
+                                            @foreach ($balitas as $balita)
+                                                <tr>
+                                                    <td><a href="{{ route('balitas.detail', $balita->id) }}">{{ $balita->NIK }}</a></td>
+                                                    {{-- <td>{{ $balita->keluarga->NO_KK }}</td> --}}
+                                                    <td>{{ $balita->NAMA_BALITA }}</td>
+                                                    <td>{{ $balita->TGL_LAHIR }}</td>
+                                                    <td>{{ $balita->JENIS_KELAMIN }}</td>
+                                                    <td>{{ $balita->NAMA_AYAH }}</td>
+                                                    <td>{{ $balita->NAMA_IBU }}</td>
+                                                    <td>{{ $balita->ALAMAT }}</td>
+                                                    <td>{{ $balita->RT }} / {{ $balita->RW }}</td>
+                                                    {{-- <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td> --}}
+                                                    <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td>
+                                                    <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                    {{-- <td>{{ $balita->puskesmas->NAMA_PUSKESMAS }}</td> --}}
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                        <caption>Showing data from {{ $balitas->firstItem() }} to {{ $balitas->lastItem() }} of {{ $balitas->total() }} data.</caption>
+                                    </div>
+                                    <div class="float-right">
+                                        {{ $balitas->withQueryString()->links() }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-12">
+                    <div class="col-12 col-md-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
                                 <h4>Import Data Balita</h4>
                             </div>
-                            <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" name="file" class="form-control">
-                                <div class="col-4">
-                                    <div class="card mt-4">
-                                    <button type="submit" class="btn btn-outline-success btn-sm">Import Data</button>
+                            <div class="card-body">
+                                <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="file" aria-label="Upload">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-success btn-sm" type="submit" id="file">Import</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                    <div class="col-4">
+                                        <div class="card mt-4">
+                                            <a href="{{ route('balitas.export') }}" class="btn btn-outline-info btn-sm">Export Data</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card mt-4">
+                                            <a href="#" class="btn btn-outline-info btn-sm">Template</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Import Data Balita</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="file" aria-label="Upload">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-success btn-sm" type="submit" id="file">Import</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card mt-4">
+                                            <a href="{{ route('balitas.export') }}" class="btn btn-outline-info btn-sm">Export Data</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card mt-4">
+                                            <a href="#" class="btn btn-outline-info btn-sm">Template</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

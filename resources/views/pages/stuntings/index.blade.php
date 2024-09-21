@@ -279,13 +279,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12">
-                <caption>Sumber Data: *e-PPGBM</caption><br>
-                <caption>Sumber Rumusan: *Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak </caption>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Sumber Data</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>e-PPGBM</p>
+                            <ul>
+                                <li>Import Data Balita Tahun 2024</li>
+                                <li>Import Data Stunting Tahun 2024</li>
+                                <li>Import Data Puskesmas Tahun 2024</li>
+                                <li>Import Data Posyandu Tahun 2024</li>
+                                <li>Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </section>
+        </section>
     </div>
 @endsection
 

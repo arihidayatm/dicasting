@@ -118,9 +118,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'import'])->name('stunting.import');
 
-    //Livewire
+    //Livewire Stunting
     Route::get('/stuntings/{id}', StuntingDetail::class)->name('stuntings.detail');
     Route::get('/stuntings/{id}/edit', [StuntingController::class, 'edit'])->name('stuntings.edit');
+
+    //Livewire Balita
     Route::get('/balitas/{id}', BalitaDetail::class)->name('balitas.detail');
     Route::get('/balitas/{id}/edit', BalitaDetail::class)->name('balitas.edit');
     Route::put('/balitas/{id}', BalitaDetail::class)->name('balitas.update');
@@ -128,6 +130,12 @@ Route::middleware(['auth'])->group(function () {
 
     //livewire Keluarga
     Route::get('/keluargas', Keluarga::class)->name('keluargas.index');
+    Route::get('/keluargas/{id}', Keluarga::class)->name('keluargas.detail');
     Route::get('/keluargas/create', Keluarga::class)->name('keluargas.create');
     Route::get('/keluargas/{id}/edit', Keluarga::class)->name('keluargas.edit');
+    Route::put('/keluargas/{id}', Keluarga::class)->name('keluargas.update');
+    Route::post('/keluargas', Keluarga::class)->name('keluargas.store');
+    Route::delete('/keluargas/{id}', Keluarga::class)->name('keluargas.delete');
+    Route::get('/keluargas/{id}', Keluarga::class)->name('keluargas.show');
+
 });

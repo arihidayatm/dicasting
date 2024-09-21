@@ -20,12 +20,7 @@ class Kelurahandesa extends Model
     {
         return $this->hasMany(Kecamatan::class, 'ID','KECAMATAN_ID');
     }
-
-    // public function keluarga()
-    // {
-    //     return $this->hasMany(Keluarga::class, 'KECAMATAN_ID', 'ID');
-    // }
-
+    
     public function stuntings()
     {
         return $this->hasMany(Stunting::class, 'ID','KELURAHANDESA_ID');
