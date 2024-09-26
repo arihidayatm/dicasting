@@ -20,14 +20,14 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-primary">
-                            <i class="far fa-user"></i>
+                            <i class="fa-solid fa-children text-white"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
                                 <h4>Total Kasus Stunting</h4>
                             </div>
                             <div class="card-body">
-                                1,201{{-- {{ count(\App\Models\User::all())}} --}}
+                                {{ count(\App\Models\Stunting::all()) }}
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
-                            <i class="fas fa-file-contract"></i>
+                            <i class="fa-solid fa-children text-white"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
@@ -104,6 +104,91 @@
                             <div class="card-body">
                                 10{{-- {{ count(\App\Models\Position::all())}} --}}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- User registration chart --}}
+            {{-- <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>User Registration</h4>
+                        </div>
+                        <div class="card-body" style="width: 75%;">
+                            <x-chartjs-component :chart="$chart" />
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+
+            {{-- Grafik Perkembangan Stunting --}}
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Statistics Kasus Stunting</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart3"
+                                height="170"></canvas>
+
+                            <div class="mb-4 mt-4">
+                                <div class="text-small font-weight-bold text-muted float-right">
+                                    {{-- Total Stunting filter by KECAMATAN_ID --}}
+                                    {{ count(\App\Models\Stunting::all()) }}</div>
+                                <div class="font-weight-bold mb-1">Silungkang</div>
+                                <div class="progress"
+                                    data-height="3">
+                                    <div class="progress-bar"
+                                        role="progressbar"
+                                        data-width="25%"
+                                        aria-valuenow="55"
+                                        aria-valuemin="0"
+                                        aria-valuemax="1000"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4 mt-4">
+                                <div class="text-small font-weight-bold text-muted float-right">{{ count(\App\Models\Stunting::all()) }}</div>
+                                <div class="font-weight-bold mb-1">Lembah Segar</div>
+                                <div class="progress"
+                                    data-height="3">
+                                    <div class="progress-bar"
+                                        role="progressbar"
+                                        data-width="25%"
+                                        aria-valuenow="55"
+                                        aria-valuemin="0"
+                                        aria-valuemax="1000"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4 mt-4">
+                                <div class="text-small font-weight-bold text-muted float-right">{{ count(\App\Models\Stunting::all()) }}</div>
+                                <div class="font-weight-bold mb-1">Barangin</div>
+                                <div class="progress"
+                                    data-height="3">
+                                    <div class="progress-bar"
+                                        role="progressbar"
+                                        data-width="25%"
+                                        aria-valuenow="55"
+                                        aria-valuemin="0"
+                                        aria-valuemax="1000"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4 mt-4">
+                                <div class="text-small font-weight-bold text-muted float-right">{{ count(\App\Models\Stunting::all()) }}</div>
+                                <div class="font-weight-bold mb-1">Talawi</div>
+                                <div class="progress"
+                                    data-height="3">
+                                    <div class="progress-bar"
+                                        role="progressbar"
+                                        data-width="25%"
+                                        aria-valuenow="55"
+                                        aria-valuemin="0"
+                                        aria-valuemax="1000"></div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -246,6 +331,29 @@
                     </div>
                 </div> --}}
             </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Doughnut Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Pie Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart4"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 @endsection
@@ -259,6 +367,11 @@
     <script src="{{ asset('library/summernote/dist/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
+    <!-- JS Libraies -->
+    <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('js/page/modules-chartjs.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/index-0.js') }}"></script>
 @endpush

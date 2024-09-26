@@ -117,4 +117,5 @@ class Keluarga extends Component
         $this->dispatchBrowserEvent('close-edit-modal');
         $this->emit('refreshData');
     }
+
 }

@@ -113,7 +113,10 @@
                                     </div>
                                     <div class="card-footer text-right">
                                         {{-- Balita Edit modal button --}}
-                                        <a href="{{ route('balitas.edit', $balita->id) }}" class="btn btn-primary" wire:click="edit({{ $balita->id }})" wire:loading.attr="disabled" wire:target="edit({{ $balita->id }})">Edit</a>
+                                        <a href="{{ route('balitas.edit', $balita->id) }}" class="btn btn-primary"
+                                            wire:click="edit({{ $balita->id }})"
+                                            wire:loading.attr="disabled"
+                                            wire:target="edit({{ $balita->id }})">Edit</a>
                                         <a href="{{ route('balita.index') }}" class="btn btn-secondary">Back</a>
                                     </div>
 

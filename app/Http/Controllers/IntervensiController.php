@@ -45,12 +45,13 @@ class IntervensiController extends Controller
         ]);
 
         BentukIntervensi::create([
+            'INTERVENSI_ID' => $request->jenis_intervensi,
             'BENTUK_INTERVENSI' => $request->bentuk_intervensi,
             'KETERANGAN' => $request->keterangan,
-            'INTERVENSI_ID' => $request->jenis_intervensi,
         ]);
 
-        return redirect()->route('intervensi.index')->with('success', 'Bentuk Intervensi created successfully.');
+        return redirect()->route('intervensi.index')
+            ->with('success', 'Bentuk Intervensi created successfully.');
     }
 
     public function update(Request $request, $id)

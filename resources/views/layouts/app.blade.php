@@ -27,7 +27,7 @@
         href="{{ asset('css/components.css') }}">
 
     <!-- Start GA -->
-    {{-- <script async
+    <script async
         src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -38,8 +38,15 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-94034622-3');
-    </script> --}}
+    </script>
     <!-- END GA -->
+
+    {{-- Ionicons --}}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    @vite('resources/css/app.css')
+
 </head>
 
 <body>
@@ -67,7 +74,7 @@
     <script src="{{ asset('library/jquery.nicescroll/dist/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('library/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('js/stisla.js') }}"></script>
-    <script src="{{ asset('library/selectric/public/jquery.js') }}"></script>
+    <script src="{{ asset('library/selectric/public/jquery.selectric.js') }}"></script>
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>

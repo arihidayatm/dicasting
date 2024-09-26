@@ -37,4 +37,8 @@ class Puskesmas extends Model
         return $this->hasMany(Balita::class, 'id', 'BALITA_ID');
     }
 
+    public function Stunting()
+    {
+        return $this->hasMany(Stunting::class, 'id', 'BALITA_ID');
+    }
 }

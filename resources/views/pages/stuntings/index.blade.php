@@ -132,7 +132,7 @@
                                             <th>Sumber Data</th>
                                             <th>Tanggal Pengukuran</th>
                                             <th>NIK</th>
-                                            <th>No.KK</th>
+                                            {{-- <th>No.KK</th> --}}
                                             <th>Nama Balita</th>
                                             <th>Tgl. Lahir</th>
                                             <th>Jenis Kelamin</th>
@@ -146,14 +146,13 @@
                                             <th>Kecamatan</th>
                                             <th>Desa</th>
                                             {{-- <th>Posyandu</th> --}}
-                                            {{-- <th>Status BB/U</th> --}}
                                             <th>Status TB/U</th>
                                             <th>ZS TB/U</th>
-                                            {{-- <th>Status BB/TB</th> --}}
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-                                                <td><!-- Large modal -->
+                                                <td>
+                                                    <!-- Large modal -->
                                                     <button type="button" class="btn btn-outline-warning float-right" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                         Update
                                                     </button>
@@ -225,10 +224,7 @@
                                                                                 @endforeach
                                                                             </select>
                                                                         </div> --}}
-                                                                        <div class="form-group">
-                                                                            <label for="sumber_data">Sumber Data</label>
-                                                                            <input type="text" class="form-control" id="sumber_data" name="sumber_data" required>
-                                                                        </div>
+                                                                        
                                                                         <div class="form-group">
                                                                             <label for="tgl_pengukuran">Tanggal Pengukuran</label>
                                                                             {{-- <input type="date" class="form-control" id="tgl_pengukuran" name="tgl_pengukuran" required> --}}
@@ -245,10 +241,9 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                {{-- <td>{{ $stunting->tgl_pengukuran }}</td> --}}
-                                                <td>{{ $stunting->updated_at }}</td>
+                                                {{-- <td>{{ $stunting->stunting_id->TGL_UKUR }}</td> --}}
                                                 <td>{{ $stunting->NIK }}</td>
-                                                <td>{{ $stunting->NO_KK }}</td>
+                                                {{-- <td>{{ $stunting->NO_KK }}</td> --}}
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
@@ -262,10 +257,8 @@
                                                 <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                 {{-- <td>{{ $stunting->posyandu->NAMA_POSYANDU }}</td> --}}
-                                                {{-- <td>{{ $stunting->STATUS_BBU }}</td> --}}
                                                 <td>{{ $stunting->STATUS_TBU }}</td>
                                                 <td>{{ $stunting->ZS_TBU }}</td>
-                                                {{-- <td>{{ $stunting->STATUS_BBTB }}</td> --}}
                                             </tr>
                                         @endforeach
                                     </table>

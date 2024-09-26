@@ -40,7 +40,9 @@ class BalitaController extends Controller
         $balita->NAMA_BALITA = $request->nama_balita;
         $balita->TGL_LAHIR = $request->tgl_lahir;
         $balita->JENIS_KELAMIN = $request->jk;
-        $balita->NAMA_ORANGTUA = $request->nama_orangtua;
+        $balita->NAMA_AYAH = $request->nama_ayah;
+        $balita->NAMA_IBU = $request->nama_ibu;
+        // $balita->NAMA_ORANGTUA = $request->nama_orangtua;
         $balita->ALAMAT = $request->alamat;
         $balita->RT = $request->rt;
         $balita->RW = $request->rw;
@@ -90,11 +92,11 @@ class BalitaController extends Controller
         return redirect()->route('balita.index')->with('success', 'Data balita berhasil diperbarui');
     }
 
-    public function delete(Balita $balita)
+    public function destroy($id)
     {
+        $balita = Balita::findOrFail($id);
         $balita->delete();
-
-        return redirect()->route('balita.index');
+        return redirect()->route('balita.index')->with('success', 'Data berhasil dihapus');
     }
 
     public function export()
@@ -108,7 +110,7 @@ class BalitaController extends Controller
         // $file = $request->file('file');
         Excel::import(new BalitaImport, $request->file('file'));
         // return redirect()->back();
-        return redirect()->route('balitas.index')
+        return redirect()->route('balita.index')
             ->with('success', 'Data Balita berhasil di import...!');
     }
 

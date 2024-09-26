@@ -12,10 +12,8 @@ class BapakAsuh extends Model
     protected $fillable = [
         'NIK_ORANGTUAASUH',
         'NAMA_ORANGTUAASUH',
+        'NIP',
         'ALAMAT',
-        'KABUPATENKOTA_ID',
-        'KECAMATAN_ID',
-        'KELURAHANDESA_ID',
         'NOHP',
     ];
 

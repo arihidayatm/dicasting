@@ -17,6 +17,7 @@ use App\Http\Controllers\IntervensiBPASController;
 use App\Http\Controllers\IntervensiNonBPASController;
 use App\Livewire\BalitaEdit;
 use App\Livewire\Keluarga;
+use App\Livewire\Pauds;
 use App\Models\Balita;
 
 Route::get('/', function () {
@@ -33,6 +34,9 @@ Route::middleware(['auth'])->group(function () {
     //MASTERS
     // Route::get('/users',[UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class);
+    // Route::get('/user/chart', 'UserController@showChart');
+    Route::get('/user/chart', [UserController::class, 'showChart']);
+    // Route::get('/user/chart', UserController::class);
 
     // Route::resource('balitas', BalitaController::class);
     Route::get('/balitas', [BalitaController::class, 'index'])->name('balita.index');
@@ -47,6 +51,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('puskesmas', PuskesmasController::class);
     Route::resource('posyandus', PosyanduController::class);
+
+    // Route::get('/pauds', \App\Livewire\Pauds\Index::class)->name('pauds.index');
+    // Route::get('/pauds/create', \App\Livewire\Pauds\Create::class)->name('pauds.create');
+    // Route::get('/pauds/show/{paud}',\App\Livewire\Pauds\Show::class)->name('pauds.show');
+    // Route::get('/pauds/update/{paud}',\App\Livewire\Pauds\Edit::class)->name('pauds.edit');
 
 
     // Route untuk menampilkan daftar Stunting

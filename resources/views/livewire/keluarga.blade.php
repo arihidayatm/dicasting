@@ -184,4 +184,10 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
 
+    <!-- JS Libraies -->
+    <script src="{{ asset('library/prismjs/prism.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('js/page/bootstrap-modal.js') }}"></script>
+
 @endpush

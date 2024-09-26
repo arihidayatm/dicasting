@@ -11,6 +11,8 @@
     <link rel="stylesheet"
         href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet"
+        href="{{ asset('library/ionicons201/css/ionicons.min.css') }}">
+    <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous"
@@ -25,6 +27,12 @@
         href="{{ asset('css/style.css') }}">
     <link rel="stylesheet"
         href="{{ asset('css/components.css') }}">
+
+    {{-- Ionicons --}}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    @vite('resources/css/app.css')
 
 </head>
 
@@ -49,6 +57,9 @@
     {{-- javascript --}}
     <script src="{{ asset('library/jquery/dist/jquery.min.js') }}"></script>
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('js/page/modules-ion-icons.js') }}"></script>
+
 
 </body>
 

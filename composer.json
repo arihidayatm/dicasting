@@ -1,16 +1,18 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Digitalisasi Pencegahan Stunting",
+    "keywords": ["laravel", "framework","dicasting"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "icehouse-ventures/laravel-chartjs": "^4.1",
         "laravel/fortify": "^1.22",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.29"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

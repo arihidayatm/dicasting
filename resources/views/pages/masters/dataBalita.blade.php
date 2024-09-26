@@ -64,7 +64,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Data Posyandu</h4>
+                                <h4>List Data Balita</h4>
                                 <div class="card-header-action">
                                     <a data-collapse="#mycard-collapse"
                                         class="btn btn-icon btn-info"
@@ -107,8 +107,9 @@
                                                 <th>RT RW</th>
                                                 {{-- <th>Kab/Kota</th> --}}
                                                 <th>Kecamatan</th>
-                                                <th>Desa</th>
                                                 {{-- <th>Puskesmas</th> --}}
+                                                <th>Desa</th>
+                                                <th>Action</th>
                                             </tr>
                                             @foreach ($balitas as $balita)
                                                 <tr>
@@ -123,8 +124,15 @@
                                                     <td>{{ $balita->RT }} / {{ $balita->RW }}</td>
                                                     {{-- <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td> --}}
                                                     <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td>
-                                                    <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                     {{-- <td>{{ $balita->puskesmas->NAMA_PUSKESMAS }}</td> --}}
+                                                    <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                    <td>
+                                                        {{-- Delete data Balita livewire by id use alert --}}
+                                                        <a href="{{ route('balitas.delete', $balita->id) }}" class="btn btn-danger btn-sm" style="margin-left: 10px;" onclick="return confirm('Are you sure?')"
+                                                            wire:click="delete({{ $balita->id }})"
+                                                            wire:target="delete({{ $balita->id }})">
+                                                            <i class="fas fa-trash"></i></a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

@@ -62,8 +62,17 @@ class PuskesmasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Puskesmas $puskesmas)
+    public function destroy($id)
     {
-        //
+        $puskesmas = Puskesmas::findOrFail($id);
+        $puskesmas->delete();
+        return redirect()->route('puskesmas.index')->with('success', 'Data berhasil dihapus');
+    }
+
+    //fungsi jika memilih KECAMATAN_ID = 137302 jadi pilihan PUSKESMAS_ID = 4,5 dengan ID_PUSKESMAS = P1373030201, P1373030202
+    public function getPuskesmasByKecamatan($kecamatan_id)
+    {
+        $puskesmas = Puskesmas::where('KECAMATAN_ID', $kecamatan_id)->get();
+        return response()->json($puskesmas);
     }
 }

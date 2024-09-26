@@ -55,10 +55,8 @@
                                             <th>NIK</th>
                                             <th>Nama Bapak Ibu Asuh</th>
                                             {{-- <th>OPD/Instansi</th> --}}
+                                            <th>NIP</th>
                                             <th>Alamat</th>
-                                            <th>Kab/Kota</th>
-                                            <th>Kecamatan</th>
-                                            <th>Desa</th>
                                             <th>No. HP</th>
                                             <th>Action</th>
                                         </tr>
@@ -67,10 +65,8 @@
                                                 <td>{{ $bapakasuh->NIK_ORANGTUAASUH }}</td>
                                                 <td>{{ $bapakasuh->NAMA_ORANGTUAASUH }}</td>
                                                 {{-- <td>{{ $bapakasuh->INSTANSI }}</td> --}}
+                                                <td>{{ $bapakasuh->NIP }}</td>
                                                 <td>{{ $bapakasuh->ALAMAT }}</td>
-                                                <td>{{ $bapakasuh->kabupatenkota->NAMA_KABKOTA }}</td>
-                                                <td>{{ $bapakasuh->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $bapakasuh->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                 <td>{{ $bapakasuh->NOHP }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
@@ -107,7 +103,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('library/selectric/public/jquery.js') }}"></script>
+    <script src="{{ asset('library/selectric/public/jquery.selectric.js') }}"></script>
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>

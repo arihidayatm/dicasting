@@ -53,7 +53,7 @@
                                     </form>
                                 </div>
                                 <div class="float-right col-6">
-                                    <a href="{{ route('intervensis.createJenisIntervensi') }}" class="btn btn-primary float-left">Create</a>
+                                    <a href="{{ route('intervensis.createJenisIntervensi') }}" class="btn btn-primary float-left">Create Jenis Intervensi</a>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 <h4>List Bentuk Intervensi</h4> <hr>
                                 <div class="float-left col-3">
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal">
-                                        Create
+                                        Create Bentuk Intervensi
                                     </button>
                                 </div>
                                 <div class="float-left col-3">
@@ -180,6 +180,20 @@
                                 <div class="modal-body">
                                     <form method="POST" action="{{ route('bentuk_intervensi.store') }}">
                                         @csrf
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="intervensi_id">Jenis Intervensi</label>
+                                                
+                                                <select class="custom-select">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <input type="text" class="form-control" id="intervensi_id" name="intervensi_id">
+                                        </div>
                                         <div class="form-group">
                                             <label for="bentuk_intervensi">Bentuk Intervensi</label>
                                             <input type="text" class="form-control" id="bentuk_intervensi" name="bentuk_intervensi">

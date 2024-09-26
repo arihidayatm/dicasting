@@ -27,7 +27,7 @@
 
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-users"></i>
+                    <i class="fa-solid fa-users-rectangle"></i>
                     <span>Users</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -40,7 +40,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-family"></i>
+                    <i class="fa-solid fa-people-roof"></i>
                     <span>Keluarga</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-baby"></i>
+                    <i class="fa-solid fa-baby"></i>
                     <span>Balita</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -66,7 +66,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-building"></i>
+                    <i class="fa-solid fa-house-chimney-medical"></i>
                     <span>Puskesmas</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -79,7 +79,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-building"></i>
+                    <i class="fa-solid fa-square-plus"></i>
                     <span>Posyandu</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-building"></i>
+                    <i class="fa-solid fa-school"></i>
                     <span>PAUD</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -108,7 +108,7 @@
 
             <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-file-invoice"></i>
+                    <i class="fa-solid fa-children"></i>
                     <span>Stunting</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -127,19 +127,19 @@
 
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-user-circle"></i>
+                    <i class="fa-solid fa-people-group"></i>
                     <span>Bapak Ibu Asuh</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('bapakasuhs.index') }}">
-                            <i class="fas fa-user-circle"></i>Data BASUH</a>
+                            <ion-icon name="people-sharp"></ion-icon>&nbsp Data BASUH</a>
                     </li>
                     <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('anakasuhs.index') }}">
-                            <i class="fas fa-file"></i>Data Anak Asuh</a>
+                            <ion-icon name="id-card-sharp"></ion-icon>&nbsp Data Anak Asuh</a>
                     </li>
                 </ul>
             </li>
@@ -147,7 +147,7 @@
             {{-- Intervensi --}}
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-handshake"></i>
+                    <i class="fa-solid fa-handshake"></i>
                     <span>Intervensi</span>
                 </a>
                 <ul class="dropdown-menu">

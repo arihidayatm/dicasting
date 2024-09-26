@@ -114,7 +114,7 @@ class StuntingController extends Controller
 
     public function destroy($id)
     {
-        $stunting = \App\Models\Stunting::findorfail($id);
+        $stunting = Stunting::findorfail($id);
         $stunting->delete();
         return redirect()->route('stuntings.index')
             ->with('success', 'Stunting deleted successfully');
@@ -157,4 +157,6 @@ class StuntingController extends Controller
             ->with('lapTahun', $lapTahun)
             ->with('lapBulan', $lapBulan);
     }
+
+    
 }
