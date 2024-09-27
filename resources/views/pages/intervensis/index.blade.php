@@ -87,21 +87,36 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
+                                            {{-- <th>No.</th> --}}
                                             <th>Bentuk Intervensi</th>
                                             <th>Keterangan</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach($bentukIntervensis as $bentukIntervensi)
                                         <tr>
+                                            {{-- <td>{{ $bentukIntervensi}}</td> --}}
                                             <td>{{ $bentukIntervensi->BENTUK_INTERVENSI }}</td>
                                             <td>{{ $bentukIntervensi->KETERANGAN }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#showModal{{ $bentukIntervensi->id }}">
-                                                    Show
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModal{{ $bentukIntervensi->id }}">
-                                                    Edit
-                                                </button>
+                                                <div class="d-flex justify-content-center">
+                                                    {{-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#showModal{{ $bentukIntervensi->id }}">
+                                                        Show
+                                                    </button> --}}
+                                                    <button type="button" class="btn btn-sm btn-warning btn-icon" data-toggle="modal" data-target="#editModal{{ $bentukIntervensi->id }}">
+                                                        <i class="fas fa-edit"></i>
+                                                        Edit
+                                                    </button>
+                                                    {{-- Delete BENTUK_INTERVENSI --}}
+                                                    <form action="{{ route('intervensis.destroyBentukIntervensi', $bentukIntervensi->id) }}"
+                                                        method="POST" class="ml-2">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                            <i class="fas fa-times"></i>
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -151,14 +166,24 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group">
+                                            <select class="form-control" id="jenis_intervensi" name="jenis_intervensi" onchange="this.form.submit()">
+                                                <option value="">-- Pilih Jenis Intervensi --</option>
+                                                @foreach($jenisIntervensis as $jenisIntervensi)
+                                                    <option value="{{ $jenisIntervensi->id }}" {{ request('jenis_intervensi') == $jenisIntervensi->id ? 'selected' : '' }}>
+                                                        {{ $jenisIntervensi->JENIS_INTERVENSI }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="bentuk_intervensi">Bentuk Intervensi</label>
                                             <input type="text" class="form-control" id="bentuk_intervensi" name="bentuk_intervensi" value="{{ $bentukIntervensi->BENTUK_INTERVENSI }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="bentuk_intervensi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="bentuk_intervensi" name="bentuk_intervensi" value="{{ $bentukIntervensi->BENTUK_INTERVENSI }}">
+                                            <label for="keterangan">Deskripsi</label>
+                                            <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{ $bentukIntervensi->KETERANGAN }}">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </form>
                                 </div>
                             </div>
@@ -178,28 +203,26 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="{{ route('bentuk_intervensi.store') }}">
+                                    <form method="POST" action="{{ route('intervensis.storeBentukIntervensi') }}">
                                         @csrf
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="intervensi_id">Jenis Intervensi</label>
-                                                
-                                                <select class="custom-select">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-control" id="jenis_intervensi" name="jenis_intervensi" onchange="this.form.submit()">
+                                                    <option value="">-- Pilih Jenis Intervensi --</option>
+                                                    @foreach($jenisIntervensis as $jenisIntervensi)
+                                                        <option value="{{ $jenisIntervensi->id }}" {{ request('jenis_intervensi') == $jenisIntervensi->id ? 'selected' : '' }}>
+                                                            {{ $jenisIntervensi->JENIS_INTERVENSI }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
-                                            
-                                            <input type="text" class="form-control" id="intervensi_id" name="intervensi_id">
                                         </div>
                                         <div class="form-group">
                                             <label for="bentuk_intervensi">Bentuk Intervensi</label>
                                             <input type="text" class="form-control" id="bentuk_intervensi" name="bentuk_intervensi">
                                         </div>
                                         <div class="form-group">
-                                            <label for="bentuk_intervensi">Deskripsi</label>
+                                            <label for="keterangan">Deskripsi</label>
                                             <input type="text" class="form-control" id="keterangan" name="keterangan">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Create</button>

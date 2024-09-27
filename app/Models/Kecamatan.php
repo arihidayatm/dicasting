@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Kecamatan extends Model
 {
     use HasFactory;
+
     protected $table = 'kecamatan';
-    protected $primarykey = 'ID';
-    protected $fillable = [
-        'ID',
-        'KABUPATENKOTA_ID',
-        'ID_KECAMATAN_BPS',
-        'NAMA_KECAMATAN',
-    ];
+    // protected $primarykey = 'ID';
+    // protected $fillable = [
+    //     'ID',
+    //     'KABUPATENKOTA_ID',
+    //     'ID_KECAMATAN_BPS',
+    //     'NAMA_KECAMATAN',
+    // ];
 
     public function stuntings()
     {

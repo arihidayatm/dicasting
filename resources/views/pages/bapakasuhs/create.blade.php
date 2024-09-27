@@ -62,7 +62,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="kabupaten_id">Kabupaten/Kota</label>
                                 <select class="form-control select2" name="KABUPATEN_ID" id="kabupaten_id">
                                     <option disabled value>Pilih Kabupaten/Kota</option>
@@ -111,7 +111,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <label>No. HP</label>

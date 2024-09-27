@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Balita;
 use Illuminate\Http\Request;
 use App\Exports\BalitaExport;
+use App\Imports\BadutaImport;
 // use Illuminate\Support\Facades\DB;
 use App\Imports\BalitaImport;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use IcehouseVentures\LaravelChartjs\Facades\Chartjs;
 
 class BalitaController extends Controller
 {
@@ -17,10 +19,10 @@ class BalitaController extends Controller
      */
     public function index(Request $request)
     {
-        $kecamatans = Balita::select('KECAMATAN_ID')->distinct()->get();
-        $kelurahandesas = Balita::select('KELURAHANDESA_ID')->distinct()->get();
-        $balitas = Balita::with('kabupatenkota','kecamatan', 'kelurahandesa', 'puskesmas')
-            ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
+        // $kecamatans = Balita::select('KECAMATAN_ID')->distinct()->get();
+        // $kelurahandesas = Balita::select('KELURAHANDESA_ID')->distinct()->get();
+        // $balitas = Balita::with('kabupatenkota','kecamatan', 'kelurahandesa', 'puskesmas')
+        $balitas = Balita::where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
         return view('pages.masters.dataBalita', compact('balitas'));
@@ -79,10 +81,11 @@ class BalitaController extends Controller
             'ALAMAT' => 'required',
             'RT' => 'required',
             'RW' => 'required',
-            'KABUPATENKOTA_ID' => 'required',
-            'KECAMATAN_ID' => 'required',
-            'PUSKESMAS_ID' => 'required',
-            'KELURAHANDESA_ID' => 'required',
+            // 'KABUPATENKOTA_ID' => 'required',
+            'KECAMATAN' => 'required',
+            'PUSKESMAS' => 'required',
+            'KELURAHANDESA' => 'required',
+            'PUSKESMAS' => 'required',
         ]);
 
         // Perbarui data balita
@@ -94,9 +97,9 @@ class BalitaController extends Controller
 
     public function destroy($id)
     {
-        $balita = Balita::findOrFail($id);
+        $balita = Balita::find($id);
         $balita->delete();
-        return redirect()->route('balita.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('balita.index')->with('success', 'Data Balita berhasil dihapus');
     }
 
     public function export()
@@ -106,12 +109,42 @@ class BalitaController extends Controller
 
     public function import(Request $request)
     {
-        // dd($request->file('file'));
-        // $file = $request->file('file');
-        Excel::import(new BalitaImport, $request->file('file'));
-        // return redirect()->back();
-        return redirect()->route('balita.index')
-            ->with('success', 'Data Balita berhasil di import...!');
+        $validated = $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $import = new BadutaImport;
+        $import->startRow(2);
+        Excel::import($import, $request->file('file'));
+
+        return redirect()->route('balita.index')->with('succes','Data Baduta Berhasil di Import');
+    //     Excel::import(new BalitaImport, $request->file('file'));
+    //     return redirect()->route('balita.index')
+    //         ->with('success', 'Data Balita berhasil di import...!');
     }
 
+    // public function import(Request $request)
+    // {
+    //     $request= Balita::validate([
+    //         'file' => 'required|mimes:xls,xlsx'
+    //     ]);
+
+    //     $import = new BadutaImport;
+    //     $import->startRow(1);
+    //     Excel::import($import, $request->file('file'));
+
+    //     return redirect()->route('balita.index')->with('succes','Data Baduta Berhasil di Import');
+    // }
+
+    public function showChart()
+    {
+        $chart = Chartjs::database(Balita::all(), 'bar', 'highcharts')
+            ->title('Jumlah Balita')
+            ->elementLabel('Jumlah Balita')
+            ->dimensions(1000, 500)
+            ->responsive(true)
+            ->groupByMonth(date('Y'), true);
+
+        return view('pages.charts.balita', compact('chart'));
+    }
 }

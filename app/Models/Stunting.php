@@ -2,31 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Stunting extends Model
 {
     use HasFactory;
+
     protected $table = 'stuntings';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'id',
-        'NIK',
-        'NO_KK', // Ganti KELUARGA_ID dengan NO_KK
-        'NAMA_BALITA',
-        'TGL_LAHIR',
-        'JENIS_KELAMIN',
-        'BERAT_BADAN',
-        'TINGGI_BADAN',
-        'NAMA_ORANGTUA',
-        'ALAMAT',
-        'RT',
-        'RW',
-        'KECAMATAN_ID',
-        'KELURAHANDESA_ID',
-        'POSYANDU_ID',
-    ];
+    // protected $primaryKey = 'id';
+    protected $guarded = [];
 
     public function kabupatenkota()
     {
@@ -46,6 +32,14 @@ class Stunting extends Model
     public function posyandu()
     {
         return $this->hasOne(Posyandu::class, 'id', 'POSYANDU_ID');
+    }
+
+    public static function getCountStunting($kecamatan)
+    {
+        return Stunting::where('kecamatan')
+            ->where('kelurahandesa')
+            ->select(DB::raw('count(id) AS data'))
+            ->get();
     }
 
 }

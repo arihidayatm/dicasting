@@ -27,21 +27,51 @@ class IntervensiController extends Controller
     {
         $request->validate([
             'jenis_intervensi' => 'required|string|max:255',
-            'keterangan' => 'nullable|string|max:255',
+            'ket_intervensi' => 'nullable|string|max:255',
         ]);
 
         JenisIntervensi::create([
             'JENIS_INTERVENSI' => $request->jenis_intervensi,
-            'KETERANGAN' => $request->keterangan,
+            'KET_INTERVENSI' => $request->ket_intervensi,
         ]);
 
         return redirect()->route('intervensi.index')->with('success', 'Jenis Intervensi created successfully.');
+    }
+
+    public function createBentukIntervensi()
+    {
+        return view('pages.intervensis.create_bentuk_intervensi');
+    }
+
+    public function storeBentukIntervensi(Request $request)
+    {
+        $request->validate([
+            'jenis_intervensi' => 'required|string|max:255',
+            'bentuk_intervensi' => 'required|string|max:255',
+            'keterangan' => 'nullable|string|max:255',
+        ]);
+
+        BentukIntervensi::create([
+            'INTERVENSI_ID' => $request->jenis_intervensi,
+            'BENTUK_INTERVENSI' => $request->bentuk_intervensi,
+            'KETERANGAN' => $request->keterangan,
+        ]);
+
+        return redirect()->route('intervensi.index')->with('success', 'Bentuk Intervensi created successfully.');
+    }
+
+    public function destroyBentukIntervensi($id)
+    {
+        $bentukIntervensi = BentukIntervensi::findOrFail($id);
+        $bentukIntervensi->delete();
+        return redirect()->route('intervensi.index')->with('success', 'Bentuk Intervensi deleted successfully.');
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'bentuk_intervensi' => 'required|string|max:255',
+            'keterangan' => 'nullable|string|max:255',
         ]);
 
         BentukIntervensi::create([
@@ -62,6 +92,7 @@ class IntervensiController extends Controller
 
         $bentukIntervensi = BentukIntervensi::findOrFail($id);
         $bentukIntervensi->update([
+            'INTERVENSI_ID' => $request->jenis_intervensi,
             'BENTUK_INTERVENSI' => $request->bentuk_intervensi,
             'KETERANGAN' => $request->keterangan,
         ]);
@@ -81,11 +112,11 @@ class IntervensiController extends Controller
         return view('pages.intervensis.edit', compact('intervensi'));
     }
 
-    public function destroy($id)
-    {
-        $intervensi = BentukIntervensi::findOrFail($id);
-        $intervensi->delete();
+    // public function destroy($id)
+    // {
+    //     $intervensi = BentukIntervensi::findOrFail($id);
+    //     $intervensi->delete();
 
-        return redirect()->route('intervensi.index')->with('success', 'Intervensi deleted successfully.');
-    }
+    //     return redirect()->route('intervensi.index')->with('success', 'Intervensi deleted successfully.');
+    // }
 }

@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\Balita;
+use App\Livewire\Pauds;
+use App\Models\Kecamatan;
+use App\Livewire\Keluarga;
+use App\Livewire\BalitaEdit;
 use App\Exports\BalitaExport;
 use App\Livewire\BalitaDetail;
 use App\Exports\StuntingExport;
@@ -11,14 +16,11 @@ use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
+use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
 use App\Http\Controllers\IntervensiBPASController;
 use App\Http\Controllers\IntervensiNonBPASController;
-use App\Livewire\BalitaEdit;
-use App\Livewire\Keluarga;
-use App\Livewire\Pauds;
-use App\Models\Balita;
 
 Route::get('/', function () {
     return view('pages.auth.auth-login');
@@ -35,8 +37,17 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/users',[UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class);
     // Route::get('/user/chart', 'UserController@showChart');
+
+    Route::get('sawahlunto', function(){
+        return view('pages.masters.sawahlunto');
+    });
+    Route::get('selectKecamatan', [KecamatanController::class, 'kecamatan'])->name('kecamatan.index');
+    Route::get('selectKelurahandesa/{id}', [KecamatanController::class, 'kelurahandesa']);
+
+    // Chart
     Route::get('/user/chart', [UserController::class, 'showChart']);
     // Route::get('/user/chart', UserController::class);
+    Route::get('/balita/chart', [BalitaController::class,'showChart']);
 
     // Route::resource('balitas', BalitaController::class);
     Route::get('/balitas', [BalitaController::class, 'index'])->name('balita.index');
@@ -46,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/balitas/{id}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
     // Route::patch('/balitas/{id}', [BalitaController::class, 'update'])->name('balita.update');
     // Route::delete('/balitas/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');
+    Route::delete('/balitas/delete/{id}', [BalitaController::class, 'destroy'])->name('balitas.delete');
     Route::get('/balitas-export', [BalitaController::class, 'export'])->name('balitas.export');
     Route::post('/balitas-import', [BalitaController::class, 'import'])->name('balitas.import');
 
@@ -82,16 +94,13 @@ Route::middleware(['auth'])->group(function () {
 
     // Route::resource('bapakasuhs', BapakAsuhController::class);
     Route::get('/bapakasuhs', [BapakAsuhController::class, 'index'])->name('bapakasuhs.index');
+    Route::get('/bapakasuhs/show', [BapakAsuhController::class, 'show'])->name('bapakasuhs.show');
     Route::get('/bapakasuhs/create', [BapakAsuhController::class, 'create'])->name('bapakasuhs.create');
-    Route::post('/bapakasuhs', [BapakAsuhController::class, 'store'])->name('bapakasuhs.store');
-    Route::get('/bapakasuhs/{bapakasuh}', [BapakAsuhController::class, 'show'])->name('bapakasuhs.show');
-    Route::get('/bapakasuhs/{bapakasuh}/edit', [BapakAsuhController::class, 'edit'])->name('bapakasuhs.edit');
-    Route::put('/bapakasuhs/{bapakasuh}', [BapakAsuhController::class, 'update'])->name('bapakasuhs.update');
-    Route::delete('/bapakasuhs/{bapakasuh}', [BapakAsuhController::class, 'destroy'])->name('bapakasuhs.destroy');
-    // Route::get('/get-kabupatenkota', 'BapakAsuhController@getKabupaten');
-    // Route::get('/get-kecamatan/{kabupatenkota_id}', 'BapakAsuhController@getKecamatan');
-    // Route::get('/get-kelurahandesa/{kecamatan_id}', 'BapakAsuhController@getKelurahan');
-    // Route::resource('intervensis', IntervensiController::class);
+    Route::post('/bapakasuhs/store', [BapakAsuhController::class, 'store'])->name('bapakasuhs.store');
+    Route::get('/bapakasuhs/edit/{id}', [BapakAsuhController::class, 'edit'])->name('bapakasuhs.edit');
+    Route::post('/bapakasuhs/update/{id}', [BapakAsuhController::class, 'update'])->name('bapakasuhs.update');
+    Route::delete('/bapakasuhs/delete/{id}', [BapakAsuhController::class, 'destroy'])->name('bapakasuhs.destroy');
+
 
     Route::get('/intervensi', [IntervensiController::class, 'index'])->name('intervensi.index');
     Route::get('/intervensi/create', [IntervensiController::class, 'create'])->name('intervensis.create');
@@ -103,6 +112,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('intervensis/create-jenis', [IntervensiController::class, 'createJenisIntervensi'])->name('intervensis.createJenisIntervensi');
     Route::post('intervensis/store-jenis', [IntervensiController::class, 'storeJenisIntervensi'])->name('intervensis.storeJenisIntervensi');
+
+    Route::get('intervensis/create-bentuk', [IntervensiController::class, 'createBentukIntervensi'])->name('intervensis.createBentukIntervensi');
+    Route::post('intervensis/store-bentuk', [IntervensiController::class, 'storeBentukIntervensi'])->name('intervensis.storeBentukIntervensi');
+    Route::delete('intervensis/delete-bentuk', [IntervensiController::class, 'destroyBentukIntervensi'])->name('intervensis.destroyBentukIntervensi');
 
     Route::resource('anakasuhs', AnakAsuhController::class);
 

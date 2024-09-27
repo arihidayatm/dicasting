@@ -107,8 +107,9 @@
                                                 <th>RT RW</th>
                                                 {{-- <th>Kab/Kota</th> --}}
                                                 <th>Kecamatan</th>
-                                                {{-- <th>Puskesmas</th> --}}
+                                                <th>Puskesmas</th>
                                                 <th>Desa</th>
+                                                <th>Posyandu</th>
                                                 <th>Action</th>
                                             </tr>
                                             @foreach ($balitas as $balita)
@@ -122,16 +123,36 @@
                                                     <td>{{ $balita->NAMA_IBU }}</td>
                                                     <td>{{ $balita->ALAMAT }}</td>
                                                     <td>{{ $balita->RT }} / {{ $balita->RW }}</td>
+                                                    <td>{{ $balita->KECAMATAN }}</td>
+                                                    <td>{{ $balita->PUSKESMAS }}</td>
+                                                    <td>{{ $balita->KELURAHANDESA }}</td>
+                                                    <td>{{ $balita->POSYANDU }}</td>
                                                     {{-- <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td> --}}
-                                                    <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td>
+                                                    {{-- <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td> --}}
                                                     {{-- <td>{{ $balita->puskesmas->NAMA_PUSKESMAS }}</td> --}}
-                                                    <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                    {{-- <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
                                                     <td>
+                                                        <div class="d-flex justify-content-center">
+                                                            <form action="{{ route('balitas.delete', $balita->id) }}"
+                                                                method="POST" class="ml-2">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger"
+                                                                    data-confirm="Realy?|Do you want to continue?"
+                                                                    data-confirm-yes="alert('Deleted :)');">
+                                                                    <i class="fas fa-trash"></i>
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                         {{-- Delete data Balita livewire by id use alert --}}
-                                                        <a href="{{ route('balitas.delete', $balita->id) }}" class="btn btn-danger btn-sm" style="margin-left: 10px;" onclick="return confirm('Are you sure?')"
+                                                        {{-- <a href="{{ route('balitas.delete', $balita->id) }}"
+                                                            class="btn btn-danger btn-sm" style="margin-left: 10px;"
+                                                            onclick="return confirm('Are you sure?')"
                                                             wire:click="delete({{ $balita->id }})"
                                                             wire:target="delete({{ $balita->id }})">
-                                                            <i class="fas fa-trash"></i></a>
+                                                            <i class="fas fa-trash"></i>
+                                                        </a> --}}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -346,7 +367,7 @@
                 </div> --}}
 
                 <!-- Modal Delete -->
-                <div class="modal fade" id="deleteBalitaModal{{ $balita->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteBalitaModalLabel{{ $balita->id }}" aria-hidden="true">
+                {{-- <div class="modal fade" id="deleteBalitaModal{{ $balita->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteBalitaModalLabel{{ $balita->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -369,7 +390,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- Modal Create --}}
                 {{-- <div class="modal fade" id="createBalitaModal" tabindex="-1" role="dialog" aria-labelledby="createBalitaModalLabel" aria-hidden="true">
