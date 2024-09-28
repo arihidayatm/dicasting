@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
-    <title>@yield('title') &mdash; Stisla</title>
+    <title>@yield('title') &mdash; Dicasting</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet"
@@ -18,6 +18,8 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.min.css" rel="stylesheet"/>
 
     {{-- <@livewireStyles />
     <@livewireScripts /> --}}
@@ -32,7 +34,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    @vite('resources/css/app.css')
+    {{-- @vite('resources/css/app.css') --}}
 
 </head>
 
@@ -54,6 +56,8 @@
         </div>
     </div>
 
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.umd.min.js"></script>
     {{-- javascript --}}
     <script src="{{ asset('library/jquery/dist/jquery.min.js') }}"></script>
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}

@@ -86,10 +86,10 @@
                                                             <th>No. KK</th>
                                                             <td>{{ $balita->KELUARGA_ID }}</td>
                                                         </tr>
-                                                        <tr>
+                                                        {{-- <tr>
                                                             <th>Kota</th>
                                                             <td>{{ $balita->kabupatenkota->NAMA_KABKOTA }}</td>
-                                                        </tr>
+                                                        </tr> --}}
                                                         <tr>
                                                             <th>Alamat</th>
                                                             <td>{{ $balita->ALAMAT }}</td>
@@ -100,11 +100,23 @@
                                                         </tr>
                                                         <tr>
                                                             <th>Kecamatan</th>
-                                                            <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td>
+                                                            {{-- <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td> --}}
+                                                            <td>{{ $balita->KECAMATAN }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Puskesmas Terdaftar</th>
+                                                            {{-- <td>{{ $balita->kecamatan->NAMA_KECAMATAN }}</td> --}}
+                                                            <td>{{ $balita->PUSKESMAS }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Desa</th>
-                                                            <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                            {{-- <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
+                                                            <td>{{ $balita->KELURAHANDESA }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Posyandu</th>
+                                                            {{-- <td>{{ $balita->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
+                                                            <td>{{ $balita->POSYANDU }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -113,11 +125,17 @@
                                     </div>
                                     <div class="card-footer text-right">
                                         {{-- Balita Edit modal button --}}
-                                        <a href="{{ route('balitas.edit', $balita->id) }}" class="btn btn-primary"
-                                            wire:click="edit({{ $balita->id }})"
+                                        <a href="{{ route('balitas.edit', $balita->id) }}"
+                                            class="btn btn-primary">
+                                            {{-- wire:click="edit({{ $balita->id }})"
                                             wire:loading.attr="disabled"
-                                            wire:target="edit({{ $balita->id }})">Edit</a>
-                                        <a href="{{ route('balita.index') }}" class="btn btn-secondary">Back</a>
+                                            wire:target="edit({{ $balita->id }})"> --}}
+                                            Edit
+                                        </a>
+                                        <a href="{{ route('balita.index') }}"
+                                            class="btn btn-secondary">
+                                            Back
+                                        </a>
                                     </div>
 
                                 </div>

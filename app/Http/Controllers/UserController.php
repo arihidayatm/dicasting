@@ -112,5 +112,4 @@ class UserController extends Controller
         return view('pages.users.chart', compact('chart'));
     }
 
-
 }

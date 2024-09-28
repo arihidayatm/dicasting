@@ -24,6 +24,11 @@ class Stunting extends Model
         return $this->hasOne(Kecamatan::class,'ID','KECAMATAN_ID');
     }
 
+    public function puskesmas()
+    {
+        return $this->hasOne(Puskesmas::class,'id','PUSKESMAS_ID');
+    }
+
     public function kelurahandesa()
     {
         return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');

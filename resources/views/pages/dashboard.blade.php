@@ -1,6 +1,39 @@
 @extends('layouts.app')
 
 @section('title', 'Dashboard')
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.js"
+        integrity="sha512-QbaChpzUJcRVsOFtDhh/VZMuljqvlPRIhIXsvfREDZcdqzIKdNvAhwrgW+flSxtbxK/BFpdX1y5NSO6bSYHlOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.css"
+        integrity="sha512-w3pXofOHrtYzBYpJwC6TzPH6SxD6HLAbT/rffdkA759nCQvYi5AHy5trNWFboZnj4xtdyK0AFMBtck9eTmwybg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        var options = {
+          series: [44, 55, 13, 43, 22],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+@endsection
 
 @push('style')
     <!-- CSS Libraries -->
@@ -124,75 +157,6 @@
             </div> --}}
 
             {{-- Grafik Perkembangan Stunting --}}
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Statistics Kasus Stunting</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myChart3"
-                                height="170"></canvas>
-
-                            <div class="mb-4 mt-4">
-                                <div class="text-small font-weight-bold text-muted float-right">
-                                    {{-- Total Stunting filter by KECAMATAN_ID --}}
-                                    {{ count(\App\Models\Stunting::all()) }}</div>
-                                <div class="font-weight-bold mb-1">Silungkang</div>
-                                <div class="progress"
-                                    data-height="3">
-                                    <div class="progress-bar"
-                                        role="progressbar"
-                                        data-width="25%"
-                                        aria-valuenow="55"
-                                        aria-valuemin="0"
-                                        aria-valuemax="1000"></div>
-                                </div>
-                            </div>
-                            <div class="mb-4 mt-4">
-                                <div class="text-small font-weight-bold text-muted float-right">{{ count(\App\Models\Stunting::all()) }}</div>
-                                <div class="font-weight-bold mb-1">Lembah Segar</div>
-                                <div class="progress"
-                                    data-height="3">
-                                    <div class="progress-bar"
-                                        role="progressbar"
-                                        data-width="25%"
-                                        aria-valuenow="55"
-                                        aria-valuemin="0"
-                                        aria-valuemax="1000"></div>
-                                </div>
-                            </div>
-                            <div class="mb-4 mt-4">
-                                <div class="text-small font-weight-bold text-muted float-right">{{ count(\App\Models\Stunting::all()) }}</div>
-                                <div class="font-weight-bold mb-1">Barangin</div>
-                                <div class="progress"
-                                    data-height="3">
-                                    <div class="progress-bar"
-                                        role="progressbar"
-                                        data-width="25%"
-                                        aria-valuenow="55"
-                                        aria-valuemin="0"
-                                        aria-valuemax="1000"></div>
-                                </div>
-                            </div>
-                            <div class="mb-4 mt-4">
-                                <div class="text-small font-weight-bold text-muted float-right">{{ count(\App\Models\Stunting::all()) }}</div>
-                                <div class="font-weight-bold mb-1">Talawi</div>
-                                <div class="progress"
-                                    data-height="3">
-                                    <div class="progress-bar"
-                                        role="progressbar"
-                                        data-width="25%"
-                                        aria-valuenow="55"
-                                        aria-valuemin="0"
-                                        aria-valuemax="1000"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
@@ -210,35 +174,8 @@
                         </div>
                         {{-- Grafik Perkembangan Stunting --}}
                         <div class="card-body">
-                            <canvas id="myChart" height="182"></canvas>
-                            <script>
-                                var ctx = document.getElementById('myChart').getContext('2d');
-                                var myChart = new Chart(ctx, {
-                                    type: 'line',
-                                    data: {
-                                        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus'],
-                                        datasets: [{
-                                            label: 'Perkembangan Stunting',
-                                            data: [10, 9, 8, 7, 6, 5, 4, 3],
-                                            borderColor: 'rgba(75, 192, 192, 0.2)',
-                                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
-                                            pointBorderColor: '#fff',
-                                            pointHoverBackgroundColor: '#fff',
-                                            pointHoverBorderColor: 'rgba(220,220,220,1)'
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
+                            <canvas id="myChart" height="150"></canvas>
                         </div>
-
                     </div>
                 </div>
                 {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
@@ -333,23 +270,10 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Doughnut Chart</h4>
-                        </div>
+                <div class="col-xl-6 col-xxl-7">
+                    <div class="card flex-fill w-100">
                         <div class="card-body">
-                            <canvas id="myChart3"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Pie Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myChart4"></canvas>
+                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>
