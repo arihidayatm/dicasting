@@ -138,6 +138,11 @@
                     </li>
                     <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
+                            href="{{ route('nonbapakasuhs.index') }}">
+                            <ion-icon name="briefcase-outline"></ion-icon>&nbsp Data Non BASUH</a>
+                    </li>
+                    <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
+                        <a class="nav-link"
                             href="{{ route('anakasuhs.index') }}">
                             <ion-icon name="id-card-sharp"></ion-icon>&nbsp Data Anak Asuh</a>
                     </li>
@@ -177,10 +182,10 @@
                     <span>Laporan</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('home') ? '' : '' }}'>
+                    {{-- <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Buku Stunting</a>
-                    </li>
+                    </li> --}}
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
                             href="#">Kasus Aktif</a>
@@ -197,10 +202,10 @@
                         <a class="nav-link"
                             href="#">Wisuda Stunting</a>
                     </li>
-                    <li class="{{ Request::is('home') ? '' : '' }}">
+                    {{-- <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
                             href="#">Peta Stunting</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

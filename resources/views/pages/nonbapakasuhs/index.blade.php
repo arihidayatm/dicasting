@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bapak Ibu Asuh')
+@section('title', 'Non Bapak Ibu Asuh')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -12,16 +12,16 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Bapak Ibu Asuh</h1>
+                <h1>Non Bapak Ibu Asuh</h1>
                 <div class="section-header-button">
                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal">
-                        Add Bapak Ibu Asuh
+                        Add Non Bapak Ibu Asuh
                     </button>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('bapakasuhs.index') }}">Bapak Ibu Asuh</a></div>
-                    <div class="breadcrumb-item">List Bapak Ibu Asuh</div>
+                    <div class="breadcrumb-item"><a href="{{ route('nonbapakasuhs.index') }}">Non Bapak Ibu Asuh</a></div>
+                    <div class="breadcrumb-item">List Non Bapak Ibu Asuh</div>
                 </div>
             </div>
             <div class="section-body">
@@ -35,14 +35,14 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>List Bapak Ibu Asuh</h4>
+                                <h4>List Non Bapak Ibu Asuh</h4>
                             </div>
                             <div class="card-body">
 
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('bapakasuhs.index') }}">
+                                    <form method="GET" action="{{ route('nonbapakasuhs.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search Bapak Asuh" name="NAMA_ORANGTUAASUH">
+                                            <input type="text" class="form-control" placeholder="Search Non Bapak Asuh" name="NAMA_NONORANGTUAASUH">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -55,31 +55,27 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>NIK</th>
-                                            <th>Nama Bapak Ibu Asuh</th>
-                                            {{-- <th>OPD/Instansi</th> --}}
-                                            <th>NIP</th>
+                                            <th>Kode</th>
+                                            <th>Nama Non Bapak Ibu Asuh</th>
                                             <th>Alamat</th>
                                             <th>No. HP</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($bapakasuhs as $bapakasuh)
+                                        @foreach ($nonbapakasuhs as $nonbapakasuh)
                                             <tr>
-                                                <td>{{ $bapakasuh->NIK_ORANGTUAASUH }}</td>
-                                                <td>{{ $bapakasuh->NAMA_ORANGTUAASUH }}</td>
-                                                {{-- <td>{{ $bapakasuh->INSTANSI }}</td> --}}
-                                                <td>{{ $bapakasuh->NIP }}</td>
-                                                <td>{{ $bapakasuh->ALAMAT }}</td>
-                                                <td>{{ $bapakasuh->NOHP }}</td>
+                                                <td>{{ $nonbapakasuh->KODE_NONORANGTUAASUH }}</td>
+                                                <td>{{ $nonbapakasuh->NAMA_NONORANGTUAASUH }}</td>
+                                                <td>{{ $nonbapakasuh->ALAMAT }}</td>
+                                                <td>{{ $nonbapakasuh->NOHP }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <button type="button" class="btn btn-sm btn-warning btn-icon"
-                                                            data-toggle="modal" data-target="#editModal{{ $bapakasuh->id }}">
+                                                            data-toggle="modal" data-target="#editModal{{ $nonbapakasuh->id }}">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </button>
 
-                                                        <form action="{{ route('bapakasuhs.destroy', $bapakasuh->id) }}"
+                                                        <form action="{{ route('nonbapakasuhs.destroy', $nonbapakasuh->id) }}"
                                                             method="POST" class="ml-2">
                                                             @csrf
                                                             @method('DELETE')
@@ -97,7 +93,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $bapakasuhs->withQueryString()->links() }}
+                                    {{ $nonbapakasuhs->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
@@ -105,25 +101,25 @@
                 </div>
 
                 <!-- Edit Modal -->
-                @foreach($bapakasuhs as $bapakasuh)
-                <div class="modal fade" id="editModal{{ $bapakasuh->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $bapakasuh->id }}" aria-hidden="true">
+                @foreach($nonbapakasuhs as $nonbapakasuh)
+                <div class="modal fade" id="editModal{{ $nonbapakasuh->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $nonbapakasuh->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $bapakasuh->id }}">Edit Bapak Ibu Asuh</h5>
+                                <h5 class="modal-title" id="editModalLabel{{ $nonbapakasuh->id }}">Edit Non Bapak Ibu Asuh</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ route('bapakasuhs.update', $bapakasuh->id) }}">
+                                <form method="POST" action="{{ route('nonbapakasuhs.update', $nonbapakasuh->id) }}">
                                     @csrf
                                     {{-- @method('PUT') --}}
                                     <div class="form-group">
-                                        <label>NIK</label>
+                                        <label>Kode</label>
                                         <input type="text"
-                                            class="form-control @error('NIK_ORANGTUAASUH') is-invalid @enderror"
-                                            name="NIK_ORANGTUAASUH" value="{{ $bapakasuh->NIK_ORANGTUAASUH }}">
+                                            class="form-control @error('KODE_NONORANGTUAASUH') is-invalid @enderror"
+                                            name="KODE_NONORANGTUAASUH" value="{{ $nonbapakasuh->KODE_NONORANGTUAASUH }}">
                                         @error('NIK_ORANGTUAASUH')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -132,23 +128,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Nama Bapak Asuh</label>
+                                        <label>Nama Non Bapak Asuh</label>
                                         <input type="text"
-                                            class="form-control @error('NAMA_ORANGTUAASUH') is-invalid @enderror"
-                                            name="NAMA_ORANGTUAASUH" value="{{ $bapakasuh->NAMA_ORANGTUAASUH }}">
+                                            class="form-control @error('NAMA_NONORANGTUAASUH') is-invalid @enderror"
+                                            name="NAMA_NONORANGTUAASUH" value="{{ $nonbapakasuh->NAMA_NONORANGTUAASUH }}">
                                         @error('NAMA_ORANGTUAASUH')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>NIP</label>
-                                        <input type="text"
-                                            class="form-control @error('NIP') is-invalid @enderror"
-                                            name="NIP" value="{{ $bapakasuh->NIP }}">
-                                        @error('NIP')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -159,7 +143,7 @@
                                         <label>Alamat</label>
                                         <input type="text"
                                             class="form-control @error('ALAMAT') is-invalid @enderror"
-                                            name="ALAMAT" value="{{ $bapakasuh->ALAMAT }}">
+                                            name="ALAMAT" value="{{ $nonbapakasuh->ALAMAT }}">
                                         @error('ALAMAT')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -171,7 +155,7 @@
                                         <label>No. HP</label>
                                         <input type="number"
                                             class="form-control"
-                                            name="NOHP" value="{{ $bapakasuh->NOHP }}">
+                                            name="NOHP" value="{{ $nonbapakasuh->NOHP }}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -188,44 +172,41 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="createModalLabel">Add Bapak Ibu Asuh</h5>
+                                <h5 class="modal-title" id="createModalLabel">Add Non Bapak Ibu Asuh</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('bapakasuhs.store')}}" method="POST">
+                                <form action="{{ route('nonbapakasuhs.store')}}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label>NIK</label>
+                                        <label>Kode</label>
                                         <input type="text"
                                             class="form-control"
-                                            name="NIK_ORANGTUAASUH" value="{{ $bapakasuh->NIK_ORANGTUAASUH }}">
+                                            name="KODE_NONORANGTUAASUH"
+                                            value="{{ $nonbapakasuh->KODE_NONORANGTUAASUH }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Nama Bapak Asuh</label>
+                                        <label>Nama Non Bapak Asuh</label>
                                         <input type="text"
                                             class="form-control"
-                                            name="NAMA_ORANGTUAASUH" value="{{ $bapakasuh->NAMA_ORANGTUAASUH }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>NIP</label>
-                                        <input type="number"
-                                            class="form-control"
-                                            name="NIP" value="{{ $bapakasuh->NIP }}">
+                                            name="NAMA_NONORANGTUAASUH"
+                                            value="{{ $nonbapakasuh->NAMA_NONORANGTUAASUH }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <input type="text" class="form-control"
-                                            name="ALAMAT" value="{{ $bapakasuh->ALAMAT }}">
+                                            name="ALAMAT"
+                                            value="{{ $nonbapakasuh->ALAMAT }}">
                                     </div>
                                     <div class="form-group">
                                         <label>NO. HP</label>
                                         <input type="number" class="form-control"
-                                            name="NOHP" value="{{ $bapakasuh->NOHP }}">
+                                            name="NOHP"
+                                            value="{{ $nonbapakasuh->NOHP }}">
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Add</button>
@@ -235,7 +216,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- End of create modal bentuk_intervensis --}}
+                {{-- End of create Non Bapak Asuh --}}
             </div>
         </section>
     </div>

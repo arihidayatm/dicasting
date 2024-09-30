@@ -227,6 +227,16 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width:18rem;">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Modal Edit -->
                 {{-- <div class="modal fade" id="editBalitaModal{{ $balita->id }}" tabindex="-1" role="dialog" aria-labelledby="editBalitaModalLabel{{ $balita->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">

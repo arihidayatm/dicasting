@@ -58,7 +58,16 @@
                     </div>
                 </div>
 
-                            {{-- <div class="card-body">
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Tahun Periode</h4>
+                                <div class="row">
+                                    <div class="float-left col-3"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
                                 <div class="float-left col-6">
                                     <form method="GET" action="{{ route('stuntings.eppgbm') }}">
                                         <div class="form-group">
@@ -76,11 +85,13 @@
                                 <div class="float-right col-6">
                                     <a href="{{ route('stuntings.eppgbm') }}" class="btn btn-primary float-left">Create</a>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </section>
+    </div>
 @endsection
 
 @push('scripts')

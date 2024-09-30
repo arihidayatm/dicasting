@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -11,6 +11,7 @@ return [
     | to use as your default colors pallete.
     |
     */
+
 
     'colors' => [
         '#008FFB', '#00E396', '#feb019', '#ff455f', '#775dd0', '#80effe',
