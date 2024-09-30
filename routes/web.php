@@ -12,6 +12,7 @@ use App\Livewire\StuntingDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BalitaController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\StuntingController;
@@ -45,12 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('selectKecamatan', [KecamatanController::class, 'kecamatan'])->name('kecamatan.index');
     Route::get('selectKelurahandesa/{id}', [KecamatanController::class, 'kelurahandesa']);
 
-    // Chart
-    Route::get('/user/chart', [UserController::class, 'showChart']);
-    // Route::get('/user/chart', UserController::class);
-    Route::get('/balita/chart', [BalitaController::class,'showChart']);
-
-    // Route::resource('balitas', BalitaController::class);
+    Route::resource('balitas', BalitaController::class);
     Route::get('/balitas', [BalitaController::class, 'index'])->name('balita.index');
     // Route::get('/balitas/create', [BalitaController::class, 'create'])->name('balita.create');
     // Route::post('/balitas', [BalitaController::class, 'store'])->name('balita.store');
@@ -169,4 +165,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/keluargas/{id}', Keluarga::class)->name('keluargas.delete');
     Route::get('/keluargas/{id}', Keluarga::class)->name('keluargas.show');
 
+    //Laporan
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan/balita-resiko', [LaporanController::class, 'balitaresiko'])->name('laporan.balitaResiko');
+    Route::get('/laporan/kasus-aktif', [LaporanController::class, 'kasusaktif'])->name('laporan.kasusAktif');
+    Route::get('/laporan/kasus-sembuh', [LaporanController::class, 'kasussembuh'])->name('laporan.kasusSembuh');
+    Route::get('/laporan/kasus-meninggal', [LaporanController::class, 'kasusmeninggal'])->name('laporan.kasusMeninggal');
+    Route::get('/laporan/kasus-belum-intervensi', [LaporanController::class, 'kasusbelumintervensi'])->name('laporan.kasusBelumIntervensi');
+    // Chart
+    Route::get('/laporan/user/chart', [UserController::class, 'showChartUser']);
+    Route::get('/laporan/balita/chart', [BalitaController::class,'showChartBalita']);
+    // Route::get('/laporan/balita/chart', [BalitaController::class,'ChartBalitaLP']);
 });

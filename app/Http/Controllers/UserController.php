@@ -60,7 +60,7 @@ class UserController extends Controller
         return redirect('/users');
     }
 
-    public function showChart()
+    public function showChartUser()
     {
         $start = Carbon::parse(User::min("created_at"));
         $end = Carbon::now();
@@ -78,7 +78,7 @@ class UserController extends Controller
         $data = $usersPerMonth->pluck("count")->toArray();
         $labels = $usersPerMonth->pluck("month")->toArray();
 
-        $chart = Chartjs::build()
+        $chartUser = Chartjs::build()
             ->name("UserRegistrationsChart")
             ->type("line")
             ->size(["width" => 400, "height" => 200])
@@ -109,7 +109,7 @@ class UserController extends Controller
                 ]
             ]);
 
-        return view('pages.users.chart', compact('chart'));
+        return view('pages.charts.user', compact('chartUser'));
     }
 
 }

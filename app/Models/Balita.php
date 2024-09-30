@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,6 +14,11 @@ class Balita extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public static function get()
+    {
+        return static::all();
+    }
 
     // public function keluarga()
     // {

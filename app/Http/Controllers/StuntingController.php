@@ -158,5 +158,5 @@ class StuntingController extends Controller
             ->with('lapBulan', $lapBulan);
     }
 
-    
+
 }

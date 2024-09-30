@@ -60,7 +60,12 @@
                     <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('balita.index') }}">
-                            <i class="fas fa-file"></i>Management Balita</a>
+                            <i class="fas fa-file"></i>Data Balita</a>
+                    </li>
+                    <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="/laporan/balita/chart">
+                            <i class="fas fa-file"></i>Balita Chart</a>
                     </li>
                 </ul>
             </li>
@@ -182,25 +187,29 @@
                     <span>Laporan</span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li class="{{ Request::is('home') ? '' : '' }}">
+                        <a class="nav-link"
+                            href="{{ route('laporan.index') }}">Laporan</a>
+                    </li>
                     {{-- <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Buku Stunting</a>
                     </li> --}}
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
-                            href="#">Kasus Aktif</a>
+                            href="{{ route('laporan.kasusAktif') }}">Kasus Aktif</a>
                     </li>
                     <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="#">Kasus Belum Intervensi</a>
+                            href="{{ route('laporan.kasusBelumIntervensi') }}">Kasus Belum Intervensi</a>
                     </li>
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
-                            href="#">Balita Resiko Tinggi</a>
+                            href="{{ route('laporan.balitaResiko') }}">Balita Resiko Tinggi</a>
                     </li>
                     <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="#">Wisuda Stunting</a>
+                            href="{{ route('laporan.kasusSembuh') }}">Wisuda Stunting</a>
                     </li>
                     {{-- <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"

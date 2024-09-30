@@ -52,8 +52,9 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
+                        {{-- icon big --}}
                         <div class="card-icon bg-primary">
-                            <i class="fa-solid fa-children text-white"></i>
+                            <i class="fa-solid fa-children  text-white"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
@@ -159,7 +160,7 @@
             {{-- Grafik Perkembangan Stunting --}}
 
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistics Kasus Stunting</h4>
@@ -174,14 +175,14 @@
                         </div>
                         {{-- Grafik Perkembangan Stunting --}}
                         <div class="card-body">
-                            <canvas id="myChart" height="150"></canvas>
+                            <canvas id="myChart" height="140"></canvas>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+                <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Bapak Asuh</h4>
+                            <h4>Bapak Ibu Asuh</h4>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled list-unstyled-border">
@@ -221,18 +222,7 @@
                                             Nulla vel metus scelerisque ante sollicitudin.</span>
                                     </div>
                                 </li>
-                                <li class="media">
-                                    <img class="rounded-circle mr-3"
-                                        width="50"
-                                        src="{{ asset('img/avatar/avatar-4.png') }}"
-                                        alt="avatar">
-                                    <div class="media-body">
-                                        <div class="float-right">21m</div>
-                                        <div class="media-title">Alfa Zulkarnain</div>
-                                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla.
-                                            Nulla vel metus scelerisque ante sollicitudin.</span>
-                                    </div>
-                                </li>
+
                             </ul>
                             <div class="pt-1 pb-1 text-center">
                                 <a href="#"
@@ -242,7 +232,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -270,7 +260,14 @@
             </div>
 
             <div class="row">
-                <div class="col-xl-6 col-xxl-7">
+                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+                    <div class="card flex-fill w-100">
+                        <div class="card-body">
+                            <div id="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
                     <div class="card flex-fill w-100">
                         <div class="card-body">
                             <div id="chart"></div>
@@ -278,6 +275,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
     </div>
 @endsection

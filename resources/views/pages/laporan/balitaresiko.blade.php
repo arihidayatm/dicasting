@@ -1,42 +1,40 @@
 @extends('layouts.app')
 
-@section('title', 'Chart Users')
+@section('title', 'Balita Resiko')
 
 @push('style')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
+    {{-- highcharts --}}
+    <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 @endpush
 
 @section('main')
     <div class="main-content">
+        {{-- resources/views/pages/laporan/balitaresiko.blade.php --}}
         <section class="section">
             <div class="section-header">
-                <h1>Chart Users</h1>
-                <div class="section-header-button">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary">Add New</a>
-                </div>
+                <h1>Data Balita Resiko</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></div>
-                    <div class="breadcrumb-item">All Users</div>
+                    <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ route('balita.index') }}">Balita</a></div>
+                    <div class="breadcrumb-item">Data Resiko</div>
                 </div>
             </div>
+
             <div class="section-body">
                 <div class="row">
                     <div class="col-12">
-                        @include('layouts.alert')
-                    </div>
-                </div>
-                <h2 class="section-title">Chart User Registration</h2>
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>User Registration</h4>
+                                <h4>Data Balita Resiko</h4>
                             </div>
-                            <div class="card-body" style="width: 75%;">
-                                <x-chartjs-component :chart="$chart" />
+                            <div class="card-body">
+                                ini adalah data balita resiko tinggi stunting
+                                {{-- <canvas id="myChart"></canvas> --}}
                             </div>
                         </div>
                     </div>
@@ -47,7 +45,10 @@
 @endsection
 
 @push('scripts')
-    <!-- JS Libraies -->
+    {{-- script Highchartjs --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JS Libraries -->
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
     <!-- Page Specific JS File -->

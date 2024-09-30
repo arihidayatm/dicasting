@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class IntervensiNonBPASController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $intervensiNonBPAS = IntervensiNonBPAS::with(['user','bentukintervensi','stunting','kabupatenkota','kecamatan', 'kelurahandesa'])

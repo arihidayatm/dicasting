@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balita;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use App\Exports\BalitaExport;
 use App\Imports\BadutaImport;
@@ -137,16 +138,36 @@ class BalitaController extends Controller
     //     return redirect()->route('balita.index')->with('succes','Data Baduta Berhasil di Import');
     // }
 
-    public function showChart()
+    //type Bar
+    public function showChartBalita()
     {
-        $chart = Chartjs::database(Balita::all(), 'bar', 'highcharts')
-            ->title('Jumlah Balita')
-            ->elementLabel('Jumlah Balita')
-            ->dimensions(1000, 500)
-            ->responsive(true)
-            ->groupByMonth(date('Y'), true);
+        $maleCount = Balita::where("JENIS_KELAMIN", "L")->count();
+        $femaleCount = Balita::where("JENIS_KELAMIN", "P")->count();
 
-        return view('pages.charts.balita', compact('chart'));
+        $chartSexRatio = Chartjs::build()
+            ->name("SexRatioChart")
+            ->type("pie")
+            ->size(["width" => 200, "height" => 200])
+            ->labels(["Laki-laki", "Perempuan"])
+            ->datasets([
+                [
+                    "label" => "Jenis Kelamin",
+                    "backgroundColor" => ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)"],
+                    "borderColor" => ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
+                    "borderWidth" => 1,
+                    "data" => [$maleCount, $femaleCount]
+                ]
+            ])
+            ->options([
+                'plugins' => [
+                    'title' => [
+                        'display' => true,
+                        'text' => 'Balita Berdasarkan Jenis Kelamin'
+                    ]
+                ]
+            ]);
+
+        return view('pages.charts.balita', compact('chartSexRatio'));
     }
 
 
