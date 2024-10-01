@@ -47,7 +47,7 @@
                     <li class='{{ Request::is('keluargas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('keluargas.index') }}">
-                            <i class="fas fa-file"></i>Management Keluarga</a>
+                            <ion-icon name="list-circle-outline"></ion-icon>&nbsp Data Keluarga</a>
                     </li>
                 </ul>
             </li>
@@ -60,12 +60,12 @@
                     <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('balita.index') }}">
-                            <i class="fas fa-file"></i>Data Balita</a>
+                            <ion-icon name="body-outline"></ion-icon>&nbsp Data Balita</a>
                     </li>
                     <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
                         <a class="nav-link"
                             href="/laporan/balita/chart">
-                            <i class="fas fa-file"></i>Balita Chart</a>
+                            <ion-icon name="pulse-outline"></ion-icon></i>&nbsp Balita Chart</a>
                     </li>
                 </ul>
             </li>
@@ -78,7 +78,7 @@
                     <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('puskesmas.index') }}">
-                            <i class="fas fa-file"></i>Management Puskesmas</a>
+                            <ion-icon name="business-outline"></ion-icon>&nbsp Management Puskesmas</a>
                     </li>
                 </ul>
             </li>
@@ -90,8 +90,8 @@
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('posyandus.index') }}">
-                            <i class="fas fa-file"></i>Management Posyandu</a>
+                            href="{{ route('posyandus.index') }}"> 
+                            <ion-icon name="today-outline"></ion-icon>&nbsp Management Posyandu</a>
                     </li>
                 </ul>
             </li>
@@ -104,7 +104,7 @@
                     <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">
-                            <i class="fas fa-file"></i>Management PAUD</a>
+                            <ion-icon name="basket-outline"></ion-icon>&nbsp Management PAUD</a>
                     </li>
                 </ul>
             </li>
@@ -120,12 +120,17 @@
                     <li class='{{ Request::is('stuntings') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('stuntings.dataEppgbm') }}">
-                            <i class="fas fa-file-import"></i>Data EPPGBM</a>
+                            <ion-icon name="file-tray-stacked-outline"></ion-icon>&nbsp Data EPPGBM</a>
                     </li>
                     <li class='{{ Request::is('stuntings') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('stuntings.index') }}">
-                            <i class="fas fa-file"></i>Management Data</a>
+                            <ion-icon name="people-outline"></ion-icon>&nbsp Management Data</a>
+                    </li>
+                    <li class='{{ Request::is('stuntings') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="/laporan/stunting/chart">
+                            <ion-icon name="stats-chart-outline"></ion-icon>&nbsp Stunting chart</a>
                     </li>
                 </ul>
             </li>
@@ -149,7 +154,7 @@
                     <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('anakasuhs.index') }}">
-                            <ion-icon name="id-card-sharp"></ion-icon>&nbsp Data Anak Asuh</a>
+                            <ion-icon name="fitness-outline"></ion-icon>&nbsp Data Anak Asuh</a>
                     </li>
                 </ul>
             </li>
@@ -164,52 +169,57 @@
                     <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi.index') }}">
-                            <i class="fas fa-marker"></i>Data Intervensi</a>
+                            <ion-icon name="share-social-outline"></ion-icon>&nbsp Data Intervensi</a>
                     </li>
                     <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi-bpas.index') }}">
-                            <i class="fas fa-file-import"></i>BASUH</a>
+                            <ion-icon name="git-merge-outline"></ion-icon>&nbsp BASUH</a>
                     </li>
                     <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href={{ route('intervensi-nonbpas.index') }}>
-                            <i class="fas fa-file-import"></i>Non BASUH</a>
+                            <ion-icon name="git-merge-outline"></ion-icon>&nbsp Non BASUH</a>
                     </li>
                 </ul>
             </li>
 
             {{-- Laporan --}}
             <li class="menu-header">Laporan</li>
-            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-file-invoice"></i>
+            <li class="nav-item dropdown {{ Request::is('home') ? 'active' : '' }}">
+                <a href="{{ route('laporan.index') }}" class="nav-link has-dropdown">
+                    <i class="fa-solid fa-chart-simple"></i>
                     <span>Laporan</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('home') ? '' : '' }}">
+                    {{-- <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
-                            href="{{ route('laporan.index') }}">Laporan</a>
-                    </li>
+                            href="">
+                            <ion-icon name="stats-chart-outline"></ion-icon>&nbsp Laporan</a>
+                    </li> --}}
                     {{-- <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Buku Stunting</a>
                     </li> --}}
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
-                            href="{{ route('laporan.kasusAktif') }}">Kasus Aktif</a>
+                            href="{{ route('laporan.kasusAktif') }}">
+                            <ion-icon name="alert-circle-outline"></ion-icon>&nbsp Kasus Aktif</a>
                     </li>
                     <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('laporan.kasusBelumIntervensi') }}">Kasus Belum Intervensi</a>
+                            href="{{ route('laporan.kasusBelumIntervensi') }}">
+                            <ion-icon name="layers-outline"></ion-icon>&nbsp Kasus Belum Intervensi</a>
                     </li>
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
-                            href="{{ route('laporan.balitaResiko') }}">Balita Resiko Tinggi</a>
+                            href="{{ route('laporan.balitaResiko') }}">
+                            <ion-icon name="trending-up-outline"></ion-icon>&nbsp Balita Resiko Tinggi</a>
                     </li>
                     <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('laporan.kasusSembuh') }}">Wisuda Stunting</a>
+                            href="{{ route('laporan.kasusSembuh') }}">
+                            <ion-icon name="sparkles-outline"></ion-icon>&nbsp Wisuda Stunting</a>
                     </li>
                     {{-- <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"

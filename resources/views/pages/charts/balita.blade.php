@@ -23,7 +23,7 @@
                             <div class="card-header">
                                 <h4>Balita Berdasarkan Jenis Kelamin</h4>
                             </div>
-                            <div class="card-body center" style="width: 75% !important;">
+                            <div class="card-body center" style="width: 100% !important;">
                                 {!! $chartSexRatio->render() !!}
                             </div>
                         </div>

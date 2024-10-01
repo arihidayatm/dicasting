@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Balita;
-use App\Livewire\Pauds;
 use App\Models\Kecamatan;
 use App\Livewire\Keluarga;
 use App\Livewire\BalitaEdit;
@@ -17,6 +16,7 @@ use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
@@ -28,11 +28,14 @@ Route::get('/', function () {
     return view('pages.auth.auth-login');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () 
+{
     // Route::get('home', BapakAsuhController::class);
     Route::get('home', function () {
         return view('pages.dashboard');
-    })->name('home');
+    Route::get('home', [DashboardController::class, 'index'])
+    ->name('home');
+    });
 
 
     //MASTERS
@@ -175,5 +178,6 @@ Route::middleware(['auth'])->group(function () {
     // Chart
     Route::get('/laporan/user/chart', [UserController::class, 'showChartUser']);
     Route::get('/laporan/balita/chart', [BalitaController::class,'showChartBalita']);
-    // Route::get('/laporan/balita/chart', [BalitaController::class,'ChartBalitaLP']);
+    Route::get('/laporan/stunting/chart', [StuntingController::class,'showChartStunting']);
 });
+

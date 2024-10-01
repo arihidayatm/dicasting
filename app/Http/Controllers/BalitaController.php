@@ -15,9 +15,6 @@ use IcehouseVentures\LaravelChartjs\Facades\Chartjs;
 
 class BalitaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         // $kecamatans = Balita::select('KECAMATAN_ID')->distinct()->get();
@@ -151,10 +148,12 @@ class BalitaController extends Controller
             ->labels(["Laki-laki", "Perempuan"])
             ->datasets([
                 [
-                    "label" => "Jenis Kelamin",
-                    "backgroundColor" => ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)"],
-                    "borderColor" => ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
-                    "borderWidth" => 1,
+                    "label" => "Stunting",
+                    // "backgroundColor" => ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)"],
+                    "backgroundColor" => ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
+                    // "borderColor" => ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
+                    "borderColor" => ['rgba(255,255,255)'],
+                    "borderWidth" => 2,
                     "data" => [$maleCount, $femaleCount]
                 ]
             ])

@@ -24,7 +24,7 @@
                                 <h4>Balita Berdasarkan Jenis Kelamin</h4>
                             </div>
                             <div class="card-body center" style="width: 75% !important;">
-                                {!! $chartSexRatio->render() !!}
+                                {{-- {!! $chartSexRatio->render() !!} --}}
                             </div>
                         </div>
                     </div>
@@ -37,5 +37,5 @@
 @push('scripts')
     {{-- cdn chartjs --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {!! $chartSexRatio->render() !!}
+    {{-- {!! $chartSexRatio->render() !!} --}}
 @endpush

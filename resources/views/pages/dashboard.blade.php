@@ -1,39 +1,12 @@
 @extends('layouts.app')
 
 @section('title', 'Dashboard')
-@section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.js"
-        integrity="sha512-QbaChpzUJcRVsOFtDhh/VZMuljqvlPRIhIXsvfREDZcdqzIKdNvAhwrgW+flSxtbxK/BFpdX1y5NSO6bSYHlOA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.css"
-        integrity="sha512-w3pXofOHrtYzBYpJwC6TzPH6SxD6HLAbT/rffdkA759nCQvYi5AHy5trNWFboZnj4xtdyK0AFMBtck9eTmwybg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script>
-        var options = {
-          series: [44, 55, 13, 43, 22],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-    </script>
-@endsection
+@push('style')
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Tambahkan ini -->
+@endpush
 
 @push('style')
     <!-- CSS Libraries -->
@@ -76,7 +49,7 @@
                                 <h4>Total Kasus Aktif</h4>
                             </div>
                             <div class="card-body">
-                                1,201{{-- {{ count(\App\Models\Permission::all()) }} --}}
+                                {{ count(\App\Models\Stunting::all()) }}
                             </div>
                         </div>
                     </div>
@@ -91,7 +64,8 @@
                                 <h4>Total Belum Dapatkan Intervensi</h4>
                             </div>
                             <div class="card-body">
-                                1,201
+                                {{-- count total Stunting belum diberi intervensi --}}
+                                {{ App\Models\Stunting::totalBelumDiberiIntervensi() }}
                             </div>
                         </div>
                     </div>
@@ -121,7 +95,8 @@
                                 <h4>Total Balita Beresiko Tinggi Stunting</h4>
                             </div>
                             <div class="card-body">
-                                50{{-- {{ count(\App\Models\Position::all())}} --}}
+                                {{-- count total stunting dengan status TB/U = Sangat Pendek --}}
+                                {{ count(\App\Models\Stunting::where('STATUS_TBU','Sangat Pendek')->get()) }}
                             </div>
                         </div>
                     </div>
@@ -136,7 +111,7 @@
                                 <h4>Total Balita Tidak Beresiko Tinggi Stunting</h4>
                             </div>
                             <div class="card-body">
-                                10{{-- {{ count(\App\Models\Position::all())}} --}}
+                                {{ count(\App\Models\Stunting::where('STATUS_TBU','Normal')->get()) }}
                             </div>
                         </div>
                     </div>
@@ -158,9 +133,21 @@
             </div> --}}
 
             {{-- Grafik Perkembangan Stunting --}}
-
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Statistik Kasus Stunting</h4>
+                        </div>
+                        <div class="card-body center" style="width: 100% !important;">
+                            {{-- {!! $chartLineStunting->render() !!} --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                {{-- <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistics Kasus Stunting</h4>
@@ -173,12 +160,11 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- Grafik Perkembangan Stunting --}}
                         <div class="card-body">
                             <canvas id="myChart" height="140"></canvas>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -296,4 +282,11 @@
     <script src="{{ asset('js/page/modules-chartjs.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/index-0.js') }}"></script>
+
+    {{-- cdn chartjs --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- {!! $chartLineStunting->render() !!}
+    {!! $chartSexRatio->render() !!}
+    {!! $chartPieSexRatio->render() !!}
+    {!! $chartStuntingKecamatan->render() !!} --}}
 @endpush

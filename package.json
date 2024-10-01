@@ -14,6 +14,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "highcharts": "^11.4.8",
         "turbolinks": "^5.2.0"
     }
 }
