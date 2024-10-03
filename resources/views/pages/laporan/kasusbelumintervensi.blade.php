@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Stunting Belum Intervensi')
+@section('title', 'Laporan Kasus Belum Intervensi')
 
 @push('style')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    {{-- cdn chartjs --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @endpush
 
@@ -14,17 +12,28 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Stunting Belum Intervensi</h1>
+                <h1>Laporan Kasus Belum Intervensi</h1>
+                <div class="section-header-breadcrumb">
+                    <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ route('laporan.index') }}">Laporan</a></div>
+                    <div class="breadcrumb-item">Kasus Belum Intervensi</div>
+                </div>
             </div>
-            <div class="section-body">
+
+            <div class="section-body"></div>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Data Stunting Belum Intervensi</h4>
+                                <h4>Kasus Belum Intervensi</h4>
                             </div>
                             <div class="card-body">
-                                <div id="chart"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        ini adalah Laporan Kasus Belum Intervensi
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,8 +45,5 @@
 
 @push('scripts')
     <!-- JS Libraies -->
-    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/features-posts.js') }}"></script>
 @endpush

@@ -10,6 +10,6 @@ abstract class Controller
     public function dashboard()
     {
         $bapakasuhs = BapakAsuh::all(); // contoh query untuk mendapatkan data bapak asuh
-        return view('dashboard', compact('bapakasuhs'));
+        return view('pages.dashboard', compact('bapakasuhs'));
     }
 }

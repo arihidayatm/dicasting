@@ -21,10 +21,20 @@
                     <div class="col-lg-6 col-md-12 col-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Balita Berdasarkan Jenis Kelamin</h4>
+                                <h4>Anak Berdasarkan Jenis Kelamin</h4>
                             </div>
                             <div class="card-body center" style="width: 100% !important;">
                                 {!! $chartSexRatio->render() !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Status Anak Berdasarkan Umur</h4>
+                            </div>
+                            <div class="card-body center" style="width: 100% !important;">
+                                {!! $chartAgeStatus->render() !!}
                             </div>
                         </div>
                     </div>

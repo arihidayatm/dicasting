@@ -136,7 +136,58 @@ class BalitaController extends Controller
     // }
 
     //type Bar
-    public function showChartBalita()
+    public function showChartAgeStatus()
+    {
+        // Ambil tanggal lahir dari tabel Balita
+        $tglLahir = Balita::pluck('TGL_LAHIR');
+
+        // Hitung umur sampai hari ini berdasarkan TGL_LAHIR
+        $umur = [];
+        foreach ($tglLahir as $lahir) {
+            $umur[] = Carbon::parse($lahir)->diffInMonths(Carbon::now());
+        }
+
+        // Hitung jumlah Baduta (0-24 bulan) dan Balita (25-60 bulan)
+        $baduta = 0;
+        $balita = 0;
+        foreach ($umur as $age) {
+            if ($age <= 24) {
+                $baduta++;
+            } elseif ($age >= 25 && $age <= 60) {
+                $balita++;
+            }
+        }
+
+        $chartAgeStatus = Chartjs::build()
+            ->name("AgeStatusChart")
+            ->type("bar")
+            ->size(["width" => 200, "height" => 200])
+            ->labels(["Anak"])
+            ->datasets([
+                [
+                    "label" => "Baduta (0-24 bulan)",
+                    "backgroundColor" => ["rgba(255, 99, 132, 0.2)"],
+                    "data" => [$baduta]
+                ],
+                [
+                    "label" => "Balita (25-60 bulan)",
+                    "backgroundColor" => ["rgba(54, 162, 235, 0.2)"],
+                    "data" => [$balita]
+                ]
+            ])
+            ->options([
+                'plugins' => [
+                    'title' => [
+                        'display' => true,
+                        'text' => 'Status Anak Berdasarkan Kategori Umur'
+                    ]
+                ]
+        ]);
+
+        return $chartAgeStatus;
+    }
+
+    public function showChartSexRatio()
     {
         $maleCount = Balita::where("JENIS_KELAMIN", "L")->count();
         $femaleCount = Balita::where("JENIS_KELAMIN", "P")->count();
@@ -148,7 +199,7 @@ class BalitaController extends Controller
             ->labels(["Laki-laki", "Perempuan"])
             ->datasets([
                 [
-                    "label" => "Stunting",
+                    "label" => "Anak",
                     // "backgroundColor" => ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)"],
                     "backgroundColor" => ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
                     // "borderColor" => ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
@@ -161,12 +212,20 @@ class BalitaController extends Controller
                 'plugins' => [
                     'title' => [
                         'display' => true,
-                        'text' => 'Balita Berdasarkan Jenis Kelamin'
+                        'text' => 'Anak Berdasarkan Jenis Kelamin'
                     ]
                 ]
             ]);
 
-        return view('pages.charts.balita', compact('chartSexRatio'));
+        // return view('pages.charts.balita', compact('chartSexRatio'));
+        return $chartSexRatio;
+    }
+
+    public function showChartBalita()
+    {
+        $chartAgeStatus = $this->showchartAgeStatus();
+        $chartSexRatio = $this->showChartSexRatio();
+        return view('pages.charts.balita', compact('chartAgeStatus','chartSexRatio'));
     }
 
 

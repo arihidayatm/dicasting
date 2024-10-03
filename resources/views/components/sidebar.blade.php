@@ -199,7 +199,8 @@
                     </li> --}}
                     <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="#">Buku Stunting</a>
+                            href="{{ route('laporan.bukuStunting') }}">
+                            <ion-icon name="book-outline"></ion-icon>&nbsp Buku Stunting</a>
                     </li>
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"

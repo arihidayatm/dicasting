@@ -95,18 +95,18 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/bapakasuhs/show', [BapakAsuhController::class, 'show'])->name('bapakasuhs.show');
     Route::get('/bapakasuhs/create', [BapakAsuhController::class, 'create'])->name('bapakasuhs.create');
     Route::post('/bapakasuhs/store', [BapakAsuhController::class, 'store'])->name('bapakasuhs.store');
-    Route::get('/bapakasuhs/edit/{id}', [BapakAsuhController::class, 'edit'])->name('bapakasuhs.edit');
-    Route::post('/bapakasuhs/update/{id}', [BapakAsuhController::class, 'update'])->name('bapakasuhs.update');
-    Route::delete('/bapakasuhs/delete/{id}', [BapakAsuhController::class, 'destroy'])->name('bapakasuhs.destroy');
+    Route::get('/bapakasuhs/{id}/edit', [BapakAsuhController::class, 'edit'])->name('bapakasuhs.edit');
+    Route::post('/bapakasuhs/{id}/update', [BapakAsuhController::class, 'update'])->name('bapakasuhs.update');
+    Route::delete('/bapakasuhs/{id}/delete', [BapakAsuhController::class, 'destroy'])->name('bapakasuhs.destroy');
 
     // Route::resource('non-bapakasuhs', NonBapakAsuhController::class);
     Route::get('/non-bapakasuhs', [NonBapakAsuhController::class, 'index'])->name('nonbapakasuhs.index');
     Route::get('/non-bapakasuhs/show', [NonBapakAsuhController::class, 'show'])->name('nonbapakasuhs.show');
     Route::get('/non-bapakasuhs/create', [NonBapakAsuhController::class, 'create'])->name('nonbapakasuhs.create');
     Route::post('/non-bapakasuhs/store', [NonBapakAsuhController::class, 'store'])->name('nonbapakasuhs.store');
-    Route::get('/non-bapakasuhs/edit/{id}', [NonBapakAsuhController::class, 'edit'])->name('nonbapakasuhs.edit');
-    Route::post('/non-bapakasuhs/update/{id}', [NonBapakAsuhController::class, 'update'])->name('nonbapakasuhs.update');
-    Route::delete('/non-bapakasuhs/delete/{id}', [NonBapakAsuhController::class, 'destroy'])->name('nonbapakasuhs.destroy');
+    Route::get('/non-bapakasuhs/{id}/edit', [NonBapakAsuhController::class, 'edit'])->name('nonbapakasuhs.edit');
+    Route::post('/non-bapakasuhs/{id}/update', [NonBapakAsuhController::class, 'update'])->name('nonbapakasuhs.update');
+    Route::delete('/non-bapakasuhs/{id}/delete', [NonBapakAsuhController::class, 'destroy'])->name('nonbapakasuhs.destroy');
 
     Route::get('/intervensi', [IntervensiController::class, 'index'])->name('intervensi.index');
     Route::get('/intervensi/create', [IntervensiController::class, 'create'])->name('intervensis.create');
@@ -175,6 +175,7 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/laporan/kasus-sembuh', [LaporanController::class, 'kasussembuh'])->name('laporan.kasusSembuh');
     Route::get('/laporan/kasus-meninggal', [LaporanController::class, 'kasusmeninggal'])->name('laporan.kasusMeninggal');
     Route::get('/laporan/kasus-belum-intervensi', [LaporanController::class, 'kasusbelumintervensi'])->name('laporan.kasusBelumIntervensi');
+    Route::get('/laporan/buku-stunting', [LaporanController::class, 'bukuStunting'])->name('laporan.bukuStunting');
     // Chart
     Route::get('/laporan/user/chart', [UserController::class, 'showChartUser']);
     Route::get('/laporan/balita/chart', [BalitaController::class,'showChartBalita']);

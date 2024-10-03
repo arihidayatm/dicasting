@@ -42,5 +42,10 @@ class LaporanController extends Controller
         return view('pages.laporan.kasusbelumintervensi');
     }
 
+    public function bukuStunting()
+    {
+        return view('pages.laporan.bukustunting');
+    }
+
 
 }

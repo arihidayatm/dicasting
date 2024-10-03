@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Chart Balita')
+@section('title', 'Laporan Kasus Aktif')
 
 @push('style')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    {{-- cdn chartjs --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @endpush
 
@@ -14,17 +12,28 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Chart Balita</h1>
+                <h1>Laporan Kasus Aktif</h1>
+                <div class="section-header-breadcrumb">
+                    <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ route('laporan.index') }}">Laporan</a></div>
+                    <div class="breadcrumb-item">Kasus Aktif</div>
+                </div>
             </div>
-            <div class="section-body">
+
+            <div class="section-body"></div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Balita Berdasarkan Jenis Kelamin</h4>
+                                <h4>Kasus Aktif</h4>
                             </div>
-                            <div class="card-body center" style="width: 75% !important;">
-                                {{-- {!! $chartSexRatio->render() !!} --}}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        ini adalah Laporan Kasus Aktif
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -35,7 +44,6 @@
 @endsection
 
 @push('scripts')
-    {{-- cdn chartjs --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {{-- {!! $chartSexRatio->render() !!} --}}
+    <!-- JS Libraies -->
+
 @endpush

@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "arielmejiadev/larapex-charts": "^2.1",
         "icehouse-ventures/laravel-chartjs": "^4.1",
         "laravel/fortify": "^1.22",
         "laravel/framework": "^11.9",
