@@ -67,4 +67,20 @@ class IntervensiBPASController extends Controller
         $intervensiBPAS->delete();
         return redirect()->route('intervensi-bpas.index')->with('success', 'Intervensi Data berhasil dihapus');
     }
+
+    public function detailIntervensi(Request $request, $id)
+    {
+        $detailIntervensis = IntervensiBPAS::get();
+        // $detailIntervensis = IntervensiBPAS::where('NAMA_ORANGTUAASUH', 'like', '%' . request('nama_orangtuaasuh') . '%')
+        // ->orderBy('id', 'desc')
+        // ->paginate(10);
+        return view('pages.intervensis.bpas.detail-intervensi',compact('detailIntervensis'));
+    }
+
+    public function destroydetailIntervensi($id)
+    {
+        $detailIntervensi = IntervensiBPAS::find($id);
+        $detailIntervensi->delete();
+        return redirect()->route('intervensi-bpas.detail')->with('success', 'Data berhasil dihapus');
+    }
 }

@@ -72,10 +72,10 @@
                                                 <td>{{ $intervensi_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('intervensi-bpas.edit', $intervensi_bpas->id) }}'
+                                                        <a href='{{ route('intervensi-bpas.detail', $intervensi_bpas->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
-                                                            Edit
+                                                            Detail
                                                         </a>
 
                                                         <form action="{{ route('intervensi-bpas.destroy', $intervensi_bpas->id) }}"

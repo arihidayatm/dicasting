@@ -130,7 +130,7 @@
                                     <table class="table-striped table">
                                         <tr class="table">
                                             <th>Sumber Data</th>
-                                            <th>Tanggal Pengukuran</th>
+                                            {{-- <th>Tanggal Pengukuran</th> --}}
                                             <th>NIK</th>
                                             {{-- <th>No.KK</th> --}}
                                             <th>Nama Balita</th>

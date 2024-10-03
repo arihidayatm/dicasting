@@ -62,7 +62,7 @@
                             href="{{ route('balita.index') }}">
                             <ion-icon name="body-outline"></ion-icon>&nbsp Data Balita</a>
                     </li>
-                    <li class='{{ Request::is('balitas') ? 'active' : '' }}'>
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="/laporan/balita/chart">
                             <ion-icon name="pulse-outline"></ion-icon></i>&nbsp Balita Chart</a>
@@ -90,7 +90,7 @@
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('posyandus.index') }}"> 
+                            href="{{ route('posyandus.index') }}">
                             <ion-icon name="today-outline"></ion-icon>&nbsp Management Posyandu</a>
                     </li>
                 </ul>
@@ -197,10 +197,10 @@
                             href="">
                             <ion-icon name="stats-chart-outline"></ion-icon>&nbsp Laporan</a>
                     </li> --}}
-                    {{-- <li class='{{ Request::is('home') ? '' : '' }}'>
+                    <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">Buku Stunting</a>
-                    </li> --}}
+                    </li>
                     <li class="{{ Request::is('home') ? '' : '' }}">
                         <a class="nav-link"
                             href="{{ route('laporan.kasusAktif') }}">

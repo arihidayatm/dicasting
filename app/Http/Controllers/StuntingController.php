@@ -160,7 +160,7 @@ class StuntingController extends Controller
     }
 
     public function showStuntingCount()
-    {   
+    {
         $chartLineStunting = Chartjs::build()
             ->name("LineStuntingChart")
             ->type("line")
@@ -168,25 +168,28 @@ class StuntingController extends Controller
             ->labels(["Januari", "Februari", "Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"])
             ->datasets([
                 [
-                    "label" => "Stunting",
+                    "label" => "Jumlah Kasus",
                     "backgroundColor" => '#36A2EB',
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
-                    "data" => [20,22,23,23,24,24,23,22,23]
+                    // "data" => [20,22,23,23,24,24,23,22,]
+                    "data" => [0,0,0,0,0,0,0,197,0]
                 ],
                 [
-                    "label" => "Resiko Stunting",
+                    "label" => "Kasus Aktif",
                     "backgroundColor" => '#FF6384',
                     "borderColor" => '#FF6384',
                     "borderWidth" => 2,
-                    "data" => [20,22,24,22,23,20,20,19,20]
+                    // "data" => [20,22,24,22,23,20,20,19,20]
+                    "data" => [0,0,0,0,0,0,0,197,0]
                 ],
                 [
                     "label" => "Resiko Stunting",
                     "backgroundColor" => '#4BC0C0',
                     "borderColor" => '#4BC0C0',
                     "borderWidth" => 2,
-                    "data" => [21,23,24,23,21,22,20,21,21]
+                    // "data" => [21,23,24,23,21,22,20,21,21]
+                    "data" => [0,0,0,0,0,0,0,197,0]
                 ]
             ])
             ->options([
@@ -287,14 +290,14 @@ class StuntingController extends Controller
                     "backgroundColor" => '#36A2EB',
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
-                    "data" => [12, 19, 3, 5]
+                    "data" => [19, 28, 42, 35]
                 ],
                 [
                     "label" => "Perempuan",
                     "backgroundColor" => '#FF6384',
                     "borderColor" => '#FFB1C1',
                     "borderWidth" => 2,
-                    "data" => [7, 10, 7, 10]
+                    "data" => [14, 26, 19, 14]
                 ]
             ])
             ->options([

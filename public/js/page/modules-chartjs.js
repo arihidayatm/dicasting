@@ -11,7 +11,7 @@ var myChart = new Chart(ctx, {
       borderWidth: 2,
       backgroundColor: '#6777ef',
       borderColor: '#6777ef',
-      borderWidth: 2.5,
+      borderWidth: 2,
       pointBackgroundColor: '#ffffff',
       pointRadius: 4
     }]

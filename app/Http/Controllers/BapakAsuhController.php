@@ -48,16 +48,6 @@ class BapakAsuhController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'NIK_ORANGTUAASUH' => 'required|string|max:255',
-        //     'NAMA_ORANGTUAASUH' => 'required|string|max:255',
-        //     'ALAMAT' => 'required|string|max:255',
-        //     'KABUPATEN_ID' => 'required|exists:kabupatenkotas,id',
-        //     'KECAMATAN_ID' => 'required|exists:kecamatans,id',
-        //     'KELURAHANDESA_ID' => 'required|exists:kelurahandesas,id',
-        //     'NOHP' => 'required|string|max:15',
-        // ]);
-
         $bapakasuh = BapakAsuh::find($id);
         $bapakasuh->NIK_ORANGTUAASUH = $request->NIK_ORANGTUAASUH;
         $bapakasuh->NAMA_ORANGTUAASUH = $request->NAMA_ORANGTUAASUH;
@@ -65,11 +55,10 @@ class BapakAsuhController extends Controller
         $bapakasuh->ALAMAT = $request->ALAMAT;
         $bapakasuh->NOHP = $request->NOHP;
         $bapakasuh->update();
-        // $bapakasuh->update($request->except('_token'));
 
         return redirect()->route('bapakasuhs.index')->with('success', 'Data Bapak Ibu Asuh berhasil diperbarui');
     }
-    
+
     public function destroy($id)
     {
         $bapakasuh = BapakAsuh::find($id);

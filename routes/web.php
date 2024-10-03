@@ -28,14 +28,12 @@ Route::get('/', function () {
     return view('pages.auth.auth-login');
 });
 
-Route::middleware(['auth'])->group(function () 
+Route::middleware(['auth'])->group(function ()
 {
-    // Route::get('home', BapakAsuhController::class);
     Route::get('home', function () {
         return view('pages.dashboard');
-    Route::get('home', [DashboardController::class, 'index'])
-    ->name('home');
-    });
+    })->name('home');
+
 
 
     //MASTERS
@@ -135,6 +133,8 @@ Route::middleware(['auth'])->group(function ()
     Route::get('intervensi-bpas/{id}/edit', [IntervensiBPASController::class,'edit'])->name('intervensi-bpas.edit');
     Route::put('intervensi-bpas/{id}', [IntervensiBPASController::class,'update'])->name('intervensi-bpas.update');
     Route::post('intervensi-bpas', [IntervensiBPASController::class,'store'])->name('intervensi-bpas.store');
+    Route::get('intervensi-bpas/{id}/detail',[IntervensiBPASController::class,'detailIntervensi'])->name('intervensi-bpas.detail');
+    Route::get('intervensi-bpas/{id}/detail/destroy',[IntervensiBPASController::class,'destroydetailIntervensi'])->name('intervensi-bpas.detail.destroy');
 
     //Intervensi Non BPAS
     // Route::resource('/intervensi/intervensi-nonbpas', IntervensiNonBPASController::class);

@@ -4,16 +4,12 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Tambahkan ini -->
-@endpush
-
-@push('style')
-    <!-- CSS Libraries -->
     <link rel="stylesheet"
         href="{{ asset('library/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('library/summernote/dist/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
+
 @endpush
 
 @section('main')
@@ -80,7 +76,7 @@
                                 <h4>Total Penyelesaian Kasus Stunting</h4>
                             </div>
                             <div class="card-body">
-                                100{{-- {{ count(\App\Models\Position::all())}} --}}
+                                0{{-- {{ count(\App\Models\Position::all())}} --}}
                             </div>
                         </div>
                     </div>
@@ -96,7 +92,7 @@
                             </div>
                             <div class="card-body">
                                 {{-- count total stunting dengan status TB/U = Sangat Pendek --}}
-                                {{ count(\App\Models\Stunting::where('STATUS_TBU','Sangat Pendek')->get()) }}
+                                0{{-- {{ count(\App\Models\Stunting::where('STATUS_TBU','Sangat Pendek')->get()) }} --}}
                             </div>
                         </div>
                     </div>
@@ -111,7 +107,7 @@
                                 <h4>Total Balita Tidak Beresiko Tinggi Stunting</h4>
                             </div>
                             <div class="card-body">
-                                {{ count(\App\Models\Stunting::where('STATUS_TBU','Normal')->get()) }}
+                                {{-- {{ count(\App\Models\Stunting::where('STATUS_TBU','Normal')->get()) }} --}}
                             </div>
                         </div>
                     </div>
@@ -133,21 +129,21 @@
             </div> --}}
 
             {{-- Grafik Perkembangan Stunting --}}
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistik Kasus Stunting</h4>
                         </div>
                         <div class="card-body center" style="width: 100% !important;">
-                            {{-- {!! $chartLineStunting->render() !!} --}}
+                            {!! $chartLineStunting->render() !!}
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="row">
-                {{-- <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            </div> --}}
+
+            {{-- <div class="row">
+                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistics Kasus Stunting</h4>
@@ -164,7 +160,7 @@
                             <canvas id="myChart" height="140"></canvas>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -219,33 +215,9 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Bapak Ibu Asuh</h4>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled list-unstyled-border">
-                            @foreach($bapakasuhs as $bapakasuh)
-                                <li class="media">
-                                <img class="rounded-circle mr-3" width="50" src="{{ asset('img/avatar/'.$bapakasuh->avatar) }}" alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right">{{ $bapakasuh->updated_at->diffForHumans() }}</div>
-                                    <div class="media-title">{{ $bapakasuh->NAMA_ORANGTUAASUH }}</div>
-                                    {{-- <span class="text-small text-muted">{{ $bapakasuh->description }}</span>
-                                </div>
-                                </li>
-                            @endforeach
-                            </ul>
-                            <div class="pt-1 pb-1 text-center">
-                            <a href="{{ route('bapakasuhs.index') }}" class="btn btn-primary btn-lg btn-round">View All</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-            </div>
+            </div> --}}
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-6 col-md-12 col-12 col-sm-12">
                     <div class="card flex-fill w-100">
                         <div class="card-body">
@@ -260,7 +232,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </section>
     </div>
@@ -275,16 +247,17 @@
     <script src="{{ asset('library/summernote/dist/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('js/page/index-0.js') }}"></script>
+
     <!-- JS Libraies -->
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/modules-chartjs.js') }}"></script>
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/index-0.js') }}"></script>
 
     {{-- cdn chartjs --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
     {{-- {!! $chartLineStunting->render() !!}
     {!! $chartSexRatio->render() !!}
     {!! $chartPieSexRatio->render() !!}
