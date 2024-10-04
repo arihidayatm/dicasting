@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('INTERVENSIBPAS_ID')->references('id')->on('intervensi_bpas');
             $table->date('TGL_INTERVENSI');
+            $table->string('FOTO_ANAK');
             $table->string('DOKUMENTASI');
+            $table->enum('ANGGARAN', ['APBD', 'NON APBD','LAINNYA']);
             $table->string('KETERANGAN');
             $table->timestamps();
         });

@@ -111,7 +111,8 @@
                                                         method="POST" class="ml-2">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus Bentuk Intervensi ini?')">
                                                             <i class="fas fa-times"></i>
                                                             Delete
                                                         </button>

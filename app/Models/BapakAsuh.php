@@ -11,13 +11,7 @@ class BapakAsuh extends Model
 
     protected $table = 'bapak_asuhs';
 
-    protected $fillable = [
-        'NIK_ORANGTUAASUH',
-        'NAMA_ORANGTUAASUH',
-        'NIP',
-        'ALAMAT',
-        'NOHP',
-    ];
+    protected $guarded = [];
 
     // public function kabupatenkota()
     // {

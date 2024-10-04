@@ -57,7 +57,7 @@ class NonBapakAsuhController extends Controller
         return redirect()->route('nonbapakasuhs.index')->with('success', 'Data Non Bapak Ibu Asuh berhasil diperbarui');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $nonbapakasuh = NonBapakAsuh::find($id);
         $nonbapakasuh->delete();

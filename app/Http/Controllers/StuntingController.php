@@ -121,16 +121,29 @@ class StuntingController extends Controller
             ->with('success', 'Stunting deleted successfully');
     }
 
-    public function import(Request $request)
+    // public function import(Request $request)
+    // {
+    //     $request->validate([
+    //         'file' => 'required|mimes:csv,xls,xlsx',
+    //     ]);
+
+    //     Excel::import(new StuntingImport, $request->file('file'));
+
+    //     return redirect()->route('stuntings.index')
+    //         ->with('success', 'Data berhasil di import.');
+    // }
+
+    public function importDataStunting(Request $request)
     {
         $request->validate([
             'file' => 'required|mimes:csv,xls,xlsx',
         ]);
 
-        Excel::import(new StuntingImport, $request->file('file'));
+        $import = new StuntingImport;
+        $import->startRow(2);
+        Excel::import($import, $request->file('file'));
 
-        return redirect()->route('stuntings.index')
-            ->with('success', 'Data berhasil di import.');
+        return redirect()->route('stuntings.index')->with('succes','Data Stunting Berhasil di Import');
     }
 
     public function export()
@@ -138,26 +151,32 @@ class StuntingController extends Controller
         return (new StuntingExport)->download('stuntings-'.Carbon::now()->timestamp.'.xlsx');
     }
 
-    public function dataEppgbm(Request $request)
+    public function indexEppgbm(Request $request)
     {
-        $lapTahun = TahunLap::all();
-        $lapBulan = BulanLap::when($request->tahun_id, function ($query) use ($request) {
-            return $query->where('TAHUN_ID', $request->tahun_id);
-        })->get();
-        $dataeppgbm = ePPGBM::when($request->tahun_id, function ($query) use ($request) {
-            return $query->where('TAHUN_ID', $request->tahun_id);
-        })->when($request->bulan_id, function ($query) use ($request) {
-            return $query->where('BULAN_ID', $request->bulan_id);
-        })->get();
-        if ($request->tahun_id && $request->bulan_id) {
-            $dataeppgbm = ePPGBM::where('TAHUN_ID', $request->tahun_id)->where('BULAN_ID', $request->bulan_id)->get();
-        }
+        $dataeppgbm = Stunting::all();
 
-        return view('pages.stuntings.eppgbm')
-            ->with('dataeppgbm', $dataeppgbm)
-            ->with('lapTahun', $lapTahun)
-            ->with('lapBulan', $lapBulan);
+        return view('pages.eppgbm.index', compact('dataeppgbm'));
     }
+
+    // {
+    //     $lapTahun = TahunLap::all();
+    //     $lapBulan = BulanLap::when($request->tahun_id, function ($query) use ($request) {
+    //         return $query->where('TAHUN_ID', $request->tahun_id);
+    //     })->get();
+    //     $dataeppgbm = ePPGBM::when($request->tahun_id, function ($query) use ($request) {
+    //         return $query->where('TAHUN_ID', $request->tahun_id);
+    //     })->when($request->bulan_id, function ($query) use ($request) {
+    //         return $query->where('BULAN_ID', $request->bulan_id);
+    //     })->get();
+    //     if ($request->tahun_id && $request->bulan_id) {
+    //         $dataeppgbm = ePPGBM::where('TAHUN_ID', $request->tahun_id)->where('BULAN_ID', $request->bulan_id)->get();
+    //     }
+
+    //     return view('pages.stuntings.eppgbm')
+    //         ->with('dataeppgbm', $dataeppgbm)
+    //         ->with('lapTahun', $lapTahun)
+    //         ->with('lapBulan', $lapBulan);
+    // }
 
     public function showStuntingCount()
     {

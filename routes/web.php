@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function ()
     Route::delete('/stuntings/{id}', [StuntingController::class, 'destroy'])->name('stuntings.destroy');
 
     //Route stuntings/data-eppgbm
-    Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'dataEppgbm'])->name('stuntings.dataEppgbm');
+    Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'indexEppgbm'])->name('stuntings.dataEppgbm');
 
 
     // Route::resource('bapakasuhs', BapakAsuhController::class);
@@ -121,7 +121,7 @@ Route::middleware(['auth'])->group(function ()
 
     Route::get('intervensis/create-bentuk', [IntervensiController::class, 'createBentukIntervensi'])->name('intervensis.createBentukIntervensi');
     Route::post('intervensis/store-bentuk', [IntervensiController::class, 'storeBentukIntervensi'])->name('intervensis.storeBentukIntervensi');
-    Route::delete('intervensis/delete-bentuk', [IntervensiController::class, 'destroyBentukIntervensi'])->name('intervensis.destroyBentukIntervensi');
+    Route::delete('intervensis/{id}/destroy', [IntervensiController::class, 'destroyBentukIntervensi'])->name('intervensis.destroyBentukIntervensi');
 
     Route::resource('anakasuhs', AnakAsuhController::class);
 
@@ -146,7 +146,7 @@ Route::middleware(['auth'])->group(function ()
     Route::post('intervensi-nonbpas', [IntervensiNonBPASController::class,'store'])->name('intervensi-nonbpas.store');
 
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
-    Route::post('/stunting-import', [StuntingController::class, 'import'])->name('stunting.import');
+    Route::post('/stunting-import', [StuntingController::class, 'importDataStunting'])->name('stunting.import');
 
     //Livewire Stunting
     Route::get('/stuntings/{id}', StuntingDetail::class)->name('stuntings.detail');

@@ -53,26 +53,30 @@
                                             <th>Tanggal Intervensi</th>
                                             <th>Bentuk Intervensi</th>
                                             <th>Nama Balita</th>
-                                            <th>Alamat</th>
-                                            {{-- <th>Kecamatan</th>
+                                            {{-- <th>Alamat</th>
+                                            <th>Kecamatan</th>
                                             <th>Desa</th> --}}
+                                            <th>Foto Anak</th>
                                             <th>Bukti Kegiatan</th>
+                                            <th>Anggaran</th>
                                             <th>Keterangan</th>
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
                                         </tr>
                                         @foreach ($detailIntervensis as $detailIntervensi)
                                             <tr>
                                                 <td>{{ $detailIntervensi->created_at }}</td>
                                                 <td>{{ $detailIntervensi->bentukintervensi->BENTUK_INTERVENSI }}</td>
                                                 <td>{{ $detailIntervensi->stunting->NAMA_BALITA }}</td>
-                                                <td>{{ $detailIntervensi->stunting->ALAMAT }}</td>
-                                                {{-- <td>{{ $detailIntervensi->stunting->kecamatan->NAMA_KECAMATAN }}</td>
+                                                {{-- <td>{{ $detailIntervensi->stunting->ALAMAT }}</td>
+                                                <td>{{ $detailIntervensi->stunting->kecamatan->NAMA_KECAMATAN }}</td>
                                                 <td>{{ $detailIntervensi->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
+                                                <td>{{ $detailIntervensi->FOTO_ANAK }}</td>
                                                 <td>{{ $detailIntervensi->DOKUMENTASI }}</td>
+                                                <td>{{ $detailIntervensi->ANGGARAN }}</td>
                                                 <td>{{ $detailIntervensi->KETERANGAN }}</td>
-                                                <td>
+                                                {{-- <td>
 
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     </table>

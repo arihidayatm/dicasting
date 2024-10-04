@@ -11,6 +11,8 @@ class DetailIntervensi extends Model
 
     protected $table = 'detail_intervensi';
 
+    protected $guarded = [];
+
 
     public function intervensiBPAS()
     {

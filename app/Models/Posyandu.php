@@ -11,14 +11,7 @@ class Posyandu extends Model
     protected $table = 'posyandu';
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'ID_POSYANDU',
-        'NAMA_POSYANDU',
-        'KABUPATENKOTA_ID',
-        'KECAMATAN_ID',
-        'PUSKESMAS_ID',
-        'KELURAHANDESA_ID',
-    ];
+    protected $guarded = [];
 
     public function puskesmas()
     {

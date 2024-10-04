@@ -3,12 +3,9 @@
 namespace App\Exports;
 
 use App\Models\Stunting;
-// use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
-// use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-// use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
 class StuntingExport implements FromQuery, WithMapping, WithHeadings
@@ -39,11 +36,13 @@ class StuntingExport implements FromQuery, WithMapping, WithHeadings
             $stunting->RT,
             $stunting->RW,
             $stunting->kecamatan->NAMA_KECAMATAN,
+            $stunting->puskesmas->NAMA_PUSKESMAS,
             $stunting->kelurahandesa->NAMA_KELURAHANDESA,
-            $stunting->posyandu->NAMA_POSYANDU,
-            $stunting->STATUS_BBU,
+            $stunting->POSYANDU,
             $stunting->STATUS_TBU,
-            $stunting->STATUS_BBTB
+            $stunting->ZS_TBU,
+            // $stunting->STATUS_BBU,
+            // $stunting->STATUS_BBTB
         ];
     }
 
@@ -63,11 +62,13 @@ class StuntingExport implements FromQuery, WithMapping, WithHeadings
             'RT',
             'RW',
             'KECAMATAN',
-            'KELURAHANDESA',
+            'PUSKESMAS',
+            'KELURAHAN/DESA',
             'POSYANDU',
-            'STATUS_BBU',
             'STATUS_TBU',
-            'STATUS_BBTB'
+            'ZS_TBU',
+            // 'STATUS_BBU',
+            // 'STATUS_BBTB'
         ];
     }
 }

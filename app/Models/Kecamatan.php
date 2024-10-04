@@ -10,6 +10,9 @@ class Kecamatan extends Model
     use HasFactory;
 
     protected $table = 'kecamatan';
+
+    protected $guarded = [];
+    
     // protected $primarykey = 'ID';
     // protected $fillable = [
     //     'ID',

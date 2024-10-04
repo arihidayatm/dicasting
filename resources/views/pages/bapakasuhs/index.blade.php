@@ -5,7 +5,7 @@
 @push('style')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 @endpush
 
 @section('main')
@@ -78,15 +78,14 @@
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </button>
-
+                                                        {{-- Delete BAPAK ASUH --}}
                                                         <form action="{{ route('bapakasuhs.destroy', $bapakasuh->id) }}"
                                                             method="POST" class="ml-2">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn btn-danger"
-                                                                data-confirm="Realy?|Do you want to continue?"
-                                                                data-confirm-yes="alert('Deleted :)');">
-                                                                <i class="fas fa-trash"></i>
+                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                                <i class="fas fa-times"></i>
                                                                 Delete
                                                             </button>
                                                         </form>
@@ -183,7 +182,7 @@
                 @endforeach
                 {{-- End of edit modal --}}
 
-                <!-- Create Modal -->
+                <!-- Create Modal Bapak Asuh -->
                 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -199,8 +198,13 @@
                                     <div class="form-group">
                                         <label>NIK</label>
                                         <input type="text"
-                                            class="form-control"
+                                            class="form-control" @error('NIK_ORANGTUAASUH') is-invalid  @enderror
                                             name="NIK_ORANGTUAASUH" value="{{ $bapakasuh->NIK_ORANGTUAASUH }}">
+                                        @error('NIK_ORANGTUAASUH')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
@@ -244,7 +248,10 @@
 @push('scripts')
     <script src="{{ asset('library/selectric/public/jquery.selectric.js') }}"></script>
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
+    <!-- JS Libraies -->
+    <script src="{{ asset('library/prismjs/prism.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/bootstrap-modal.js') }}"></script>
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
+
 @endpush

@@ -14,8 +14,8 @@
                 <h1>Data E-PPGBM</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('stuntings.eppgbm') }}">Data E-PPGBM</a></div>
-                    <div class="breadcrumb-item">Data E-PPGBM</div>
+                    <div class="breadcrumb-item"><a href="{{ route('stuntings.dataEppgbm') }}">Data</a></div>
+                    <div class="breadcrumb-item">E-PPGBM</div>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <div class="row mt-4">
+                {{-- <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
     </div>

@@ -59,7 +59,7 @@ class BapakAsuhController extends Controller
         return redirect()->route('bapakasuhs.index')->with('success', 'Data Bapak Ibu Asuh berhasil diperbarui');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $bapakasuh = BapakAsuh::find($id);
         $bapakasuh->delete();

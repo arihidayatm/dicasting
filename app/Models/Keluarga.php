@@ -9,22 +9,8 @@ class Keluarga extends Model
 {
     use HasFactory;
     protected $table = 'keluarga';
-    protected $primarykey = 'ID';
-    protected $fillable = [
-        'NO_KK',
-        'NIK_AYAH',
-        'NAMA_AYAH',
-        'NIK_IBU',
-        'NAMA_IBU',
-        'ALAMAT',
-        'RT',
-        'RW',
-        'KABUPATENKOTA_ID',
-        'KECAMATAN_ID',
-        'KELURAHANDESA_ID',
-        'KODE_POS',
-        'NOHP',
-    ];
+    // protected $primarykey = 'ID';
+    protected $guarded = [];
 
     public function balita()
     {

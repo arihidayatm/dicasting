@@ -60,13 +60,15 @@ class IntervensiController extends Controller
         return redirect()->route('intervensi.index')->with('success', 'Bentuk Intervensi created successfully.');
     }
 
-    public function destroyBentukIntervensi($id)
+    public function destroyBentukIntervensi(Request $request, $id)
     {
-        $bentukIntervensi = BentukIntervensi::findOrFail($id);
+        // Hapus data Bentuk Intervensi
+        $bentukIntervensi = BentukIntervensi::find($id);
         $bentukIntervensi->delete();
-        return redirect()->route('intervensi.index')->with('success', 'Bentuk Intervensi deleted successfully.');
-    }
 
+        // Kembalikan ke List Bentuk Intervensi sesuai dengan Jenisnya
+        return redirect()->route('intervensi.index', ['jenis_intervensi' => $request->jenis_intervensi])->with('success', 'Bentuk Intervensi berhasil dihapus');
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -112,11 +114,4 @@ class IntervensiController extends Controller
         return view('pages.intervensis.edit', compact('intervensi'));
     }
 
-    // public function destroy($id)
-    // {
-    //     $intervensi = BentukIntervensi::findOrFail($id);
-    //     $intervensi->delete();
-
-    //     return redirect()->route('intervensi.index')->with('success', 'Intervensi deleted successfully.');
-    // }
 }
