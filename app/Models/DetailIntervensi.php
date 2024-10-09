@@ -11,7 +11,17 @@ class DetailIntervensi extends Model
 
     protected $table = 'detail_intervensi';
 
-    protected $guarded = [];
+    protected $fillable = [
+        'INTERVENSIBPAS_ID',
+        'INTERVENSINONBPAS_ID',
+        'TGL_INTERVENSI',
+        'FOTO_ANAK',
+        'STATUS',
+        'STUNTING_ID',
+        'ANGGARAN',
+        'DOKUMENTASI',
+        'KETERANGAN',
+    ];
 
 
     public function intervensiBPAS()

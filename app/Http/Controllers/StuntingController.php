@@ -343,7 +343,7 @@ class StuntingController extends Controller
 
     public function dashboardChartStunting()
     {
-        $chartLineStunting = $this->showStuntingCount();
+        $chartLineStunting = $this->dashboardChartStunting();
         // $chartSexRatio = $this->showChartSexRatio();
         // $chartPieSexRatio = $this->showChartPieSexRatio();
         // $chartStuntingKecamatan = $this->showChartStuntingKecamatan();

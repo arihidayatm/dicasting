@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balita;
+use App\Models\Kecamatan;
 use App\Models\Stunting;
 use Illuminate\Http\Request;
 
@@ -42,9 +43,18 @@ class LaporanController extends Controller
         return view('pages.laporan.kasusbelumintervensi');
     }
 
-    public function bukuStunting()
+    public function bukuStunting(Request $request)
     {
-        return view('pages.laporan.bukustunting');
+        return view('pages.laporan.bukustunting', [
+            'stuntings' => Stunting::all(),
+            'kecamatans' => Kecamatan::all(),
+            'url' => $request->url() . '?' . $request->getQueryString(),
+        ]);
+    }
+
+    public function showbukuStunting($id)
+    {
+        return view('pages.laporan.showbukustunting');
     }
 
 

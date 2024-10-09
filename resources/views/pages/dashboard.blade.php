@@ -23,7 +23,7 @@
                     <div class="card card-statistic-1">
                         {{-- icon big --}}
                         <div class="card-icon bg-primary">
-                            <i class="fa-solid fa-children  text-white"></i>
+                            <i class="fas fa-children"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
@@ -38,7 +38,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
-                            <i class="fa-solid fa-children text-white"></i>
+                            <i class="fas fa-children"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
@@ -53,7 +53,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-warning">
-                            <i class="fas fa-file-invoice"></i>
+                            <i class="fas fa-handshake"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
@@ -69,7 +69,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-success">
-                            <i class="fas fa-marker"></i>
+                            <i class="fas fa-chart-simple"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
@@ -100,49 +100,48 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-success">
-                            <i class="fas fa-marker"></i>
+                            <i class="fas fa-people-group"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Balita Tidak Beresiko Tinggi Stunting</h4>
+                                <h4>Total Bapak Ibu Asuh</h4>
                             </div>
                             <div class="card-body">
-                                {{-- {{ count(\App\Models\Stunting::where('STATUS_TBU','Normal')->get()) }} --}}
+                                {{ count(\App\Models\BapakAsuh::all()) }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- User registration chart --}}
-            {{-- <div class="row">
-                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>User Registration</h4>
-                        </div>
-                        <div class="card-body" style="width: 75%;">
-                            <x-chartjs-component :chart="$chart" />
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
             {{-- Grafik Perkembangan Stunting --}}
-            {{-- <div class="row">
-                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistik Kasus Stunting</h4>
                         </div>
                         <div class="card-body center" style="width: 100% !important;">
-                            {!! $chartLineStunting->render() !!}
+                            {!! App\Http\Controllers\DashboardController::showChartLineStunting()->render() !!}
                         </div>
                     </div>
                 </div>
-            </div> --}}
-
+            </div>
+            {{-- Total Stunting Per Kecamatan--}}
             <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Stunting Berdasarkan Jenis Kelamin di Kecamatan</h4>
+                        </div>
+                        <div class="card-body center" style="width: 100% !important;">
+                            {!! App\Http\Controllers\DashboardController::showChartStuntingKecamatan()->render() !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="row">
                 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -207,7 +206,7 @@
 
                             </ul>
                             <div class="pt-1 pb-1 text-center">
-                                <a href="#"
+                                <a href="{{ Route('bapakasuhs.index') }}"
                                     class="btn btn-primary btn-lg btn-round">
                                     View All
                                 </a>
@@ -215,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- <div class="row">
                 <div class="col-lg-6 col-md-12 col-12 col-sm-12">
