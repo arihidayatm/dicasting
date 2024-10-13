@@ -94,7 +94,7 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption>
+                                    {{-- <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption> --}}
                                 </div>
                                 <div class="float-right">
                                     {{ $stuntings->withQueryString()->links() }}
@@ -224,7 +224,7 @@
                                                                                 @endforeach
                                                                             </select>
                                                                         </div> --}}
-                                                                        
+
                                                                         <div class="form-group">
                                                                             <label for="tgl_pengukuran">Tanggal Pengukuran</label>
                                                                             {{-- <input type="date" class="form-control" id="tgl_pengukuran" name="tgl_pengukuran" required> --}}
@@ -262,7 +262,7 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption>
+                                    {{-- <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption> --}}
                                 </div>
                                 <div class="float-right">
                                     {{ $stuntings->withQueryString()->links() }}

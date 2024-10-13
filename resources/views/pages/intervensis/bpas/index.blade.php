@@ -13,7 +13,7 @@
             <div class="section-header">
                 <h1>Intervensi Bapak Ibu Asuh</h1>
                 <div class="section-header-button">
-                    <a href="intervensi-bpas.create" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('intervensi-bpas.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
@@ -57,8 +57,9 @@
                                             <th>Nama Balita</th>
                                             <th>Alamat</th>
                                             {{-- <th>Kab/Kota</th> --}}
-                                            <th>Kecamatan</th>
-                                            <th>Desa</th>
+                                            {{-- <th>Kecamatan</th> --}}
+                                            {{-- <th>Desa</th> --}}
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($intervensiBPAS as $intervensi_bpas)
@@ -68,11 +69,12 @@
                                                 <td>{{ $intervensi_bpas->stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $intervensi_bpas->stunting->ALAMAT }}</td>
                                                 {{-- <td>{{ $intervensi_bpas->stunting->kabupatenkota->NAMA_KABKOTA }}</td> --}}
-                                                <td>{{ $intervensi_bpas->stunting->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $intervensi_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
+                                                {{-- <td>{{ $intervensi_bpas->stunting->kecamatan->NAMA_KECAMATAN }}</td> --}}
+                                                {{-- <td>{{ $intervensi_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td> --}}
+                                                <td>{{ $intervensi_bpas->STATUS }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('intervensi-bpas.detail', $intervensi_bpas->id) }}'
+                                                        <a href='{{ route('intervensi-bpas.add-detail', $intervensi_bpas->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Detail

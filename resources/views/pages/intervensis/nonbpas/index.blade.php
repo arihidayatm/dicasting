@@ -13,7 +13,7 @@
             <div class="section-header">
                 <h1>Intervensi Non Bapak Asuh</h1>
                 <div class="section-header-button">
-                    <a href="#" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('intervensi-nonbpas.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
@@ -72,10 +72,10 @@
                                                 <td>{{ $intervensi_non_bpas->stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('intervensi-nonbpas.edit', $intervensi_non_bpas->id) }}'
+                                                        <a href='{{ route('intervensi-nonbpas.add-detail', $intervensi_non_bpas->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
-                                                            Edit
+                                                            Detail
                                                         </a>
 
                                                         <form action="{{ route('intervensi-nonbpas.destroy', $intervensi_non_bpas->id) }}"

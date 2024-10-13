@@ -11,8 +11,9 @@ class BapakAsuhController extends Controller
     {
         $bapakasuhs = BapakAsuh::get();
         $bapakasuhs = BapakAsuh::where('NAMA_ORANGTUAASUH', 'like', '%' . request('nama_orangtuaasuh') . '%')
-        ->orderBy('id', 'desc')
-        ->paginate(10);
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
         return view('pages.bapakasuhs.index', compact('bapakasuhs'));
     }
 

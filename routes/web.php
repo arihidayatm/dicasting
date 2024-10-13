@@ -23,6 +23,7 @@ use App\Http\Controllers\IntervensiController;
 use App\Http\Controllers\NonBapakAsuhController;
 use App\Http\Controllers\IntervensiBPASController;
 use App\Http\Controllers\IntervensiNonBPASController;
+use App\Models\IntervensiNonBPAS;
 
 Route::get('/', function () {
     return view('pages.auth.auth-login');
@@ -132,8 +133,11 @@ Route::middleware(['auth'])->group(function ()
     Route::delete('intervensi-bpas/{id}/destroy', [IntervensiBPASController::class,'destroy'])->name('intervensi-bpas.destroy');
     Route::get('intervensi-bpas/{id}/edit', [IntervensiBPASController::class,'edit'])->name('intervensi-bpas.edit');
     Route::put('intervensi-bpas/{id}', [IntervensiBPASController::class,'update'])->name('intervensi-bpas.update');
-    Route::post('intervensi-bpas', [IntervensiBPASController::class,'store'])->name('intervensi-bpas.store');
+    Route::post('intervensi-bpas/store', [IntervensiBPASController::class,'store'])->name('intervensi-bpas.store');
+
     Route::get('intervensi-bpas/{id}/detail',[IntervensiBPASController::class,'detailIntervensi'])->name('intervensi-bpas.detail');
+    Route::get('intervensi-bpas/{id}/add-detail',[IntervensiBPASController::class,'addDetailIntervensi'])->name('intervensi-bpas.add-detail');
+    Route::post('intervensi-bpas/{id}/store-detail',[IntervensiBPASController::class,'storeDetailIntervensi'])->name('intervensi-bpas.store-detail');
     Route::get('intervensi-bpas/{id}/detail/destroy',[IntervensiBPASController::class,'destroydetailIntervensi'])->name('intervensi-bpas.detail.destroy');
 
     //Intervensi Non BPAS
@@ -143,7 +147,14 @@ Route::middleware(['auth'])->group(function ()
     Route::delete('intervensi-nonbpas/{id}/destroy', [IntervensiNonBPASController::class,'destroy'])->name('intervensi-nonbpas.destroy');
     Route::get('intervensi-nonbpas/{id}/edit', [IntervensiNonBPASController::class,'edit'])->name('intervensi-nonbpas.edit');
     Route::put('intervensi-nonbpas/{id}', [IntervensiNonBPASController::class,'update'])->name('intervensi-nonbpas.update');
-    Route::post('intervensi-nonbpas', [IntervensiNonBPASController::class,'store'])->name('intervensi-nonbpas.store');
+    Route::post('intervensi-nonbpas/store', [IntervensiNonBPASController::class,'store'])->name('intervensi-nonbpas.store');
+
+    Route::get('intervensi-nonbpas/{id}/detail',[IntervensiNonBPASController::class,'detailIntervensi'])->name('intervensi-nonbpas.detail');
+    Route::get('intervensi-nonbpas/{id}/add-detail',[IntervensiNonBPASController::class,'addDetailIntervensi'])->name('intervensi-nonbpas.add-detail');
+    Route::post('intervensi-nonbpas/{id}/store-detail',[IntervensiNonBPASController::class,'storeDetailIntervensi'])->name('intervensi-nonbpas.store-detail');
+    Route::get('intervensi-nonbpas/{id}/detail/destroy',[IntervensiNonBPASController::class,'destroydetailIntervensi'])->name('intervensi-nonbpas.detail.destroy');
+
+
 
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'importDataStunting'])->name('stunting.import');
@@ -176,6 +187,7 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/laporan/kasus-meninggal', [LaporanController::class, 'kasusmeninggal'])->name('laporan.kasusMeninggal');
     Route::get('/laporan/kasus-belum-intervensi', [LaporanController::class, 'kasusbelumintervensi'])->name('laporan.kasusBelumIntervensi');
     Route::get('/laporan/buku-stunting', [LaporanController::class, 'bukuStunting'])->name('laporan.bukuStunting');
+    // Route::get('/laporan/buku-stunting/{NAMA_BALITA}', [LaporanController::class, 'showbukuStunting'])->name('laporan.showbukuStunting');
     Route::get('/laporan/buku-stunting/{id}', [LaporanController::class, 'showbukuStunting'])->name('laporan.showbukuStunting');
     // Chart
     Route::get('/laporan/user/chart', [UserController::class, 'showChartUser']);

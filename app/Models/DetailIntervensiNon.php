@@ -5,26 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailIntervensi extends Model
+class DetailIntervensiNon extends Model
 {
     use HasFactory;
 
-    protected $table = 'detail_intervensi';
+    protected $table =['detail_intervensinon'];
 
     protected $guarded = [];
-
-    // protected $fillable = [
-    //     'INTERVENSIBPAS_ID',
-    //     'INTERVENSINONBPAS_ID',
-    //     'TGL_INTERVENSI',
-    //     'FOTO_ANAK',
-    //     'STATUS',
-    //     'STUNTING_ID',
-    //     'ANGGARAN',
-    //     'DOKUMENTASI',
-    //     'KETERANGAN',
-    // ];
-
 
     public function intervensiBPAS()
     {

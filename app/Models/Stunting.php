@@ -35,10 +35,10 @@ class Stunting extends Model
         return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');
     }
 
-    public function posyandu()
-    {
-        return $this->hasOne(Posyandu::class, 'id', 'POSYANDU_ID');
-    }
+    // public function posyandu()
+    // {
+    //     return $this->hasOne(Posyandu::class, 'id', 'POSYANDU_ID');
+    // }
 
     public static function getCountStunting($kecamatan)
     {
@@ -63,7 +63,7 @@ class Stunting extends Model
     // Teknik Standar/Biasa
     // public function totalBelumDiberiIntervensi()
     // {
-    //     return $this->hasMany(IntervensiBPAS::class)->where('KONFIRMASI', 'N')->count() + 
+    //     return $this->hasMany(IntervensiBPAS::class)->where('KONFIRMASI', 'N')->count() +
     //         $this->hasMany(IntervensiNonBPAS::class)->where('KONFIRMASI', 'N')->count();
     // }
     // app/Models/Stunting.php
@@ -74,7 +74,7 @@ class Stunting extends Model
     //     $stunting = self::with(['intervensiBPAS', 'intervensiNonBPAS'])->get();
     //     $total = 0;
     //     foreach ($stunting as $stun) {
-    //         $total += $stun->intervensiBPAS->where('KONFIRMASI', 'N')->count() + 
+    //         $total += $stun->intervensiBPAS->where('KONFIRMASI', 'N')->count() +
     //                 $stun->intervensiNonBPAS->where('KONFIRMASI', 'N')->count();
     //     }
     //     return $total;
@@ -88,7 +88,7 @@ class Stunting extends Model
             $stunting = self::with(['intervensiBPAS', 'intervensiNonBPAS'])->get();
             $total = 0;
             foreach ($stunting as $stun) {
-                $total += $stun->intervensiBPAS->where('KONFIRMASI', 'N')->count() + 
+                $total += $stun->intervensiBPAS->where('KONFIRMASI', 'N')->count() +
                         $stun->intervensiNonBPAS->where('KONFIRMASI', 'N')->count();
             }
             return $total;

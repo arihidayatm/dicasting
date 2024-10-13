@@ -34,7 +34,7 @@
                     <li class='{{ Request::is('users') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('users.index') }}">
-                            <i class="fas fa-file"></i>Management User</a>
+                            <ion-icon name="person-circle-outline"></ion-icon>&nbsp Management User</a>
                     </li>
                 </ul>
             </li>
@@ -69,7 +69,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+            {{-- <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fa-solid fa-house-chimney-medical"></i>
                     <span>Puskesmas</span>
@@ -107,7 +107,7 @@
                             <ion-icon name="basket-outline"></ion-icon>&nbsp Management PAUD</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="menu-header">Data</li>
 
@@ -146,16 +146,16 @@
                             href="{{ route('bapakasuhs.index') }}">
                             <ion-icon name="people-sharp"></ion-icon>&nbsp Data BASUH</a>
                     </li>
-                    <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
+                    {{-- <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('nonbapakasuhs.index') }}">
                             <ion-icon name="briefcase-outline"></ion-icon>&nbsp Data Non BASUH</a>
-                    </li>
-                    <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
+                    </li> --}}
+                    {{-- <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('anakasuhs.index') }}">
                             <ion-icon name="fitness-outline"></ion-icon>&nbsp Data Anak Asuh</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

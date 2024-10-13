@@ -10,11 +10,13 @@ class IntervensiBPAS extends Model
     use HasFactory;
 
     protected $table = 'intervensi_bpas';
-    protected $primaryKey = 'id';
+    // protected $primaryKey = 'id';
+    // protected $guarded = [];
     protected $fillable = [
         'BAPAKASUH_ID',
-        'BENTUK_INTERVENSI_ID',
         'STUNTING_ID',
+        'BENTUK_INTERVENSI_ID',
+        'STATUS'
     ];
 
     public function bapakasuh()

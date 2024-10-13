@@ -20,13 +20,85 @@
                 </div>
             </div>
 
-            <div class="section-body"></div>
-                <div class="row">
+            <div class="section-body">
+
+            </div>
+                <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Buku Stunting</h4>
+                                <h4>List Buku Stunting</h4>
                             </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <form method="GET" action="{{ route('laporan.bukuStunting') }}">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search by Nama Balita" name="nama_balita">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary"><i class="fas fa-baby"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-4">
+
+                                    </div>
+
+                                    <div class="col-4">
+                                        <form method="GET" action="{{ route('laporan.bukuStunting') }}">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search by Nama Kecamatan" name="nama_kecamatan">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-warning"><i class="fa-solid fa-square-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix mb-3"></div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Balita</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Alamat</th>
+                                            <th>Kecamatan</th>
+                                            <th>Puskesmas</th>
+                                            <th>Posyandu</th>
+                                            <th>Action</th>
+                                        </tr>
+
+                                        @foreach ($laporanStuntings as $stunting)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $stunting->NAMA_BALITA }}</td>
+                                                <td>{{ $stunting->JENIS_KELAMIN }}</td>
+                                                <td>{{ $stunting->ALAMAT }}</td>
+                                                <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
+                                                <td>{{ $stunting->puskesmas->NAMA_PUSKESMAS }}</td>
+                                                <td>{{ $stunting->POSYANDU }}</td>
+                                                <td>
+                                                    <a href="{{ route('laporan.showbukuStunting', $stunting->id) }}" class="btn btn-primary">
+                                                        <ion-icon name="book-outline"></ion-icon>
+                                                        Detail</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </table>
+                                </div>
+                                <div class="float-right">
+                                    {{ $laporanStuntings->withQueryString()->links() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                             {{-- <div class="card-body">
                                 <div class="float-left col-6">
                                     <form method="GET" action="{{ route('laporan.bukuStunting') }}">
@@ -51,7 +123,7 @@
                         @if (request('nama_kecamatan'))
                         <div class="card">
                             <div class="card-header">
-                                <h4>Buku Stunting</h4> --}}
+                                <h4>Buku Stunting</h4> --}
                                 <div class="float-left col-3">
                                     <form action="{{ route('laporan.bukuStunting') }}" method="GET">
                                         <div class="input-group float-right">
@@ -93,9 +165,7 @@
 
                                     </table>
                                 </div>
-                            {{-- <div class="float-right">
-                                {{ $stuntings->withQueryString()->links() }}
-                            </div> --}}
+
 
                         {{-- @else
                             <div class="card-body">
@@ -141,6 +211,10 @@
 @endsection
 
 @push('scripts')
+    <!-- JS Libraies -->
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('js/page/features-posts.js') }}"></script>
 
 @endpush

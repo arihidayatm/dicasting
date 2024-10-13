@@ -61,6 +61,7 @@
                                             <th>NIP</th>
                                             <th>Alamat</th>
                                             <th>No. HP</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($bapakasuhs as $bapakasuh)
@@ -70,6 +71,7 @@
                                                 {{-- <td>{{ $bapakasuh->INSTANSI }}</td> --}}
                                                 <td>{{ $bapakasuh->NIP }}</td>
                                                 <td>{{ $bapakasuh->ALAMAT }}</td>
+                                                <td>{{ $bapakasuh->STATUS }}</td>
                                                 <td>{{ $bapakasuh->NOHP }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
@@ -225,6 +227,14 @@
                                         <label>Alamat</label>
                                         <input type="text" class="form-control"
                                             name="ALAMAT" value="{{ $bapakasuh->ALAMAT }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select name="STATUS" class="form-control">
+                                            <option value="">-- Pilih Status --</option>
+                                            <option value="ASN" {{ $bapakasuh->STATUS == 'ASN' ? 'selected' : '' }}>ASN</option>
+                                            <option value="NON ASN" {{ $bapakasuh->STATUS == 'NON ASN' ? 'selected' : '' }}>NON ASN</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>NO. HP</label>

@@ -9,14 +9,14 @@
                 <h1>Form Detail Intervensi</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('intervensi-bpas.index') }}">Forms</a></div>
+                    <div class="breadcrumb-item"><a href="{{ route('intervensi-nonbpas.index') }}">Forms</a></div>
                     <div class="breadcrumb-item">Add Detail</div>
                 </div>
             </div>
 
             <div class="section-body">
                 <div class="card">
-                    <form method="POST" action="{{ route('intervensi-bpas.store-detail', $intervensiBPAS->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('intervensi-nonbpas.store-detail', $intervensiNonBPAS->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
                             <h4>Detail Intervensi</h4>
@@ -29,7 +29,7 @@
                                         <input type="text"
                                             class="form-control @error('NAMA_BALITA') is-invalid @enderror"
                                             name="NAMA_BALITA"
-                                            value="{{ old('NAMA_BALITA', $intervensiBPAS->stunting->NAMA_BALITA) }}" readonly>
+                                            value="{{ old('NAMA_BALITA', $intervensiNonBPAS->stunting->NAMA_BALITA) }}" readonly>
                                         @error('NAMA_BALITA')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -39,12 +39,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Nama Bapak Asuh</label>
+                                        <label>Nama User</label>
                                         <input type="text"
-                                            class="form-control @error('NAMA_ORANGTUAASUH') is-invalid @enderror"
-                                            name="NAMA_ORANGTUAASUH"
-                                            value="{{ old('NAMA_ORANGTUAASUH', $intervensiBPAS->bapakasuh->NAMA_ORANGTUAASUH) }}" readonly>
-                                        @error('NAMA_ORANGTUAASUH')
+                                            class="form-control @error('name') is-invalid @enderror"
+                                            name="name"
+                                            value="{{ old('name', $intervensiNonBPAS->user->name) }}" readonly>
+                                        @error('name')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -57,7 +57,7 @@
                                         <input type="text"
                                             class="form-control @error('BENTUK_INTERVENSI') is-invalid @enderror"
                                             name="BENTUK_INTERVENSI"
-                                            value="{{ old('BENTUK_INTERVENSI', $intervensiBPAS->bentukintervensi->BENTUK_INTERVENSI) }}" readonly>
+                                            value="{{ old('BENTUK_INTERVENSI', $intervensiNonBPAS->bentukintervensi->BENTUK_INTERVENSI) }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Anggaran</label>
                                         <select name="ANGGARAN" class="form-control">
@@ -96,9 +96,9 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Keterangan</label>
                                         <input type="text"
@@ -112,7 +112,7 @@
 
                         <div class="card-footer text-right">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{ route('intervensi-bpas.index') }}" class="btn btn-secondary">Cancel</a>
+                            <a href="{{ route('intervensi-nonbpas.index') }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

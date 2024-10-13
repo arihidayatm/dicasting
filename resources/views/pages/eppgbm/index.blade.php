@@ -26,6 +26,108 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    {{-- card with icon and import button --}}
+
+                                    <div class="col-3 col-md-3 col-lg-3 center">
+                                        <div class="card card-statistic-1">
+                                            <div class="card-icon bg-primary">
+                                                <i class="fas fa-children"></i>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4>Import Data Balita</h4>
+                                            </div>
+                                            <div class="card-body mt-2 mb-4">
+                                                <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="input-group">
+                                                        <input type="file" class="form-control" name="file" aria-label="Upload">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-success btn-sm" type="submit" id="file">Import</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3 center">
+                                        <div class="card card-statistic-1">
+                                            <div class="card-icon bg-warning">
+                                                <i class="fas fa-children"></i>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4>Import Data Stunting</h4>
+                                            </div>
+                                            <div class="card-body mt-2 mb-4">
+                                                <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="input-group">
+                                                        <input type="file" class="form-control" name="file" aria-label="Upload">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-success btn-sm" type="submit" id="file">Import</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3 center">
+                                        <div class="card card-statistic-1">
+                                            <div class="card-icon bg-success">
+                                                <i class="fas fa-children"></i>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4>Import Data Pengukuran</h4>
+                                            </div>
+                                            <div class="card-body mt-2 mb-4">
+                                                <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="input-group">
+                                                        <input type="file" class="form-control" name="file" aria-label="Upload">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-success btn-sm" type="submit" id="file">Import</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3 center">
+                                        <div class="card card-statistic-1">
+                                            <div class="card-icon bg-danger">
+                                                <i class="fas fa-children"></i>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4>Import Data Tindakan</h4>
+                                            </div>
+                                            <div class="card-body mt-2 mb-4">
+                                                <form action="{{ route('balitas.import') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="input-group">
+                                                        <input type="file" class="form-control" name="file" aria-label="Upload">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-success btn-sm" type="submit" id="file">Import</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {{-- <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -89,6 +191,25 @@
                         </div>
                     </div>
                 </div> --}}
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Sumber Data</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>e-PPGBM</p>
+                            <ul>
+                                <li>Import Data Balita Tahun 2024</li>
+                                <li>Import Data Stunting Tahun 2024</li>
+                                <li>Import Data Puskesmas Tahun 2024</li>
+                                <li>Import Data Posyandu Tahun 2024</li>
+                                <li>Peraturan Menteri Kesehatan (Permenkes) No. 2 Tahun 2020 tentang Standar Antropometri Anak</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
