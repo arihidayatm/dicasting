@@ -56,6 +56,12 @@ class StuntingController extends Controller
         return view('pages.stuntings.edit', compact('stunting', 'kecamatans', 'kelurahandesas'));
     }
 
+    public function detailData($id)
+    {
+        $stunting = Stunting::with('kecamatan', 'kelurahandesa')->findorfail($id);
+        return view('pages.stuntings.detail', compact('stunting'));
+    }
+
     public function update(UpdateStuntingRequest $request, Stunting $stunting)
     {
         $kecamatans = Kecamatan::all();
@@ -77,6 +83,12 @@ class StuntingController extends Controller
         $stunting->delete();
         return redirect()->route('stuntings.index')
             ->with('success', 'Stunting deleted successfully');
+    }
+
+    public function dataPengukuran($id)
+    {
+        $stunting = Stunting::with('kecamatan', 'kelurahandesa')->findorfail($id);
+        return view('pages.stuntings.pengukuran', compact('stunting'));
     }
 
     // public function import(Request $request)
@@ -115,26 +127,6 @@ class StuntingController extends Controller
 
         return view('pages.eppgbm.index', compact('dataeppgbm'));
     }
-
-    // {
-    //     $lapTahun = TahunLap::all();
-    //     $lapBulan = BulanLap::when($request->tahun_id, function ($query) use ($request) {
-    //         return $query->where('TAHUN_ID', $request->tahun_id);
-    //     })->get();
-    //     $dataeppgbm = ePPGBM::when($request->tahun_id, function ($query) use ($request) {
-    //         return $query->where('TAHUN_ID', $request->tahun_id);
-    //     })->when($request->bulan_id, function ($query) use ($request) {
-    //         return $query->where('BULAN_ID', $request->bulan_id);
-    //     })->get();
-    //     if ($request->tahun_id && $request->bulan_id) {
-    //         $dataeppgbm = ePPGBM::where('TAHUN_ID', $request->tahun_id)->where('BULAN_ID', $request->bulan_id)->get();
-    //     }
-
-    //     return view('pages.stuntings.eppgbm')
-    //         ->with('dataeppgbm', $dataeppgbm)
-    //         ->with('lapTahun', $lapTahun)
-    //         ->with('lapBulan', $lapBulan);
-    // }
 
     public function showStuntingCount()
     {

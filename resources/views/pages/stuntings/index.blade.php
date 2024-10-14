@@ -73,7 +73,7 @@
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-                                                <td><a href="{{ route('stuntings.detail', $stunting->id) }}">{{ $stunting->NIK }}</a></td>
+                                                <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ $stunting->NIK }}</a></td>
                                                 <td>{{ $stunting->NO_KK }}</td>
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>

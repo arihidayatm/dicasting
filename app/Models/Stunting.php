@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\StuntingPengukuran;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Facades\Cache;
 
 class Stunting extends Model
 {
@@ -58,6 +59,11 @@ class Stunting extends Model
     public function intervensiNonBPAS()
     {
         return $this->hasMany(IntervensiNonBPAS::class, 'STUNTING_ID', 'id');
+    }
+
+    public function stuntingPengukuran()
+    {
+        return $this->hasMany(StuntingPengukuran::class, 'NIK','STUNTINGS_ID');
     }
 
     // Teknik Standar/Biasa

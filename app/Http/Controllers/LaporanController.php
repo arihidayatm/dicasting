@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\IntervensiBPAS;
 use App\Models\DetailIntervensi;
 use App\Models\IntervensiNonBPAS;
+use App\Models\StuntingPengukuran;
 use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
@@ -75,9 +76,13 @@ class LaporanController extends Controller
         $detailIntervensis = IntervensiBPAS::where('STUNTING_ID', $id)->get();
         
         $laporan = DetailIntervensi::where('intervensibpas_id', COUNT($detailIntervensis)>0 ? $detailIntervensis[0]->id : null)->get();
-
+        $riwayatPertumbuhanAnak = StuntingPengukuran::whereHas('stuntings', function ($query) use ($id) {
+            $query->where('NIK', $id);
+        })->get();
+        
         return view('pages.laporan.showbukustunting', [
             'dataStunting' => $dataStunting,
+            'riwayatPertumbuhanAnak' => $riwayatPertumbuhanAnak,
             'intervensi' => $intervensi,
             'laporan' => $laporan,
             'detailIntervensis' => $detailIntervensis,

@@ -63,33 +63,32 @@ Route::middleware(['auth'])->group(function ()
     Route::resource('puskesmas', PuskesmasController::class);
     Route::resource('posyandus', PosyanduController::class);
 
-    // Route::get('/pauds', \App\Livewire\Pauds\Index::class)->name('pauds.index');
-    // Route::get('/pauds/create', \App\Livewire\Pauds\Create::class)->name('pauds.create');
-    // Route::get('/pauds/show/{paud}',\App\Livewire\Pauds\Show::class)->name('pauds.show');
-    // Route::get('/pauds/update/{paud}',\App\Livewire\Pauds\Edit::class)->name('pauds.edit');
-
-
     // Route untuk menampilkan daftar Stunting
     Route::get('/stuntings', [StuntingController::class, 'index'])->name('stuntings.index');
-
     // Route untuk menampilkan form penambahan Stunting baru
     Route::get('/stuntings/create', [StuntingController::class, 'create'])->name('stuntings.create');
-
     // Route untuk menyimpan data Stunting baru
     Route::post('/stuntings', [StuntingController::class, 'store'])->name('stuntings.store');
-
     // Route untuk menampilkan form edit Stunting
     Route::get('/stuntings/{id}/edit', [StuntingController::class, 'edit'])->name('stuntings.edit');
-
+    // Route detail data Stunting
+    Route::get('/stuntings/{id}/detail', [StuntingController::class, 'detailData'])->name('stuntings.detailData');
     // Route untuk memperbarui data Stunting
     Route::put('/stuntings/{id}', [StuntingController::class, 'update'])->name('stuntings.update');
-
     // Route untuk menghapus data Stunting
     Route::delete('/stuntings/{id}', [StuntingController::class, 'destroy'])->name('stuntings.destroy');
 
     //Route stuntings/data-eppgbm
     Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'indexEppgbm'])->name('stuntings.dataEppgbm');
+    //Route stuntings/pengukuran
+    Route::get('/stuntings/{id}/pengukuran/',[StuntingController::class, 'dataPengukuran'])->name('stuntings.pengukuran');
+    //Route stuntings/export & import
+    Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
+    Route::post('/stunting-import', [StuntingController::class, 'importDataStunting'])->name('stunting.import');
 
+    //Livewire Stunting
+    Route::get('/stuntings/{id}', StuntingDetail::class)->name('stuntings.detail');
+    Route::get('/stuntings/{id}/edit', [StuntingController::class, 'edit'])->name('stuntings.edit');
 
     // Route::resource('bapakasuhs', BapakAsuhController::class);
     Route::get('/bapakasuhs', [BapakAsuhController::class, 'index'])->name('bapakasuhs.index');
@@ -153,15 +152,6 @@ Route::middleware(['auth'])->group(function ()
     Route::get('intervensi-nonbpas/{id}/add-detail',[IntervensiNonBPASController::class,'addDetailIntervensi'])->name('intervensi-nonbpas.add-detail');
     Route::post('intervensi-nonbpas/{id}/store-detail',[IntervensiNonBPASController::class,'storeDetailIntervensi'])->name('intervensi-nonbpas.store-detail');
     Route::get('intervensi-nonbpas/{id}/detail/destroy',[IntervensiNonBPASController::class,'destroydetailIntervensi'])->name('intervensi-nonbpas.detail.destroy');
-
-
-
-    Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
-    Route::post('/stunting-import', [StuntingController::class, 'importDataStunting'])->name('stunting.import');
-
-    //Livewire Stunting
-    Route::get('/stuntings/{id}', StuntingDetail::class)->name('stuntings.detail');
-    Route::get('/stuntings/{id}/edit', [StuntingController::class, 'edit'])->name('stuntings.edit');
 
     //Livewire Balita
     Route::get('/balitas/{id}', BalitaDetail::class)->name('balitas.detail');

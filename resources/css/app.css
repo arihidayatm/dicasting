@@ -27,9 +27,3 @@
     background-color: #0056b3; /* Warna latar belakang saat hover */
     border-color: #0056b3; /* Warna border saat hover */
 }
-
-
-/* Tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

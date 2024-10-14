@@ -32,47 +32,74 @@
                                         </div>
                                     @endforeach
                                     
-                                    <table class="table-striped table">
-                                        <tbody class="table row-md-6">
+                                    <table class="table table-sm">
+                                        <tbody class="table table-sm">
                                             <tr>
                                                 <th>NIK</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->NIK }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Tanggal Lahir</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->TGL_LAHIR }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Jenis Kelamin</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->JENIS_KELAMIN }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Nama Orangtua</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->NAMA_ORANGTUA }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Umur</th>
+                                                <td>:</td>
+                                                <td>
+                                                    <?php
+                                                        $tglLahir = new DateTime($stuntingItem->TGL_LAHIR);
+                                                        $today = new DateTime('today');
+                                                        $umur = $today->diff($tglLahir);
+                                                    ?>
+                                                    {{ $umur->format('%y Tahun %m Bulan %d Hari') }}
+                                                </td>
                                             </tr>
                                             
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="col-sm">
-                                    <div class="card-header"></div>
+                                    <div class="card-header">
+
+                                    </div>
                                     
-                                    <table class="table-striped table">
-                                        <tbody class="table row-md-6">
+                                    <table class="table table-sm">
+                                        <tbody class="table table-sm">
                                             <tr>
                                                 <th>Berat Badan Lahir</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->BERAT_BADAN }} kg</td>
                                             </tr>
                                             <tr>
                                                 <th>Tinggi Badan Lahir</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->TINGGI_BADAN }} cm</td>
                                             </tr>
                                             <tr>
+                                                <th>Alamat</th>
+                                                <td>:</td>
+                                                <td>{{ $stuntingItem->ALAMAT }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Puskesmas</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->puskesmas->NAMA_PUSKESMAS }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Posyandu</th>
+                                                <td>:</td>
                                                 <td>{{ $stuntingItem->POSYANDU }}</td>
                                             </tr>
                                             
@@ -89,42 +116,57 @@
                                 </div>
                             </div>
                             <br>
-                            {{-- Isian Detail Intervensi --}}
-                            <div class="row">
-                                <div class="col-8">
-                                    <h5>Detail Intervensi</h5>
-                                    @foreach ($detailIntervensis as $item)
-                                    <ul class="list-unstyled">
-                                        <li class="media">
-                                        <img class="mr-3" src="{{ asset('storage/dokumentasi/'. $item->FOTO_DOKUMEN) }}" width="50%" alt="dokumentasi intervensi oleh basuh">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">{{ $item->bentukintervensi->BENTUK_INTERVENSI }}</h5>
-                                            <div class="float-right">
-                                                {{ $item->TGL_INTERVENSI }}
-                                            </div>
-                                            
-                                            <span></span>
-                                            {{ $item->KETERANGAN }}
-                                        </div>
-                                        </li>
-                                        {{-- <li class="media my-4">
-                                        <img class="mr-3" src="..." alt="Generic placeholder image">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">List-based media object</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                        </div>
-                                        </li>--}}
-                                        
-                                    </ul>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <h5>Riwayat Pertumbuhan Anak</h5>
+                                    @foreach ($riwayatPertumbuhanAnak as $riwayat)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Tanggal Pengukuran</th>
+                                                <th>Berat Badan</th>
+                                                <th>Tinggi Badan</th>
+                                                <th>Cara Ukur</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $riwayat->TGL_UKUR }}</td>
+                                                <td>{{ $riwayat->BB_UKUR }}</td>
+                                                <td>{{ $riwayat->TB_UKUR }}</td>
+                                                <td>{{ $riwayat->CARA_UKUR }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                     @endforeach
                                 </div>
-                                <div class="col-4">
-                                    Nama Bapak Ibu Asuh
-                                    
+                            </div>
+
+                            {{-- Isian Detail Intervensi --}}
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <h5>Detail Intervensi</h5>
+                                    @foreach ($detailIntervensis as $item)
+                                        <ul class="list-unstyled">
+                                            <li class="media">
+                                                <img class="mr-3" src="{{ asset('storage/dokumentasi/'. $item->FOTO_DOKUMEN) }}" width="50%" alt="dokumentasi intervensi oleh basuh">
+                                                <div class="media-body">
+                                                    <h6 class="mt-0 mb-1">{{ $item->bentukintervensi->BENTUK_INTERVENSI }}</h6>
+                                                    <div class="float-right">
+                                                        {{ $item->TGL_INTERVENSI }}
+                                                    </div>
+                                                    
+                                                    <span></span>
+                                                    {{ $item->KETERANGAN }}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endforeach
                                 </div>
                             </div>
+                            
                             {{-- isian Tanda tangan --}}
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-sm">
                                 
                                 </div>
