@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1555a2a1f9b95d2f0603d1931f99ef97",
+    "content-hash": "ce84bbb5a644e31919177278c229b393",
     "packages": [
-        {
-            "name": "arielmejiadev/larapex-charts",
-            "version": "2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ArielMejiaDev/larapex-charts.git",
-                "reference": "821f9a99c47e51f7306d04c2eeb7c6c3ee9f1e1b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ArielMejiaDev/larapex-charts/zipball/821f9a99c47e51f7306d04c2eeb7c6c3ee9f1e1b",
-                "reference": "821f9a99c47e51f7306d04c2eeb7c6c3ee9f1e1b",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^4.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider"
-                    ],
-                    "aliases": {
-                        "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ArielMejiaDev\\LarapexCharts\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ArielMejiaDev",
-                    "email": "arielmejiadev@gmail.com"
-                }
-            ],
-            "description": "Package to provide easy api to build apex charts on Laravel",
-            "support": {
-                "issues": "https://github.com/ArielMejiaDev/larapex-charts/issues",
-                "source": "https://github.com/ArielMejiaDev/larapex-charts/tree/2.1.1"
-            },
-            "time": "2021-06-24T16:16:54+00:00"
-        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "v3.0.1",
@@ -6939,6 +6886,66 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "laravel/breeze",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "1dd612eb9e1c2632a39e6aa6df4e69cd45129dca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/1dd612eb9e1c2632a39e6aa6df4e69cd45129dca",
+                "reference": "1dd612eb9e1c2632a39e6aa6df4e69cd45129dca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^11.0",
+                "illuminate/filesystem": "^11.0",
+                "illuminate/support": "^11.0",
+                "illuminate/validation": "^11.0",
+                "php": "^8.2.0",
+                "symfony/console": "^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2024-10-06T21:13:27+00:00"
         },
         {
             "name": "laravel/pint",
