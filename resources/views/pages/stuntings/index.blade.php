@@ -73,8 +73,8 @@
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-                                                <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ $stunting->NIK }}</a></td>
-                                                <td>{{ $stunting->NO_KK }}</td>
+                                                <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ substr($stunting->NIK, 0, 6) . '*****' }}</a></td>
+                                                <td>{{ substr($stunting->NO_KK, 0, 6) . '*****' }}</td>
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
@@ -108,15 +108,29 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Penambahan Data Stunting</h4>
+                                <h4>Penambahan Data Pengukuran Anak</h4>
                             </div>
                             <div class="card-body">
-                                <a class="btn btn-outline-primary" href="{{ route('stuntings.create')}}" role="button">Tambah Data</a>
+                                {{-- <a class="btn btn-outline-primary" href="{{ route('stuntings.create')}}" role="button">Tambah Data</a> --}}
 
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('stuntings.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search by Name" name="nama_balita">
+                                            <select class="form-control" name="bulan" id="bulan">
+                                                <option value="">-- Pilih Bulan --</option>
+                                                <option value="01">Januari</option>
+                                                <option value="02">Februari</option>
+                                                <option value="03">Maret</option>
+                                                <option value="04">April</option>
+                                                <option value="05">Mei</option>
+                                                <option value="06">Juni</option>
+                                                <option value="07">Juli</option>
+                                                <option value="08">Agustus</option>
+                                                <option value="09">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">Desember</option>
+                                            </select>
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -130,26 +144,15 @@
                                     <table class="table-striped table">
                                         <tr class="table">
                                             <th>Sumber Data</th>
-                                            {{-- <th>Tanggal Pengukuran</th> --}}
                                             <th>NIK</th>
-                                            {{-- <th>No.KK</th> --}}
                                             <th>Nama Balita</th>
-                                            <th>Tgl. Lahir</th>
-                                            <th>Jenis Kelamin</th>
+                                            <th>Tgl. Pengukuran</th>
                                             <th>Umur</th>
-                                            <th>BB Lahir</th>
-                                            <th>TB Lahir</th>
-                                            <th>Nama Ibu</th>
-                                            <th>Alamat</th>
-                                            <th>RT</th>
-                                            <th>RW</th>
-                                            <th>Kecamatan</th>
-                                            <th>Desa</th>
-                                            {{-- <th>Posyandu</th> --}}
-                                            <th>Status TB/U</th>
-                                            <th>ZS TB/U</th>
+                                            <th>BB Ukur</th>
+                                            <th>TB Ukur</th>
+                                            <th>Cara Ukur</th>
                                         </tr>
-                                        @foreach ($stuntings as $stunting)
+                                        @foreach ($stuntingPengukuran as $dataUkur)
                                             <tr>
                                                 <td>
                                                     <!-- Large modal -->
@@ -159,76 +162,31 @@
                                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
-                                                                <form action="{{ route('stuntings.update', $stunting) }}" method="POST">
+                                                                <form action="{{ route('stuntings.update-pengukuran', $stunting) }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="card-header">
-                                                                        <h4>Update Data</h4>
+                                                                        <h4>Update Data Pengukuran</h4>
                                                                     </div>
                                                                     <div class="card-body">
                                                                         <div class="form-group">
-                                                                            <label for="NIK">NIK</label>
-                                                                            <input type="text" class="form-control" id="NIK" name="NIK" value="{{ $stunting->NIK }}">
+                                                                            <label for="TGL_UKUR">Tgl. Pengukuran</label>
+                                                                            <input type="date" class="form-control" name="TGL_UKUR" id="TGL_UKUR" value="{{ $stunting->TGL_UKUR }}">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="NO_KK">No KK</label>
-                                                                            <input type="text" class="form-control" id="NO_KK" name="NO_KK" value="{{ $stunting->NO_KK }}">
+                                                                            <label for="BERAT_BADAN">Berat Badan (*dalam kg)</label>
+                                                                            <input type="number" class="form-control" name="BERAT_BADAN" id="BERAT_BADAN" value="{{ $stunting->BERAT_BADAN }}">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="NAMA_BALITA">Nama Balita</label>
-                                                                            <input type="text" class="form-control" id="NAMA_BALITA" name="NAMA_BALITA" value="{{ $stunting->NAMA_BALITA }}">
+                                                                            <label for="TINGGI_BADAN">Tinggi Badan (*dalam cm)</label>
+                                                                            <input type="number" class="form-control" name="TINGGI_BADAN" id="TINGGI_BADAN" value="{{ $stunting->TINGGI_BADAN }}">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="TGL_LAHIR">Tanggal Lahir</label>
-                                                                            <input type="date" class="form-control" id="TGL_LAHIR" name="TGL_LAHIR" value="{{ $stunting->TGL_LAHIR }}">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="JENIS_KELAMIN">Jenis Kelamin</label>
-                                                                            <select class="form-control" id="JENIS_KELAMIN" name="JENIS_KELAMIN" >
-                                                                                <option value="L">Laki-laki</option>
-                                                                                <option value="P">Perempuan</option>
+                                                                            <label for="CARA_UKUR">Cara Ukur</label>
+                                                                            <select class="form-control select2" name="CARA_UKUR" id="CARA_UKUR">
+                                                                                <option value="Berdiri" {{ $stunting->CARA_UKUR == 'Berdiri' ? 'selected' : '' }}>Berdiri</option>
+                                                                                <option value="Terlentang" {{ $stunting->CARA_UKUR == 'Terlentang' ? 'selected' : '' }}>Terlentang</option>
                                                                             </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="BERAT_BADAN">Berat Badan</label>
-                                                                            <input type="number" class="form-control" id="BERAT_BADAN" name="BERAT_BADAN" value="{{ $stunting->BERAT_BADAN }}">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="TINGGI_BADAN">Tinggi Badan</label>
-                                                                            <input type="number" class="form-control" id="TINGGI_BADAN" name="TINGGI_BADAN" value="{{ $stunting->TINGGI_BADAN }}">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="NAMA_ORANGTUA">Nama Orang Tua</label>
-                                                                            <input type="text" class="form-control" id="NAMA_ORANGTUA" name="NAMA_ORANGTUA" value="{{ $stunting->NAMA_ORANGTUA }}">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="ALAMAT">Alamat</label>
-                                                                            <input type="text" class="form-control" id="ALAMAT" name="ALAMAT" value="{{ $stunting->ALAMAT }}">
-                                                                        </div>
-                                                                        {{-- <div class="form-group">
-                                                                            <label for="KECAMATAN_ID">Kecamatan</label>
-                                                                            <select class="form-control select2" id="KECAMATAN_ID" name="KECAMATAN_ID">
-                                                                                <option disabled value>Pilih Kecamatan</option>
-                                                                                <option value="{{ $kecamatan->id }}">{{ $kecamatan->NAMA_KECAMATAN }}</option>
-
-                                                                                @foreach($kecamatans as $kecamatan)
-                                                                                    <option value="{{ $kecamatan->id }}">{{ $kecamatan->NAMA_KECAMATAN }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="KELURAHANDESA_ID">Kelurahan/Desa</label>
-                                                                            <select class="form-control" id="KELURAHANDESA_ID" name="KELURAHANDESA_ID" required>
-                                                                                @foreach($kelurahandesas as $kelurahandesa)
-                                                                                    <option value="{{ $kelurahandesa->id }}">{{ $kelurahandesa->NAMA_KELURAHANDESA }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div> --}}
-
-                                                                        <div class="form-group">
-                                                                            <label for="tgl_pengukuran">Tanggal Pengukuran</label>
-                                                                            {{-- <input type="date" class="form-control" id="tgl_pengukuran" name="tgl_pengukuran" required> --}}
-                                                                            <input type="date" class="form-control" id="updated_at" name="updated_at" required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="card-footer text-right">
@@ -241,31 +199,27 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                {{-- <td>{{ $stunting->stunting_id->TGL_UKUR }}</td> --}}
-                                                <td>{{ $stunting->NIK }}</td>
-                                                {{-- <td>{{ $stunting->NO_KK }}</td> --}}
-                                                <td>{{ $stunting->NAMA_BALITA }}</td>
-                                                <td>{{ $stunting->TGL_LAHIR }}</td>
-                                                <td>{{ $stunting->JENIS_KELAMIN }}</td>
-                                                <td>{{ $stunting->UMUR }} Bulan</td>
-                                                <td>{{ $stunting->BERAT_BADAN }} kg</td>
-                                                <td>{{ $stunting->TINGGI_BADAN }} cm</td>
-                                                <td>{{ $stunting->NAMA_ORANGTUA }}</td>
-                                                <td>{{ $stunting->ALAMAT }}</td>
-                                                <td>{{ $stunting->RT }}</td>
-                                                <td>{{ $stunting->RW }}</td>
-                                                <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
-                                                <td>{{ $stunting->kelurahandesa->NAMA_KELURAHANDESA }}</td>
-                                                {{-- <td>{{ $stunting->posyandu->NAMA_POSYANDU }}</td> --}}
-                                                <td>{{ $stunting->STATUS_TBU }}</td>
-                                                <td>{{ $stunting->ZS_TBU }}</td>
+                                                <td>{{ substr($dataUkur->stuntings->NIK, 0, 6) . '*****' }}</td>
+                                                <td>{{ $dataUkur->stuntings->NAMA_BALITA }}</td>
+                                                <td>{{ $dataUkur->TGL_UKUR }}</td>
+                                                <td>
+                                                    <?php
+                                                        $tglLahir = new DateTime($dataUkur->TGL_LAHIR);
+                                                        $tglUkur = new DateTime($dataUkur->TGL_UKUR);
+                                                        $umur = $tglUkur->diff($tglLahir);
+                                                    ?>
+                                                    {{ $umur->format('%y Tahun %m Bulan %d Hari') }}
+                                                </td>
+                                                <td>{{ $dataUkur->BB_UKUR }} kg</td>
+                                                <td>{{ $dataUkur->TB_UKUR }} cm</td>
+                                                <td>{{ $dataUkur->CARA_UKUR }} cm</td>
                                             </tr>
                                         @endforeach
                                     </table>
-                                    {{-- <caption>Showing data from {{ $stuntings->firstItem() }} to {{ $stuntings->lastItem() }} of {{ $stuntings->total() }} data.</caption> --}}
+                                    {{-- <caption>Showing data from {{ $stuntingPengukuran->firstItem() }} to {{ $stuntingPengukuran->lastItem() }} of {{ $stuntingPengukuran->total() }} data.</caption> --}}
                                 </div>
                                 <div class="float-right">
-                                    {{ $stuntings->withQueryString()->links() }}
+                                    {{ $stuntingPengukuran->links() }}
                                 </div>
                             </div>
                         </div>

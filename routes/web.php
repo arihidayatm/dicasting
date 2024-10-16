@@ -81,7 +81,8 @@ Route::middleware(['auth'])->group(function ()
     //Route stuntings/data-eppgbm
     Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'indexEppgbm'])->name('stuntings.dataEppgbm');
     //Route stuntings/pengukuran
-    Route::get('/stuntings/{id}/pengukuran/',[StuntingController::class, 'dataPengukuran'])->name('stuntings.pengukuran');
+    Route::get('/stuntings/pengukuran/',[StuntingController::class, 'dataPengukuran'])->name('stuntings.pengukuran');
+    Route::get('/stuntings/{id}/pengukuran/',[StuntingController::class, 'updatedataPengukuran'])->name('stuntings.update-pengukuran');
     //Route stuntings/export & import
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'importDataStunting'])->name('stunting.import');

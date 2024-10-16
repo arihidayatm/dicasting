@@ -114,7 +114,7 @@
                                             </tr>
                                             @foreach ($balitas as $balita)
                                                 <tr>
-                                                    <td><a href="{{ route('balitas.detail', $balita->id) }}">{{ $balita->NIK }}</a></td>
+                                                    <td><a href="{{ route('balitas.detail', $balita->id) }}">{{ substr($balita->NIK, 0, 6) . str_repeat('*', strlen($balita->NIK) - 6) }}</a></td>
                                                     {{-- <td>{{ $balita->keluarga->NO_KK }}</td> --}}
                                                     <td>{{ $balita->NAMA_BALITA }}</td>
                                                     <td>{{ $balita->TGL_LAHIR }}</td>

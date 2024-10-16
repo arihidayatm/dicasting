@@ -15,19 +15,28 @@ use App\Imports\StuntingImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateStuntingRequest;
+use App\Models\StuntingPengukuran;
 use IcehouseVentures\LaravelChartjs\Facades\Chartjs;
 
 class StuntingController extends Controller
 {
     public function index(Request $request)
     {
+        $stuntingPengukuran = StuntingPengukuran::with('stuntings')->paginate(10);
+        // search berdasarkan bulan pada Stunting Pengukuran
+        $bulan = $request->bulan;
+        if ($bulan) {
+            $stuntingPengukuran = StuntingPengukuran::whereMonth('TGL_UKUR', $bulan)->paginate(10);
+        }
+
         // Search stunting by nama_balita, pagination 10
         $stuntings = Stunting::with('kecamatan', 'kelurahandesa')
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
             ->orderBy('id', 'desc')
             ->paginate(10);
-            
-        return view('pages.stuntings.index', compact('stuntings'));
+
+
+        return view('pages.stuntings.index', compact('stuntings','stuntingPengukuran'));
     }
 
     public function create()
@@ -85,12 +94,32 @@ class StuntingController extends Controller
             ->with('success', 'Stunting deleted successfully');
     }
 
-    public function dataPengukuran($id)
+    public function dataPengukuran(Request $request)
     {
-        $stunting = Stunting::with('kecamatan', 'kelurahandesa')->findorfail($id);
-        return view('pages.stuntings.pengukuran', compact('stunting'));
+        $stuntingPengukuran = StuntingPengukuran::with('stuntings')->paginate(10);
+        // search berdasarkan bulan pada Stunting Pengukuran
+        $bulan = $request->bulan;
+        if ($bulan) {
+            $stuntingPengukuran = StuntingPengukuran::whereMonth('TGL_UKUR', $bulan)->paginate(10);
+        }
+
+        return view('pages.stuntings.pengukuran', compact('stuntingPengukuran'));
     }
 
+
+    public function updatedataPengukuran(Request $request, $NIK)
+    {
+        $stuntingPengukuran = StuntingPengukuran::where('NIK', $NIK)->firstorfail();
+        $dataStuntingPengukuran = $request->validate([
+            'BB_UKUR' => 'required',
+            'TB_UKUR' => 'required',
+            'CARA_UKUR' => 'required',
+            'TGL_UKUR' => 'required',
+        ]);
+        $stuntingPengukuran->update($dataStuntingPengukuran);
+        return redirect()->route('stuntings.pengukuran', $NIK)
+            ->with('success', 'Data Pengukuran Berhasil di Perbarui');
+    }
     // public function import(Request $request)
     // {
     //     $request->validate([

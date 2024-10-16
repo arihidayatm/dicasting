@@ -66,7 +66,7 @@
                                         </tr>
                                         @foreach ($bapakasuhs as $bapakasuh)
                                             <tr>
-                                                <td>{{ $bapakasuh->NIK_ORANGTUAASUH }}</td>
+                                                <td>{{ substr($bapakasuh->NIK_ORANGTUAASUH, 0, 6) }}*****</td>
                                                 <td>{{ $bapakasuh->NAMA_ORANGTUAASUH }}</td>
                                                 {{-- <td>{{ $bapakasuh->INSTANSI }}</td> --}}
                                                 <td>{{ $bapakasuh->NIP }}</td>

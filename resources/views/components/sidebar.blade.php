@@ -129,6 +129,11 @@
                     </li>
                     <li class='{{ Request::is('stuntings') ? '' : '' }}'>
                         <a class="nav-link"
+                            href="{{ route('stuntings.pengukuran') }}">
+                            <ion-icon name="scale-outline"></ion-icon>&nbsp Data Pengukuran</a>
+                    </li>
+                    <li class='{{ Request::is('stuntings') ? '' : '' }}'>
+                        <a class="nav-link"
                             href="/laporan/stunting/chart">
                             <ion-icon name="stats-chart-outline"></ion-icon>&nbsp Stunting chart</a>
                     </li>
