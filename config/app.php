@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Laravel\ServiceProvider;
+
 return [
 
     /*
@@ -123,16 +125,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    // 'providers' => [
-    // // ...
-    //     Maatwebsite\Excel\ExcelServiceProvider::class,
-    //     Spatie\Permission\PermissionServiceProvider::class,
-    // ],
+    'providers' => ServiceProvider::defaultProviders()->merge([
+    // ...
+        App\Providers\AppServiceProvider::class,
+        // App\Providers\AuthServiceProvider::class,
+        // // App\Providers\BroadcastServiceProvider::class,
+        // App\Providers\EventServiceProvider::class,
+        // App\Providers\RouteServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+    ])->toArray(),
 
-    // 'aliases' => [
-    // // ...
-    //     'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-    // ],
 
 
 ];
