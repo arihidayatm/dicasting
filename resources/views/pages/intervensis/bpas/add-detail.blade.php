@@ -86,19 +86,33 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="form-group">
-                                        <label>Anggaran</label>
+                                        <label>Anggaran (*Optional)</label>
                                         <select name="ANGGARAN" class="form-control">
                                             <option value="">-- Pilih Anggaran --</option>
-                                            @foreach ($addDetailIntervensis as $item)
-                                                <option value="{{ $item->ANGGARAN }}">{{ $item->ANGGARAN }}</option>
-                                            @endforeach
+                                            <option value="APBN">APBN</option>
+                                            <option value="APBD Provinsi">APBD Provinsi</option>
+                                            <option value="APBD Kota">APBD Kota</option>
+                                            <option value="CSR">CSR</option>
+                                            <option value="DANA DESA">DANA DESA</option>
+                                            <option value="BAZNAS">BAZNAS</option>
+                                            <option value="SWADAYA">SWADAYA</option>
+                                            <option value="LAINNYA">Lainnya</option>
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Nominal (*Optional)</label>
+                                        <input type="text"
+                                            class="form-control"
+                                            name="NOMINAL_ANGGARAN"
+                                            value="{{ old('NOMINAL_ANGGARAN') }}">
+                                    </div>
+                                </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Keterangan</label>
                                         <input type="text"

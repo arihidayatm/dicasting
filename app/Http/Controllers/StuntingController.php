@@ -68,7 +68,11 @@ class StuntingController extends Controller
     public function detailData($id)
     {
         $stunting = Stunting::with('kecamatan', 'kelurahandesa')->findorfail($id);
-        return view('pages.stuntings.detail', compact('stunting'));
+        $riwayatPertumbuhanAnak = StuntingPengukuran::whereHas('stuntings', function ($query) use ($id) {
+            $query->where('id', $id);
+        })->get();
+
+        return view('pages.stuntings.detail', compact('stunting','riwayatPertumbuhanAnak'));
     }
 
     public function update(UpdateStuntingRequest $request, Stunting $stunting)
@@ -97,13 +101,36 @@ class StuntingController extends Controller
     public function dataPengukuran(Request $request)
     {
         $stuntingPengukuran = StuntingPengukuran::with('stuntings')->paginate(10);
+
+        // search berdasarkan nama balita pada Stunting Pengukuran
+        $name = $request->name;
+        if ($name) {
+            $stuntingPengukuran = StuntingPengukuran::whereHas('stuntings', function($query) use ($name) {
+                $query->where('NAMA_BALITA', 'like', "%{$name}%");
+            })->paginate(10);
+        }
+
         // search berdasarkan bulan pada Stunting Pengukuran
         $bulan = $request->bulan;
         if ($bulan) {
             $stuntingPengukuran = StuntingPengukuran::whereMonth('TGL_UKUR', $bulan)->paginate(10);
         }
-
-        return view('pages.stuntings.pengukuran', compact('stuntingPengukuran'));
+        // list bulan
+        $bulanList = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+        return view('pages.stuntings.pengukuran', compact('stuntingPengukuran','bulan','bulanList'));
     }
 
 

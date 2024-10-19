@@ -86,10 +86,10 @@
                                                 @foreach($keluargas as $keluarga => $item)
                                                 <tr>
                                                     <td>{{ $keluarga + $keluargas->firstItem() }}</td>
-                                                    <td>{{ $item->NO_KK }}</td>
-                                                    <td>{{ $item->NIK_AYAH }}</td>
+                                                    <td>{{ Str::mask($item->NO_KK, '*', 4,8) }}</td>
+                                                    <td>{{ Str::mask($item->NIK_AYAH, '*', 4,8) }}</td>
                                                     <td>{{ $item->NAMA_AYAH }}</td>
-                                                    <td>{{ $item->NIK_IBU }}</td>
+                                                    <td>{{ Str::mask($item->NIK_IBU, '*', 4,8) }}</td>
                                                     <td>{{ $item->NAMA_IBU }}</td>
                                                     <td>{{ $item->ALAMAT }}</td>
                                                     <td>{{ $item->NOHP }}</td>

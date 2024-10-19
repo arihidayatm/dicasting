@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balita;
+use App\Models\BapakAsuh;
 use App\Models\Stunting;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
@@ -72,13 +73,16 @@ class LaporanController extends Controller
     public function showbukuStunting($id)
     {
         $dataStunting = Stunting::where('id', $id)->get();
+        
         $intervensi = IntervensiBPAS::find($id);
         $detailIntervensis = IntervensiBPAS::where('STUNTING_ID', $id)->get();
-        
         $laporan = DetailIntervensi::where('intervensibpas_id', COUNT($detailIntervensis)>0 ? $detailIntervensis[0]->id : null)->get();
+
         $riwayatPertumbuhanAnak = StuntingPengukuran::whereHas('stuntings', function ($query) use ($id) {
-            $query->where('NIK', $id);
+            $query->where('id', $id);
         })->get();
+
+
         
         return view('pages.laporan.showbukustunting', [
             'dataStunting' => $dataStunting,

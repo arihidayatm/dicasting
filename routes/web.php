@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/balitas', [BalitaController::class, 'index'])->name('balita.index');
     // Route::get('/balitas/create', [BalitaController::class, 'create'])->name('balita.create');
     // Route::post('/balitas', [BalitaController::class, 'store'])->name('balita.store');
-    // Route::get('/balitas/{id}', [BalitaController::class, 'show'])->name('balita.show');
+    Route::get('/balitas/{id}', [BalitaController::class, 'show'])->name('balita.show');
     // Route::get('/balitas/{id}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
     // Route::patch('/balitas/{id}', [BalitaController::class, 'update'])->name('balita.update');
     // Route::delete('/balitas/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');

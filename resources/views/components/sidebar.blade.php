@@ -54,22 +54,40 @@
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fa-solid fa-baby"></i>
-                    <span>Balita</span>
+                    <span>Anak</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('balita.index') }}">
-                            <ion-icon name="body-outline"></ion-icon>&nbsp Data Balita</a>
+                            <ion-icon name="body-outline"></ion-icon>&nbsp Data Anak</a>
                     </li>
                     <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="/laporan/balita/chart">
-                            <ion-icon name="pulse-outline"></ion-icon></i>&nbsp Balita Chart</a>
+                            <ion-icon name="pulse-outline"></ion-icon></i>&nbsp Anak Chart</a>
                     </li>
                 </ul>
             </li>
-            {{-- <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fa-solid fa-people-group"></i>
+                    <span>Program Data</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="#">
+                            <ion-icon name="body-outline"></ion-icon>&nbsp Program Data</a>
+                    </li>
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('intervensi.index') }}">
+                            <ion-icon name="share-social-outline"></ion-icon></i>&nbsp Kegiatan</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <i class="fa-solid fa-house-chimney-medical"></i>
                     <span>Puskesmas</span>
@@ -107,7 +125,7 @@
                             <ion-icon name="basket-outline"></ion-icon>&nbsp Management PAUD</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
 
             <li class="menu-header">Data</li>
 
@@ -151,11 +169,11 @@
                             href="{{ route('bapakasuhs.index') }}">
                             <ion-icon name="people-sharp"></ion-icon>&nbsp Data BASUH</a>
                     </li>
-                    {{-- <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
+                    <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('nonbapakasuhs.index') }}">
                             <ion-icon name="briefcase-outline"></ion-icon>&nbsp Data Non BASUH</a>
-                    </li> --}}
+                    </li>
                     {{-- <li class='{{ Request::is('bapakasuhs') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('anakasuhs.index') }}">
@@ -171,11 +189,11 @@
                     <span>Intervensi</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('intervensi') ? '' : '' }}'>
+                    {{-- <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi.index') }}">
                             <ion-icon name="share-social-outline"></ion-icon>&nbsp Data Intervensi</a>
-                    </li>
+                    </li> --}}
                     <li class='{{ Request::is('intervensi') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('intervensi-bpas.index') }}">

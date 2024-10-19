@@ -113,9 +113,11 @@ class IntervensiBPASController extends Controller
     {
         try {
             $request->validate([
+                'TGL_INTERVENSI' => 'required|date',
                 'FOTO_ANAK' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
                 'DOKUMENTASI' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
-                'ANGGARAN' => 'nullable|in:APBD,NON APBD,LAINNYA',
+                'ANGGARAN' => 'nullable|string|max:255',
+                'NOMINAL_ANGGARAN' => 'nullable|string|max:255',
                 'KETERANGAN' => 'nullable|string|max:255',
             ]);
         } catch (\Throwable $th) {
@@ -127,7 +129,9 @@ class IntervensiBPASController extends Controller
 
         $detailIntervensi = new DetailIntervensi();
         $detailIntervensi->INTERVENSIBPAS_ID = $id;
+        $detailIntervensi->TGL_INTERVENSI = $request->TGL_INTERVENSI;
         $detailIntervensi->ANGGARAN = $request->ANGGARAN;
+        $detailIntervensi->NOMINAL_ANGGARAN = $request->NOMINAL_ANGGARAN;
         $detailIntervensi->KETERANGAN = $request->KETERANGAN;
 
         $path = 'public/foto_anak';

@@ -60,8 +60,8 @@
                                             {{-- <th>OPD/Instansi</th> --}}
                                             <th>NIP</th>
                                             <th>Alamat</th>
-                                            <th>No. HP</th>
                                             <th>Status</th>
+                                            <th>No. HP</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($bapakasuhs as $bapakasuh)

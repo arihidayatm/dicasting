@@ -57,7 +57,7 @@
                                             <th>Nama Balita</th>
                                             <th>Tgl. Lahir</th>
                                             <th>Jenis Kelamin</th>
-                                            <th>Umur</th>
+                                            {{-- <th>Umur</th> --}}
                                             <th>BB Lahir</th>
                                             <th>TB Lahir</th>
                                             <th>Nama Ibu</th>
@@ -73,12 +73,12 @@
                                         </tr>
                                         @foreach ($stuntings as $stunting)
                                             <tr>
-                                                <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ substr($stunting->NIK, 0, 6) . '*****' }}</a></td>
-                                                <td>{{ substr($stunting->NO_KK, 0, 6) . '*****' }}</td>
+                                                <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ Str::mask($stunting->NIK, '*', 4,8) }}</a></td>
+                                                <td>{{ Str::mask($stunting->NO_KK, '*', 4,8) }}</td>
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
-                                                <td>{{ $stunting->UMUR }} Bulan</td>
+                                                {{-- <td>{{ $stunting->UMUR }} Bulan</td> --}}
                                                 <td>{{ $stunting->BERAT_BADAN }} kg</td>
                                                 <td>{{ $stunting->TINGGI_BADAN }} cm</td>
                                                 <td>{{ $stunting->NAMA_ORANGTUA }}</td>
@@ -108,34 +108,45 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Penambahan Data Pengukuran Anak</h4>
+                                <h4>Data Pengukuran Anak</h4>
                             </div>
                             <div class="card-body">
                                 {{-- <a class="btn btn-outline-primary" href="{{ route('stuntings.create')}}" role="button">Tambah Data</a> --}}
 
-                                <div class="float-right">
-                                    <form method="GET" action="{{ route('stuntings.index') }}">
-                                        <div class="input-group">
-                                            <select class="form-control" name="bulan" id="bulan">
-                                                <option value="">-- Pilih Bulan --</option>
-                                                <option value="01">Januari</option>
-                                                <option value="02">Februari</option>
-                                                <option value="03">Maret</option>
-                                                <option value="04">April</option>
-                                                <option value="05">Mei</option>
-                                                <option value="06">Juni</option>
-                                                <option value="07">Juli</option>
-                                                <option value="08">Agustus</option>
-                                                <option value="09">September</option>
-                                                <option value="10">Oktober</option>
-                                                <option value="11">November</option>
-                                                <option value="12">Desember</option>
-                                            </select>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                                            </div>
+                                <div class="row justify-content-end">
+                                    <div class="col-4">
+                                        <div class="float-right">
+                                            <form method="GET" action="{{ route('stuntings.index') }}">
+                                                <div class="input-group">
+                                                    <select class="form-control" name="bulan" id="bulan" onchange="this.form.submit()">
+                                                        <option value="">-- searching berdasarkan Bulan --</option>
+                                                        <option value="01">Januari</option>
+                                                        <option value="02">Februari</option>
+                                                        <option value="03">Maret</option>
+                                                        <option value="04">April</option>
+                                                        <option value="05">Mei</option>
+                                                        <option value="06">Juni</option>
+                                                        <option value="07">Juli</option>
+                                                        <option value="08">Agustus</option>
+                                                        <option value="09">September</option>
+                                                        <option value="10">Oktober</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">Desember</option>
+                                                    </select>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <form method="GET" action="{{ route('stuntings.pengukuran') }}">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search by Name" name="nama_balita" value="{{ request()->query('nama_balita') }}">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
                                 <div class="clearfix mb-3"></div>
@@ -143,7 +154,7 @@
                                 <div class="table-responsive" >
                                     <table class="table-striped table">
                                         <tr class="table">
-                                            <th>Sumber Data</th>
+                                            <th>Action</th>
                                             <th>NIK</th>
                                             <th>Nama Balita</th>
                                             <th>Tgl. Pengukuran</th>
@@ -155,10 +166,11 @@
                                         @foreach ($stuntingPengukuran as $dataUkur)
                                             <tr>
                                                 <td>
-                                                    <!-- Large modal -->
+                                                    <!-- Button update modal -->
                                                     <button type="button" class="btn btn-outline-warning float-right" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                         Update
                                                     </button>
+                                                    {{-- Update Modal --}}
                                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
@@ -199,12 +211,12 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>{{ substr($dataUkur->stuntings->NIK, 0, 6) . '*****' }}</td>
+                                                <td>{{ Str::mask($dataUkur->stuntings->NIK, '*', 4,8) }}</td>
                                                 <td>{{ $dataUkur->stuntings->NAMA_BALITA }}</td>
                                                 <td>{{ $dataUkur->TGL_UKUR }}</td>
                                                 <td>
                                                     <?php
-                                                        $tglLahir = new DateTime($dataUkur->TGL_LAHIR);
+                                                        $tglLahir = new DateTime($dataUkur->stuntings->TGL_LAHIR);
                                                         $tglUkur = new DateTime($dataUkur->TGL_UKUR);
                                                         $umur = $tglUkur->diff($tglLahir);
                                                     ?>
@@ -212,11 +224,11 @@
                                                 </td>
                                                 <td>{{ $dataUkur->BB_UKUR }} kg</td>
                                                 <td>{{ $dataUkur->TB_UKUR }} cm</td>
-                                                <td>{{ $dataUkur->CARA_UKUR }} cm</td>
+                                                <td>{{ $dataUkur->CARA_UKUR }}</td>
                                             </tr>
                                         @endforeach
                                     </table>
-                                    {{-- <caption>Showing data from {{ $stuntingPengukuran->firstItem() }} to {{ $stuntingPengukuran->lastItem() }} of {{ $stuntingPengukuran->total() }} data.</caption> --}}
+                                    <caption>Showing data from {{ $stuntingPengukuran->firstItem() }} to {{ $stuntingPengukuran->lastItem() }} of {{ $stuntingPengukuran->total() }} data.</caption>
                                 </div>
                                 <div class="float-right">
                                     {{ $stuntingPengukuran->links() }}

@@ -13,18 +13,6 @@ class DetailIntervensi extends Model
 
     protected $guarded = [];
 
-    // protected $fillable = [
-    //     'INTERVENSIBPAS_ID',
-    //     'INTERVENSINONBPAS_ID',
-    //     'TGL_INTERVENSI',
-    //     'FOTO_ANAK',
-    //     'STATUS',
-    //     'STUNTING_ID',
-    //     'ANGGARAN',
-    //     'DOKUMENTASI',
-    //     'KETERANGAN',
-    // ];
-
 
     public function intervensiBPAS()
     {
@@ -34,6 +22,11 @@ class DetailIntervensi extends Model
     public function intervensiNonBPAS()
     {
         return $this->hasOne(intervensiNonBPAS::class,'id','INTERVENSINONBPAS_ID');
+    }
+
+    public function bapakasuh()
+    {
+        return $this->hasOne(BapakAsuh::class,'id','BAPAKASUH_ID');
     }
 
     public function stunting()

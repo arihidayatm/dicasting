@@ -49,4 +49,9 @@ class IntervensiBPAS extends Model
         return $this->hasOne(Kelurahandesa::class,'ID','KELURAHANDESA_ID');
     }
 
+    public function detailIntervensi()
+    {
+        return $this->hasMany(DetailIntervensi::class,'intervensibpas_id','bapakasuh_id');
+    }
+
 }

@@ -224,12 +224,14 @@
                                                                             <th>Tinggi Badan Ukur</th>
                                                                             <th>Cara Ukur</th>
                                                                         </tr>
+                                                                        @foreach ($riwayatPertumbuhanAnak as $riwayat)
                                                                         <tr>
-                                                                            <td>{{ $stunting->TGL_UKUR }}</td>
-                                                                            <td>{{ $stunting->BB_UKUR }}</td>
-                                                                            <td>{{ $stunting->TB_UKUR }}</td>
-                                                                            <td>{{ $stunting->CARA_UKUR }}</td>
+                                                                            <td>{{ $riwayat->TGL_UKUR }}</td>
+                                                                            <td>{{ $riwayat->BB_UKUR }} kg</td>
+                                                                            <td>{{ $riwayat->TB_UKUR }} cm</td>
+                                                                            <td>{{ $riwayat->CARA_UKUR }}</td>
                                                                         </tr>
+                                                                        @endforeach
                                                                     </tbody>
                                                                 </table>
                                                             </div>

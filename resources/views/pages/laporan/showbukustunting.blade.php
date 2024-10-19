@@ -14,7 +14,7 @@
                             <div class="card-header-action ml-auto">
                                 <a href="{{ route('laporan.bukuStunting') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back</a>
                             </div>
-                            
+
                         </div>
                         <div class="card-body">
                             {{-- Detail Balita --}}
@@ -31,13 +31,13 @@
                                             </h3>
                                         </div>
                                     @endforeach
-                                    
+
                                     <table class="table table-sm">
                                         <tbody class="table table-sm">
                                             <tr>
                                                 <th>NIK</th>
                                                 <td>:</td>
-                                                <td>{{ $stuntingItem->NIK }}</td>
+                                                <td>{{ Str::mask($stuntingItem->NIK, '*', 4,8) }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Tanggal Lahir</th>
@@ -66,7 +66,7 @@
                                                     {{ $umur->format('%y Tahun %m Bulan %d Hari') }}
                                                 </td>
                                             </tr>
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -74,7 +74,7 @@
                                     <div class="card-header">
 
                                     </div>
-                                    
+
                                     <table class="table table-sm">
                                         <tbody class="table table-sm">
                                             <tr>
@@ -102,14 +102,14 @@
                                                 <td>:</td>
                                                 <td>{{ $stuntingItem->POSYANDU }}</td>
                                             </tr>
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="col-sm">
                                     <div class="card-header">Hai, saya {{ $stuntingItem->NAMA_BALITA }}</div>
                                     <figure class="figure">
-                                        <img src="{{ asset('storage/foto_anak/1728616203.png') }}"
+                                        <img src="{{ asset('storage/foto_anak/'. $stuntingItem->FOTO_ANAK) }}"
                                         width="200"
                                         class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     </figure>
@@ -132,8 +132,8 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $riwayat->TGL_UKUR }}</td>
-                                                <td>{{ $riwayat->BB_UKUR }}</td>
-                                                <td>{{ $riwayat->TB_UKUR }}</td>
+                                                <td>{{ $riwayat->BB_UKUR }} kg</td>
+                                                <td>{{ $riwayat->TB_UKUR }} cm</td>
                                                 <td>{{ $riwayat->CARA_UKUR }}</td>
                                             </tr>
                                         </table>
@@ -147,31 +147,53 @@
                                 <div class="col-12">
                                     <h5>Detail Intervensi</h5>
                                     @foreach ($detailIntervensis as $item)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Bentuk Intervensi</th>
+                                                <th>Tanggal Intervensi</th>
+                                                <th>Keterangan</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->bentukintervensi->BENTUK_INTERVENSI }}</td>
+                                                <td>{{ $item->TGL_INTERVENSI }}</td>
+                                                <td>{{ $item->KETERANGAN }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    @endforeach
+                                    {{-- @foreach ($detailIntervensis as $item)
                                         <ul class="list-unstyled">
                                             <li class="media">
-                                                <img class="mr-3" src="{{ asset('storage/dokumentasi/'. $item->FOTO_DOKUMEN) }}" width="50%" alt="dokumentasi intervensi oleh basuh">
+                                                <img class="mr-3" src="{{ asset('storage/dokumentasi/'. $item->detailIntervensi->DOKUMENTASI) }}" width="50%" alt="dokumentasi intervensi oleh basuh">
                                                 <div class="media-body">
                                                     <h6 class="mt-0 mb-1">{{ $item->bentukintervensi->BENTUK_INTERVENSI }}</h6>
                                                     <div class="float-right">
                                                         {{ $item->TGL_INTERVENSI }}
                                                     </div>
-                                                    
-                                                    <span></span>
                                                     {{ $item->KETERANGAN }}
                                                 </div>
                                             </li>
                                         </ul>
-                                    @endforeach
+                                    @endforeach --}}
                                 </div>
                             </div>
-                            
+
                             {{-- isian Tanda tangan --}}
                             <div class="row mt-4">
                                 <div class="col-sm">
-                                
+
                                 </div>
                                 <div class="col-sm">
-                                
+                                    <br>
+                                    Bapak Asuh
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    Nama Bapak Asuh
                                 </div>
                                 <div class="col-sm">
                                 Sawahlunto, {{ \Carbon\Carbon::now('Asia/Jakarta')->isoFormat('D MMMM YYYY') }} <br>
@@ -180,11 +202,7 @@
                                 <br>
                                 <br>
                                 <br>
-                                @foreach ($detailIntervensis as $detailIntervensi)
-                                    @if ($intervensi != null && $detailIntervensi->intervensibpas_id == $intervensi->id)
-                                        {{$detailIntervensi->bapakasuh_id->NAMA_ORANGTUAASUH}};
-                                    @endif
-                                @endforeach
+                                IRZAM K
                                 </div>
                             </div>
                         </div>
@@ -199,21 +217,21 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/html2pdf.bundle.min.js') }}"></script>
+{{-- <script src="{{ asset('js/html2pdf.bundle.min.js') }}"></script> --}}
 <script>
-    $(document).ready(function(){
-        $('#download-laporan').click(function(){
-            var element = document.getElementById('laporan');
-            var opt = {
-                margin:       1,
-                filename:     'laporan_stunting.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
+    // $(document).ready(function(){
+    //     $('#download-laporan').click(function(){
+    //         var element = document.getElementById('laporan');
+    //         var opt = {
+    //             margin:       1,
+    //             filename:     'laporan_stunting.pdf',
+    //             image:        { type: 'jpeg', quality: 0.98 },
+    //             html2canvas:  { scale: 2 },
+    //             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    //         };
 
-            html2pdf().from(element).set(opt).save();
-        });
-    });
+    //         html2pdf().from(element).set(opt).save();
+    //     });
+    // });
 </script>
 @endpush
