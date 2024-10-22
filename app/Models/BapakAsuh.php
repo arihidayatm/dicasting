@@ -13,6 +13,13 @@ class BapakAsuh extends Model
 
     protected $guarded = [];
 
+    // stunting
+
+    public function stunting()
+    {
+        return $this->hasMany(Stunting::class,'BAPAKASUH_ID','ID');
+    }
+
     // public function kabupatenkota()
     // {
     //     return $this->hasOne(Kabupatenkota::class,'ID','KABUPATENKOTA_ID');

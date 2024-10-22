@@ -11,12 +11,13 @@ class BentukIntervensi extends Model
 
     protected $table = 'bentuk_intervensis';
     // protected $primarykey = 'id';
-    protected $fillable =[
-        // 'ID',
-        'INTERVENSI_ID',
-        'BENTUK_INTERVENSI',
-        'KETERANGAN',
-    ];
+    protected $guarded = [];
+    // protected $fillable =[
+    //     // 'ID',
+    //     'INTERVENSI_ID',
+    //     'BENTUK_INTERVENSI',
+    //     'KETERANGAN',
+    // ];
 
     public function Intervensi()
     {

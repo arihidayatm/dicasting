@@ -16,6 +16,11 @@ class Stunting extends Model
     // protected $primaryKey = 'id';
     protected $guarded = [];
 
+    public function bapakasuh()
+    {
+        return $this->hasOne(BapakAsuh::class,'id','BAPAKASUH_ID');
+    }
+
     public function kabupatenkota()
     {
         return $this->hasOne(Kabupatenkota::class,'ID','KABUPATENKOTA_ID');
@@ -49,7 +54,15 @@ class Stunting extends Model
             ->get();
     }
 
-    // app/Models/Stunting.php
+    public function countBentukIntervensi()
+    {
+        return $this->intervensiBPAS()->count();
+    }
+
+    public function countBentukIntervensiSpesifikDanSensitif()
+    {
+        return $this->intervensiBPAS()->whereIn('JENIS_INTERVENSI', [1,2])->count();
+    }
 
     public function intervensiBPAS()
     {

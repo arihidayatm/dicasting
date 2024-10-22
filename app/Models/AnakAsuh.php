@@ -9,12 +9,13 @@ class AnakAsuh extends Model
 {
     use HasFactory;
 
-    protected $table = 'anakasuhs';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'BAPAKASUH_ID',
-        'STUNTING_ID',
-    ];
+    protected $table = 'anak_asuh';
+    // protected $primaryKey = 'id';
+    protected $guarded = [];
+    // protected $fillable = [
+    //     'BAPAKASUH_ID',
+    //     'STUNTING_ID',
+    // ];
 
     public function bapakasuh()
     {
@@ -25,6 +26,8 @@ class AnakAsuh extends Model
     {
         return $this->hasOne(Stunting::class, 'id', 'STUNTING_ID');
     }
+
+    
 
 
 }

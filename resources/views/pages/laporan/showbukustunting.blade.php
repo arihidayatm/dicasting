@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Buku Stunting')
+
 @section('main')
 <div class="main-content">
     <section class="section">
@@ -16,12 +18,26 @@
                             </div>
 
                         </div>
-                        <div class="card-body">
-                            {{-- Detail Balita --}}
-                            <div class="row">
+                        <div class="card-body border-spacing-1 line-height-1">
+                            {{-- Cover --}}
+                            <div class="row border-line">
+                                <div class="col-sm d-flex justify-content-center">
+                                    <img src="{{ asset('img/Logo-Sawahlunto.png') }}" class="img-fluid" width="125" alt="logo pemko sawahlunto">
+                                </div>
+                                <div class="col-sm">
+                                    <h3 class="text-center">LAPORAN BUKU STUNTING</h3>
+                                    <h4 class="text-center">KOTA SAWAHLUNTO</h4>
+                                    <h5 class="text-center">TAHUN {{ date('Y') }}</h5>
+                                </div>
+                                <div class="col-sm d-flex justify-content-center">
+                                    <img src="{{ asset('img/dicasting.png') }}" class="img-fluid" width="150" alt="logo dicasting"> 
+                                </div>
+                            </div>
+                            {{-- Nama Anak --}}
+                            <div class="row mt-5">
                                 <div class="col-sm">
                                     @foreach($dataStunting as $stuntingItem)
-                                        <div class="card-header">
+                                        <div class="card-header text-center">
                                             <h3><i class="fa fa-child"></i> {{ $stuntingItem->NAMA_BALITA }} -
                                                 @if($stuntingItem->JENIS_KELAMIN == 'L')
                                                     <i class="fa fa-mars" style="color: rgb(116, 141, 252);"></i>
@@ -31,7 +47,11 @@
                                             </h3>
                                         </div>
                                     @endforeach
-
+                                </div>
+                            </div>
+                            {{-- Detail Balita --}}
+                            <div class="row mt-3">
+                                <div class="col-sm">
                                     <table class="table table-sm">
                                         <tbody class="table table-sm">
                                             <tr>
@@ -71,10 +91,6 @@
                                     </table>
                                 </div>
                                 <div class="col-sm">
-                                    <div class="card-header">
-
-                                    </div>
-
                                     <table class="table table-sm">
                                         <tbody class="table table-sm">
                                             <tr>
@@ -115,13 +131,13 @@
                                     </figure>
                                 </div>
                             </div>
-                            <br>
+                            {{-- Riwayat Pertumbuhan --}}
                             <div class="row mt-4">
                                 <div class="col-12">
                                     <h5>Riwayat Pertumbuhan Anak</h5>
                                     @foreach ($riwayatPertumbuhanAnak as $riwayat)
                                     <div class="table-responsive">
-                                        <table class="table table-bordered">
+                                        <table class="table table-sm table-bordered">
                                             <tr>
                                                 <th>No</th>
                                                 <th>Tanggal Pengukuran</th>
@@ -148,17 +164,19 @@
                                     <h5>Detail Intervensi</h5>
                                     @foreach ($detailIntervensis as $item)
                                     <div class="table-responsive">
-                                        <table class="table table-bordered">
+                                        <table class="table table-sm">
                                             <tr>
                                                 <th>No</th>
                                                 <th>Bentuk Intervensi</th>
                                                 <th>Tanggal Intervensi</th>
+                                                <th>Dokumentasi</th>
                                                 <th>Keterangan</th>
                                             </tr>
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->bentukintervensi->BENTUK_INTERVENSI }}</td>
                                                 <td>{{ $item->TGL_INTERVENSI }}</td>
+                                                <td>{{ $item->DOKUMENTASI }}</td>
                                                 <td>{{ $item->KETERANGAN }}</td>
                                             </tr>
                                         </table>
@@ -183,6 +201,9 @@
 
                             {{-- isian Tanda tangan --}}
                             <div class="row mt-4">
+                                <div class="col-sm">
+
+                                </div>
                                 <div class="col-sm">
 
                                 </div>

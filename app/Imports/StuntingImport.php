@@ -3,36 +3,11 @@
 namespace App\Imports;
 
 use App\Models\Stunting;
-// use App\Models\Posyandu;
-// use App\Models\Kecamatan;
-// use App\Models\Kelurahandesa;
-// use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
 class StuntingImport implements ToModel, WithStartRow
 {
-    // public function collection(Collection $rows)
-    // {
-    //     foreach ($rows as $row) {
-    //         $kecamatan = Kecamatan::where('kecamatan', $row['kecamatan'])->first();
-    //         $kelurahan = Kelurahandesa::where('kelurahan_desa', $row['kelurahan_desa'])->first();
-    //         $posyandu = Posyandu::where('posyandu', $row['posyandu'])->first();
-    //         Stunting::create([
-    //             'kecamatan' => $kecamatan->id,
-    //             'kelurahan_desa' => $kelurahan->id,
-    //             'posyandu' => $posyandu->id,
-    //             'stunting' => $row['stunting'],
-    //         ]);
-
-    //     }
-    // }
-
-    // public function __construct()
-    // {
-    //     Stunting::truncate();
-    // }
-
     public function startRow(): int
     {
         return 2;

@@ -116,13 +116,23 @@
 
             {{-- Grafik Perkembangan Stunting --}}
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                <div class="col-lg-8 col-md-8 col-8 col-sm-8">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistik Kasus Stunting</h4>
                         </div>
                         <div class="card-body center" style="width: 100% !important;">
                             {!! App\Http\Controllers\DashboardController::showChartLineStunting()->render() !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-4 col-sm-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Stunting Per Jenis Kelamin</h4>
+                        </div>
+                        <div class="card-body center" style="width: 100% !important;">
+                            {!! App\Http\Controllers\DashboardController::showChartPieSexRatio()->render() !!}
                         </div>
                     </div>
                 </div>

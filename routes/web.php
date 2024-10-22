@@ -177,6 +177,7 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/laporan/kasus-sembuh', [LaporanController::class, 'kasussembuh'])->name('laporan.kasusSembuh');
     Route::get('/laporan/kasus-meninggal', [LaporanController::class, 'kasusmeninggal'])->name('laporan.kasusMeninggal');
     Route::get('/laporan/kasus-belum-intervensi', [LaporanController::class, 'kasusbelumintervensi'])->name('laporan.kasusBelumIntervensi');
+    Route::get('/laporan/wisuda-stunting', [LaporanController::class, 'wisudaStunting'])->name('laporan.wisudaStunting');
     Route::get('/laporan/buku-stunting', [LaporanController::class, 'bukuStunting'])->name('laporan.bukuStunting');
     // Route::get('/laporan/buku-stunting/{NAMA_BALITA}', [LaporanController::class, 'showbukuStunting'])->name('laporan.showbukuStunting');
     Route::get('/laporan/buku-stunting/{id}', [LaporanController::class, 'showbukuStunting'])->name('laporan.showbukuStunting');

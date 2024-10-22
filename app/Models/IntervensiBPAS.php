@@ -11,13 +11,18 @@ class IntervensiBPAS extends Model
 
     protected $table = 'intervensi_bpas';
     // protected $primaryKey = 'id';
-    // protected $guarded = [];
-    protected $fillable = [
-        'BAPAKASUH_ID',
-        'STUNTING_ID',
-        'BENTUK_INTERVENSI_ID',
-        'STATUS'
-    ];
+    protected $guarded = [];
+    // protected $fillable = [
+    //     'BAPAKASUH_ID',
+    //     'STUNTING_ID',
+    //     'BENTUK_INTERVENSI_ID',
+    //     'STATUS'
+    // ];
+
+    public function stunting()
+    {
+        return $this->hasOne(Stunting::class, 'id','STUNTING_ID');
+    }
 
     public function bapakasuh()
     {
@@ -27,11 +32,6 @@ class IntervensiBPAS extends Model
     public function bentukintervensi()
     {
         return $this->hasOne(BentukIntervensi::class, 'id','BENTUK_INTERVENSI_ID');
-    }
-
-    public function stunting()
-    {
-        return $this->hasOne(Stunting::class, 'id','STUNTING_ID');
     }
 
     public function kabupatenkota()

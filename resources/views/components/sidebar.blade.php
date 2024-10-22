@@ -71,24 +71,6 @@
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fa-solid fa-people-group"></i>
-                    <span>Program Data</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
-                        <a class="nav-link"
-                            href="#">
-                            <ion-icon name="body-outline"></ion-icon>&nbsp Program Data</a>
-                    </li>
-                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
-                        <a class="nav-link"
-                            href="{{ route('intervensi.index') }}">
-                            <ion-icon name="share-social-outline"></ion-icon></i>&nbsp Kegiatan</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link has-dropdown">
                     <i class="fa-solid fa-house-chimney-medical"></i>
                     <span>Puskesmas</span>
                 </a>
@@ -123,6 +105,24 @@
                         <a class="nav-link"
                             href="#">
                             <ion-icon name="basket-outline"></ion-icon>&nbsp Management PAUD</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fa-solid fa-people-group"></i>
+                    <span>Program Data</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="#">
+                            <ion-icon name="documents-outline"></ion-icon>&nbsp Program Data</a>
+                    </li>
+                    <li class='{{ Request::is('balitas') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('intervensi.index') }}">
+                            <ion-icon name="share-social-outline"></ion-icon></i>&nbsp Kegiatan</a>
                     </li>
                 </ul>
             </li>
@@ -242,7 +242,7 @@
                     </li>
                     <li class='{{ Request::is('home') ? '' : '' }}'>
                         <a class="nav-link"
-                            href="{{ route('laporan.kasusSembuh') }}">
+                            href="{{ route('laporan.wisudaStunting') }}">
                             <ion-icon name="sparkles-outline"></ion-icon>&nbsp Wisuda Stunting</a>
                     </li>
                     {{-- <li class="{{ Request::is('home') ? '' : '' }}">

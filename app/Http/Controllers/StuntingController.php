@@ -198,7 +198,7 @@ class StuntingController extends Controller
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
                     // "data" => [20,22,23,23,24,24,23,22,]
-                    "data" => [0,0,0,0,0,0,0,197,0]
+                    "data" => [0,0,0,0,0,0,201,197,0]
                 ],
                 [
                     "label" => "Kasus Aktif",
@@ -206,7 +206,7 @@ class StuntingController extends Controller
                     "borderColor" => '#FF6384',
                     "borderWidth" => 2,
                     // "data" => [20,22,24,22,23,20,20,19,20]
-                    "data" => [0,0,0,0,0,0,0,197,0]
+                    "data" => [0,0,0,0,0,0,201,197,0]
                 ],
                 [
                     "label" => "Resiko Stunting",
@@ -214,7 +214,7 @@ class StuntingController extends Controller
                     "borderColor" => '#4BC0C0',
                     "borderWidth" => 2,
                     // "data" => [21,23,24,23,21,22,20,21,21]
-                    "data" => [0,0,0,0,0,0,0,197,0]
+                    "data" => [0,0,0,0,0,0,201,197,0]
                 ]
             ])
             ->options([
