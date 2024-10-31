@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Balita;
-use App\Models\Kecamatan;
 use App\Livewire\Keluarga;
 use App\Livewire\BalitaEdit;
 use App\Exports\BalitaExport;
@@ -16,7 +14,6 @@ use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
@@ -26,8 +23,24 @@ use App\Http\Controllers\IntervensiNonBPASController;
 use App\Models\IntervensiNonBPAS;
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+// login
+Route::get('login', function () {
     return view('pages.auth.auth-login');
 });
+
+// login
+// Route::get('/', function () {
+//     return view('pages.auth.auth-login');
+// });
+
+// // register
+// Route::get('/register', function () {
+//     return view('pages.auth.auth-register');
+// });
+
 
 Route::middleware(['auth'])->group(function ()
 {
@@ -45,6 +58,7 @@ Route::middleware(['auth'])->group(function ()
     Route::get('sawahlunto', function(){
         return view('pages.masters.sawahlunto');
     });
+
     Route::get('selectKecamatan', [KecamatanController::class, 'kecamatan'])->name('kecamatan.index');
     Route::get('selectKelurahandesa/{id}', [KecamatanController::class, 'kelurahandesa']);
 
