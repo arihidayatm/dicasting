@@ -27,19 +27,6 @@
 
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fa-solid fa-users-rectangle"></i>
-                    <span>Users</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class='{{ Request::is('users') ? '' : '' }}'>
-                        <a class="nav-link"
-                            href="{{ route('users.index') }}">
-                            <ion-icon name="person-circle-outline"></ion-icon>&nbsp Management User</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link has-dropdown">
                     <i class="fa-solid fa-people-roof"></i>
                     <span>Keluarga</span>
                 </a>
@@ -70,43 +57,56 @@
                 </ul>
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link has-dropdown">
+                <a href="{{ route('puskesmas.index') }}" class="nav-link">
                     <i class="fa-solid fa-house-chimney-medical"></i>
                     <span>Puskesmas</span>
                 </a>
-                <ul class="dropdown-menu">
+                {{-- <ul class="dropdown-menu">
                     <li class='{{ Request::is('balitas') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('puskesmas.index') }}">
                             <ion-icon name="business-outline"></ion-icon>&nbsp Management Puskesmas</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link has-dropdown">
+                <a href="{{ route('posyandus.index') }}" class="nav-link">
                     <i class="fa-solid fa-square-plus"></i>
                     <span>Posyandu</span>
                 </a>
-                <ul class="dropdown-menu">
+                {{-- <ul class="dropdown-menu">
                     <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
                             href="{{ route('posyandus.index') }}">
                             <ion-icon name="today-outline"></ion-icon>&nbsp Management Posyandu</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link has-dropdown">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-school"></i>
+                    <span>Sekolah</span>
+                </a>
+                {{-- <ul class="dropdown-menu">
+                    <li class='{{ Request::is('posyandus') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="#">
+                            <ion-icon name="basket-outline"></ion-icon>&nbsp Management Sekolah</a>
+                    </li>
+                </ul> --}}
+            </li>
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+                <a href="#" class="nav-link">
                     <i class="fa-solid fa-school"></i>
                     <span>PAUD</span>
                 </a>
-                <ul class="dropdown-menu">
+                {{-- <ul class="dropdown-menu">
                     <li class='{{ Request::is('posyandus') ? '' : '' }}'>
                         <a class="nav-link"
                             href="#">
                             <ion-icon name="basket-outline"></ion-icon>&nbsp Management PAUD</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
@@ -123,6 +123,29 @@
                         <a class="nav-link"
                             href="{{ route('intervensi.index') }}">
                             <ion-icon name="share-social-outline"></ion-icon></i>&nbsp Kegiatan</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-header">Shield</li>
+
+            <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fa-solid fa-users-rectangle"></i>
+                    <span>Users</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('users') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('users.index') }}">
+                            <ion-icon name="person-circle-outline"></ion-icon>&nbsp Management User</a>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('users') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="#">
+                            <ion-icon name="person-circle-outline"></ion-icon>&nbsp Roles and Permissions</a>
                     </li>
                 </ul>
             </li>

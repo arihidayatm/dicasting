@@ -6,7 +6,10 @@ use App\Exports\BalitaExport;
 use App\Livewire\BalitaDetail;
 use App\Exports\StuntingExport;
 use App\Livewire\StuntingDetail;
+use App\Models\IntervensiNonBPAS;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\LaporanController;
@@ -14,33 +17,17 @@ use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\StuntingController;
 use App\Http\Controllers\BapakAsuhController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PuskesmasController;
 use App\Http\Controllers\IntervensiController;
 use App\Http\Controllers\NonBapakAsuhController;
 use App\Http\Controllers\IntervensiBPASController;
 use App\Http\Controllers\IntervensiNonBPASController;
-use App\Models\IntervensiNonBPAS;
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-// login
-Route::get('login', function () {
     return view('pages.auth.auth-login');
 });
-
-// login
-// Route::get('/', function () {
-//     return view('pages.auth.auth-login');
-// });
-
-// // register
-// Route::get('/register', function () {
-//     return view('pages.auth.auth-register');
-// });
-
 
 Route::middleware(['auth'])->group(function ()
 {
@@ -48,11 +35,37 @@ Route::middleware(['auth'])->group(function ()
         return view('pages.dashboard');
     })->name('home');
 
+// Route::get('/', function(){
+//     return view('welcome');
+// });
+
+// login
+// Route::get('/login', [AuthController::class, 'index'])->name('auth.login')->middleware('guest');
+// Route::get('/login', [AuthController::class, 'verify'])->name('auth.verify');
+
+
+// Route::group(['middleware'=>'auth:admin'], function(){
+//     Route::get('/admin/home', [DashboardController::class, 'index'])->name('admin.dashboard.index');
+// });
+
+// Route::group(['middleware'=>'auth:user'], function(){
+//     Route::get('/user/home', [DashboardController::class, 'index'])->name('user.dashboard.index');
+// });
+
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+// Route::middleware(['auth'])->group(function ()
+// {
+//     Route::get('home', function () {
+//         return view('pages.dashboard');
+//     })->name('home');
+
 
 
     //MASTERS
-    // Route::get('/users',[UserController::class, 'index'])->name('users.index');
-    Route::resource('users', UserController::class);
+    Route::get('/users',[UserController::class, 'index'])->name('users.index');
+    // Route::resource('users', UserController::class);
     // Route::get('/user/chart', 'UserController@showChart');
 
     Route::get('sawahlunto', function(){

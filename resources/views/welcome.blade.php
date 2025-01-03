@@ -111,7 +111,7 @@
                             </a>
 
                             <a
-                                href="https://dicasting.sawahluntokota.go.id"
+                                href="{{route ('login')}}"
                                 class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#829eec] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#829eec]"
                             >
                                 <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
@@ -171,7 +171,8 @@
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Copyright &copy; Dinas Komunikasi dan Informatika Kota Sawahlunto. (PHP v{{ PHP_VERSION }})
+                        Copyright &copy; Dinas Komunikasi dan Informatika Kota Sawahlunto.
+                        {{-- (PHP v{{ PHP_VERSION }}) --}}
                     </footer>
                 </div>
             </div>

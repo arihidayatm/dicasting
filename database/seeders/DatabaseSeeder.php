@@ -16,9 +16,24 @@ class DatabaseSeeder extends Seeder
     {
         // Stunting::factory(10)->create();
 
-        User::factory()->create([
+        User::create([
             'name' => 'Super Admin',
             'email' => 'admin@mahdev.com',
+            'role' => 'super_admin',
+            'password' => Hash::make('qwerty123'),
+        ]);
+        
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin.baren@mahdev.com',
+            'role' => 'admin',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'Dinas Sosial',
+            'email' => 'opd@mahdev.com',
+            'role' => 'user',
             'password' => Hash::make('qwerty123'),
         ]);
     }

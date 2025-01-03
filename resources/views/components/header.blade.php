@@ -10,27 +10,35 @@
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
             <div class="search-result">
-                <div class="search-header">
+                {{-- <div class="search-header">
                     Histories
-                </div>
+                </div> --}}
 
                 <div class="search-header">
-                    Projects
+                    Pages
                 </div>
                 <div class="search-item">
-                    <a href="#">
+                    <a href="{{ route('stuntings.index') }}">
                         <div class="search-icon bg-danger mr-3 text-white">
                             <i class="fas fa-code"></i>
                         </div>
-                        Stisla Admin Template
+                        Data Stunting
                     </a>
                 </div>
                 <div class="search-item">
-                    <a href="#">
+                    <a href="{{ route('intervensi-bpas.index') }}">
+                        <div class="search-icon bg-warning mr-3 text-white">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        Data Intervensi
+                    </a>
+                </div>
+                <div class="search-item">
+                    <a href="{{ route('laporan.index') }}">
                         <div class="search-icon bg-primary mr-3 text-white">
                             <i class="fas fa-laptop"></i>
                         </div>
-                        Create a new Homepage Design
+                        Laporan
                     </a>
                 </div>
             </div>

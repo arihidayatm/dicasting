@@ -19,13 +19,6 @@ class DashboardController extends Controller
         $chartLineStunting = Chartjs::build()
             ->name("LineStuntingChart")
             ->type("line")
-            ->options([
-                'elements' => [
-                    'line' => [
-                        'tension' => 0
-                    ]
-                ]
-            ])
             ->size(["width" => 500, "height" => 200])
             ->labels(["Januari", "Februari", "Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"])
             ->datasets([
@@ -35,7 +28,7 @@ class DashboardController extends Controller
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
                     // "data" => [20,22,23,23,24,24,23,22,]
-                    "data" => [0,0,0,0,0,0,201,197,197]
+                    "data" => [0,0,0,0,0,0,0,197,0]
                 ],
                 [
                     "label" => "Kasus Aktif",
@@ -43,7 +36,7 @@ class DashboardController extends Controller
                     "borderColor" => '#FF6384',
                     "borderWidth" => 2,
                     // "data" => [20,22,24,22,23,20,20,19,20]
-                    "data" => [0,0,0,0,0,0,201,197,197]
+                    "data" => [0,0,0,0,0,0,0,197,0]
                 ],
                 [
                     "label" => "Penyelesaian",
@@ -51,7 +44,7 @@ class DashboardController extends Controller
                     "borderColor" => '#4BC0C0',
                     "borderWidth" => 2,
                     // "data" => [21,23,24,23,21,22,20,21,21]
-                    "data" => [0,0,0,0,0,0,0,20,0]
+                    "data" => [0,0,0,0,0,0,0,0,0]
                 ]
             ])
             ->options([
@@ -101,6 +94,7 @@ class DashboardController extends Controller
         return $chartStuntingKecamatan;
     }
 
+
     public static function showChartPieSexRatio()
     {
         $maleCount = Stunting::where("JENIS_KELAMIN", "L")->count();
@@ -134,4 +128,5 @@ class DashboardController extends Controller
         // return view('pages.charts.stunting', compact('chartSexRatio'));
         return $chartPieSexRatio;
     }
+
 }
