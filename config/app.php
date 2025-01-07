@@ -126,7 +126,7 @@ return [
     // 'providers' => [
     // // ...
     //     Maatwebsite\Excel\ExcelServiceProvider::class,
-    //     Spatie\Permission\PermissionServiceProvider::class,
+        // Spatie\Permission\PermissionServiceProvider::class,
     // ],
 
     // 'aliases' => [

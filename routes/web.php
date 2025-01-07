@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function ()
 //     Route::get('/user/home', [DashboardController::class, 'index'])->name('user.dashboard.index');
 // });
 
-// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // Route::middleware(['auth'])->group(function ()
