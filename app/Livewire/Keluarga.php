@@ -16,6 +16,12 @@ class Keluarga extends Component
     public $nik_ibu;
     public $nama_ibu;
     public $alamat;
+    public $rt;
+    public $rw;
+    public $kabupaten;
+    public $kecamatan;
+    public $kelurahan;
+    public $kodepos;
     public $nohp;
     public $keluarga_id;
 
@@ -27,8 +33,14 @@ class Keluarga extends Component
     public function render()
     {
         $keluargas = ModelsKeluarga::paginate(10);
+        $kabupatenkotas = ModelsKeluarga::all();
+        $kecamatans = ModelsKeluarga::all();
+        $kelurahandesas = ModelsKeluarga::all();
         return view('livewire.keluarga', [
-            'keluargas' => $keluargas
+            'keluargas' => $keluargas,
+            'kabupatenkotas' => $kabupatenkotas,
+            'kecamatans' => $kecamatans,
+            'kelurahandesas' => $kelurahandesas,
         ]);
     }
 
@@ -37,13 +49,25 @@ class Keluarga extends Component
         $this->emit('showKeluarga', $keluarga_id);
     }
 
-    public function showCreateModal()
+    //Here, we will write render(), resetInputFields(), store(), edit(), cancel(), update() and delete() method for our crud app.
+    public function resetInputFields()
     {
-        $this->resetInputFields();
-        $this->dispatchBrowserEvent('open-create-modal');
+        $this->no_kk = '';
+        $this->nik_ayah = '';
+        $this->nama_ayah = '';
+        $this->nik_ibu = '';
+        $this->nama_ibu = '';
+        $this->alamat = '';
+        $this->rt = '';
+        $this->rw = '';
+        // $this->kabupaten = '';
+        $this->kecamatan = '';
+        $this->kelurahan = '';
+        $this->kodepos = '';
+        $this->nohp = '';
     }
 
-    public function createDataKeluarga()
+    public function store()
     {
         $this->validate([
             'no_kk' => 'required',
@@ -52,45 +76,64 @@ class Keluarga extends Component
             'nik_ibu' => 'required',
             'nama_ibu' => 'required',
             'alamat' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            // 'kabupaten' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'kodepos' => 'required',
             'nohp' => 'required',
         ]);
 
-        Keluarga::create([
+        ModelsKeluarga::create([
             'no_kk' => $this->no_kk,
             'nik_ayah' => $this->nik_ayah,
             'nama_ayah' => $this->nama_ayah,
             'nik_ibu' => $this->nik_ibu,
             'nama_ibu' => $this->nama_ibu,
             'alamat' => $this->alamat,
+            'rt' => $this->rt,
+            'rw' => $this->rw,
+            // 'kabupaten' => $this->kabupaten,
+            'kecamatan' => $this->kecamatan,
+            'kelurahan' => $this->kelurahan,
+            'kodepos' => $this->kodepos,
             'nohp' => $this->nohp,
         ]);
 
+        session()->flash('message', 'Data Keluarga Berhasil Disimpan.');
         $this->resetInputFields();
-        $this->dispatchBrowserEvent('close-create-modal');
-        $this->emit('refreshData');
+        $this->emit('keluargaStored');
     }
 
-    public function showEditModal($id)
+    public function edit($id)
     {
-        $this->resetInputFields();
-        $this->keluarga_id = $id;
-        $this->dispatchBrowserEvent('open-edit-modal');
-        $this->loadData();
-    }
-
-    public function loadData()
-    {
-        $keluarga = Keluarga::find($this->keluarga_id);
+        $keluarga = ModelsKeluarga::find($id);
+        $this->keluarga_id = $keluarga->id;
         $this->no_kk = $keluarga->no_kk;
         $this->nik_ayah = $keluarga->nik_ayah;
         $this->nama_ayah = $keluarga->nama_ayah;
         $this->nik_ibu = $keluarga->nik_ibu;
         $this->nama_ibu = $keluarga->nama_ibu;
         $this->alamat = $keluarga->alamat;
+        $this->rt = $keluarga->rt;
+        $this->rw = $keluarga->rw;
+        // $this->kabupaten = $keluarga->kabupaten;
+        $this->kecamatan = $keluarga->kecamatan;
+        $this->kelurahan = $keluarga->kelurahan;
+        $this->kodepos = $keluarga->kodepos;
         $this->nohp = $keluarga->nohp;
+
+        $this->emit('showEditModal');
     }
 
-    public function updateDataKeluarga()
+    public function cancel()
+    {
+        $this->resetInputFields();
+        $this->emit('showEditModal');
+    }
+
+    public function update()
     {
         $this->validate([
             'no_kk' => 'required',
@@ -99,23 +142,45 @@ class Keluarga extends Component
             'nik_ibu' => 'required',
             'nama_ibu' => 'required',
             'alamat' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            // 'kabupaten' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'kodepos' => 'required',
             'nohp' => 'required',
         ]);
 
-        $keluarga = Keluarga::find($this->keluarga_id);
-        $keluarga->update([
-            'no_kk' => $this->no_kk,
-            'nik_ayah' => $this->nik_ayah,
-            'nama_ayah' => $this->nama_ayah,
-            'nik_ibu' => $this->nik_ibu,
-            'nama_ibu' => $this->nama_ibu,
-            'alamat' => $this->alamat,
-            'nohp' => $this->nohp,
-        ]);
+        if ($this->keluarga_id) {
+            $keluarga = ModelsKeluarga::find($this->keluarga_id);
+            $keluarga->update([
+                'no_kk' => $this->no_kk,
+                'nik_ayah' => $this->nik_ayah,
+                'nama_ayah' => $this->nama_ayah,
+                'nik_ibu' => $this->nik_ibu,
+                'nama_ibu' => $this->nama_ibu,
+                'alamat' => $this->alamat,
+                'rt' => $this->rt,
+                'rw' => $this->rw,
+                // 'kabupaten' => $this->kabupaten,
+                'kecamatan' => $this->kecamatan,
+                'kelurahan' => $this->kelurahan,
+                'kodepos' => $this->kodepos,
+                'nohp' => $this->nohp,
+            ]);
 
-        $this->resetInputFields();
-        $this->dispatchBrowserEvent('close-edit-modal');
-        $this->emit('refreshData');
+            session()->flash('message', 'Data Keluarga Berhasil Diupdate.');
+            $this->resetInputFields();
+            $this->emit('keluargaUpdated');
+        }
+    }
+
+    public function delete($id)
+    {
+        if ($id) {
+            ModelsKeluarga::where('id', $id)->delete();
+            session()->flash('message', 'Data Keluarga Berhasil Dihapus.');
+        }
     }
 
 }

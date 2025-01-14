@@ -138,7 +138,7 @@
                                                                     <div class="card-footer text-right">
                                                                         <button class="btn btn-primary">Submit</button>
                                                                         {{-- Cancel button --}}
-                                                                        <a href="{{ route('stuntings.index') }}" class="btn btn-secondary">Cancel</a>
+                                                                        <a class="btn btn-secondary" data-dismiss="modal" onclick="$('#modalPengukuran').modal('hide');return false;">Cancel</a>
                                                                     </div>
                                                                 </form>
                                                             </div>

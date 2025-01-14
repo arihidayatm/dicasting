@@ -120,7 +120,7 @@
                                                                         <tr>
                                                                             <th>NIK</th>
                                                                             <td>:</td>
-                                                                            <td>{{ $stunting->NIK }}</td>
+                                                                            <td>{{ Str::mask($stunting->NIK, '*', 4,8) }}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Nama Balita</th>
@@ -170,7 +170,7 @@
                                                                         <tr>
                                                                             <th>No. KK</th>
                                                                             <td>:</td>
-                                                                            <td>{{ $stunting->NO_KK }}</td>
+                                                                            <td>{{ Str::mask($stunting->NO_KK, '*', 4,8) }}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Nama Ayah</th>
@@ -223,6 +223,7 @@
                                                                             <th>Berat Badan Ukur</th>
                                                                             <th>Tinggi Badan Ukur</th>
                                                                             <th>Cara Ukur</th>
+
                                                                         </tr>
                                                                         @foreach ($riwayatPertumbuhanAnak as $riwayat)
                                                                         <tr>
@@ -248,13 +249,27 @@
                                                                 <table class="table table-bordered">
                                                                     <tbody class="table row-md-6">
                                                                         <tr>
-                                                                            <th>Tanggal Ukur</th>
-                                                                            <th>Berat Badan Ukur</th>
-                                                                            <th>Tinggi Badan Ukur</th>
-                                                                            <th>Cara Ukur</th>
+                                                                            <th>Pemberian Ke</th>
+                                                                            <th>Jenis PMT</th>
+                                                                            <th>Tanggal Pemberian</th>
+                                                                            <th>Tahun Produksi (Pabrikan)</th>
+                                                                            <th>Jumlah Pemberian</th>
+                                                                            <th>Alasan Pemberian</th>
+                                                                            <th>Sumber Anggaran</th>
+                                                                            <th>Mitra</th>
+                                                                            <th>Status Gizi Terakhir</th>
+                                                                            <th>Hasil Pemberian PMT</th>
+                                                                            <th>Tanggal Selesai</th>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>{{ $stunting->TGL_UKUR }}</td>
+                                                                            <td>{{ $stunting->BB_UKUR }}</td>
+                                                                            <td>{{ $stunting->TB_UKUR }}</td>
+                                                                            <td>{{ $stunting->CARA_UKUR }}</td>
+                                                                            <td>{{ $stunting->TGL_UKUR }}</td>
+                                                                            <td>{{ $stunting->BB_UKUR }}</td>
+                                                                            <td>{{ $stunting->TB_UKUR }}</td>
+                                                                            <td>{{ $stunting->CARA_UKUR }}</td>
                                                                             <td>{{ $stunting->BB_UKUR }}</td>
                                                                             <td>{{ $stunting->TB_UKUR }}</td>
                                                                             <td>{{ $stunting->CARA_UKUR }}</td>
@@ -275,13 +290,27 @@
                                                                 <table class="table table-info table-bordered">
                                                                     <tbody class="table row-md-6">
                                                                         <tr>
-                                                                            <th>Tanggal Ukur</th>
-                                                                            <th>Berat Badan Ukur</th>
-                                                                            <th>Tinggi Badan Ukur</th>
-                                                                            <th>Cara Ukur</th>
+                                                                            <th>Tanggal Tindakan</th>
+                                                                            <th>Jenis Tindakan</th>
+                                                                            <th>JKN/BPJS</th>
+                                                                            <th>Air Bersih</th>
+                                                                            <th>Tersedia Jamban</th>
+                                                                            <th>Imunisasi</th>
+                                                                            <th>Merokok</th>
+                                                                            <th>Kecacingan</th>
+                                                                            <th>Riwayat Kehamilan</th>
+                                                                            <th>Penyakit Penyerta</th>
+                                                                            <th>Catatan</th>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>{{ $stunting->TGL_UKUR }}</td>
+                                                                            <td>{{ $stunting->BB_UKUR }}</td>
+                                                                            <td>{{ $stunting->TB_UKUR }}</td>
+                                                                            <td>{{ $stunting->CARA_UKUR }}</td>
+                                                                            <td>{{ $stunting->TGL_UKUR }}</td>
+                                                                            <td>{{ $stunting->BB_UKUR }}</td>
+                                                                            <td>{{ $stunting->TB_UKUR }}</td>
+                                                                            <td>{{ $stunting->CARA_UKUR }}</td>
                                                                             <td>{{ $stunting->BB_UKUR }}</td>
                                                                             <td>{{ $stunting->TB_UKUR }}</td>
                                                                             <td>{{ $stunting->CARA_UKUR }}</td>

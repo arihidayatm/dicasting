@@ -75,7 +75,7 @@
                                             <tr>
                                                 <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ Str::mask($stunting->NIK, '*', 4,8) }}</a></td>
                                                 <td>{{ Str::mask($stunting->NO_KK, '*', 4,8) }}</td>
-                                                <td>{{ $stunting->NAMA_BALITA }}</td>
+                                                <td><a href="{{ route('stuntings.detailData', $stunting->id) }}">{{ $stunting->NAMA_BALITA }} </a></td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
                                                 {{-- <td>{{ $stunting->UMUR }} Bulan</td> --}}
@@ -171,10 +171,10 @@
                                                         Update
                                                     </button>
                                                     {{-- Update Modal --}}
-                                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
-                                                                <form action="{{ route('stuntings.update-pengukuran', $stunting) }}" method="POST">
+                                                                <form action="{{ route('stuntings.update-pengukuran', $dataUkur) }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="card-header">
@@ -183,28 +183,28 @@
                                                                     <div class="card-body">
                                                                         <div class="form-group">
                                                                             <label for="TGL_UKUR">Tgl. Pengukuran</label>
-                                                                            <input type="date" class="form-control" name="TGL_UKUR" id="TGL_UKUR" value="{{ $stunting->TGL_UKUR }}">
+                                                                            <input type="date" class="form-control" name="TGL_UKUR" id="TGL_UKUR" value="{{ $dataUkur->TGL_UKUR }}">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="BERAT_BADAN">Berat Badan (*dalam kg)</label>
-                                                                            <input type="number" class="form-control" name="BERAT_BADAN" id="BERAT_BADAN" value="{{ $stunting->BERAT_BADAN }}">
+                                                                            <input type="number" class="form-control" name="BERAT_BADAN" id="BERAT_BADAN" value="{{ $dataUkur->BERAT_BADAN }}">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="TINGGI_BADAN">Tinggi Badan (*dalam cm)</label>
-                                                                            <input type="number" class="form-control" name="TINGGI_BADAN" id="TINGGI_BADAN" value="{{ $stunting->TINGGI_BADAN }}">
+                                                                            <input type="number" class="form-control" name="TINGGI_BADAN" id="TINGGI_BADAN" value="{{ $dataUkur->TINGGI_BADAN }}">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="CARA_UKUR">Cara Ukur</label>
                                                                             <select class="form-control select2" name="CARA_UKUR" id="CARA_UKUR">
-                                                                                <option value="Berdiri" {{ $stunting->CARA_UKUR == 'Berdiri' ? 'selected' : '' }}>Berdiri</option>
-                                                                                <option value="Terlentang" {{ $stunting->CARA_UKUR == 'Terlentang' ? 'selected' : '' }}>Terlentang</option>
+                                                                                <option value="Berdiri" {{ $dataUkur->CARA_UKUR == 'Berdiri' ? 'selected' : '' }}>Berdiri</option>
+                                                                                <option value="Terlentang" {{ $dataUkur->CARA_UKUR == 'Terlentang' ? 'selected' : '' }}>Terlentang</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="card-footer text-right">
                                                                         <button class="btn btn-primary">Submit</button>
                                                                         {{-- Cancel button --}}
-                                                                        <a href="{{ route('stuntings.index') }}" class="btn btn-secondary">Cancel</a>
+                                                                        <a class="btn btn-secondary" data-dismiss="modal" onclick="$('#modalPengukuran').modal('hide');return false;">Cancel</a>
                                                                     </div>
                                                                 </form>
                                                             </div>

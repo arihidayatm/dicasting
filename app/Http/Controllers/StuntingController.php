@@ -46,10 +46,24 @@ class StuntingController extends Controller
         return view('pages.stuntings.create', compact('kecamatans', 'kelurahandesas'));
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
-        $dataStunting = $request->validate();
-        \App\Models\Stunting::create($dataStunting);
+        $dataStunting = $request->validate([
+            'NIK' => 'required|numeric|unique:stuntings,NIK',
+            'NAMA_BALITA' => 'required|string|max:255',
+            'KECAMATAN_ID' => 'required|numeric',
+            'KELURAHANDESA_ID' => 'required|numeric',
+            'TGL_LAHIR' => 'required|date',
+            'JENIS_KELAMIN' => 'required|string|in:L,P',
+            'NAMA_IBU' => 'required|string|max:255',
+            'NAMA_AYAH' => 'nullable|string|max:255',
+            'ALAMAT' => 'required|string|max:255',
+            'NO_HP' => 'required|numeric',
+            'TGL_UKUR' => 'required|date',
+            'BB_UKUR' => 'required|numeric',
+        ]);
+
+        $stunting = Stunting::create($dataStunting);
 
         return redirect()->route('stuntings.index')
             ->with('success', 'Data stunting berhasil ditambahkan.');
@@ -194,34 +208,34 @@ class StuntingController extends Controller
             ->datasets([
                 [
                     "label" => "Jumlah Kasus",
-                    "backgroundColor" => '#36A2EB',
+                    // "backgroundColor" => '#36A2EB',
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
                     // "data" => [20,22,23,23,24,24,23,22,]
-                    "data" => [0,0,0,0,0,0,201,197,0]
+                    "data" => [184,189,190,188,190,206,203,197,192,190,194,221]
                 ],
                 [
                     "label" => "Kasus Aktif",
-                    "backgroundColor" => '#FF6384',
+                    // "backgroundColor" => '#FF6384',
                     "borderColor" => '#FF6384',
                     "borderWidth" => 2,
                     // "data" => [20,22,24,22,23,20,20,19,20]
-                    "data" => [0,0,0,0,0,0,201,197,0]
+                    "data" => [184,189,190,188,190,206,203,197,192,190,194,221]
                 ],
                 [
-                    "label" => "Resiko Stunting",
-                    "backgroundColor" => '#4BC0C0',
+                    "label" => "Penyelesaian",
+                    // "backgroundColor" => '#4BC0C0',
                     "borderColor" => '#4BC0C0',
                     "borderWidth" => 2,
                     // "data" => [21,23,24,23,21,22,20,21,21]
-                    "data" => [0,0,0,0,0,0,201,197,0]
+                    "data" => [184,189,190,188,190,206,203,197,192,190,194,0]
                 ]
             ])
             ->options([
                 'plugins' => [
                     'title' => [
                         'display' => true,
-                        'text' => 'Total Stunting'
+                        'text' => 'Total Stunting Tahun 2024'
                     ]
                 ]
             ]);
@@ -245,14 +259,16 @@ class StuntingController extends Controller
                     "backgroundColor" => '#36A2EB',
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
-                    "data" => [$maleCount]
+                    // "data" => [$maleCount]
+                    "data" => [138]
                 ],
                 [
                     "label" => "Perempuan",
                     "backgroundColor" => '#FF6384',
                     "borderColor" => '#FFB1C1',
                     "borderWidth" => 2,
-                    "data" => [$femaleCount]
+                    // "data" => [$femaleCount]
+                    "data" => [83]
                 ]
             ])
             ->options([
@@ -286,7 +302,8 @@ class StuntingController extends Controller
                     // "borderColor" => ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
                     "borderColor" => ['rgba(255,255,255)'],
                     "borderWidth" => 2,
-                    "data" => [$maleCount, $femaleCount]
+                    // "data" => [$maleCount, $femaleCount]
+                    "data" => [138,83]
                 ],
             ])
             ->options([
@@ -315,14 +332,14 @@ class StuntingController extends Controller
                     "backgroundColor" => '#36A2EB',
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
-                    "data" => [19, 28, 42, 35]
+                    "data" => [21, 35, 34, 38]
                 ],
                 [
                     "label" => "Perempuan",
                     "backgroundColor" => '#FF6384',
                     "borderColor" => '#FFB1C1',
                     "borderWidth" => 2,
-                    "data" => [14, 26, 19, 14]
+                    "data" => [11, 29, 18, 19]
                 ]
             ])
             ->options([

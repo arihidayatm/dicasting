@@ -60,8 +60,9 @@
 
                                             <th>Name</th>
                                             <th>Email</th>
-                                            {{-- <th>Phone</th>
-                                            <th>Position</th> --}}
+                                            {{-- <th>Phone</th> --}}
+                                            {{-- <th>Position</th> --}}
+                                            <th>Roles</th>
                                             {{-- <th>Created At</th> --}}
                                             <th>Action</th>
                                         </tr>
@@ -75,10 +76,10 @@
                                                 </td>
                                                 {{-- <td>
                                                     {{ $user->phone }}
-                                                </td>
+                                                </td>  --}}
                                                 <td>
-                                                    {{ $user->position }}
-                                                </td> --}}
+                                                    {{-- {{ $user->roles->pluck('name')->implode(', ') }} --}}
+                                                </td>
                                                 {{-- <td>{{ $user->created_at }}</td> --}}
                                                 <td>
                                                     <div class="d-flex justify-content-center">

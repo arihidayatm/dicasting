@@ -112,29 +112,34 @@
                                     </div>
                                 @enderror
                             </div> --}}
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="admin" class="selectgroup-input"
+                                        <input type="radio" name="role" value="superadmin" class="selectgroup-input"
                                             checked="">
                                         <span class="selectgroup-button">Super Admin</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="supervisor" class="selectgroup-input">
-                                        <span class="selectgroup-button">Admin Dinkes</span>
+                                        <input type="radio" name="role" value="admin" class="selectgroup-input">
+                                        <span class="selectgroup-button">Admin</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="staff" class="selectgroup-input">
-                                        <span class="selectgroup-button">Puskesmas</span>
+                                        <input type="radio" name="role" value="pejabat" class="selectgroup-input"
+                                            checked="">
+                                        <span class="selectgroup-button">Pejabat</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="staff" class="selectgroup-input">
+                                        <input type="radio" name="role" value="admin-opd" class="selectgroup-input">
+                                        <span class="selectgroup-button">OPD</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="role" value="kader" class="selectgroup-input">
                                         <span class="selectgroup-button">Kader</span>
                                     </label>
 
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

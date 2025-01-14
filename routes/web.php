@@ -54,6 +54,13 @@ Route::middleware(['auth'])->group(function ()
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+//Role
+// Route::get('/roles', [RoleController::class, 'roles'])->name('roles.index');
+// Route::get('/roles/create', [RoleController::class, 'createRole'])->name('roles.create');
+// Route::post('/roles/store', [RoleController::class, 'storeRole'])->name('roles.store');
+// Route::get('/roles/{id}/edit', [RoleController::class, 'editRole'])->name('roles.edit');
+// Route::post('/roles/{id}/update', [RoleController::class, 'updateRole'])->name('roles.update');
+// Route::delete('/roles/{id}/delete', [RoleController::class, 'destroyRole'])->name('roles.destroy');
 
 // Route::middleware(['auth'])->group(function ()
 // {
@@ -64,8 +71,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
     //MASTERS
-    Route::get('/users',[UserController::class, 'index'])->name('users.index');
-    // Route::resource('users', UserController::class);
+    // Route::get('/users',[UserController::class, 'index'])->name('users.index');
+    Route::resource('users', UserController::class);
     // Route::get('/user/chart', 'UserController@showChart');
 
     Route::get('sawahlunto', function(){
@@ -109,7 +116,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/stuntings/data-eppgbm', [StuntingController::class, 'indexEppgbm'])->name('stuntings.dataEppgbm');
     //Route stuntings/pengukuran
     Route::get('/stuntings/pengukuran/',[StuntingController::class, 'dataPengukuran'])->name('stuntings.pengukuran');
-    Route::get('/stuntings/{id}/pengukuran/',[StuntingController::class, 'updatedataPengukuran'])->name('stuntings.update-pengukuran');
+    Route::put('/stuntings/{id}/pengukuran/',[StuntingController::class, 'updatedataPengukuran'])->name('stuntings.update-pengukuran');
     //Route stuntings/export & import
     Route::get('/stunting-export',[StuntingController::class, 'export'])->name('stunting.export');
     Route::post('/stunting-import', [StuntingController::class, 'importDataStunting'])->name('stunting.import');
@@ -196,6 +203,16 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/keluargas', Keluarga::class)->name('keluargas.store');
     Route::delete('/keluargas/{id}', Keluarga::class)->name('keluargas.delete');
     Route::get('/keluargas/{id}', Keluarga::class)->name('keluargas.show');
+
+    //livewire Sekolah
+    // Route::get('/sekolah', Sekolah::class)->name('sekolah.index');
+    // Route::get('/sekolah/{id}', Sekolah::class)->name('sekolah.detail');
+    // Route::get('/sekolah/create', Sekolah::class)->name('sekolah.create');
+    // Route::get('/sekolah/{id}/edit', Sekolah::class)->name('sekolah.edit');
+    // Route::put('/sekolah/{id}', Sekolah::class)->name('sekolah.update');
+    // Route::post('/sekolah', Sekolah::class)->name('sekolah.store');
+    // Route::delete('/sekolah/{id}', Sekolah::class)->name('sekolah.delete');
+    // Route::get('/sekolah/{id}', Sekolah::class)->name('sekolah.show');
 
     //Laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');

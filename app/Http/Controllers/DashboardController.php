@@ -28,7 +28,7 @@ class DashboardController extends Controller
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
                     // "data" => [20,22,23,23,24,24,23,22,]
-                    "data" => [0,0,0,0,0,0,0,197,0]
+                    "data" => [184,189,190,188,190,206,203,197,192,190,194,221]
                 ],
                 [
                     "label" => "Kasus Aktif",
@@ -36,7 +36,7 @@ class DashboardController extends Controller
                     "borderColor" => '#FF6384',
                     "borderWidth" => 2,
                     // "data" => [20,22,24,22,23,20,20,19,20]
-                    "data" => [0,0,0,0,0,0,0,197,0]
+                    "data" => [184,189,190,188,190,206,203,197,192,190,194,221]
                 ],
                 [
                     "label" => "Penyelesaian",
@@ -44,7 +44,7 @@ class DashboardController extends Controller
                     "borderColor" => '#4BC0C0',
                     "borderWidth" => 2,
                     // "data" => [21,23,24,23,21,22,20,21,21]
-                    "data" => [0,0,0,0,0,0,0,0,0]
+                    "data" => [0,0,0,0,0,0,0,0,0,0,0,0]
                 ]
             ])
             ->options([
@@ -72,14 +72,14 @@ class DashboardController extends Controller
                     "backgroundColor" => '#36A2EB',
                     "borderColor" => '#9BD0F5',
                     "borderWidth" => 2,
-                    "data" => [19, 28, 42, 35]
+                    "data" => [21, 35, 34, 38]
                 ],
                 [
                     "label" => "Perempuan",
                     "backgroundColor" => '#FF6384',
                     "borderColor" => '#FFB1C1',
                     "borderWidth" => 2,
-                    "data" => [14, 26, 19, 14]
+                    "data" => [11, 29, 18, 19]
                 ]
             ])
             ->options([
@@ -109,11 +109,12 @@ class DashboardController extends Controller
                 [
                     "label" => "Stunting",
                     // "backgroundColor" => ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)"],
-                    "backgroundColor" => ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
+                    "backgroundColor" => ['rgb(54, 162, 235)','rgb(255, 99, 132)'],
                     // "borderColor" => ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
                     "borderColor" => ['rgba(255,255,255)'],
                     "borderWidth" => 2,
-                    "data" => [$maleCount, $femaleCount]
+                    // "data" => [$maleCount, $femaleCount]
+                    "data" => [138,83]
                 ],
             ])
             ->options([

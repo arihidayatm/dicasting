@@ -18,11 +18,12 @@
             <div class="section-header">
                 <h1>Dashboard - {{ auth()->user()->name }}</h1>
             </div>
+            {{-- statistik --}}
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         {{-- icon big --}}
-                        <div class="card-icon bg-primary">
+                        <div class="card-icon bg-primary blink" style="background-image: linear-gradient(to left, #00feff, #007bff); cursor: pointer;" onclick="location.href='{{ route('stuntings.index') }}'" onmouseover="this.style.backgroundImage='linear-gradient(to right, #343a40, #007bff)'" onmouseout="this.style.backgroundImage='linear-gradient(to left, #00feff, #007bff)'">
                             <i class="fas fa-children"></i>
                         </div>
                         <div class="card-wrap">
@@ -30,14 +31,14 @@
                                 <h4>Total Kasus Stunting</h4>
                             </div>
                             <div class="card-body">
-                                {{ count(\App\Models\Stunting::all()) }}
+                                2344{{-- {{ count(\App\Models\Stunting::all()) }} --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
-                        <div class="card-icon bg-danger">
+                        <div class="card-icon bg-danger" style="background-image: linear-gradient(to left, #ff6474, #f42a3d); cursor: pointer;" onclick="location.href='{{ route('stuntings.index') }}'" onmouseover="this.style.backgroundImage='linear-gradient(to right, #343a40, #dc3545)'" onmouseout="this.style.backgroundImage='linear-gradient(to left, #ff6474, #f42a3d)'">
                             <i class="fas fa-children"></i>
                         </div>
                         <div class="card-wrap">
@@ -45,14 +46,14 @@
                                 <h4>Total Kasus Aktif</h4>
                             </div>
                             <div class="card-body">
-                                {{ count(\App\Models\Stunting::all()) }}
+                                221{{-- {{ count(\App\Models\Stunting::all()) }} --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
-                        <div class="card-icon bg-warning">
+                        <div class="card-icon bg-warning" style="background-image: linear-gradient(to left, #fff336, #ffc108); cursor: pointer;" onclick="location.href='{{ route('stuntings.index') }}'" onmouseover="this.style.backgroundImage='linear-gradient(to right, #343a40, #ffc107)'" onmouseout="this.style.backgroundImage='linear-gradient(to left, #fff336, #ffc108)'">
                             <i class="fas fa-handshake"></i>
                         </div>
                         <div class="card-wrap">
@@ -68,7 +69,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
-                        <div class="card-icon bg-success">
+                        <div class="card-icon bg-success" style="background-image: linear-gradient(to left, #22fe90, #0ce03d); cursor: pointer;" onclick="location.href='{{ route('stuntings.index') }}'" onmouseover="this.style.backgroundImage='linear-gradient(to right, #343a40, #28a745)'" onmouseout="this.style.backgroundImage='linear-gradient(to left, #22fe90, #0ce03d)'">
                             <i class="fas fa-chart-simple"></i>
                         </div>
                         <div class="card-wrap">
@@ -76,14 +77,15 @@
                                 <h4>Total Penyelesaian Kasus Stunting</h4>
                             </div>
                             <div class="card-body">
-                                0{{-- {{ count(\App\Models\Position::all())}} --}}
+                                {{-- count total Stunting dikurangi dengan total stunting pada bulan yang ditentukan, misal pada bulan desember 2024 --}}
+                                2123{{-- {{ count(\App\Models\Stunting::all()) - count(\App\Models\Stunting::whereMonth('created_at', 12)->whereYear('created_at', 2024)->get()) }} --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
-                        <div class="card-icon bg-warning">
+                        <div class="card-icon bg-warning" style="background-image: linear-gradient(to left, #ff892e, #ffc107); cursor: pointer;" onclick="location.href='{{ route('stuntings.index') }}'" onmouseover="this.style.backgroundImage='linear-gradient(to right, #343a40, #ffc107)'" onmouseout="this.style.backgroundImage='linear-gradient(to left, #ff892e, #ffc107)'">
                             <i class="fas fa-marker"></i>
                         </div>
                         <div class="card-wrap">
@@ -91,15 +93,15 @@
                                 <h4>Total Balita Beresiko Tinggi Stunting</h4>
                             </div>
                             <div class="card-body">
-                                {{-- count total stunting dengan status TB/U = Sangat Pendek --}}
-                                0{{-- {{ count(\App\Models\Stunting::where('STATUS_TBU','Sangat Pendek')->get()) }} --}}
+                                {{-- count total stunting dengan status $stunting->STATUS_TBU = 'Sangat Pendek' pada bulan 12 --}}
+                                57{{-- {{ count(App\Models\Stunting::where('STATUS_TBU', 'Sangat Pendek')->whereMonth('created_at', 12)->get()) }} --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
-                        <div class="card-icon bg-success">
+                        <div class="card-icon bg-success" style="background-image: linear-gradient(to left, #a7a328, #14f010); cursor: pointer;" onclick="location.href='{{ route('bapakasuhs.index') }}'" onmouseover="this.style.backgroundImage='linear-gradient(to right, #343a40, #28a745)'" onmouseout="this.style.backgroundImage='linear-gradient(to left, #a7a328, #14f010)'">
                             <i class="fas fa-people-group"></i>
                         </div>
                         <div class="card-wrap">
@@ -107,7 +109,7 @@
                                 <h4>Total Bapak Ibu Asuh</h4>
                             </div>
                             <div class="card-body">
-                                {{ count(\App\Models\BapakAsuh::all()) }}
+                                {{-- {{ count(\App\Models\BapakAsuh::all()) }} --}}
                             </div>
                         </div>
                     </div>
@@ -133,6 +135,104 @@
                         </div>
                         <div class="card-body center" style="width: 100% !important;">
                             {!! App\Http\Controllers\DashboardController::showChartPieSexRatio()->render() !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Master Data --}}
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        {{-- icon big --}}
+                        <div class="card-icon bg-primary blink" style="background-color: #007bff !important; cursor: pointer;" onclick="location.href='{{ route('keluargas.index') }}'" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-people-roof"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Keluarga</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ count(\App\Models\Keluarga::all()) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger blink" style="background-color: #f42a3d !important; cursor: pointer;" onclick="location.href='{{ route('balita.index') }}'" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Balita</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ count(\App\Models\Balita::all()) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-warning blink" style="background-color: #ffc107 !important; cursor: pointer;" onclick="location.href='{{ route('puskesmas.index') }}'" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-house-chimney-medical"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Puskesmas</h4>
+                            </div>
+                            <div class="card-body">
+                                {{-- count total Puskesmas --}}
+                                {{ count(\App\Models\Puskesmas::all()) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-success blink" style="background-color: #0ce03d !important; cursor: pointer;" onclick="location.href='{{ route('posyandus.index') }}'" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-square-plus"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Posyandu</h4>
+                            </div>
+                            <div class="card-body">
+                                {{-- count total posyandu --}}
+                                {{ count(\App\Models\Posyandu::all()) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-warning blink" style="background-color: #ffc107 !important; cursor: pointer;" onclick="location.href='#'" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Sekolah</h4>
+                            </div>
+                            <div class="card-body">
+                                {{-- count total Sekolah --}}
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-success blink" style="background-color: #ff707d !important; cursor: pointer;" onclick="location.href='#'" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-person-pregnant"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Ibu Hamil</h4>
+                            </div>
+                            <div class="card-body">
+                                {{-- count total Ibu Hamil --}}
+                                44{{-- {{ count(\App\Models\IbuHamil::all()) }} --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -221,23 +321,6 @@
                                     View All
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
-            {{-- <div class="row">
-                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-                    <div class="card flex-fill w-100">
-                        <div class="card-body">
-                            <div id="chart"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-                    <div class="card flex-fill w-100">
-                        <div class="card-body">
-                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>
