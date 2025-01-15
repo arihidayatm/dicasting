@@ -49,7 +49,7 @@
                                     <div class="col-3">
                                         <form method="GET" action="{{ route('laporan.wisudaStunting') }}">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search by Nama Kecamatan" name="nama_kecamatan">
+                                                <input type="text" class="form-control" placeholder="Search by Kecamatan" name="nama_kecamatan">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-warning"><i class="fa-solid fa-square-plus"></i></button>
                                                 </div>
@@ -64,15 +64,14 @@
 
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>Status Wisuda</th>
                                             <th>NIK</th>
-                                            <th>No.KK</th>
+                                            {{-- <th>No.KK</th> --}}
                                             <th>Nama Balita</th>
                                             <th>Tgl. Lahir</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Umur</th>
-                                            <th>BB Lahir</th>
-                                            <th>TB Lahir</th>
+                                            {{-- <th>BB Lahir</th> --}}
+                                            {{-- <th>TB Lahir</th> --}}
                                             <th>Nama Orangtua</th>
                                             <th>Alamat</th>
                                             <th>Kecamatan</th>
@@ -80,22 +79,21 @@
                                         </tr>
                                         @foreach ($wisudaStuntings as $stunting)
                                             <tr>
-                                                <td>
-                                                    {{ $stunting->statusWisudaStuntings}}
-                                                </td>
                                                 <td>{{ Str::mask($stunting->NIK, '*', 4,8) }}</td>
-                                                <td>{{ Str::mask($stunting->NO_KK, '*', 4,8) }}</td>
+                                                {{-- <td>{{ Str::mask($stunting->NO_KK, '*', 4,8) }}</td> --}}
                                                 <td>{{ $stunting->NAMA_BALITA }}</td>
                                                 <td>{{ $stunting->TGL_LAHIR }}</td>
                                                 <td>{{ $stunting->JENIS_KELAMIN }}</td>
-                                                <td><?php
-                                                    $tglLahir = new DateTime($stunting->TGL_LAHIR);
-                                                    $now = new DateTime('now');
-                                                    $umur = $now->diff($tglLahir);
-                                                ?>
-                                                {{ $umur->format('%y Tahun %m Bulan %d Hari') }}</td>
-                                                <td>{{ $stunting->BERAT_BADAN }} kg</td>
-                                                <td>{{ $stunting->TINGGI_BADAN }} cm</td>
+                                                <td>
+                                                    <?php
+                                                        $tglLahir = new DateTime($stunting->TGL_LAHIR);
+                                                        $now = new DateTime('now');
+                                                        $umur = $now->diff($tglLahir);
+                                                    ?>
+                                                    {{ $umur->format('%y Tahun %m Bulan %d Hari') }}
+                                                </td>
+                                                {{-- <td>{{ $stunting->BERAT_BADAN }} kg</td> --}}
+                                                {{-- <td>{{ $stunting->TINGGI_BADAN }} cm</td> --}}
                                                 <td>{{ $stunting->NAMA_ORANGTUA }}</td>
                                                 <td>{{ $stunting->ALAMAT }}</td>
                                                 <td>{{ $stunting->kecamatan->NAMA_KECAMATAN }}</td>
@@ -103,7 +101,7 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    {{-- <caption>Showing data from {{ $wisudaStuntings->firstItem() }} to {{ $wisudaStuntings->lastItem() }} of {{ $wisudaStuntings->total() }} data.</caption> --}}
+                                    <caption>Showing data from {{ $wisudaStuntings->firstItem() }} to {{ $wisudaStuntings->lastItem() }} of {{ $wisudaStuntings->total() }} data.</caption>
                                 </div>
                                 <div class="float-right">
                                     {{ $wisudaStuntings->withQueryString()->links() }}

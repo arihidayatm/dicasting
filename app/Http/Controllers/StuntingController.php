@@ -161,6 +161,7 @@ class StuntingController extends Controller
         return redirect()->route('stuntings.pengukuran', $NIK)
             ->with('success', 'Data Pengukuran Berhasil di Perbarui');
     }
+    
     // public function import(Request $request)
     // {
     //     $request->validate([

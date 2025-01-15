@@ -315,7 +315,7 @@
 
 
         <div class="hide-sidebar-mini mt-4 mb-4 p-3">
-            <a href="https://github.com/arihidayatm"
+            <a href="https://scribehow.com/shared/Managing_Stunting_Data_in_the_System__hdb5p7SHSnOc-T2UtrPZzQ"
                 class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-book"></i> Documentation
             </a>

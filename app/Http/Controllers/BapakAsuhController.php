@@ -54,6 +54,7 @@ class BapakAsuhController extends Controller
         $bapakasuh->NAMA_ORANGTUAASUH = $request->NAMA_ORANGTUAASUH;
         $bapakasuh->NIP = $request->NIP;
         $bapakasuh->ALAMAT = $request->ALAMAT;
+        $bapakasuh->STATUS = $request->STATUS;
         $bapakasuh->NOHP = $request->NOHP;
         $bapakasuh->update();
 

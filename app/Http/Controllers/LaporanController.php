@@ -29,9 +29,26 @@ class LaporanController extends Controller
 
     public function balitaresiko()
     {
-        // Get Data Balita
-        $laporanBalita = Balita::get();
-        return view('pages.laporan.balitaresiko', compact('laporanBalita'));
+        $laporanBalitaresiko = Stunting::with('kecamatan', 'kelurahandesa')
+            ->where('STATUS_TBU', 'like', '%' . request('status_tbu') . '%')
+            ->whereHas('kecamatan',function($query) {
+                $query->where('NAMA_KECAMATAN', 'like', '%' . request('nama_kecamatan') . '%');
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        // Get Data Stunting dengan STATUS_TBU = 'Sangat Pendek'
+        // $stuntingTBU = Stunting::where('STATUS_TBU', 'Sangat Pendek')->get();
+        $countResikoStuntingSangatPendek = Stunting::where('STATUS_TBU', 'Sangat Pendek')->count();
+        $countResikoStuntingPendek = Stunting::where('STATUS_TBU', 'Pendek')->count();
+
+        return view('pages.laporan.balitaresiko', [
+            'kecamatan' => Kecamatan::all(),
+            'laporanBalitaresiko' => $laporanBalitaresiko,
+            // 'stuntingTBU' => $stuntingTBU
+            'countResikoStuntingSangatPendek' => $countResikoStuntingSangatPendek,
+            'countResikoStuntingPendek' => $countResikoStuntingPendek
+        ]);
     }
 
     public function kasusaktif()
@@ -80,34 +97,16 @@ class LaporanController extends Controller
     {
         $wisudaStuntings = Stunting::with('kecamatan', 'kelurahandesa')
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
+            ->whereRaw('TIMESTAMPDIFF(YEAR, TGL_LAHIR, CURDATE()) >= 5')
             ->whereHas('kecamatan', function($query) {
                 $query->where('NAMA_KECAMATAN', 'like', '%' . request('nama_kecamatan') . '%');
             })
             ->orderBy('id', 'desc')
             ->paginate(10);
 
-        // hitung $umur dari TGL_LAHIR ke hari ini
-        $umur = function($stunting) {
-            $tglLahir = new DateTime($stunting->TGL_LAHIR);
-            $now = new DateTime('now');
-            $umur = $now->diff($tglLahir);
-            return $umur;  
-        };
-        // dd($umur);
-
-        $statusWisudaStuntings = $wisudaStuntings->filter(function($stunting) use ($umur) {
-            return $umur($stunting) == '5 Tahun 0 Bulan 0 Hari';
-        })->map(function($stunting) {
-            $stunting->STATUS = 'Ultah';
-            return $stunting;
-        });
-        // dd($statusWisudaStuntings);
-
         return view('pages.laporan.wisudaStunting',[
-            'wisudaStuntings' => $wisudaStuntings,
-            'umur' => $umur,
             'kecamatan' => Kecamatan::all(),
-            'statusWisudaStuntings' => $statusWisudaStuntings
+            'wisudaStuntings' => $wisudaStuntings,
 
         ]);
     }

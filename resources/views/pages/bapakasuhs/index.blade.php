@@ -169,6 +169,15 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Status</label>
+                                        <select name="STATUS" class="form-control">
+                                            <option value="">-- Pilih Status --</option>
+                                            <option value="ASN" {{ $bapakasuh->STATUS == 'ASN' ? 'selected' : '' }}>ASN</option>
+                                            <option value="NON ASN" {{ $bapakasuh->STATUS == 'NON ASN' ? 'selected' : '' }}>NON ASN</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>No. HP</label>
                                         <input type="number"
                                             class="form-control"

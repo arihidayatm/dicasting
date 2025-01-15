@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stunting;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use IcehouseVentures\LaravelChartjs\Facades\Chartjs;
 

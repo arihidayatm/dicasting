@@ -79,6 +79,7 @@
                             <div class="card-body">
                                 {{-- count total Stunting dikurangi dengan total stunting pada bulan yang ditentukan, misal pada bulan desember 2024 --}}
                                 2123{{-- {{ count(\App\Models\Stunting::all()) - count(\App\Models\Stunting::whereMonth('created_at', 12)->whereYear('created_at', 2024)->get()) }} --}}
+
                             </div>
                         </div>
                     </div>
@@ -109,7 +110,7 @@
                                 <h4>Total Bapak Ibu Asuh</h4>
                             </div>
                             <div class="card-body">
-                                {{-- {{ count(\App\Models\BapakAsuh::all()) }} --}}
+                                {{ count(\App\Models\BapakAsuh::all()) }}
                             </div>
                         </div>
                     </div>

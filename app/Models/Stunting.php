@@ -115,4 +115,21 @@ class Stunting extends Model
         return $total;
     }
 
+    // Teknik Caching metode non statis
+    // public static function wisudaStuntings()
+    // {
+    //     $key = 'wisuda_stuntings';
+    //     $wisudaStuntings = Cache::remember($key, 60, function () {
+    //         return self::all();
+    //     });
+    //     return $wisudaStuntings;
+    // }
+
+    public static function wisudaStunting()
+    {
+        $wisudaStuntings = Stunting::whereRaw('TIMESTAMPDIFF(YEAR, TGL_LAHIR, CURDATE()) >= 5');
+
+        return $wisudaStuntings;
+    }
+
 }
