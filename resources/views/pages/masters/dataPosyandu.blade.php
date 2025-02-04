@@ -61,6 +61,7 @@
 
                                             <table class="table-striped-sm table">
                                                 <tr>
+                                                    <th>No.</th>
                                                     <th>Kode Posyandu</th>
                                                     <th>Nama Posyandu</th>
                                                     <th>Kab/Kota</th>
@@ -70,6 +71,7 @@
                                                 </tr>
                                                 @foreach ($posyandus as $posyandu)
                                                     <tr>
+                                                        <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $posyandu->ID_POSYANDU }}</td>
                                                         <td>{{ $posyandu->NAMA_POSYANDU }}</td>
                                                         <td>{{ $posyandu->kabupatenkota->NAMA_KABKOTA }}</td>

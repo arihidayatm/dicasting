@@ -46,9 +46,9 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Bentuk Intervensi</label>
+                                        <label>Bentuk Kegiatan Intervensi</label>
                                         <select name="BENTUK_INTERVENSI_ID" class="form-control">
                                             <option value="">-- Pilih Bentuk Intervensi --</option>
                                             @foreach ($bentukIntervensis as $bentukIntervensi)
@@ -57,7 +57,16 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Detail Kegiatan Intervensi</label>
+                                        <input type="text"
+                                            class="form-control @error('KETERANGAN') is-invalid @enderror"
+                                            name="KETERANGAN"
+                                            value="{{ old('KETERANGAN') }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select name="STATUS" class="form-control">

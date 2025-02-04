@@ -83,7 +83,7 @@
                 </ul> --}}
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link">
+                <a href="{{ route ('sekolah.index') }}" class="nav-link">
                     <i class="fa-solid fa-school" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></i>
                     <span>Sekolah</span>
                 </a>
@@ -96,7 +96,7 @@
                 </ul> --}}
             </li>
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
-                <a href="#" class="nav-link">
+                <a href="{{ route ('paud.index') }}" class="nav-link">
                     <i class="fa-solid fa-warehouse" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></i>
                     <span>PAUD</span>
                 </a>
@@ -127,18 +127,29 @@
                 </ul>
             </li>
 
-            <li class="menu-header">Shield</li>
+            <li class="menu-header">User Management</li>
 
             <li class="nav-item dropdown {{ Request::is('home') ? '' : '' }}">
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="fa-solid fa-users-rectangle" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></i>
                     <span>Users</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link has-dropdown">
                     <i class="fa-solid fa-user-shield" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></i>
                     <span>Roles and Permissions</span>
                 </a>
-                
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('home') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('roles.index') }}">
+                            <ion-icon name="file-tray-stacked-outline" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></ion-icon>&nbsp Role & Permissions</a>
+                    </li>
+                    <li class='{{ Request::is('home') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('assign-permissions') }}">
+                            <ion-icon name="file-tray-stacked-outline" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></ion-icon>&nbsp Assign Permissions</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="menu-header">Data</li>
@@ -163,6 +174,16 @@
                         <a class="nav-link"
                             href="{{ route('stuntings.pengukuran') }}">
                             <ion-icon name="scale-outline" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></ion-icon>&nbsp Data Pengukuran</a>
+                    </li>
+                    <li class='{{ Request::is('stuntings') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('stuntings.pengukuran') }}">
+                            <ion-icon name="scale-outline" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></ion-icon>&nbsp Data PMT</a>
+                    </li>
+                    <li class='{{ Request::is('stuntings') ? '' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ route('stuntings.pengukuran') }}">
+                            <ion-icon name="scale-outline" onmouseover="this.style.color='blue'" onmouseout="this.style.color=''"></ion-icon>&nbsp Data Determinan</a>
                     </li>
                     <li class='{{ Request::is('stuntings') ? '' : '' }}'>
                         <a class="nav-link"

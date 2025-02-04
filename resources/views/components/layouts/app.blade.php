@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
     <title>@yield('title') &mdash; Dicasting</title>
 
@@ -21,9 +21,6 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.min.css" rel="stylesheet"/>
 
-    {{-- <@livewireStyles />
-    <@livewireScripts /> --}}
-
     <!-- Template CSS -->
     <link rel="stylesheet"
         href="{{ asset('css/style.css') }}">
@@ -35,6 +32,8 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     {{-- @vite('resources/css/app.css') --}}
+    <livewire:styles/>
+    <livewire:scripts/>
 
 </head>
 
@@ -49,21 +48,14 @@
             @include('components.sidebar')
 
             <!-- Content -->
-            @yield('main')
+            @yield('content')
+
+            {{ $slot }}
 
             <!-- Footer -->
             @include('components.footer')
         </div>
     </div>
-
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.umd.min.js"></script>
-    {{-- javascript --}}
-    <script src="{{ asset('library/jquery/dist/jquery.min.js') }}"></script>
-    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/modules-ion-icons.js') }}"></script>
-
 
 </body>
 

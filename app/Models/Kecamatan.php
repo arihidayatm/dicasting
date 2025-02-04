@@ -36,6 +36,16 @@ class Kecamatan extends Model
         return $this->hasMany(Posyandu::class);
     }
 
+    public function keluarga()
+    {
+        return $this->hasMany(Keluarga::class);
+    }
+
+    public function kelurahandesa()
+    {
+        return $this->hasMany(Kelurahandesa::class);
+    }
+
     public function bapakasuh()
     {
         return $this->hasMany(BapakAsuh::class);

@@ -19,7 +19,7 @@
                     <form method="POST" action="{{ route('intervensi-bpas.store-detail', $intervensiBPAS->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
-                            <h4>Detail Intervensi</h4>
+                            <h4>Detail Kegiatan Intervensi</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Bentuk Intervensi</label>
+                                        <label>Bentuk Kegiatan Intervensi</label>
                                         <input type="text"
                                             class="form-control @error('BENTUK_INTERVENSI') is-invalid @enderror"
                                             name="BENTUK_INTERVENSI"
@@ -62,15 +62,23 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Tanggal Intervensi</label>
+                                        <label>Detail Kegiatan Intervensi</label>
+                                        <input type="text"
+                                            class="form-control @error('KETERANGAN') is-invalid @enderror"
+                                            name="KETERANGAN"
+                                            value="{{ old('KETERANGAN', $intervensiBPAS->bentukintervensi->KETERANGAN) }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Tanggal Kegiatan Intervensi</label>
                                         <input type="date"
                                             class="form-control"
                                             name="TGL_INTERVENSI"
                                             value="{{ old('TGL_INTERVENSI') }}">
-
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Foto Anak Asuh</label>
                                         <input type="file"
@@ -78,7 +86,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Dokumentasi</label>
                                         <input type="file"
@@ -86,7 +94,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Anggaran (*Optional)</label>
                                         <select name="ANGGARAN" class="form-control">
@@ -102,7 +110,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Nominal (*Optional)</label>
                                         <input type="text"
@@ -112,7 +120,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-9">
                                     <div class="form-group">
                                         <label>Keterangan</label>
                                         <input type="text"

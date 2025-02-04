@@ -61,6 +61,7 @@
 
                                             <table class="table-striped-sm table">
                                                 <tr>
+                                                    <th>No.</th>
                                                     <th>Kode Puskesmas</th>
                                                     <th>Nama Puskesmas</th>
                                                     <th>Kab/Kota</th>
@@ -68,14 +69,15 @@
                                                     <th>Alamat</th>
                                                     <th>No. Telp</th>
                                                 </tr>
-                                                @foreach ($puskesmas as $puskesma)
+                                                @foreach ($puskesmas as $item)
                                                     <tr>
-                                                        <td>{{ $puskesma->ID_PUSKESMAS }}</td>
-                                                        <td>{{ $puskesma->NAMA_PUSKESMAS }}</td>
-                                                        <td>{{ $puskesma->kabupatenkota->NAMA_KABKOTA }}</td>
-                                                        <td>{{ $puskesma->kecamatan->NAMA_KECAMATAN }}</td>
-                                                        <td>{{ $puskesma->ALAMAT_PUSKESMAS }}</td>
-                                                        <td>{{ $puskesma->NO_TELP_PUSKESMAS }}</td>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $item->ID_PUSKESMAS }}</td>
+                                                        <td>{{ $item->NAMA_PUSKESMAS }}</td>
+                                                        <td>{{ $item->kabupatenkota->NAMA_KABKOTA }}</td>
+                                                        <td>{{ $item->kecamatan->NAMA_KECAMATAN }}</td>
+                                                        <td>{{ $item->ALAMAT_PUSKESMAS }}</td>
+                                                        <td>{{ $item->NOTELP_PUSKESMAS }}</td>
                                                     </tr>
                                                 @endforeach
                                             </table>

@@ -16,6 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateStuntingRequest;
 use App\Models\StuntingPengukuran;
+use Carbon\Month;
 use IcehouseVentures\LaravelChartjs\Facades\Chartjs;
 
 class StuntingController extends Controller
@@ -32,6 +33,7 @@ class StuntingController extends Controller
         // Search stunting by nama_balita, pagination 10
         $stuntings = Stunting::with('kecamatan', 'kelurahandesa')
             ->where('NAMA_BALITA', 'like', '%' . request('nama_balita') . '%')
+            ->whereRaw('MONTH(created_at) = 12')
             ->orderBy('id', 'desc')
             ->paginate(10);
 

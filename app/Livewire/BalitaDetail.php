@@ -7,11 +7,6 @@ use App\Models\Balita;
 
 class BalitaDetail extends Component
 {
-    public function render()
-    {
-        return view('livewire.balita-detail');
-    }
-
     public $balita;
 
     public function mount($id)
@@ -39,6 +34,11 @@ class BalitaDetail extends Component
         $this->balita = Balita::find($id);
         $this->balita->delete();
         return redirect()->route('balitas.delete', $this->balita->id);
+    }
+
+    public function render()
+    {
+        return view('livewire.balita-detail');
     }
 
     //fungsi jika memilih KECAMATAN_ID = 137301 jadi pilihan PUSKESMAS_ID = 3 dengan ID_PUSKESMAS = P1373020202
